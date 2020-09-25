@@ -16,3 +16,4 @@ C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.QuanLyTouris.resource
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.QuanLyTouris.DanhSachTouris.resources
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.ChiTietTouris.resources
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.QuanLyTouris.DanhSachGia.resources
+C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.QuanLyTouris.ChiTietGia.resources
