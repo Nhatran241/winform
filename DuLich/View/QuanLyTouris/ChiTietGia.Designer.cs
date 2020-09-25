@@ -87,7 +87,6 @@
             this.tb_magia.Name = "tb_magia";
             this.tb_magia.Size = new System.Drawing.Size(181, 29);
             this.tb_magia.TabIndex = 4;
-            this.tb_magia.TextChanged += new System.EventHandler(this.tb_magia_TextChanged);
             // 
             // tb_giatri
             // 
@@ -96,6 +95,7 @@
             this.tb_giatri.Name = "tb_giatri";
             this.tb_giatri.Size = new System.Drawing.Size(181, 29);
             this.tb_giatri.TabIndex = 5;
+            this.tb_giatri.TextChanged += new System.EventHandler(this.tb_giatri_TextChanged);
             // 
             // datepicker_batdau
             // 
@@ -103,6 +103,7 @@
             this.datepicker_batdau.Name = "datepicker_batdau";
             this.datepicker_batdau.Size = new System.Drawing.Size(181, 20);
             this.datepicker_batdau.TabIndex = 6;
+            this.datepicker_batdau.ValueChanged += new System.EventHandler(this.datepicker_batdau_ValueChanged);
             // 
             // datepicker_ketthuc
             // 
@@ -110,6 +111,7 @@
             this.datepicker_ketthuc.Name = "datepicker_ketthuc";
             this.datepicker_ketthuc.Size = new System.Drawing.Size(181, 20);
             this.datepicker_ketthuc.TabIndex = 7;
+            this.datepicker_ketthuc.ValueChanged += new System.EventHandler(this.datepicker_ketthuc_ValueChanged);
             // 
             // btn_luu
             // 

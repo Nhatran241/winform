@@ -221,20 +221,99 @@ namespace DuLich
             listChiTietTour.AddRange(chiTietTours.ToList());
         }
 
-        public void onThemGia(Gia gia)
+        public void onThemGia(Gia gia,Touris touris)
         {
+            duLichContext.Gia.AddOrUpdate(gia);
+            duLichContext.SaveChangesAsync().Wait();
+            if (userControl is ChiTietTouris)
+            {
+                LoadDataOfTourisFromDataBase(touris);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                panel_main_content.Controls.Clear();
+                panel_main_content.Controls.Add(userControl);
+                ScreenState = ScreenState.CHITIETTOURIS;
+            }
         }
 
-        public void onSuaGia(Gia gia)
+        public void onSuaGia(Gia gia,Touris touris)
         {
+            duLichContext.Gia.AddOrUpdate(gia);
+            duLichContext.SaveChangesAsync().Wait();
+              if (userControl is ChiTietTouris)
+            {
+                LoadDataOfTourisFromDataBase(touris);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                panel_main_content.Controls.Clear();
+                panel_main_content.Controls.Add(userControl);
+                ScreenState = ScreenState.CHITIETTOURIS;
+            }
         }
 
-        public void onXoaGia(Gia gia)
+        public void onXoaGia(Gia gia,Touris touris)
         {
+            duLichContext.Gia.Remove(gia);
+            duLichContext.SaveChangesAsync().Wait();
+            if (userControl is ChiTietTouris)
+            {
+                LoadDataOfTourisFromDataBase(touris);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                panel_main_content.Controls.Clear();
+                panel_main_content.Controls.Add(userControl);
+                ScreenState = ScreenState.CHITIETTOURIS;
+            }
         }
 
         public void onHuyGia()
         {
+        }
+
+        public void onCapNhatDiaDiem(Touris touris, List<DiaDiem> newDiaDiemCuaTour)
+        {
+            if (newDiaDiemCuaTour.Count() != 0)
+            {
+                if (diaDiemCuaTour.Count > 0)
+                {
+                    for (int i = 0; i < diaDiemCuaTour.Count(); i++)
+                    {
+                        ChiTietTour chiTietTour = new ChiTietTour();
+                        if (listChiTietTour.Count() > 0)
+                        {
+                            ChiTietTour tempChiTiet = listChiTietTour.First();
+                            if (tempChiTiet != null)
+                            {
+                                chiTietTour.MaChiTietTour = tempChiTiet.MaChiTietTour;
+                                listChiTietTour.RemoveAt(0);
+                            }
+                        }
+                        chiTietTour.MaDiaDiem = diaDiemCuaTour.ToArray()[i].MaDienDiem;
+                        chiTietTour.MaTour = touris.Id;
+                        chiTietTour.ThuTu = i + 1;
+                        duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < newDiaDiemCuaTour.Count(); i++)
+                    {
+                        ChiTietTour chiTietTour = new ChiTietTour();
+                        chiTietTour.MaDiaDiem = newDiaDiemCuaTour.ToArray()[i].MaDienDiem;
+                        chiTietTour.MaTour = touris.Id;
+                        chiTietTour.ThuTu = i + 1;
+                        duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
+                    }
+                }
+              
+            }
+            duLichContext.ChiTietTour.RemoveRange(listChiTietTour);
+            duLichContext.SaveChangesAsync().Wait();
+            if (userControl is ChiTietTouris)
+            {
+                LoadDataOfTourisFromDataBase(touris);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                panel_main_content.Controls.Clear();
+                panel_main_content.Controls.Add(userControl);
+                ScreenState = ScreenState.CHITIETTOURIS;
+            }
         }
 
         private TreeView treeView1;

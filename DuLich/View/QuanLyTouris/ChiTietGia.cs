@@ -31,10 +31,15 @@ namespace DuLich.View.QuanLyTouris
             {
                 tb_magia.Visible = false;
                 tv_magia.Visible = false;
-            }
+            } else {
+                tb_magia.Visible = false;
+                tv_magia.Visible = false;
+                tb_magia.Enabled = false;
+            } 
             tb_giatri.Text = gia.GiaTri.ToString();
-            datepicker_batdau.Value = DateTime.Today;
-            datepicker_ketthuc.Value = DateTime.Today.AddDays(1);
+
+            datepicker_batdau.MinDate = gia.ThoiGianBatDau;
+            datepicker_ketthuc.MinDate = gia.ThoiGianKetThuc;
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
@@ -64,6 +69,47 @@ namespace DuLich.View.QuanLyTouris
             return true;
         }
 
+        private void datepicker_batdau_ValueChanged(object sender, EventArgs e)
+        {
+            
+            gia.ThoiGianBatDau = datepicker_batdau.Value;
+            if (gia.ThoiGianBatDau > gia.ThoiGianKetThuc)
+            {
+                gia.ThoiGianKetThuc = gia.ThoiGianBatDau;
+                datepicker_ketthuc.Value = gia.ThoiGianBatDau;
+            }
 
+            if (gia.ThoiGianBatDau.Year < 1000)
+                gia.ThoiGianBatDau = DateTime.Today;
+        }
+
+        private void datepicker_ketthuc_ValueChanged(object sender, EventArgs e)
+        {
+            gia.ThoiGianKetThuc = datepicker_ketthuc.Value;
+            if (gia.ThoiGianKetThuc < gia.ThoiGianBatDau)
+            {
+                gia.ThoiGianKetThuc = gia.ThoiGianBatDau;
+                datepicker_ketthuc.Value = gia.ThoiGianBatDau;
+            }
+
+            if (gia.ThoiGianKetThuc.Year < 1000)
+                gia.ThoiGianKetThuc = DateTime.Today;
+        }
+
+        private void tb_giatri_TextChanged(object sender, EventArgs e)
+        {
+
+            if (IsNumeric(tb_giatri.Text.Trim()))
+            {
+                gia.GiaTri = Convert.ToInt32(tb_giatri.Text.Trim());
+            }
+        }
+        public bool IsNumeric(object Expression)
+        {
+            double retNum;
+
+            bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
+        }
     }
 }

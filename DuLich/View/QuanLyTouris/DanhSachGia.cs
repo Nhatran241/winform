@@ -35,6 +35,16 @@ namespace DuLich.View.QuanLyTouris
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int position = listview_gia.SelectedIndices.Count;
+            if (position > 0)
+            {
+                btn_sua_gia.Visible = true;
+                btn_xoa_gia.Visible = true;
+            }else
+            {
+                btn_sua_gia.Visible = false;
+                btn_xoa_gia.Visible = false;
+            }
 
         }
 
@@ -53,8 +63,11 @@ namespace DuLich.View.QuanLyTouris
 
         private void btn_xoa_gia_Click(object sender, EventArgs e)
         {
-            int position = listview_gia.SelectedItems[0].Index;
-            danhSachGiaCallBack.OnClickXoaGia(gias.ToArray()[position]);
+            if (listview_gia.SelectedItems.Count > 0)
+            {
+                int position = listview_gia.SelectedItems[0].Index;
+                danhSachGiaCallBack.OnClickXoaGia(gias.ToArray()[position]);
+            }
         }
         public interface IDanhSachGiaCallBack
         {

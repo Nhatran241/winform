@@ -50,6 +50,7 @@ namespace DuLich.View.QuanLyTouris
             this.listview_gia.Name = "listview_gia";
             this.listview_gia.Size = new System.Drawing.Size(487, 282);
             this.listview_gia.TabIndex = 0;
+            this.listview_gia.FullRowSelect = true;
             this.listview_gia.UseCompatibleStateImageBehavior = false;
             this.listview_gia.View = System.Windows.Forms.View.Details;
             this.listview_gia.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -88,6 +89,7 @@ namespace DuLich.View.QuanLyTouris
             this.btn_xoa_gia.Size = new System.Drawing.Size(75, 23);
             this.btn_xoa_gia.TabIndex = 2;
             this.btn_xoa_gia.Text = "Xoa";
+            this.btn_xoa_gia.Visible = false;
             this.btn_xoa_gia.UseVisualStyleBackColor = true;
             this.btn_xoa_gia.Click += new System.EventHandler(this.btn_xoa_gia_Click);
             // 
@@ -98,6 +100,7 @@ namespace DuLich.View.QuanLyTouris
             this.btn_sua_gia.Size = new System.Drawing.Size(75, 23);
             this.btn_sua_gia.TabIndex = 3;
             this.btn_sua_gia.Text = "Sua";
+            this.btn_sua_gia.Visible = false;
             this.btn_sua_gia.UseVisualStyleBackColor = true;
             this.btn_sua_gia.Click += new System.EventHandler(this.btn_sua_gia_Click);
             // 

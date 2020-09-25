@@ -109,6 +109,9 @@
     <EmbeddedResource Include="View\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\QuanLyTouris\DanhSachDiaDiem.resx">
+      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\QuanLyTouris\DanhSachGia.resx">
       <DependentUpon>DanhSachGia.cs</DependentUpon>
     </EmbeddedResource>

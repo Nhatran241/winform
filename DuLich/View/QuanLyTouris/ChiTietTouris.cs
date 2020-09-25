@@ -29,6 +29,8 @@ namespace DuLich.View
             this.gias = gias;
             this.tatCaDiaDiem = tatCaDiaDiem;
             this.diaDiemCuaTour = diaDiemCuaTour;
+            tempDiaDiemCuaTour = new List<DiaDiem>();
+            tempDiaDiemCuaTour.AddRange(diaDiemCuaTour);
             if (currentTouris == null)
             {
                 CreateNewRecord();
@@ -55,10 +57,7 @@ namespace DuLich.View
                 DisableComponent();
                 btn_chinhsua.Text = "Chỉnh Sửa";
             }
-            if (chiTietUserControl is DanhSachDiaDiem)
-            {
-                (chiTietUserControl as DanhSachDiaDiem).UpdateComponentState(isEditing);
-            }
+       
         }
 
         public void CreateNewRecord()
@@ -90,6 +89,9 @@ namespace DuLich.View
         private IEnumerable<Gia> gias;
         private List<DiaDiem> tatCaDiaDiem;
         private List<DiaDiem> diaDiemCuaTour;
+        private List<DiaDiem> tempDiaDiemCuaTour;
+        
+         
         private void InitData()
         {
           
@@ -110,7 +112,7 @@ namespace DuLich.View
             combobox_loai.Text = currentLoai.TenLoai;
         }
 
-        private void LoadDanhSachGia()
+        public void LoadDanhSachGia()
         {
 
             chiTietUserControl = new DanhSachGia(gias,this);
@@ -119,11 +121,10 @@ namespace DuLich.View
             quanLyTourisState = QuanLyTourisState.DANHSACHGIA;
         }
 
-        private void LoadDanhSachDiaDiem()
+        public void LoadDanhSachDiaDiem()
         {
 
             chiTietUserControl = new DanhSachDiaDiem(tatCaDiaDiem,diaDiemCuaTour,this);
-            (chiTietUserControl as DanhSachDiaDiem).UpdateComponentState(isEditing);
             tab_diadiem.Controls.Clear();
             tab_diadiem.Controls.Add(chiTietUserControl);
             quanLyTourisState = QuanLyTourisState.DANHSACHDIADIEM;
@@ -148,9 +149,10 @@ namespace DuLich.View
             void onTabDiaDiemClick();
             void onCapNhatClick(Touris tourisAfterUpdate,List<DiaDiem> diaDiemCuaTour);
             void onXoaClick();
-            void onThemGia(Gia gia);
-            void onSuaGia(Gia gia);
-            void onXoaGia(Gia gia);
+            void onThemGia(Gia gia,Touris touris);
+            void onSuaGia(Gia gia,Touris touris);
+            void onXoaGia(Gia gia,Touris touris);
+            void onCapNhatDiaDiem(Touris touris,List<DiaDiem> newDiaDiemCuaTour);
             void onHuyGia();
         }
 
@@ -196,7 +198,9 @@ namespace DuLich.View
 
         public void OnClickThemGia()
         {
-            chiTietUserControl = new ChiTietGia(new Gia(),this);
+            Gia gia = new Gia();
+            gia.TourisId = currentTouris.Id;
+            chiTietUserControl = new ChiTietGia(gia,this);
             tab_gia.Controls.Clear();
             tab_gia.Controls.Add(chiTietUserControl);
         }
@@ -210,21 +214,54 @@ namespace DuLich.View
 
         public void OnClickXoaGia(Gia gia)
         {
-            onChiTietClickListener.onXoaGia(gia);
+            onChiTietClickListener.onXoaGia(gia, currentTouris);
         }
 
         public void onLuuClick(Gia gia)
         {
+            Console.WriteLine("" + gia.MaGia + "/" + gia.GiaTri + ":" + gia.ThoiGianBatDau + "-" + gia.ThoiGianKetThuc);
             if (gia.MaGia == 0)
             {
-                onChiTietClickListener.onThemGia(gia);
+                onChiTietClickListener.onThemGia(gia,currentTouris);
             }
-            else onChiTietClickListener.onSuaGia(gia);
+            else onChiTietClickListener.onSuaGia(gia, currentTouris);
         }
 
         public void onHuyClick()
         {
             LoadDanhSachGia();
+        }
+
+        public void onClickLuu(List<DiaDiem> diaDiemCuaTourNew)
+        {
+           
+        }
+
+        public void onCheckPreMatch(List<DiaDiem> diaDiemCuaTourNew)
+        {
+            this.diaDiemCuaTour = diaDiemCuaTourNew;
+            Console.WriteLine(diaDiemCuaTourNew.Count);
+            if (diaDiemCuaTour.Count() == tempDiaDiemCuaTour.Count())
+            {
+                for (int i = 0; i < diaDiemCuaTour.ToArray().Length; i++)
+                {
+                    if (diaDiemCuaTour.ToArray()[i] != tempDiaDiemCuaTour.ToArray()[i])
+                    {
+                        if(chiTietUserControl is DanhSachDiaDiem)
+                        {
+                            (chiTietUserControl as DanhSachDiaDiem).ShowLuuButton();
+                            return;
+                        }
+                    }
+                }
+                (chiTietUserControl as DanhSachDiaDiem).HideLuuButton();
+            }
+            else (chiTietUserControl as DanhSachDiaDiem).ShowLuuButton();
+        }
+
+        public void onClickLuu()
+        {
+            onChiTietClickListener.onCapNhatDiaDiem(currentTouris, diaDiemCuaTour);
         }
     }
 }
