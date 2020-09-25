@@ -65,6 +65,9 @@ namespace DuLich.View
             currentTouris = new Touris();
             currentLoai = Loais.First();
             textbox_id.Visible = false;
+            tour_id.Visible = false;
+            btn_xoa.Visible = false;
+            tv_title.Visible = true;
             textbox_name.Text = "";
             isEditing = true;
             UpdateComponentState();
@@ -72,12 +75,16 @@ namespace DuLich.View
         private void DisableComponent()
         {
             textbox_id.Visible = true;
+            tour_id.Visible = true;
+            btn_xoa.Visible = true;
             textbox_id.Enabled = false;
             textbox_name.Enabled = false;
             combobox_loai.Enabled = false;
+            tv_title.Visible = false;
         }
         private void EnableComponent()
         {
+            btn_xoa.Visible = false;
             textbox_id.Enabled = false;
             textbox_name.Enabled = true;
             combobox_loai.Enabled = true;
@@ -148,7 +155,7 @@ namespace DuLich.View
             void onTabGiaClick();
             void onTabDiaDiemClick();
             void onCapNhatClick(Touris tourisAfterUpdate,List<DiaDiem> diaDiemCuaTour);
-            void onXoaClick();
+            void onXoaClick(Touris currentTouris);
             void onThemGia(Gia gia,Touris touris);
             void onSuaGia(Gia gia,Touris touris);
             void onXoaGia(Gia gia,Touris touris);
@@ -262,6 +269,11 @@ namespace DuLich.View
         public void onClickLuu()
         {
             onChiTietClickListener.onCapNhatDiaDiem(currentTouris, diaDiemCuaTour);
+        }
+
+        private void btn_xoa_Click(object sender, EventArgs e)
+        {
+            onChiTietClickListener.onXoaClick(currentTouris);
         }
     }
 }

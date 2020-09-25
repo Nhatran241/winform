@@ -34,7 +34,6 @@ namespace DuLich.View.QuanLyTouris
             this.ma_tour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ten_tour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.loai_tou = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tuychon_tour = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // list_touris
@@ -42,8 +41,8 @@ namespace DuLich.View.QuanLyTouris
             this.list_touris.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ma_tour,
             this.ten_tour,
-            this.loai_tou,
-            this.tuychon_tour});
+            this.loai_tou});
+            this.list_touris.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.list_touris.FullRowSelect = true;
             this.list_touris.GridLines = true;
             this.list_touris.HideSelection = false;
@@ -60,24 +59,19 @@ namespace DuLich.View.QuanLyTouris
             // ma_tour
             // 
             this.ma_tour.Text = "Mã Tour";
+            this.ma_tour.Width = 85;
             // 
             // ten_tour
             // 
             this.ten_tour.Text = "Tên Tour";
             this.ten_tour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ten_tour.Width = 200;
+            this.ten_tour.Width = 240;
             // 
             // loai_tou
             // 
             this.loai_tou.Text = "Loại Tour";
             this.loai_tou.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.loai_tou.Width = 112;
-            // 
-            // tuychon_tour
-            // 
-            this.tuychon_tour.Text = "Tùy Chọn";
-            this.tuychon_tour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tuychon_tour.Width = 140;
+            this.loai_tou.Width = 182;
             // 
             // DanhSachTouris
             // 
@@ -99,6 +93,5 @@ namespace DuLich.View.QuanLyTouris
         private System.Windows.Forms.ColumnHeader ten_tour;
         private System.Windows.Forms.ColumnHeader loai_tour;
         private System.Windows.Forms.ColumnHeader loai_tou;
-        private System.Windows.Forms.ColumnHeader tuychon_tour;
     }
 }

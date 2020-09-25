@@ -37,9 +37,15 @@ namespace DuLich.View.QuanLyTouris
                 tb_magia.Enabled = false;
             } 
             tb_giatri.Text = gia.GiaTri.ToString();
-
-            datepicker_batdau.MinDate = gia.ThoiGianBatDau;
-            datepicker_ketthuc.MinDate = gia.ThoiGianKetThuc;
+            if(gia.ThoiGianBatDau.Year < 1500 && gia.ThoiGianKetThuc.Year < 1500)
+            {
+                datepicker_batdau.Value = DateTime.Today;
+                datepicker_ketthuc.Value = DateTime.Today;
+            }else
+            {
+                datepicker_batdau.Value = gia.ThoiGianBatDau;
+                datepicker_ketthuc.Value = gia.ThoiGianKetThuc;
+            }
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
@@ -79,7 +85,7 @@ namespace DuLich.View.QuanLyTouris
                 datepicker_ketthuc.Value = gia.ThoiGianBatDau;
             }
 
-            if (gia.ThoiGianBatDau.Year < 1000)
+            if (gia.ThoiGianBatDau.Year < 1500)
                 gia.ThoiGianBatDau = DateTime.Today;
         }
 
@@ -92,7 +98,7 @@ namespace DuLich.View.QuanLyTouris
                 datepicker_ketthuc.Value = gia.ThoiGianBatDau;
             }
 
-            if (gia.ThoiGianKetThuc.Year < 1000)
+            if (gia.ThoiGianKetThuc.Year < 1500)
                 gia.ThoiGianKetThuc = DateTime.Today;
         }
 

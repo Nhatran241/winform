@@ -43,6 +43,7 @@ namespace DuLich.View
             this.tab_diadiem = new System.Windows.Forms.TabPage();
             this.btn_chinhsua = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
+            this.tv_title = new System.Windows.Forms.Label();
             this.tab_chitiet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -155,11 +156,23 @@ namespace DuLich.View
             this.btn_xoa.TabIndex = 23;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
+            // 
+            // tv_title
+            // 
+            this.tv_title.AutoSize = true;
+            this.tv_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_title.Location = new System.Drawing.Point(12, 7);
+            this.tv_title.Name = "tv_title";
+            this.tv_title.Size = new System.Drawing.Size(186, 31);
+            this.tv_title.TabIndex = 24;
+            this.tv_title.Text = "Tạo Mới Tour";
             // 
             // ChiTietTouris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tv_title);
             this.Controls.Add(this.btn_xoa);
             this.Controls.Add(this.btn_chinhsua);
             this.Controls.Add(this.tab_chitiet);
@@ -190,5 +203,6 @@ namespace DuLich.View
         private System.Windows.Forms.TabPage tab_diadiem;
         private System.Windows.Forms.Button btn_chinhsua;
         private System.Windows.Forms.Button btn_xoa;
+        private Label tv_title;
     }
 }
