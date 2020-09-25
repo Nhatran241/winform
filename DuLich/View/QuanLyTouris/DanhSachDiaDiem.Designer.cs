@@ -96,7 +96,14 @@ namespace DuLich.View.QuanLyTouris
             this.label2.TabIndex = 5;
             this.label2.Text = "Tat Ca Dia Diem";
             // 
-
+            // btn_luu
+            // 
+            this.btn_luu.Location = new System.Drawing.Point(217, 237);
+            this.btn_luu.Name = "btn_luu";
+            this.btn_luu.Size = new System.Drawing.Size(50, 40);
+            this.btn_luu.TabIndex = 0;
+            this.btn_luu.Text = "Lưu";
+            this.btn_luu.Click += new System.EventHandler(this.btn_luu_Click);
             // 
             // DanhSachDiaDiem
             // 

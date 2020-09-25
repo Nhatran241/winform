@@ -43,6 +43,7 @@ namespace DuLich.View
             this.tab_diadiem = new System.Windows.Forms.TabPage();
             this.btn_chinhsua = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
+            this.tv_title = new System.Windows.Forms.Label();
             this.tab_chitiet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,10 +54,10 @@ namespace DuLich.View
             this.textbox_id.Name = "textbox_id";
             this.textbox_id.Size = new System.Drawing.Size(218, 29);
             this.textbox_id.TabIndex = 13;
-            this.textbox_id.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // combobox_loai
             // 
+            this.combobox_loai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combobox_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combobox_loai.FormattingEnabled = true;
             this.combobox_loai.Location = new System.Drawing.Point(125, 118);
@@ -74,7 +75,6 @@ namespace DuLich.View
             this.tour_id.Size = new System.Drawing.Size(88, 24);
             this.tour_id.TabIndex = 9;
             this.tour_id.Text = "Mã Tour";
-            this.tour_id.Click += new System.EventHandler(this.label1_Click);
             // 
             // tour_name
             // 
@@ -93,6 +93,7 @@ namespace DuLich.View
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.Size = new System.Drawing.Size(218, 29);
             this.textbox_name.TabIndex = 19;
+            this.textbox_name.TextChanged += new System.EventHandler(this.textbox_name_TextChanged);
             // 
             // tour_loai
             // 
@@ -130,7 +131,7 @@ namespace DuLich.View
             this.tab_diadiem.Location = new System.Drawing.Point(4, 22);
             this.tab_diadiem.Name = "tab_diadiem";
             this.tab_diadiem.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_diadiem.Size = new System.Drawing.Size(642, 274);
+            this.tab_diadiem.Size = new System.Drawing.Size(487, 315);
             this.tab_diadiem.TabIndex = 1;
             this.tab_diadiem.Text = "Địa Điểm";
             this.tab_diadiem.UseVisualStyleBackColor = true;
@@ -155,11 +156,23 @@ namespace DuLich.View
             this.btn_xoa.TabIndex = 23;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
+            // 
+            // tv_title
+            // 
+            this.tv_title.AutoSize = true;
+            this.tv_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_title.Location = new System.Drawing.Point(12, 7);
+            this.tv_title.Name = "tv_title";
+            this.tv_title.Size = new System.Drawing.Size(186, 31);
+            this.tv_title.TabIndex = 24;
+            this.tv_title.Text = "Tạo Mới Tour";
             // 
             // ChiTietTouris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tv_title);
             this.Controls.Add(this.btn_xoa);
             this.Controls.Add(this.btn_chinhsua);
             this.Controls.Add(this.tab_chitiet);
@@ -171,7 +184,6 @@ namespace DuLich.View
             this.Controls.Add(this.tour_id);
             this.Name = "ChiTietTouris";
             this.Size = new System.Drawing.Size(512, 512);
-            this.Load += new System.EventHandler(this.QuanLyTour_Load);
             this.tab_chitiet.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,5 +203,6 @@ namespace DuLich.View
         private System.Windows.Forms.TabPage tab_diadiem;
         private System.Windows.Forms.Button btn_chinhsua;
         private System.Windows.Forms.Button btn_xoa;
+        private Label tv_title;
     }
 }

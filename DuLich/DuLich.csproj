@@ -66,18 +66,24 @@
     <Compile Include="Model\Entity\Gia.cs" />
     <Compile Include="Model\Entity\Loai.cs" />
     <Compile Include="Model\Entity\Touris.cs" />
+    <Compile Include="View\QuanLyTouris\ChiTietGia.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\QuanLyTouris\ChiTietGia.Designer.cs">
+      <DependentUpon>ChiTietGia.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\QuanLyTouris\DanhSachGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
-	  <Compile Include="View\QuanLyTouris\DanhSachDiaDiem.cs">
-		  <SubType>UserControl</SubType>
-	  </Compile>
+    <Compile Include="View\QuanLyTouris\DanhSachDiaDiem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="View\QuanLyTouris\DanhSachGia.Designer.cs">
       <DependentUpon>DanhSachGia.cs</DependentUpon>
     </Compile>
-	  <Compile Include="View\QuanLyTouris\DanhSachDiaDiem.Designer.cs">
-		  <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
-	  </Compile>
+    <Compile Include="View\QuanLyTouris\DanhSachDiaDiem.Designer.cs">
+      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\QuanLyTouris\DanhSachTouris.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +106,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\QuanLyTouris\QuanLyTourisState.cs" />
     <Compile Include="View\ScreenState.cs" />
+    <EmbeddedResource Include="View\QuanLyTouris\ChiTietGia.resx">
+      <DependentUpon>ChiTietGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QuanLyTouris\DanhSachDiaDiem.resx">
+      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\QuanLyTouris\DanhSachGia.resx">
       <DependentUpon>DanhSachGia.cs</DependentUpon>
     </EmbeddedResource>

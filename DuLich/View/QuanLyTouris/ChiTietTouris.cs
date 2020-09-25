@@ -14,7 +14,7 @@ using DuLich.Model.Entity;
 
 namespace DuLich.View
 {
-    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemCallBack
+    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemCallBack,DanhSachGia.IDanhSachGiaCallBack,ChiTietGia.IChiTietGiaListener
     {
         private OnChiTietClickListener onChiTietClickListener;
         private UserControl chiTietUserControl;
@@ -22,14 +22,30 @@ namespace DuLich.View
         private bool isEditing = false;
         public ChiTietTouris(Touris touris,IEnumerable<Loai> loais, IEnumerable<Gia> gias, List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour, OnChiTietClickListener onChiTietClickListener)
         {
-            this.onChiTietClickListener = onChiTietClickListener;
-            Console.WriteLine(touris.Id + "/" + touris.Name);
             InitializeComponent();
+            this.onChiTietClickListener = onChiTietClickListener;
+            currentTouris = touris;
+            this.Loais = loais;
+            this.gias = gias;
+            this.tatCaDiaDiem = tatCaDiaDiem;
+            this.diaDiemCuaTour = diaDiemCuaTour;
+            tempDiaDiemCuaTour = new List<DiaDiem>();
+            tempDiaDiemCuaTour.AddRange(diaDiemCuaTour);
+            if (currentTouris == null)
+            {
+                CreateNewRecord();
+            }
             UpdateComponentState();
-            InitData(touris,loais,gias,tatCaDiaDiem,diaDiemCuaTour);
+            InitData();
         }
+ 
         public void UpdateComponentState()
         {
+            if (currentTouris.Id == 0)
+            {
+                tab_chitiet.Visible = false;
+            }
+            else tab_chitiet.Visible = true;
             if (isEditing)
             {
                 EnableComponent();
@@ -40,27 +56,35 @@ namespace DuLich.View
             {
                 DisableComponent();
                 btn_chinhsua.Text = "Chỉnh Sửa";
-               
             }
-            if (chiTietUserControl is DanhSachDiaDiem)
-            {
-                (chiTietUserControl as DanhSachDiaDiem).UpdateComponentState(isEditing);
-            }
+       
         }
 
-        private void ClearDataInComponent()
+        public void CreateNewRecord()
         {
+            currentTouris = new Touris();
+            currentLoai = Loais.First();
             textbox_id.Visible = false;
+            tour_id.Visible = false;
+            btn_xoa.Visible = false;
+            tv_title.Visible = true;
             textbox_name.Text = "";
+            isEditing = true;
+            UpdateComponentState();
         }
         private void DisableComponent()
         {
+            textbox_id.Visible = true;
+            tour_id.Visible = true;
+            btn_xoa.Visible = true;
             textbox_id.Enabled = false;
             textbox_name.Enabled = false;
             combobox_loai.Enabled = false;
+            tv_title.Visible = false;
         }
         private void EnableComponent()
         {
+            btn_xoa.Visible = false;
             textbox_id.Enabled = false;
             textbox_name.Enabled = true;
             combobox_loai.Enabled = true;
@@ -72,83 +96,46 @@ namespace DuLich.View
         private IEnumerable<Gia> gias;
         private List<DiaDiem> tatCaDiaDiem;
         private List<DiaDiem> diaDiemCuaTour;
-        private void InitData(Touris touris,IEnumerable<Loai> loais, IEnumerable<Gia> gias,List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour)
+        private List<DiaDiem> tempDiaDiemCuaTour;
+        
+         
+        private void InitData()
         {
-            this.currentTouris = touris;
-            this.Loais = loais;
-            this.gias = gias;
-            this.tatCaDiaDiem = tatCaDiaDiem;
-            this.diaDiemCuaTour = diaDiemCuaTour;
+          
+            InitUI(currentTouris);
+            LoadDanhSachGia();
+        }
+
+        public void InitUI(Touris touris)
+        {
             textbox_id.Text = touris.Id.ToString();
             textbox_name.Text = touris.Name;
-            foreach(Loai loai in loais) {
+            foreach (Loai loai in Loais)
+            {
                 if (loai.Id == currentTouris.LoaiId)
                     currentLoai = loai;
                 combobox_loai.Items.Add(loai);
             }
             combobox_loai.Text = currentLoai.TenLoai;
-            LoadDanhSachGia();
         }
 
-        private void LoadDanhSachGia()
+        public void LoadDanhSachGia()
         {
 
-            chiTietUserControl = new DanhSachGia(gias);
+            chiTietUserControl = new DanhSachGia(gias,this);
             tab_gia.Controls.Clear();
             tab_gia.Controls.Add(chiTietUserControl);
             quanLyTourisState = QuanLyTourisState.DANHSACHGIA;
         }
 
-        private void LoadDanhSachDiaDiem()
+        public void LoadDanhSachDiaDiem()
         {
 
             chiTietUserControl = new DanhSachDiaDiem(tatCaDiaDiem,diaDiemCuaTour,this);
-            (chiTietUserControl as DanhSachDiaDiem).UpdateComponentState(isEditing);
             tab_diadiem.Controls.Clear();
             tab_diadiem.Controls.Add(chiTietUserControl);
             quanLyTourisState = QuanLyTourisState.DANHSACHDIADIEM;
         }
-
-        private void QuanLyTour_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentTouris.LoaiId = Loais.ToArray()[combobox_loai.SelectedIndex].Id;
@@ -168,7 +155,12 @@ namespace DuLich.View
             void onTabGiaClick();
             void onTabDiaDiemClick();
             void onCapNhatClick(Touris tourisAfterUpdate,List<DiaDiem> diaDiemCuaTour);
-            void onXoaClick();
+            void onXoaClick(Touris currentTouris);
+            void onThemGia(Gia gia,Touris touris);
+            void onSuaGia(Gia gia,Touris touris);
+            void onXoaGia(Gia gia,Touris touris);
+            void onCapNhatDiaDiem(Touris touris,List<DiaDiem> newDiaDiemCuaTour);
+            void onHuyGia();
         }
 
         
@@ -176,8 +168,19 @@ namespace DuLich.View
 
         private void btn_chinhsua_Click(object sender, EventArgs e)
         {
-            if(isEditing)
-                onChiTietClickListener.onCapNhatClick(currentTouris, diaDiemCuaTour);
+            if (isEditing)
+            {
+
+                if (Validation(currentTouris))
+                {
+                    onChiTietClickListener.onCapNhatClick(currentTouris, diaDiemCuaTour);
+                }
+                else
+                {
+                    MessageBox.Show("Tên hoặc loại tour không được bỏ trống");
+                    return;
+                }
+            }
             isEditing = !isEditing;
             UpdateComponentState();
         }
@@ -185,6 +188,92 @@ namespace DuLich.View
         public void updateDiaDiemCuaTour(List<DiaDiem> diaDiemCuaTourNew)
         {
             this.diaDiemCuaTour = diaDiemCuaTourNew;
+        }
+
+        private void textbox_name_TextChanged(object sender, EventArgs e)
+        {
+            currentTouris.Name = textbox_name.Text.Trim();
+        }
+
+        private bool Validation(Touris tourisAfterUpdate)
+        {
+            Console.WriteLine(tourisAfterUpdate.Name + "/" + tourisAfterUpdate.LoaiId);
+            if (tourisAfterUpdate.Name == "" || tourisAfterUpdate.LoaiId == 0)
+                return false;
+            return true;
+        }
+
+        public void OnClickThemGia()
+        {
+            Gia gia = new Gia();
+            gia.TourisId = currentTouris.Id;
+            chiTietUserControl = new ChiTietGia(gia,this);
+            tab_gia.Controls.Clear();
+            tab_gia.Controls.Add(chiTietUserControl);
+        }
+
+        public void OnClickSuaGia(Gia gia)
+        {
+            chiTietUserControl = new ChiTietGia(gia,this);
+            tab_gia.Controls.Clear();
+            tab_gia.Controls.Add(chiTietUserControl);
+        }
+
+        public void OnClickXoaGia(Gia gia)
+        {
+            onChiTietClickListener.onXoaGia(gia, currentTouris);
+        }
+
+        public void onLuuClick(Gia gia)
+        {
+            Console.WriteLine("" + gia.MaGia + "/" + gia.GiaTri + ":" + gia.ThoiGianBatDau + "-" + gia.ThoiGianKetThuc);
+            if (gia.MaGia == 0)
+            {
+                onChiTietClickListener.onThemGia(gia,currentTouris);
+            }
+            else onChiTietClickListener.onSuaGia(gia, currentTouris);
+        }
+
+        public void onHuyClick()
+        {
+            LoadDanhSachGia();
+        }
+
+        public void onClickLuu(List<DiaDiem> diaDiemCuaTourNew)
+        {
+           
+        }
+
+        public void onCheckPreMatch(List<DiaDiem> diaDiemCuaTourNew)
+        {
+            this.diaDiemCuaTour = diaDiemCuaTourNew;
+            Console.WriteLine(diaDiemCuaTourNew.Count);
+            if (diaDiemCuaTour.Count() == tempDiaDiemCuaTour.Count())
+            {
+                for (int i = 0; i < diaDiemCuaTour.ToArray().Length; i++)
+                {
+                    if (diaDiemCuaTour.ToArray()[i] != tempDiaDiemCuaTour.ToArray()[i])
+                    {
+                        if(chiTietUserControl is DanhSachDiaDiem)
+                        {
+                            (chiTietUserControl as DanhSachDiaDiem).ShowLuuButton();
+                            return;
+                        }
+                    }
+                }
+                (chiTietUserControl as DanhSachDiaDiem).HideLuuButton();
+            }
+            else (chiTietUserControl as DanhSachDiaDiem).ShowLuuButton();
+        }
+
+        public void onClickLuu()
+        {
+            onChiTietClickListener.onCapNhatDiaDiem(currentTouris, diaDiemCuaTour);
+        }
+
+        private void btn_xoa_Click(object sender, EventArgs e)
+        {
+            onChiTietClickListener.onXoaClick(currentTouris);
         }
     }
 }

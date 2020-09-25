@@ -26,29 +26,15 @@ namespace DuLich.View.QuanLyTouris
             tempDiaDiemCuaTour = new List<DiaDiem>();
             tempDiaDiemCuaTour.AddRange(diaDiemCuaTour);
             InitializeComponent();
+            UpdateComponentState();
             initData(tatCaDiaDiem, diaDiemCuaTour);
         }
 
-        public void UpdateComponentState(bool isEditing)
+        public void UpdateComponentState()
         {
-            if (isEditing)
-            {
-                EnableComponent();
-            }
-            else DisableComponent();
+            btn_luu.Visible = false;
         }
-
-        private void EnableComponent()
-        {
-            btn_them.Enabled = true;
-            btn_xoa.Enabled = true;
-        }
-
-        private void DisableComponent()
-        {
-            btn_them.Enabled = false;
-            btn_xoa.Enabled = false;
-        }
+         
 
         private void initData(List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour)
         {
@@ -73,26 +59,10 @@ namespace DuLich.View.QuanLyTouris
             listbox_ketqua.Items.Add((DiaDiem)listbox_chondiadiem.SelectedItem);
             listbox_chondiadiem.Items.Remove(listbox_chondiadiem.SelectedItem);
             tatCaDiaDiem.Remove((DiaDiem)listbox_chondiadiem.SelectedItem);
-            UpdateUI();
+            CallBack.onCheckPreMatch(diaDiemCuaTour);
         }
 
-        private void UpdateUI()
-        {
-            if (diaDiemCuaTour.Count() == tempDiaDiemCuaTour.Count())
-            {
-                for (int i = 0; i < diaDiemCuaTour.ToArray().Length; i++)
-                {
-                    if (diaDiemCuaTour.ToArray()[i] != tempDiaDiemCuaTour.ToArray()[i])
-                    {
-
-                        CallBack.updateDiaDiemCuaTour(diaDiemCuaTour);
-                        return;
-                    }
-                }
-            }
-            else CallBack.updateDiaDiemCuaTour(diaDiemCuaTour);
-
-        }
+ 
 
         private void listbox_chondiadiem_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -107,12 +77,28 @@ namespace DuLich.View.QuanLyTouris
             tatCaDiaDiem.Add((DiaDiem)listbox_ketqua.SelectedItem);
             diaDiemCuaTour.Remove((DiaDiem)listbox_ketqua.SelectedItem);
             listbox_ketqua.Items.Remove((DiaDiem)listbox_ketqua.SelectedItem);
-            UpdateUI();
+            CallBack.onCheckPreMatch(diaDiemCuaTour);
         }
 
         public interface IDanhSachDiaDiemCallBack
         {
-            void updateDiaDiemCuaTour(List<DiaDiem> diaDiemCuaTourNew);
+            void onCheckPreMatch(List<DiaDiem> diaDiemCuaTourNew);
+            void onClickLuu();
+        }
+
+        private void btn_luu_Click(object sender, EventArgs e)
+        {
+            CallBack.onClickLuu();
+        }
+
+        internal void ShowLuuButton()
+        {
+            btn_luu.Visible = true;
+        }
+
+        internal void HideLuuButton()
+        {
+            btn_luu.Visible = false;
         }
     }
 }
