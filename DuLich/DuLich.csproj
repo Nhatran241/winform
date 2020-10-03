@@ -56,9 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\BaseScreen.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DuLichContext.cs" />
     <Compile Include="Model\Entity\ChiTietTour.cs" />
@@ -150,7 +147,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
+    <Folder Include="Presenter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

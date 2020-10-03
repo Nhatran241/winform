@@ -1,5 +1,4 @@
-﻿using DuLich.Common;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace DuLich.View
