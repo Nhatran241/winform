@@ -57,12 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\DuLichContext.cs" />
-    <Compile Include="Model\Entity\ChiTietTour.cs" />
-    <Compile Include="Model\Entity\DiaDiem.cs" />
-    <Compile Include="Model\Entity\Gia.cs" />
-    <Compile Include="Model\Entity\Loai.cs" />
-    <Compile Include="Model\Entity\Touris.cs" />
+    <Compile Include="DuLichContext.cs" />
+    <Compile Include="Entity\ChiTietTour.cs" />
+    <Compile Include="Entity\DiaDiem.cs" />
+    <Compile Include="Entity\Gia.cs" />
+    <Compile Include="Entity\Loai.cs" />
+    <Compile Include="Entity\Touris.cs" />
     <Compile Include="View\QuanLyTouris\ChiTietGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,9 +146,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Presenter\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
