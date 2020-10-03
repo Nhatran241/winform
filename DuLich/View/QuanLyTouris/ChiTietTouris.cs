@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuLich.Entity;
 using DuLich.View.QuanLyTouris;
-using DuLich.Common;
 using DuLich.Model.Entity;
 
 namespace DuLich.View
