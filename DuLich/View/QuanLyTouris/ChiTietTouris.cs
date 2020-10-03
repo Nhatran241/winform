@@ -13,13 +13,13 @@ using DuLich.Model.Entity;
 
 namespace DuLich.View
 {
-    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemCallBack,DanhSachGia.IDanhSachGiaCallBack,ChiTietGia.IChiTietGiaListener
+    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemListener,DanhSachGia.IDanhSachGiaListener,ChiTietGia.IChiTietGiaListener
     {
-        private OnChiTietClickListener onChiTietClickListener;
+        private OnChiTietTourListener onChiTietClickListener;
         private UserControl chiTietUserControl;
         private QuanLyTourisState quanLyTourisState = QuanLyTourisState.DANHSACHGIA;
         private bool isEditing = false;
-        public ChiTietTouris(Touris touris,IEnumerable<Loai> loais, IEnumerable<Gia> gias, List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour, OnChiTietClickListener onChiTietClickListener)
+        public ChiTietTouris(Touris touris,IEnumerable<Loai> loais, IEnumerable<Gia> gias, List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour, OnChiTietTourListener onChiTietClickListener)
         {
             InitializeComponent();
             this.onChiTietClickListener = onChiTietClickListener;
@@ -149,12 +149,10 @@ namespace DuLich.View
                 LoadDanhSachDiaDiem();
             }
         }
-        public interface OnChiTietClickListener
+        public interface OnChiTietTourListener
         {
-            void onTabGiaClick();
-            void onTabDiaDiemClick();
-            void onCapNhatClick(Touris tourisAfterUpdate,List<DiaDiem> diaDiemCuaTour);
-            void onXoaClick(Touris currentTouris);
+            void onChiTietTourCapNhatClick(Touris tourisAfterUpdate,List<DiaDiem> diaDiemCuaTour);
+            void onChiTietTourXoaTourClick(Touris currentTouris);
             void onThemGia(Gia gia,Touris touris);
             void onSuaGia(Gia gia,Touris touris);
             void onXoaGia(Gia gia,Touris touris);
@@ -172,7 +170,7 @@ namespace DuLich.View
 
                 if (Validation(currentTouris))
                 {
-                    onChiTietClickListener.onCapNhatClick(currentTouris, diaDiemCuaTour);
+                    onChiTietClickListener.onChiTietTourCapNhatClick(currentTouris, diaDiemCuaTour);
                 }
                 else
                 {
@@ -202,7 +200,7 @@ namespace DuLich.View
             return true;
         }
 
-        public void OnClickThemGia()
+        public void onDanhSachGiaThemClick()
         {
             Gia gia = new Gia();
             gia.TourisId = currentTouris.Id;
@@ -211,14 +209,14 @@ namespace DuLich.View
             tab_gia.Controls.Add(chiTietUserControl);
         }
 
-        public void OnClickSuaGia(Gia gia)
+        public void onDanhSachGiaSuaClick(Gia gia)
         {
             chiTietUserControl = new ChiTietGia(gia,this);
             tab_gia.Controls.Clear();
             tab_gia.Controls.Add(chiTietUserControl);
         }
 
-        public void OnClickXoaGia(Gia gia)
+        public void onDanhSachGiaXoaClick(Gia gia)
         {
             onChiTietClickListener.onXoaGia(gia, currentTouris);
         }
@@ -243,7 +241,7 @@ namespace DuLich.View
            
         }
 
-        public void onCheckPreMatch(List<DiaDiem> diaDiemCuaTourNew)
+        public void checkSuThayDoiDiaDiem(List<DiaDiem> diaDiemCuaTourNew)
         {
             this.diaDiemCuaTour = diaDiemCuaTourNew;
             Console.WriteLine(diaDiemCuaTourNew.Count);
@@ -265,14 +263,14 @@ namespace DuLich.View
             else (chiTietUserControl as DanhSachDiaDiem).ShowLuuButton();
         }
 
-        public void onClickLuu()
+        public void onDanhSachDiaDiemLuuClick()
         {
             onChiTietClickListener.onCapNhatDiaDiem(currentTouris, diaDiemCuaTour);
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            onChiTietClickListener.onXoaClick(currentTouris);
+            onChiTietClickListener.onChiTietTourXoaTourClick(currentTouris);
         }
     }
 }

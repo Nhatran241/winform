@@ -14,9 +14,9 @@ namespace DuLich.View.QuanLyTouris
 {
     public partial class DanhSachGia : UserControl
     {
-        private IDanhSachGiaCallBack danhSachGiaCallBack;
+        private IDanhSachGiaListener danhSachGiaCallBack;
         private IEnumerable<Gia> gias;
-        public DanhSachGia(IEnumerable<Gia> gias, IDanhSachGiaCallBack danhSachGiaCallBack)
+        public DanhSachGia(IEnumerable<Gia> gias, IDanhSachGiaListener danhSachGiaCallBack)
         {
             InitializeComponent();
             this.danhSachGiaCallBack = danhSachGiaCallBack;
@@ -50,7 +50,7 @@ namespace DuLich.View.QuanLyTouris
 
         private void btn_them_gia_Click(object sender, EventArgs e)
         {
-            danhSachGiaCallBack.OnClickThemGia();
+            danhSachGiaCallBack.onDanhSachGiaThemClick();
         }
      
 
@@ -58,7 +58,7 @@ namespace DuLich.View.QuanLyTouris
         {
 
             int position = listview_gia.SelectedItems[0].Index;
-            danhSachGiaCallBack.OnClickSuaGia(gias.ToArray()[position]);
+            danhSachGiaCallBack.onDanhSachGiaSuaClick(gias.ToArray()[position]);
         }
 
         private void btn_xoa_gia_Click(object sender, EventArgs e)
@@ -66,14 +66,14 @@ namespace DuLich.View.QuanLyTouris
             if (listview_gia.SelectedItems.Count > 0)
             {
                 int position = listview_gia.SelectedItems[0].Index;
-                danhSachGiaCallBack.OnClickXoaGia(gias.ToArray()[position]);
+                danhSachGiaCallBack.onDanhSachGiaXoaClick(gias.ToArray()[position]);
             }
         }
-        public interface IDanhSachGiaCallBack
+        public interface IDanhSachGiaListener
         {
-            void OnClickThemGia();
-            void OnClickSuaGia(Gia gia);
-            void OnClickXoaGia(Gia gia);
+            void onDanhSachGiaThemClick();
+            void onDanhSachGiaSuaClick(Gia gia);
+            void onDanhSachGiaXoaClick(Gia gia);
         }
     }
 }

@@ -63,6 +63,7 @@
     <Compile Include="Entity\Gia.cs" />
     <Compile Include="Entity\Loai.cs" />
     <Compile Include="Entity\Touris.cs" />
+    <Compile Include="SampleData.cs" />
     <Compile Include="View\QuanLyTouris\ChiTietGia.cs">
       <SubType>UserControl</SubType>
     </Compile>

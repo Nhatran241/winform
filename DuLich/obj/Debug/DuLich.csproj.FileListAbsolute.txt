@@ -12,9 +12,9 @@ C:\Users\trann\source\repos\DuLich\DuLich\bin\Debug\EntityFramework.SqlServer.dl
 C:\Users\trann\source\repos\DuLich\DuLich\bin\Debug\EntityFramework.xml
 C:\Users\trann\source\repos\DuLich\DuLich\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.csproj.CopyComplete
-C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.QuanLyTouris.resources
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.QuanLyTouris.DanhSachTouris.resources
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.ChiTietTouris.resources
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.QuanLyTouris.DanhSachGia.resources
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.QuanLyTouris.ChiTietGia.resources
 C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.View.QuanLyTouris.DanhSachDiaDiem.resources
+C:\Users\trann\source\repos\DuLich\DuLich\obj\Debug\DuLich.ManHinhChinh.resources

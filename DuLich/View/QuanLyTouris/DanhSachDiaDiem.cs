@@ -17,12 +17,12 @@ namespace DuLich.View.QuanLyTouris
         private List<DiaDiem> tatCaDiaDiem;
         private List<DiaDiem> diaDiemCuaTour;
         private List<DiaDiem> tempDiaDiemCuaTour;
-        private IDanhSachDiaDiemCallBack CallBack;
-        public DanhSachDiaDiem(List<DiaDiem> tatCaDiaDiem , List<DiaDiem> diaDiemCuaTour,IDanhSachDiaDiemCallBack callBack)
+        private IDanhSachDiaDiemListener CallBack;
+        public DanhSachDiaDiem(List<DiaDiem> tatCaDiaDiem , List<DiaDiem> diaDiemCuaTour,IDanhSachDiaDiemListener listener)
         {
             this.tatCaDiaDiem = tatCaDiaDiem;
             this.diaDiemCuaTour = diaDiemCuaTour;
-            this.CallBack = callBack;
+            this.CallBack = listener;
             tempDiaDiemCuaTour = new List<DiaDiem>();
             tempDiaDiemCuaTour.AddRange(diaDiemCuaTour);
             InitializeComponent();
@@ -59,7 +59,7 @@ namespace DuLich.View.QuanLyTouris
             listbox_ketqua.Items.Add((DiaDiem)listbox_chondiadiem.SelectedItem);
             listbox_chondiadiem.Items.Remove(listbox_chondiadiem.SelectedItem);
             tatCaDiaDiem.Remove((DiaDiem)listbox_chondiadiem.SelectedItem);
-            CallBack.onCheckPreMatch(diaDiemCuaTour);
+            CallBack.checkSuThayDoiDiaDiem(diaDiemCuaTour);
         }
 
  
@@ -77,18 +77,18 @@ namespace DuLich.View.QuanLyTouris
             tatCaDiaDiem.Add((DiaDiem)listbox_ketqua.SelectedItem);
             diaDiemCuaTour.Remove((DiaDiem)listbox_ketqua.SelectedItem);
             listbox_ketqua.Items.Remove((DiaDiem)listbox_ketqua.SelectedItem);
-            CallBack.onCheckPreMatch(diaDiemCuaTour);
+            CallBack.checkSuThayDoiDiaDiem(diaDiemCuaTour);
         }
 
-        public interface IDanhSachDiaDiemCallBack
+        public interface IDanhSachDiaDiemListener
         {
-            void onCheckPreMatch(List<DiaDiem> diaDiemCuaTourNew);
-            void onClickLuu();
+            void checkSuThayDoiDiaDiem(List<DiaDiem> diaDiemCuaTourNew);
+            void onDanhSachDiaDiemLuuClick();
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            CallBack.onClickLuu();
+            CallBack.onDanhSachDiaDiemLuuClick();
         }
 
         internal void ShowLuuButton()

@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace DuLich
 {
-    public partial class QuanLyTouris : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietClickListener
+    public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener
     {
         private UserControl userControl;
         private DuLichContext duLichContext = new DuLichContext();
@@ -27,7 +27,7 @@ namespace DuLich
         private List<DiaDiem> diaDiemCuaTour;
 
 
-        public QuanLyTouris()
+        public ManHinhChinh()
         {
             InitializeComponent();
             OnManHinhChinhLoad();
@@ -49,13 +49,6 @@ namespace DuLich
             listDiaDiems = duLichContext.DiaDiem.ToList();
         }
 
-        private void OnQuanLyTourisClick(object sender, EventArgs e)
-        {
-            userControl = new DanhSachTouris(listTouris, listLoais, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
-        }
-
         public void onItemClicked(int position)
         {
             Touris selectedTouris = listTouris.ToArray()[position];
@@ -66,21 +59,7 @@ namespace DuLich
 
         }
 
-        public void onTabGiaClick()
-        {
-        }
-
-        public void onTabDiaDiemClick()
-        {
-        }
-
-
-        public void onXoaClick()
-        {
-        }
-
-
-        public void onCapNhatClick(Touris tourisAfterUpdate, List<DiaDiem> diaDiemCuaTour)
+        public void onChiTietTourCapNhatClick(Touris tourisAfterUpdate, List<DiaDiem> diaDiemCuaTour)
         {
             if (diaDiemCuaTour.Count() != 0)
             {
@@ -226,7 +205,7 @@ namespace DuLich
             }
         }
 
-        public void onXoaClick(Touris currentTouris)
+        public void onChiTietTourXoaTourClick(Touris currentTouris)
         {
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + currentTouris.Id, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
