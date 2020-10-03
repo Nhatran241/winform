@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DuLich
 {
-    partial class QuanLyTouris
+    partial class ManHinhChinh
     {
         /// <summary>
         /// Required designer variable.
