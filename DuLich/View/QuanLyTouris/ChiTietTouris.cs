@@ -111,7 +111,7 @@ namespace DuLich.View
             textbox_name.Text = touris.Name;
             foreach (Loai loai in Loais)
             {
-                if (loai.Id == currentTouris.LoaiId)
+                if (currentTouris.Loai!=null &&loai.Id == currentTouris.Loai.Id)
                     currentLoai = loai;
                 combobox_loai.Items.Add(loai);
             }
@@ -137,7 +137,7 @@ namespace DuLich.View
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentTouris.LoaiId = Loais.ToArray()[combobox_loai.SelectedIndex].Id;
+            currentTouris.Loai = Loais.ToArray()[combobox_loai.SelectedIndex];
         }
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
         {
@@ -194,8 +194,8 @@ namespace DuLich.View
 
         private bool Validation(Touris tourisAfterUpdate)
         {
-            Console.WriteLine(tourisAfterUpdate.Name + "/" + tourisAfterUpdate.LoaiId);
-            if (tourisAfterUpdate.Name == "" || tourisAfterUpdate.LoaiId == 0)
+            Console.WriteLine(tourisAfterUpdate.Name + "/" + tourisAfterUpdate.Loai.Id);
+            if (tourisAfterUpdate.Name == "" || tourisAfterUpdate.Loai.Id == 0)
                 return false;
             return true;
         }
@@ -203,7 +203,7 @@ namespace DuLich.View
         public void onDanhSachGiaThemClick()
         {
             Gia gia = new Gia();
-            gia.TourisId = currentTouris.Id;
+            gia.touris = currentTouris;
             chiTietUserControl = new ChiTietGia(gia,this);
             tab_gia.Controls.Clear();
             tab_gia.Controls.Add(chiTietUserControl);

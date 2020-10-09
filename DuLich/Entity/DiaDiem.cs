@@ -15,6 +15,7 @@ namespace DuLich.Model.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaDienDiem { get; set; }
         public String TenDiaDiem { get; set; }
+        public ICollection<ChiTietTour> Touris { get; set; }
         public override string ToString()
         {
             return TenDiaDiem;
