@@ -3,6 +3,7 @@ using DuLich.Model.Entity;
 using DuLich.View;
 using DuLich.View.QuanLyTouris;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,12 +20,12 @@ namespace DuLich
     {
         private UserControl userControl;
         private DuLichContext duLichContext = new DuLichContext();
-        private IEnumerable<Touris> listTouris;
-        private IEnumerable<Loai> listLoais;
-        private IEnumerable<DiaDiem> listDiaDiems;
-        private IEnumerable<Gia> danhSachGia;
-        private List<ChiTietTour> listChiTietTour;
-        private List<DiaDiem> diaDiemCuaTour;
+        private List<Touris> listTouris = new List<Touris>();
+        private List<Loai> listLoais = new List<Loai>();
+        private List<DiaDiem> listDiaDiems = new List<DiaDiem>();
+        private List<Gia> danhSachGia = new List<Gia>();
+        private List<ChiTietTour> listChiTietTour = new List<ChiTietTour>();
+        private List<DiaDiem> diaDiemCuaTour = new List<DiaDiem>();
 
 
         public ManHinhChinh()
@@ -45,6 +46,10 @@ namespace DuLich
         private void LoadDataFromDataBase()
         {
             listTouris = duLichContext.Touris.ToList();
+            foreach(Touris touris in listTouris)
+            {
+                Console.WriteLine(touris.Gias);
+            }
             listLoais = duLichContext.Loai.ToList();
             listDiaDiems = duLichContext.DiaDiem.ToList();
         }
@@ -75,8 +80,8 @@ namespace DuLich
                             listChiTietTour.RemoveAt(0);
                         }
                     }
-                    chiTietTour.MaDiaDiem = diaDiemCuaTour.ToArray()[i].MaDienDiem;
-                    chiTietTour.MaTour = tourisAfterUpdate.Id;
+                    chiTietTour.diaDiem = diaDiemCuaTour.ToArray()[i];
+                    chiTietTour.touris = tourisAfterUpdate;
                     chiTietTour.ThuTu = i + 1;
                     duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
                 }
@@ -103,15 +108,28 @@ namespace DuLich
 
         private void LoadDataOfTourisFromDataBase(Touris touris)
         {
-            danhSachGia = duLichContext.Gia.Where(c => c.TourisId == touris.Id).ToList();
-            IEnumerable<ChiTietTour> chiTietTours = duLichContext.ChiTietTour.Where(c => c.MaTour == touris.Id).OrderBy(d => d.ThuTu).ToList();
-            diaDiemCuaTour = new List<DiaDiem>();
-            foreach (ChiTietTour ch in chiTietTours)
+            if (touris.Gias != null)
             {
-                diaDiemCuaTour.AddRange(listDiaDiems.Where(c => c.MaDienDiem == ch.MaDiaDiem).ToList());
+                danhSachGia = touris.Gias.ToList();
+                foreach (Gia gia in danhSachGia)
+                {
+                    Console.WriteLine(gia.MaGia);
+                }
             }
+            else danhSachGia = new List<Gia>();
+            //IEnumerable<ChiTietTour> chiTietTours = duLichContext.ChiTietTour.Where(c => c.MaTour == touris.Id).OrderBy(d => d.ThuTu).ToList();
+            IEnumerable<ChiTietTour> chiTietTours = touris.ChiTietTours;
             listChiTietTour = new List<ChiTietTour>();
-            listChiTietTour.AddRange(chiTietTours.ToList());
+            diaDiemCuaTour = new List<DiaDiem>();
+            if (chiTietTours != null)
+            {
+                foreach (ChiTietTour ch in chiTietTours)
+                {
+                    diaDiemCuaTour.Add(ch.diaDiem);
+                }
+                listChiTietTour.AddRange(chiTietTours.ToList());
+            }
+            
         }
 
         public void onThemGia(Gia gia, Touris touris)
@@ -121,7 +139,7 @@ namespace DuLich
             if (userControl is ChiTietTouris)
             {
                 LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
                 panel_main_content.Controls.Clear();
                 panel_main_content.Controls.Add(userControl);
             }
@@ -134,7 +152,7 @@ namespace DuLich
             if (userControl is ChiTietTouris)
             {
                 LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
                 panel_main_content.Controls.Clear();
                 panel_main_content.Controls.Add(userControl);
             }
@@ -147,7 +165,7 @@ namespace DuLich
             if (userControl is ChiTietTouris)
             {
                 LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
                 panel_main_content.Controls.Clear();
                 panel_main_content.Controls.Add(userControl);
             }
@@ -175,8 +193,8 @@ namespace DuLich
                                 listChiTietTour.RemoveAt(0);
                             }
                         }
-                        chiTietTour.MaDiaDiem = diaDiemCuaTour.ToArray()[i].MaDienDiem;
-                        chiTietTour.MaTour = touris.Id;
+                        chiTietTour.diaDiem = diaDiemCuaTour.ToArray()[i];
+                        chiTietTour.touris = touris;
                         chiTietTour.ThuTu = i + 1;
                         duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
                     }
@@ -186,8 +204,8 @@ namespace DuLich
                     for (int i = 0; i < newDiaDiemCuaTour.Count(); i++)
                     {
                         ChiTietTour chiTietTour = new ChiTietTour();
-                        chiTietTour.MaDiaDiem = newDiaDiemCuaTour.ToArray()[i].MaDienDiem;
-                        chiTietTour.MaTour = touris.Id;
+                        chiTietTour.diaDiem = newDiaDiemCuaTour.ToArray()[i];
+                        chiTietTour.touris = touris;
                         chiTietTour.ThuTu = i + 1;
                         duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
                     }
@@ -199,7 +217,7 @@ namespace DuLich
             if (userControl is ChiTietTouris)
             {
                 LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems.ToList(), diaDiemCuaTour, this);
+                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
                 panel_main_content.Controls.Clear();
                 panel_main_content.Controls.Add(userControl);
             }
@@ -228,7 +246,7 @@ namespace DuLich
 
         private void btn_taotour_Click(object sender, EventArgs e)
         {
-            userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems.ToList(), Enumerable.Empty<DiaDiem>().ToList(), this);
+            userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }

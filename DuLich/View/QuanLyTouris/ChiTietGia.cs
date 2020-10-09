@@ -110,7 +110,7 @@ namespace DuLich.View.QuanLyTouris
                 gia.GiaTri = Convert.ToInt32(tb_giatri.Text.Trim());
             }
         }
-        public bool IsNumeric(object Expression)
+        public bool IsNumeric(object Expression)    
         {
             double retNum;
 

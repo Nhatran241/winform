@@ -26,7 +26,7 @@ namespace DuLich.View.QuanLyTouris
         {
           foreach(Touris tour in tourisList)
             {
-                list_touris.Items.Add(new ListViewItem(new string[] { tour.Id.ToString(), tour.Name , loaisList.First(c =>c.Id == tour.LoaiId).TenLoai}));
+                list_touris.Items.Add(new ListViewItem(new string[] { tour.Id.ToString(), tour.Name , loaisList.First(c =>c.Id == tour.Loai.Id).TenLoai}));
             } 
         }
 
