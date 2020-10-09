@@ -14,10 +14,11 @@ namespace DuLich.View.QuanLyTouris
     public partial class TaoDoan : UserControl
     {
         private DuLichContext context;
-        public TaoDoan(DuLichContext duLichContext)
+        public TaoDoan(DuLichContext _context)
         {
 
-            this.context = duLichContext;
+            this.context = _context;
+            List<Touris> touris = context.Touris.ToList();
             InitializeComponent();
         }
 
