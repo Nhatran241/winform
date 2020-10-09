@@ -56,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Doan.cs" />
+    <Compile Include="Entity\Khach.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DuLichContext.cs" />
     <Compile Include="Entity\ChiTietTour.cs" />
@@ -102,6 +104,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\QuanLyTouris\QuanLyTourisState.cs" />
+    <Compile Include="View\QuanLyTouris\TaoDoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\QuanLyTouris\TaoDoan.Designer.cs">
+      <DependentUpon>TaoDoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ScreenState.cs" />
     <EmbeddedResource Include="View\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>
@@ -131,6 +139,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\QuanLyTouris\TaoDoan.resx">
+      <DependentUpon>TaoDoan.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DuLich.Entity.Touris.datasource" />
     <None Include="Properties\Settings.settings">

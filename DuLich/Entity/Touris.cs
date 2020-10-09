@@ -17,6 +17,7 @@ namespace DuLich.Entity
         public String Name { get; set; }
         public Loai Loai { get; set; }
         public virtual ICollection<Gia> Gias { get; set; }
+        public virtual ICollection<Doan> Doans { get; set; }
         public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
     }
 }
