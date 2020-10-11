@@ -89,6 +89,18 @@
     <Compile Include="View\QuanLyTouris\DanhSachTouris.Designer.cs">
       <DependentUpon>DanhSachTouris.cs</DependentUpon>
     </Compile>
+	<Compile Include="View\QuanLyDiaDiem\QuanLyDiaDiem.cs">
+		  <SubType>UserControl</SubType>
+	  </Compile>
+	  <Compile Include="View\QuanLyDiaDiem\QuanLyDiaDiem.Designer.cs">
+		  <DependentUpon>QuanLyDiaDiem.cs</DependentUpon>
+	  </Compile>
+	  <Compile Include="View\QuanLyDiaDiem\ChiTietDiaDiem.cs">
+		  <SubType>UserControl</SubType>
+	  </Compile>
+	  <Compile Include="View\QuanLyDiaDiem\ChiTietDiaDiem.Designer.cs">
+		  <DependentUpon>ChiTietDiaDiem.cs</DependentUpon>
+	  </Compile>
     <Compile Include="View\QuanLyTouris\ChiTietTouris.cs">
       <SubType>UserControl</SubType>
     </Compile>

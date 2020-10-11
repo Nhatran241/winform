@@ -1,6 +1,7 @@
 ﻿using DuLich.Entity;
 using DuLich.Model.Entity;
 using DuLich.View;
+using DuLich.View.QuanLyDiaDiem;
 using DuLich.View.QuanLyTouris;
 using System;
 using System.Collections;
@@ -16,7 +17,7 @@ using System.Windows.Forms;
 
 namespace DuLich
 {
-    public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener
+    public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener,QuanLyDiaDiem.IQuanLyDiaDiem,ChiTietDiaDiem.IChiTietDiaDiemListener
     {
         private UserControl userControl;
         private DuLichContext duLichContext = new DuLichContext();
@@ -177,15 +178,17 @@ namespace DuLich
 
         public void onCapNhatDiaDiem(Touris touris, List<DiaDiem> newDiaDiemCuaTour)
         {
-            if (newDiaDiemCuaTour.Count() != 0)
-            {
-                if (diaDiemCuaTour.Count > 0)
-                {
-                    for (int i = 0; i < diaDiemCuaTour.Count(); i++)
-                    {
-                        ChiTietTour chiTietTour = new ChiTietTour();
-                        if (listChiTietTour.Count() > 0)
-                        {
+            //if (newDiaDiemCuaTour.Count() != 0)
+       //     {
+             //   if (diaDiemCuaTour.Count > 0)
+               // {
+                 //   for (int i = 0; i < diaDiemCuaTour.Count(); i++)
+
+                   //     Console.WriteLine("dia diem " + diaDiemCuaTour.ToArray()[i].TenDiaDiem);
+                     //   ChiTietTour chiTietTour = new ChiTietTour();
+                       // if (listChiTietTour.Count() > 0)
+                        /**
+                         * {
                             ChiTietTour tempChiTiet = listChiTietTour.First();
                             if (tempChiTiet != null)
                             {
@@ -199,28 +202,44 @@ namespace DuLich
                         duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
                     }
                 }
-                else
-                {
-                    for (int i = 0; i < newDiaDiemCuaTour.Count(); i++)
-                    {
-                        ChiTietTour chiTietTour = new ChiTietTour();
-                        chiTietTour.diaDiem = newDiaDiemCuaTour.ToArray()[i];
-                        chiTietTour.touris = touris;
-                        chiTietTour.ThuTu = i + 1;
-                        duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
-                    }
-                }
+              //  else
+                //{
+                  //  for (int i = 0; i < newDiaDiemCuaTour.Count(); i++)
+                    //{
+                      //  ChiTietTour chiTietTour = new ChiTietTour();
+                        //chiTietTour.diaDiem = newDiaDiemCuaTour.ToArray()[i];
+                        //chiTietTour.touris = touris;
+                        //chiTietTour.ThuTu = i + 1;
+                        //duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
+                   // }
+               // }
 
+//            }
+            foreach (ChiTietTour chiTiet in listChiTietTour) {
+
+                Console.WriteLine(chiTiet.diaDiem.TenDiaDiem);
             }
+                        */
             duLichContext.ChiTietTour.RemoveRange(listChiTietTour);
-            duLichContext.SaveChangesAsync().Wait();
-            if (userControl is ChiTietTouris)
+            for (int i = 0; i < newDiaDiemCuaTour.Count(); i++)
+                {
+                  ChiTietTour chiTietTour = new ChiTietTour();
+                    chiTietTour.diaDiem = newDiaDiemCuaTour.ToArray()[i];
+                    chiTietTour.touris = touris;
+                    chiTietTour.ThuTu = i + 1;
+                    duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
+                }
+            duLichContext.SaveChangesAsync().ContinueWith(task =>
             {
                 LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
-                panel_main_content.Controls.Clear();
-                panel_main_content.Controls.Add(userControl);
-            }
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
+          
         }
 
         public void onChiTietTourXoaTourClick(Touris currentTouris)
@@ -251,5 +270,79 @@ namespace DuLich
             panel_main_content.Controls.Add(userControl);
         }
 
+        private void btn_quanlydiadiem_Click(object sender, EventArgs e)
+        {
+            userControl = new QuanLyDiaDiem(listDiaDiems,this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onThemDiaDiem()
+        {
+            userControl = new ChiTietDiaDiem(new DiaDiem(), this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onXoaDiaDiem(DiaDiem diaDiem)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Địa điểm với mã là :" + diaDiem.MaDienDiem, "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                String message = "";
+                List<ChiTietTour> chiTietToursTrungDiaDiem = duLichContext.ChiTietTour.Where(c => c.diaDiem.MaDienDiem == diaDiem.MaDienDiem).ToList();
+                if (chiTietToursTrungDiaDiem.Count > 0) {
+                    foreach (ChiTietTour chiTietTour in chiTietToursTrungDiaDiem) {
+                        message += chiTietTour.touris.Name + " ";
+                    }
+                    DialogResult innerDialogResukt = MessageBox.Show("Địa điểm " + diaDiem.TenDiaDiem + " đang được dùng ở " + message + " vui lòng xóa những Tour trên trước");
+                }
+                else
+                {
+                    duLichContext.DiaDiem.Remove(diaDiem);
+                    duLichContext.SaveChangesAsync().ContinueWith(task =>
+                    {
+                        LoadDataFromDataBase();
+                        panel_main_content.Invoke((MethodInvoker)delegate
+                        {
+                            userControl = new QuanLyDiaDiem(listDiaDiems, this);
+                            panel_main_content.Controls.Clear();
+                            panel_main_content.Controls.Add(userControl);
+                        });
+                    });
+                }
+                
+            }
+        }
+
+        public void onSuaDiaDiem(DiaDiem diaDiem)
+        {
+            userControl = new ChiTietDiaDiem(diaDiem, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onLuuDiaDiem(DiaDiem diaDiem)
+        {
+            duLichContext.DiaDiem.AddOrUpdate(diaDiem);
+            duLichContext.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new QuanLyDiaDiem(listDiaDiems, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
+        }
+
+        public void onHuyDiaDiemClick()
+        {
+            LoadDataFromDataBase();
+            userControl = new QuanLyDiaDiem(listDiaDiems, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
     }
 }
