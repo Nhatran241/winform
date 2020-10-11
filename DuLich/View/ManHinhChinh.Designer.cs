@@ -43,6 +43,7 @@ namespace DuLich
             this.btn_quanlytour = new System.Windows.Forms.Button();
             this.btn_taotour = new System.Windows.Forms.Button();
             this.tv_quanlytour = new System.Windows.Forms.Label();
+            this.btn_quanlydiadiem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel_main_content
@@ -84,16 +85,28 @@ namespace DuLich
             this.tv_quanlytour.TabIndex = 0;
             this.tv_quanlytour.Text = "Quản Lý Tour";
             // 
-            // QuanLyTouris
+            // btn_quanlydiadiem
+            // 
+            this.btn_quanlydiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quanlydiadiem.Location = new System.Drawing.Point(11, 171);
+            this.btn_quanlydiadiem.Name = "btn_quanlydiadiem";
+            this.btn_quanlydiadiem.Size = new System.Drawing.Size(165, 32);
+            this.btn_quanlydiadiem.TabIndex = 7;
+            this.btn_quanlydiadiem.Text = "Quản lý địa điểm";
+            this.btn_quanlydiadiem.UseVisualStyleBackColor = true;
+            this.btn_quanlydiadiem.Click += new System.EventHandler(this.btn_quanlydiadiem_Click);
+            // 
+            // ManHinhChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 548);
+            this.Controls.Add(this.btn_quanlydiadiem);
             this.Controls.Add(this.tv_quanlytour);
             this.Controls.Add(this.btn_taotour);
             this.Controls.Add(this.btn_quanlytour);
             this.Controls.Add(this.panel_main_content);
-            this.Name = "QuanLyTouris";
+            this.Name = "ManHinhChinh";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -107,9 +120,7 @@ namespace DuLich
         private Button btn_quanlytour;
         private Button btn_taotour;
         private Label tv_quanlytour;
-
-
-
+        private Button btn_quanlydiadiem;
     }
 }
 
