@@ -24,6 +24,10 @@ namespace DuLich.BUS
         {
             return context.ChiTietTour.ToList();
         }
+        public List<ChiTietTour> GetAll(DiaDiem diaDiem)
+        {
+            return context.ChiTietTour.Where(c => c.diaDiem.MaDienDiem == diaDiem.MaDienDiem).ToList();
+        }
 
         public override void Remove(ChiTietTour entity)
         {

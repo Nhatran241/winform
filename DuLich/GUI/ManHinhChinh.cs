@@ -317,7 +317,7 @@ namespace DuLich
             if (dialogResult == DialogResult.Yes)
             {
                 String message = "";
-                List<ChiTietTour> chiTietToursTrungDiaDiem = duLichContext.ChiTietTour.Where(c => c.diaDiem.MaDienDiem == diaDiem.MaDienDiem).ToList();
+                List<ChiTietTour> chiTietToursTrungDiaDiem = chiTietTourBus.GetAll(diaDiem);
                 if (chiTietToursTrungDiaDiem.Count > 0) {
                     foreach (ChiTietTour chiTietTour in chiTietToursTrungDiaDiem) {
                         message += chiTietTour.touris.Name + " ";
@@ -326,8 +326,8 @@ namespace DuLich
                 }
                 else
                 {
-                    duLichContext.DiaDiem.Remove(diaDiem);
-                    duLichContext.SaveChangesAsync().ContinueWith(task =>
+                    diaDiemBus.Remove(diaDiem);
+                    diaDiemBus.SaveChanges().ContinueWith(task =>
                     {
                         LoadDataFromDataBase();
                         panel_main_content.Invoke((MethodInvoker)delegate
@@ -351,8 +351,8 @@ namespace DuLich
 
         public void onLuuDiaDiem(DiaDiem diaDiem)
         {
-            duLichContext.DiaDiem.AddOrUpdate(diaDiem);
-            duLichContext.SaveChangesAsync().ContinueWith(task =>
+            diaDiemBus.AddOrUpdate(diaDiem);
+            diaDiemBus.SaveChanges().ContinueWith(task =>
             {
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
