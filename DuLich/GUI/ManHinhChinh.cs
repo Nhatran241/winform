@@ -1,4 +1,5 @@
-﻿using DuLich.Entity;
+﻿using DuLich.BUS;
+using DuLich.Entity;
 using DuLich.Model.Entity;
 using DuLich.View;
 using DuLich.View.QuanLyDiaDiem;
@@ -19,8 +20,17 @@ namespace DuLich
 {
     public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener,QuanLyDiaDiem.IQuanLyDiaDiem,ChiTietDiaDiem.IChiTietDiaDiemListener
     {
+        /**
+         * BUS
+         */
+        private TourBus tourBus = new TourBus();
+        private DiaDiemBus diaDiemBus = new DiaDiemBus();
+        private GiaBus giaBus = new GiaBus();
+        private ChiTietTourBus chiTietTourBus = new ChiTietTourBus();
+        private LoaiBus loaiBus = new LoaiBus();
+
+
         private UserControl userControl;
-        private DuLichContext duLichContext = new DuLichContext();
         private List<Touris> listTouris = new List<Touris>();
         private List<Loai> listLoais = new List<Loai>();
         private List<DiaDiem> listDiaDiems = new List<DiaDiem>();
@@ -40,19 +50,15 @@ namespace DuLich
         {
             LoadDataFromDataBase();
             if (userControl == null)
-                userControl = new DanhSachTouris(listTouris, listLoais, this);
+                userControl = new DanhSachTouris(tourBus.GetAll(), listLoais, this);
             panel_main_content.Controls.Add(userControl);
         }
 
         private void LoadDataFromDataBase()
         {
-            listTouris = duLichContext.Touris.ToList();
-            foreach(Touris touris in listTouris)
-            {
-                Console.WriteLine(touris.Gias);
-            }
-            listLoais = duLichContext.Loai.ToList();
-            listDiaDiems = duLichContext.DiaDiem.ToList();
+            listTouris = tourBus.GetAll();
+            listLoais = loaiBus.GetAll();
+            listDiaDiems = diaDiemBus.GetAll();
         }
 
         public void onItemClicked(int position)
@@ -84,26 +90,24 @@ namespace DuLich
                     chiTietTour.diaDiem = diaDiemCuaTour.ToArray()[i];
                     chiTietTour.touris = tourisAfterUpdate;
                     chiTietTour.ThuTu = i + 1;
-                    duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
+                    chiTietTourBus.AddOrUpdate(chiTietTour);
                 }
-                duLichContext.ChiTietTour.RemoveRange(listChiTietTour);
+                chiTietTourBus.RemoveRange(listChiTietTour);
             }
-            duLichContext.Touris.AddOrUpdate(tourisAfterUpdate);
-            duLichContext.SaveChangesAsync().Wait();
-            if (userControl is ChiTietTouris)
+            tourBus.AddOrUpdate(tourisAfterUpdate);
+            tourBus.SaveChanges().ContinueWith(task =>
             {
-                LoadDataOfTourisFromDataBase(tourisAfterUpdate);
-                (userControl as ChiTietTouris).InitUI(tourisAfterUpdate);
-            }
-            //.ContinueWith(task =>
-            //{
-            //  if (userControl is ChiTietTouris)
-            //{
-            //  tourisAfterUpdate = duLichContext.Touris.ToList().Last();
-            //(userControl as ChiTietTouris).InitUI(tourisAfterUpdate);
-            //}
-            // });
+                if (userControl is ChiTietTouris)
+                {
+                    LoadDataOfTourisFromDataBase(tourisAfterUpdate);
+                    userControl.Invoke((MethodInvoker)delegate
+                    {
+                        (userControl as ChiTietTouris).InitUI(tourisAfterUpdate);
+                    });
+                }
 
+            });
+           
 
         }
 
@@ -135,41 +139,59 @@ namespace DuLich
 
         public void onThemGia(Gia gia, Touris touris)
         {
-            duLichContext.Gia.AddOrUpdate(gia);
-            duLichContext.SaveChangesAsync().Wait();
-            if (userControl is ChiTietTouris)
+            giaBus.AddOrUpdate(gia);
+            giaBus.SaveChanges().ContinueWith(task =>
             {
-                LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
-                panel_main_content.Controls.Clear();
-                panel_main_content.Controls.Add(userControl);
-            }
+                if (userControl is ChiTietTouris)
+                {
+                    LoadDataOfTourisFromDataBase(touris);
+                    panel_main_content.Invoke((MethodInvoker)delegate
+                    {
+                        userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
+                        panel_main_content.Controls.Clear();
+                        panel_main_content.Controls.Add(userControl);
+                    });
+                }
+            });
+            
         }
 
         public void onSuaGia(Gia gia, Touris touris)
         {
-            duLichContext.Gia.AddOrUpdate(gia);
-            duLichContext.SaveChangesAsync().Wait();
-            if (userControl is ChiTietTouris)
+            giaBus.AddOrUpdate(gia);
+            giaBus.SaveChanges().ContinueWith(task =>
             {
-                LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
-                panel_main_content.Controls.Clear();
-                panel_main_content.Controls.Add(userControl);
-            }
+                if (userControl is ChiTietTouris)
+                {
+                    LoadDataOfTourisFromDataBase(touris);
+                    panel_main_content.Invoke((MethodInvoker)delegate
+                    {
+                        userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
+                        panel_main_content.Controls.Clear();
+                        panel_main_content.Controls.Add(userControl);
+                    });
+                }
+            });
+           
         }
 
         public void onXoaGia(Gia gia, Touris touris)
         {
-            duLichContext.Gia.Remove(gia);
-            duLichContext.SaveChangesAsync().Wait();
-            if (userControl is ChiTietTouris)
+            giaBus.Remove(gia);
+            giaBus.SaveChanges().ContinueWith(task =>
             {
-                LoadDataOfTourisFromDataBase(touris);
-                userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
-                panel_main_content.Controls.Clear();
-                panel_main_content.Controls.Add(userControl);
-            }
+                if (userControl is ChiTietTouris)
+                {
+                    LoadDataOfTourisFromDataBase(touris);
+                    panel_main_content.Invoke((MethodInvoker)delegate
+                    {
+                        userControl = new ChiTietTouris(touris, listLoais, danhSachGia, listDiaDiems, diaDiemCuaTour, this);
+                        panel_main_content.Controls.Clear();
+                        panel_main_content.Controls.Add(userControl);
+                    });
+                }
+            });
+            
         }
 
         public void onHuyGia()
@@ -220,16 +242,16 @@ namespace DuLich
                 Console.WriteLine(chiTiet.diaDiem.TenDiaDiem);
             }
                         */
-            duLichContext.ChiTietTour.RemoveRange(listChiTietTour);
+            chiTietTourBus.RemoveRange(listChiTietTour);
             for (int i = 0; i < newDiaDiemCuaTour.Count(); i++)
                 {
                   ChiTietTour chiTietTour = new ChiTietTour();
                     chiTietTour.diaDiem = newDiaDiemCuaTour.ToArray()[i];
                     chiTietTour.touris = touris;
                     chiTietTour.ThuTu = i + 1;
-                    duLichContext.ChiTietTour.AddOrUpdate(chiTietTour);
+                    chiTietTourBus.AddOrUpdate(chiTietTour);
                 }
-            duLichContext.SaveChangesAsync().ContinueWith(task =>
+            chiTietTourBus.SaveChanges().ContinueWith(task =>
             {
                 LoadDataOfTourisFromDataBase(touris);
                 panel_main_content.Invoke((MethodInvoker)delegate
@@ -247,12 +269,17 @@ namespace DuLich
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + currentTouris.Id, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                duLichContext.Touris.Remove(currentTouris);
-                duLichContext.SaveChangesAsync().Wait();
-                LoadDataFromDataBase();
-                userControl = new DanhSachTouris(listTouris, listLoais, this);
-                panel_main_content.Controls.Clear();
-                panel_main_content.Controls.Add(userControl);
+                tourBus.Remove(currentTouris);
+                tourBus.SaveChanges().ContinueWith(task =>
+                {
+                    LoadDataFromDataBase();
+                    panel_main_content.Invoke((MethodInvoker)delegate
+                    {
+                        userControl = new DanhSachTouris(listTouris, listLoais, this);
+                        panel_main_content.Controls.Clear();
+                        panel_main_content.Controls.Add(userControl);
+                    });
+                });
             }
         }
         private void btn_quanlytour_Click(object sender, EventArgs e)
@@ -290,7 +317,7 @@ namespace DuLich
             if (dialogResult == DialogResult.Yes)
             {
                 String message = "";
-                List<ChiTietTour> chiTietToursTrungDiaDiem = duLichContext.ChiTietTour.Where(c => c.diaDiem.MaDienDiem == diaDiem.MaDienDiem).ToList();
+                List<ChiTietTour> chiTietToursTrungDiaDiem = chiTietTourBus.GetAll(diaDiem);
                 if (chiTietToursTrungDiaDiem.Count > 0) {
                     foreach (ChiTietTour chiTietTour in chiTietToursTrungDiaDiem) {
                         message += chiTietTour.touris.Name + " ";
@@ -299,8 +326,8 @@ namespace DuLich
                 }
                 else
                 {
-                    duLichContext.DiaDiem.Remove(diaDiem);
-                    duLichContext.SaveChangesAsync().ContinueWith(task =>
+                    diaDiemBus.Remove(diaDiem);
+                    diaDiemBus.SaveChanges().ContinueWith(task =>
                     {
                         LoadDataFromDataBase();
                         panel_main_content.Invoke((MethodInvoker)delegate
@@ -324,8 +351,8 @@ namespace DuLich
 
         public void onLuuDiaDiem(DiaDiem diaDiem)
         {
-            duLichContext.DiaDiem.AddOrUpdate(diaDiem);
-            duLichContext.SaveChangesAsync().ContinueWith(task =>
+            diaDiemBus.AddOrUpdate(diaDiem);
+            diaDiemBus.SaveChanges().ContinueWith(task =>
             {
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
