@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using DuLich.Entity;
 using DuLich.View.QuanLyTouris;
 using DuLich.Model.Entity;
+using DuLich.GUI.QuanLyDoan;
 
 namespace DuLich.View
 {
-    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemListener,DanhSachGia.IDanhSachGiaListener,ChiTietGia.IChiTietGiaListener
+    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemListener,DanhSachGia.IDanhSachGiaListener,ChiTietGia.IChiTietGiaListener,DanhSachDoan.IDanhSachDoanListener
     {
         private OnChiTietTourListener onChiTietClickListener;
         private UserControl chiTietUserControl;
@@ -271,6 +272,21 @@ namespace DuLich.View
         private void btn_xoa_Click(object sender, EventArgs e)
         {
             onChiTietClickListener.onChiTietTourXoaTourClick(currentTouris);
+        }
+
+        public void onDanhSachDoanThemClick()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void onDanhSachDoanSuaClick(Doan doan)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void onDanhSachDoanXoaClick(Doan doan)
+        {
+            throw new NotImplementedException();
         }
     }
 }

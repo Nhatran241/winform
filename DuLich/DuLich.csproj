@@ -59,11 +59,24 @@
     <Compile Include="BUS\BaseBus.cs" />
     <Compile Include="BUS\ChiTietTourBus.cs" />
     <Compile Include="BUS\DiaDiemBus.cs" />
+    <Compile Include="BUS\DoanBus.cs" />
     <Compile Include="BUS\GiaBus.cs" />
     <Compile Include="BUS\LoaiBus.cs" />
     <Compile Include="BUS\TourBus.cs" />
     <Compile Include="Entity\Doan.cs" />
     <Compile Include="Entity\Khach.cs" />
+    <Compile Include="GUI\QuanLyDoan\ChiTietDoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\ChiTietDoan.Designer.cs">
+      <DependentUpon>ChiTietDoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\DanhSachDoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\DanhSachDoan.designer.cs">
+      <DependentUpon>DanhSachDoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DAL\DuLichContext.cs" />
     <Compile Include="Entity\ChiTietTour.cs" />
@@ -129,6 +142,12 @@
       <DependentUpon>TaoDoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\ScreenState.cs" />
+    <EmbeddedResource Include="GUI\QuanLyDoan\ChiTietDoan.resx">
+      <DependentUpon>ChiTietDoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDoan\DanhSachDoan.resx">
+      <DependentUpon>DanhSachDoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>
     </EmbeddedResource>

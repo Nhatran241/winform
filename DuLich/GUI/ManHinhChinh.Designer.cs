@@ -44,6 +44,7 @@ namespace DuLich
             this.btn_taotour = new System.Windows.Forms.Button();
             this.tv_quanlytour = new System.Windows.Forms.Label();
             this.btn_quanlydiadiem = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel_main_content
@@ -96,11 +97,23 @@ namespace DuLich
             this.btn_quanlydiadiem.UseVisualStyleBackColor = true;
             this.btn_quanlydiadiem.Click += new System.EventHandler(this.btn_quanlydiadiem_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(12, 239);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 32);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Danh sách đoàn";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ManHinhChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 548);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_quanlydiadiem);
             this.Controls.Add(this.tv_quanlytour);
             this.Controls.Add(this.btn_taotour);
@@ -121,6 +134,7 @@ namespace DuLich
         private Button btn_taotour;
         private Label tv_quanlytour;
         private Button btn_quanlydiadiem;
+        private Button button1;
     }
 }
 

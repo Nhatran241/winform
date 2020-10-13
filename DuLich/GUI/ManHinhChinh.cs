@@ -1,5 +1,6 @@
 ﻿using DuLich.BUS;
 using DuLich.Entity;
+using DuLich.GUI.QuanLyDoan;
 using DuLich.Model.Entity;
 using DuLich.View;
 using DuLich.View.QuanLyDiaDiem;
@@ -18,7 +19,7 @@ using System.Windows.Forms;
 
 namespace DuLich
 {
-    public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener,QuanLyDiaDiem.IQuanLyDiaDiem,ChiTietDiaDiem.IChiTietDiaDiemListener
+    public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener,QuanLyDiaDiem.IQuanLyDiaDiem,ChiTietDiaDiem.IChiTietDiaDiemListener,DanhSachDoan.IDanhSachDoanListener,ChiTietDoan.IChiTietDoanListener
     {
         /**
          * BUS
@@ -28,9 +29,10 @@ namespace DuLich
         private GiaBus giaBus = new GiaBus();
         private ChiTietTourBus chiTietTourBus = new ChiTietTourBus();
         private LoaiBus loaiBus = new LoaiBus();
-
+        private DoanBus doanBus = new DoanBus();
 
         private UserControl userControl;
+        private List<Doan> doans = new List<Doan>();
         private List<Touris> listTouris = new List<Touris>();
         private List<Loai> listLoais = new List<Loai>();
         private List<DiaDiem> listDiaDiems = new List<DiaDiem>();
@@ -56,6 +58,7 @@ namespace DuLich
 
         private void LoadDataFromDataBase()
         {
+            doans = doanBus.GetAll();
             listTouris = tourBus.GetAll();
             listLoais = loaiBus.GetAll();
             listDiaDiems = diaDiemBus.GetAll();
@@ -371,5 +374,45 @@ namespace DuLich
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadDataFromDataBase();
+            userControl = new DanhSachDoan(doans,this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachDoanThemClick()
+        {
+            Doan doan = new Doan();
+            userControl = new ChiTietDoan(doan,this,listTouris );
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+        public void onDanhSachDoanSuaClick(Doan doan)
+        {
+            userControl = new ChiTietDoan(doan, this, listTouris);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl); 
+        }
+
+        public void onDanhSachDoanXoaClick(Doan doan)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void onLuuClick(Doan doan)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void onHuyClick()
+        {
+            throw new NotImplementedException();
+        }
     }
+
+        
+    
 }

@@ -60,6 +60,8 @@ namespace DuLich.Entity
         public DbSet<Loai> Loai { get; set; }
         public DbSet<DiaDiem> DiaDiem { get; set; }
         public DbSet<ChiTietTour> ChiTietTour { get; set; }
+        public DbSet<Doan> Doans { get; set; }
+        public DbSet<Khach> Khaches { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
