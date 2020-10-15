@@ -14,7 +14,7 @@ using DuLich.GUI.QuanLyDoan;
 
 namespace DuLich.View
 {
-    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemListener,DanhSachGia.IDanhSachGiaListener,ChiTietGia.IChiTietGiaListener,DanhSachDoan.IDanhSachDoanListener
+    public partial class ChiTietTouris : UserControl,DanhSachDiaDiem.IDanhSachDiaDiemListener,DanhSachGia.IDanhSachGiaListener,ChiTietGia.IChiTietGiaListener
     {
         private OnChiTietTourListener onChiTietClickListener;
         private UserControl chiTietUserControl;
@@ -274,19 +274,5 @@ namespace DuLich.View
             onChiTietClickListener.onChiTietTourXoaTourClick(currentTouris);
         }
 
-        public void onDanhSachDoanThemClick()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void onDanhSachDoanSuaClick(Doan doan)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void onDanhSachDoanXoaClick(Doan doan)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

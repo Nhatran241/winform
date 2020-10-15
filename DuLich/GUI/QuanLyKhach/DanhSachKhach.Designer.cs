@@ -1,6 +1,6 @@
-﻿namespace DuLich.GUI.QuanLyDoan
+﻿namespace DuLich.GUI.QuanLyKhach
 {
-    partial class DanhSachDoan
+    partial class DanhSachKhach
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,11 +30,12 @@
         {
             this.btn_them_doan = new System.Windows.Forms.Button();
             this.listview_doan = new System.Windows.Forms.ListView();
-            this.giatri = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ngaybatdau = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ngayketthuc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btn_sua_doan = new System.Windows.Forms.Button();
+            this.Ten = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DiaChi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SoDienThoai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_xoa_doan = new System.Windows.Forms.Button();
+            this.btn_sua_doan = new System.Windows.Forms.Button();
+            this.scmnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btn_them_doan
@@ -42,84 +43,93 @@
             this.btn_them_doan.Location = new System.Drawing.Point(3, 2);
             this.btn_them_doan.Name = "btn_them_doan";
             this.btn_them_doan.Size = new System.Drawing.Size(75, 23);
-            this.btn_them_doan.TabIndex = 5;
+            this.btn_them_doan.TabIndex = 9;
             this.btn_them_doan.Text = "Them";
             this.btn_them_doan.UseVisualStyleBackColor = true;
-            this.btn_them_doan.Click += new System.EventHandler(this.btn_them_doan_Click_1);
+            this.btn_them_doan.Click += new System.EventHandler(this.btn_them_doan_Click);
             // 
             // listview_doan
             // 
             this.listview_doan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.giatri,
-            this.ngaybatdau,
-            this.ngayketthuc});
+            this.Ten,
+            this.DiaChi,
+            this.SoDienThoai,
+            this.scmnd});
             this.listview_doan.FullRowSelect = true;
             this.listview_doan.HideSelection = false;
             this.listview_doan.Location = new System.Drawing.Point(0, 31);
             this.listview_doan.Name = "listview_doan";
             this.listview_doan.Size = new System.Drawing.Size(487, 282);
-            this.listview_doan.TabIndex = 4;
+            this.listview_doan.TabIndex = 8;
             this.listview_doan.UseCompatibleStateImageBehavior = false;
             this.listview_doan.View = System.Windows.Forms.View.Details;
+            this.listview_doan.SelectedIndexChanged += new System.EventHandler(this.listview_doan_SelectedIndexChanged);
             // 
-            // giatri
+            // Ten
             // 
-            this.giatri.Text = "Ten Doan";
-            this.giatri.Width = 187;
+            this.Ten.Text = "Ten";
+            this.Ten.Width = 118;
             // 
-            // ngaybatdau
+            // DiaChi
             // 
-            this.ngaybatdau.Text = "Ngay Bat Dau";
-            this.ngaybatdau.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ngaybatdau.Width = 150;
+            this.DiaChi.Text = "Dia chi";
+            this.DiaChi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DiaChi.Width = 142;
             // 
-            // ngayketthuc
+            // SoDienThoai
             // 
-            this.ngayketthuc.Text = "Ngay Ket Thuc";
-            this.ngayketthuc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ngayketthuc.Width = 150;
-            // 
-            // btn_sua_doan
-            // 
-            this.btn_sua_doan.Location = new System.Drawing.Point(175, 3);
-            this.btn_sua_doan.Name = "btn_sua_doan";
-            this.btn_sua_doan.Size = new System.Drawing.Size(75, 23);
-            this.btn_sua_doan.TabIndex = 6;
-            this.btn_sua_doan.Text = "Sua";
-            this.btn_sua_doan.UseVisualStyleBackColor = true;
-            this.btn_sua_doan.Click += new System.EventHandler(this.btn_sua_doan_Click);
+            this.SoDienThoai.Text = "So dien thoai";
+            this.SoDienThoai.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SoDienThoai.Width = 138;
             // 
             // btn_xoa_doan
             // 
             this.btn_xoa_doan.Location = new System.Drawing.Point(354, 3);
             this.btn_xoa_doan.Name = "btn_xoa_doan";
             this.btn_xoa_doan.Size = new System.Drawing.Size(75, 23);
-            this.btn_xoa_doan.TabIndex = 7;
+            this.btn_xoa_doan.TabIndex = 11;
             this.btn_xoa_doan.Text = "Xoa";
             this.btn_xoa_doan.UseVisualStyleBackColor = true;
             this.btn_xoa_doan.Click += new System.EventHandler(this.btn_xoa_doan_Click);
             // 
-            // DanhSachDoan
+            // btn_sua_doan
+            // 
+            this.btn_sua_doan.Location = new System.Drawing.Point(175, 3);
+            this.btn_sua_doan.Name = "btn_sua_doan";
+            this.btn_sua_doan.Size = new System.Drawing.Size(75, 23);
+            this.btn_sua_doan.TabIndex = 10;
+            this.btn_sua_doan.Text = "Sua";
+            this.btn_sua_doan.UseVisualStyleBackColor = true;
+            this.btn_sua_doan.Click += new System.EventHandler(this.btn_sua_doan_Click);
+            // 
+            // scmnd
+            // 
+            this.scmnd.Text = "So CMND";
+            this.scmnd.Width = 104;
+            // 
+            // DanhSachKhach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btn_xoa_doan);
-            this.Controls.Add(this.btn_sua_doan);
             this.Controls.Add(this.btn_them_doan);
             this.Controls.Add(this.listview_doan);
-            this.Name = "DanhSachDoan";
+            this.Controls.Add(this.btn_xoa_doan);
+            this.Controls.Add(this.btn_sua_doan);
+            this.Name = "DanhSachKhach";
             this.Size = new System.Drawing.Size(487, 315);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Button btn_them_doan;
         private System.Windows.Forms.ListView listview_doan;
-        private System.Windows.Forms.ColumnHeader giatri;
-        private System.Windows.Forms.ColumnHeader ngaybatdau;
-        private System.Windows.Forms.ColumnHeader ngayketthuc;
-        private System.Windows.Forms.Button btn_sua_doan;
+        private System.Windows.Forms.ColumnHeader Ten;
+        private System.Windows.Forms.ColumnHeader DiaChi;
+        private System.Windows.Forms.ColumnHeader SoDienThoai;
         private System.Windows.Forms.Button btn_xoa_doan;
+        private System.Windows.Forms.Button btn_sua_doan;
+        private System.Windows.Forms.ColumnHeader scmnd;
     }
 }

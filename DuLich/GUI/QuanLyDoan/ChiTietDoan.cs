@@ -28,20 +28,15 @@ namespace DuLich.GUI.QuanLyDoan
         private void InitUI()
 
         {
-            Dictionary<int, String> keyValuePairsTemp = new Dictionary<int, string>();
-
-            foreach(Touris tour in touris)
+            foreach (Touris tour in touris)
             {
-                keyValuePairsTemp.Add(tour.Id, tour.Name);
+                if (doan.Touris != null && tour.Id == doan.Touris.Id)
+                    doan.Touris = tour;
+                comboBox1.Items.Add(tour);
             }
-            if (keyValuePairsTemp.Count > 0)
+            if (doan.Touris != null)
             {
-                comboBox1.DataSource = new BindingSource(keyValuePairsTemp, null);
-                comboBox1.DisplayMember = "Value";
-                comboBox1.ValueMember = "Key";
-
-                // Get combobox selection (in handler)
-                //  string value = ((KeyValuePair<string, string>)comboBox1.SelectedItem).Value;
+                comboBox1.Text = doan.Touris.Name;
             }
             if (doan.ThoiGianBatDau.Year < 1500 && doan.ThoiGianKetThuc.Year < 1500)
             {
@@ -67,12 +62,19 @@ namespace DuLich.GUI.QuanLyDoan
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
+            doan.ThoiGianBatDau = datepicker_batdau.Value.Date;
+            doan.ThoiGianKetThuc = datepicker_ketthuc.Value.Date;
             chiTietDoanListener.onLuuClick(doan);
         }
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
+            chiTietDoanListener.onHuyClick();
+        }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            doan.Touris = touris.ToArray()[comboBox1.SelectedIndex];
         }
     }
 }

@@ -45,6 +45,7 @@ namespace DuLich
             this.tv_quanlytour = new System.Windows.Forms.Label();
             this.btn_quanlydiadiem = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel_main_content
@@ -108,11 +109,23 @@ namespace DuLich
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(12, 291);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(165, 32);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Danh sách khách";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // ManHinhChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 548);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_quanlydiadiem);
             this.Controls.Add(this.tv_quanlytour);
@@ -135,6 +148,7 @@ namespace DuLich
         private Label tv_quanlytour;
         private Button btn_quanlydiadiem;
         private Button button1;
+        private Button button2;
     }
 }
 
