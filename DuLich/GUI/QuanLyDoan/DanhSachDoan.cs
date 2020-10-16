@@ -48,17 +48,43 @@ namespace DuLich.GUI.QuanLyDoan
 
         }
 
-        private void btn_them_doan_Click(object sender, EventArgs e)
+       
+        
+        public interface IDanhSachDoanListener
+        {
+            void onDanhSachDoanThemClick();
+            void onDanhSachDoanSuaClick(Doan doan);
+            void onDanhSachDoanXoaClick(Doan doan);
+        }
+
+        private void btn_them_doan_Click_1(object sender, EventArgs e)
         {
             danhSachDoanCallBack.onDanhSachDoanThemClick();
         }
 
+        private void btn_sua_doan_Click_1(object sender, EventArgs e)
+        {
+            int position = listview_doan.SelectedItems[0].Index;
+            danhSachDoanCallBack.onDanhSachDoanSuaClick(doans.ToArray()[position]);
+        }
+
+        private void btn_xoa_doan_Click_1(object sender, EventArgs e)
+        {
+            if (listview_doan.SelectedItems.Count > 0)
+            {
+                int position = listview_doan.SelectedItems[0].Index;
+                danhSachDoanCallBack.onDanhSachDoanXoaClick(doans.ToArray()[position]);
+            }
+        }
 
         private void btn_sua_doan_Click(object sender, EventArgs e)
         {
-
-            int position = listview_doan.SelectedItems[0].Index;
-            danhSachDoanCallBack.onDanhSachDoanSuaClick(doans.ToArray()[position]);
+            if (listview_doan.SelectedItems.Count > 0)
+            {
+                int position = listview_doan.SelectedItems[0].Index;
+                danhSachDoanCallBack.onDanhSachDoanSuaClick(doans.ToArray()[position]);
+            }
+                
         }
 
         private void btn_xoa_doan_Click(object sender, EventArgs e)
@@ -68,12 +94,6 @@ namespace DuLich.GUI.QuanLyDoan
                 int position = listview_doan.SelectedItems[0].Index;
                 danhSachDoanCallBack.onDanhSachDoanXoaClick(doans.ToArray()[position]);
             }
-        }
-        public interface IDanhSachDoanListener
-        {
-            void onDanhSachDoanThemClick();
-            void onDanhSachDoanSuaClick(Doan doan);
-            void onDanhSachDoanXoaClick(Doan doan);
         }
     }
 }

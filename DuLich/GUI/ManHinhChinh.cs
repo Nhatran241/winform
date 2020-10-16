@@ -1,6 +1,7 @@
 ﻿using DuLich.BUS;
 using DuLich.Entity;
 using DuLich.GUI.QuanLyDoan;
+using DuLich.GUI.QuanLyKhach;
 using DuLich.Model.Entity;
 using DuLich.View;
 using DuLich.View.QuanLyDiaDiem;
@@ -19,7 +20,7 @@ using System.Windows.Forms;
 
 namespace DuLich
 {
-    public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener,QuanLyDiaDiem.IQuanLyDiaDiem,ChiTietDiaDiem.IChiTietDiaDiemListener,DanhSachDoan.IDanhSachDoanListener,ChiTietDoan.IChiTietDoanListener
+    public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener,QuanLyDiaDiem.IQuanLyDiaDiem,ChiTietDiaDiem.IChiTietDiaDiemListener,DanhSachDoan.IDanhSachDoanListener,ChiTietDoan.IChiTietDoanListener,DanhSachKhach.IDanhSachKhachListener,ChiTietKhach.IChiTietKhachListener
     {
         /**
          * BUS
@@ -30,8 +31,10 @@ namespace DuLich
         private ChiTietTourBus chiTietTourBus = new ChiTietTourBus();
         private LoaiBus loaiBus = new LoaiBus();
         private DoanBus doanBus = new DoanBus();
+        private KhachBus khachBus = new KhachBus();
 
         private UserControl userControl;
+        private List<Khach> khaches = new List<Khach>();
         private List<Doan> doans = new List<Doan>();
         private List<Touris> listTouris = new List<Touris>();
         private List<Loai> listLoais = new List<Loai>();
@@ -62,6 +65,7 @@ namespace DuLich
             listTouris = tourBus.GetAll();
             listLoais = loaiBus.GetAll();
             listDiaDiems = diaDiemBus.GetAll();
+            khaches = khachBus.GetAll();
         }
 
         public void onItemClicked(int position)
@@ -399,17 +403,101 @@ namespace DuLich
 
         public void onDanhSachDoanXoaClick(Doan doan)
         {
-            throw new NotImplementedException();
+            doanBus.Remove(doan);
+            doanBus.SaveChanges().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachDoan(doans, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
         }
 
         public void onLuuClick(Doan doan)
         {
-            throw new NotImplementedException();
+            doanBus.AddOrUpdate(doan);
+            doanBus.SaveChanges().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachDoan(doans, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
         }
 
         public void onHuyClick()
         {
-            throw new NotImplementedException();
+            LoadDataFromDataBase();
+            userControl = new DanhSachDoan(doans, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoadDataFromDataBase();
+            userControl = new DanhSachKhach(khaches, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachKhachThemClick()
+        {
+            Khach khach = new Khach();
+            userControl = new ChiTietKhach(khach, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachKhachSuaClick(Khach doan)
+        {
+            userControl = new ChiTietKhach(doan, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachKhachXoaClick(Khach doan)
+        {
+            khachBus.Remove(doan);
+            doanBus.SaveChanges().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachKhach(khaches, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
+        }
+
+        public void onLuuKhachClick(Khach khach)
+        {
+            khachBus.AddOrUpdate(khach);
+            doanBus.SaveChanges().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachKhach(khaches, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
+        }
+
+        public void onHuyKhachClick()
+        {
+            LoadDataFromDataBase();
+            userControl = new DanhSachKhach(khaches, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
         }
     }
 
