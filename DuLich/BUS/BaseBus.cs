@@ -9,7 +9,12 @@ namespace DuLich.BUS
 {
     abstract class BaseBus<T>
     {
-        protected DuLichContext context = DuLichContext.getInstance();
+        protected static DuLichContext context;
+        public BaseBus(){
+            if (context == null)
+                context = new DuLichContext();
+
+        }
         public Task SaveChanges()
         {
             return context.SaveChangesAsync();

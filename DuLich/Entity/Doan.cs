@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuLich.Model.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,17 +11,12 @@ namespace DuLich.Entity
 {
     public class Doan
     {
-        public Doan()
-        {
-            this.Khaches = new HashSet<Khach>();
-        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DoanId { get; set; }
+        public int Id { get; set; }
+        public String Name { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-
         public Touris Touris { get; set; }
-        public ICollection<Khach> Khaches { get; set; }
     }
 }

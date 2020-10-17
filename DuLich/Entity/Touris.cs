@@ -15,9 +15,14 @@ namespace DuLich.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public String Name { get; set; }
-        public Loai Loai { get; set; }
+        public virtual Loai Loai { get; set; }
         public virtual ICollection<Gia> Gias { get; set; }
         public virtual ICollection<Doan> Doans { get; set; }
         public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

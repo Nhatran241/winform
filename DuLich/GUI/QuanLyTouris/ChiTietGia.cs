@@ -118,5 +118,14 @@ namespace DuLich.View.QuanLyTouris
             return isNum;
         }
 
+        private void tv_ngaybatdau_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

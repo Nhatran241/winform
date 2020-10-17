@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuLich.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DuLich.Entity
+namespace DuLich.Model.Entity
 {
-    public class Khach
+    public class PhanCong
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int KhachId { get; set; }
-        public String Ten { get; set; }
-        public String DiaChi { get; set; }
-        public String SoDienThoai { get; set; }
-        public String SoCmnd { get; set; }
+        public int MaPhanCong { get; set; }
+        public Doan Doan { get; set; }
+        public NhanVien NhanVien { get; set; }
+        public String NhiemVu { get; set; }
     }
 }
