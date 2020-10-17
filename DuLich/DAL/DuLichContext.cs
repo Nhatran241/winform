@@ -43,7 +43,17 @@ namespace DuLich.Entity
             }.ForEach(x => Loai.Add(x));
                     SaveChanges();
                 }
-            }catch(Exception e) { }
+                if (NhanViens.ToList().Count == 0)
+                {
+                    new List<NhanVien>{
+                        new NhanVien { TenNhanVien= "Nhật",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
+                        new NhanVien { TenNhanVien= "Nam",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
+                        new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"}
+                }.ForEach(x => NhanViens.Add(x));
+                    SaveChanges();
+                }
+            }
+            catch(Exception e) { }
         }
         public DbSet<Touris> Touris { get; set; }
         public DbSet<Gia> Gia { get; set; }
@@ -51,6 +61,7 @@ namespace DuLich.Entity
         public DbSet<DiaDiem> DiaDiem { get; set; }
         public DbSet<ChiTietTour> ChiTietTour { get; set; }
         public DbSet<Doan> Doans { get; set; }
+        public DbSet<DoanKhach> DoanKhachs { get; set; }
         public DbSet<Khach> Khaches { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<PhanCong> PhanCongs { get; set; }
@@ -71,6 +82,20 @@ namespace DuLich.Entity
                         .HasMany<ChiTietTour>(g => g.ChiTietTours)
                         .WithRequired(s => s.touris)
                         .WillCascadeOnDelete();
+
+            // xóa đoàn thì xóa những đoàn khách liên quan nhưng ko xóa đoàn
+            modelBuilder.Entity<Doan>()
+                       .HasMany<DoanKhach>(g => g.DoanKhachs)
+                       .WithRequired(s => s.Doan)
+                       .WillCascadeOnDelete();
+            
+            modelBuilder.Entity<Khach>()
+                      .HasMany<DoanKhach>(g => g.DoanKhachs)
+                      .WithRequired(s => s.Khach)
+                      .WillCascadeOnDelete();
+
+
+
             // configures one-to-many relationship {Touris} - [Gia]
             //modelBuilder.Entity<Gia>()
             //  .HasRequired<Touris>(s => s.touris)

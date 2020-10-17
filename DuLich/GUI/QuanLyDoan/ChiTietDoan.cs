@@ -11,6 +11,7 @@ using DuLich.Entity;
 using DuLich.View.QuanLyTouris;
 using DuLich.Model.Entity;
 using DuLich.View.QuanLyPhanCong;
+using DuLich.View.QuanLyDoan;
 
 namespace DuLich.View
 {
@@ -18,21 +19,27 @@ namespace DuLich.View
     {
         private IChiTietDoanListener chiTietDoanListener;
         private DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener;
+        private SelectKhach.ISelectKhachListener selectKhachListener;
         private UserControl chiTietUserControl;
         private bool isEditing = false;
 
         private Doan doanHienTai;
         private IEnumerable<Touris> danhSachTour;
         private List<PhanCong> danhSachPhanCong;
+        private List<Khach> danhSachTatCaKhach;
+        private List<Khach> danhSachKhachTrongDoan;
 
-        public ChiTietDoan(Doan doan, IEnumerable<Touris> listTour, List<PhanCong> phanCongs, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener)
+        public ChiTietDoan(Doan doan, IEnumerable<Touris> listTour, List<PhanCong> phanCongs, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener)
         {
             InitializeComponent();
             this.doanHienTai = doan;
             this.chiTietDoanListener = chiTietDoanListener;
             this.danhSachPhanCongListener = danhSachPhanCongListener;
+            this.selectKhachListener = selectKhachListener;
             this.danhSachTour = listTour;
             this.danhSachPhanCong = phanCongs;
+            this.danhSachTatCaKhach = tatcakhach;
+            this.danhSachKhachTrongDoan = khachtrongdoan;
             if (doan.Id == 0)
                 CreateNewRecord();
             UpdateComponentState();
@@ -99,7 +106,12 @@ namespace DuLich.View
         public void LoadDanhSachPhanCong(List<PhanCong> phanCongs)
         {
             tab_phancong.Controls.Clear();
-            tab_phancong.Controls.Add(new DanhSachPhanCong(phanCongs,danhSachPhanCongListener));
+            tab_phancong.Controls.Add(new DanhSachPhanCong(doanHienTai,phanCongs,danhSachPhanCongListener));
+        }
+        public void LoadDanhSachKhach(List<Khach> danhSachTatCaKhach,List<Khach> danhSachKhachTrongDoan)
+        {
+            tab_khach.Controls.Clear();
+            tab_khach.Controls.Add(new SelectKhach(doanHienTai,danhSachTatCaKhach,danhSachKhachTrongDoan,selectKhachListener));
         }
 
         public void InitUI(Doan doan)
@@ -128,11 +140,13 @@ namespace DuLich.View
         }
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
         {
-            if (e.TabPage.Name=="tab_gia") {
-                
+            if (e.TabPage.Name=="tab_phancong") {
+                LoadDanhSachPhanCong(danhSachPhanCong);
             }
             else
             {
+                LoadDanhSachKhach(danhSachTatCaKhach,danhSachKhachTrongDoan);
+
             }
         }
         public interface IChiTietDoanListener

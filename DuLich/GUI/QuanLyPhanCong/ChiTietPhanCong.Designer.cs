@@ -1,4 +1,6 @@
-﻿namespace DuLich.View.QuanLyPhanCong
+﻿using System;
+
+namespace DuLich.View.QuanLyPhanCong
 {
     partial class ChiTietPhanCong
     {
@@ -114,7 +116,9 @@
             this.combobox_nhanvien.Location = new System.Drawing.Point(175, 169);
             this.combobox_nhanvien.Name = "combobox_nhanvien";
             this.combobox_nhanvien.Size = new System.Drawing.Size(218, 32);
-            this.combobox_nhanvien.TabIndex = 13;
+            this.combobox_nhanvien.TabIndex = 13; 
+            this.combobox_nhanvien.SelectedIndexChanged += new System.EventHandler(this.comboxnhanvien_SelectedIndexChanged);
+
             // 
             // ChiTietPhanCong
             // 
@@ -135,6 +139,7 @@
 
         }
 
+      
         #endregion
 
         private System.Windows.Forms.Label tv_maphancong;

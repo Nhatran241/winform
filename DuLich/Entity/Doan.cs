@@ -18,5 +18,6 @@ namespace DuLich.Entity
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
         public Touris Touris { get; set; }
+        public ICollection<DoanKhach> DoanKhachs { get; set; }
     }
 }

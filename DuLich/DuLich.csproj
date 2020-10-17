@@ -64,6 +64,7 @@
     <Compile Include="BUS\KhachBus.cs" />
     <Compile Include="BUS\LoaiBus.cs" />
     <Compile Include="BUS\TourBus.cs" />
+    <Compile Include="Entity\DoanKhach.cs" />
     <Compile Include="Entity\Doan.cs" />
     <Compile Include="Entity\NhanVien.cs" />
     <Compile Include="Entity\PhanCong.cs" />
@@ -73,6 +74,12 @@
     </Compile>
     <Compile Include="GUI\QuanLyDoan\ChiTietDoan.Designer.cs">
       <DependentUpon>ChiTietDoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyDoan\DanhSachDoan.cs">
       <SubType>UserControl</SubType>
@@ -171,6 +178,9 @@
     <Compile Include="GUI\ScreenState.cs" />
     <EmbeddedResource Include="GUI\QuanLyDoan\ChiTietDoan.resx">
       <DependentUpon>ChiTietDoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDoan\SelectKhach.resx">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\DanhSachDoan.resx">
       <DependentUpon>DanhSachDoan.cs</DependentUpon>

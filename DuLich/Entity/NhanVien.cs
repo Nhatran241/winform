@@ -19,5 +19,9 @@ namespace DuLich.Entity
         public String SoDienThoai { get; set; }
         public String SoCmnd { get; set; }
         public ICollection<PhanCong> PhanCongs { get; set; }
+        public override string ToString()
+        {
+            return TenNhanVien;
+        }
     }
 }

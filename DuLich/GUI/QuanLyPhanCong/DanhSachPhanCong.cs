@@ -16,11 +16,13 @@ namespace DuLich.View.QuanLyPhanCong
     {
         private IDanhSachPhanCongListener danhSachPhanCongListener;
         private IEnumerable<PhanCong> PhanCongs;
-        public DanhSachPhanCong(IEnumerable<PhanCong> phanCongs, IDanhSachPhanCongListener danhSachPhanCongListener)
+        private Doan doanHienTai;
+        public DanhSachPhanCong(Doan doanHienTai,IEnumerable<PhanCong> phanCongs, IDanhSachPhanCongListener danhSachPhanCongListener)
         {
             InitializeComponent();
             this.danhSachPhanCongListener = danhSachPhanCongListener;
             this.PhanCongs = phanCongs;
+            this.doanHienTai = doanHienTai;
             InitData(phanCongs);
         }
         private void InitData(IEnumerable<PhanCong> phanCongs)
@@ -37,7 +39,7 @@ namespace DuLich.View.QuanLyPhanCong
             if (position > 0)
             {
                 btn_sua_phancong.Visible = true;
-                btn_sua_phancong.Visible = true;
+                btn_xoa_phancong.Visible = true;
             }else
             {
                 btn_sua_phancong.Visible = false;
@@ -49,7 +51,7 @@ namespace DuLich.View.QuanLyPhanCong
 
         private void btn_them_phancong_Click(object sender, EventArgs e)
         {
-            danhSachPhanCongListener.onDanhSachPhanCongThemClick();
+            danhSachPhanCongListener.onDanhSachPhanCongThemClick(doanHienTai);
         }
      
 
@@ -65,12 +67,12 @@ namespace DuLich.View.QuanLyPhanCong
             if (listview_phancong.SelectedItems.Count > 0)
             {
                 int position = listview_phancong.SelectedItems[0].Index;
-                danhSachPhanCongListener.onDanhSachPhanCongSuaClick(PhanCongs.ToArray()[position]);
+                danhSachPhanCongListener.onDanhSachPhanCongXoaClick(PhanCongs.ToArray()[position]);
             }
         }
         public interface IDanhSachPhanCongListener
         {
-            void onDanhSachPhanCongThemClick();
+            void onDanhSachPhanCongThemClick(Doan doanHienTai);
             void onDanhSachPhanCongSuaClick(PhanCong phanCong);
             void onDanhSachPhanCongXoaClick(PhanCong phanCong);
         }

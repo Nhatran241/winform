@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuLich.Model.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,5 +18,10 @@ namespace DuLich.Entity
         public String DiaChi { get; set; }
         public String SoDienThoai { get; set; }
         public String SoCmnd { get; set; }
+        public ICollection<DoanKhach> DoanKhachs { get; set; }
+        public override string ToString()
+        {
+            return Ten;
+        }
     }
 }

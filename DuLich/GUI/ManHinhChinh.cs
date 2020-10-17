@@ -24,19 +24,22 @@ namespace DuLich
     public partial class ManHinhChinh : Form,DanhSachTouris.OnItemClickListener, ChiTietTouris.OnChiTietTourListener,
         QuanLyDiaDiem.IQuanLyDiaDiem,ChiTietDiaDiem.IChiTietDiaDiemListener,
         DanhSachDoan.IDanhSachDoanListener,DanhSachKhach.IDanhSachKhachListener,
-        ChiTietKhach.IChiTietKhachListener,ChiTietDoan.IChiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener
+        ChiTietKhach.IChiTietKhachListener,ChiTietDoan.IChiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener,
+        ChiTietPhanCong.IChiTietPhanCongListener,SelectKhach.ISelectKhachListener
     {
         private DuLichContext context = new DuLichContext();
         private UserControl userControl;
         private List<Khach> khaches = new List<Khach>();
         private List<Doan> doans = new List<Doan>();
         private List<PhanCong> danhSachPhanCong = new List<PhanCong>();
+        private List<NhanVien> danhSachNhanVien = new List<NhanVien>();
         private List<Touris> listTouris = new List<Touris>();
         private List<Loai> listLoais = new List<Loai>();
         private List<DiaDiem> listDiaDiems = new List<DiaDiem>();
         private List<Gia> danhSachGia = new List<Gia>();
         private List<ChiTietTour> listChiTietTour = new List<ChiTietTour>();
         private List<DiaDiem> diaDiemCuaTour = new List<DiaDiem>();
+        private List<DoanKhach> danhSachDoanKhach = new List<DoanKhach>();
 
 
         public ManHinhChinh()
@@ -62,6 +65,8 @@ namespace DuLich
             listDiaDiems = context.DiaDiem.ToList();
             khaches = context.Khaches.ToList();
             danhSachPhanCong = context.PhanCongs.ToList();
+            danhSachNhanVien = context.NhanViens.ToList();
+            danhSachDoanKhach = context.DoanKhachs.ToList();
         }
 
         public void onItemClicked(int position)
@@ -460,7 +465,7 @@ foreach (ChiTietTour chiTiet in listChiTietTour) {
 
         private void btn_taodoan_Click(object sender, EventArgs e)
         {
-            userControl = new ChiTietDoan(new Doan(),listTouris, danhSachPhanCong, null, null, this,this);
+            userControl = new ChiTietDoan(new Doan(),listTouris, danhSachPhanCong, null, null, this,this,this);
             //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
@@ -474,7 +479,7 @@ foreach (ChiTietTour chiTiet in listChiTietTour) {
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new ChiTietDoan(doans.LastOrDefault(), listTouris, danhSachPhanCong, null, null, this,this);
+                    userControl = new ChiTietDoan(doans.LastOrDefault(), listTouris, danhSachPhanCong, null, null, this,this,this);
                     //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
@@ -503,23 +508,83 @@ foreach (ChiTietTour chiTiet in listChiTietTour) {
         public void onDanhSachDoan_DoanSelectedIndex(int position)
         {
             Doan selectedDoan = doans.ToArray()[position];
-            userControl = new ChiTietDoan(selectedDoan, listTouris, danhSachPhanCong, null, null, this,this);
-            //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
+            userControl = new ChiTietDoan(selectedDoan, listTouris, danhSachPhanCong, khaches, khaches.Where(b=>context.DoanKhachs.Where(c=>c.Khach.KhachId == b.KhachId && c.Doan.Id == selectedDoan.Id).Count()>0).ToList(), this,this,this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
 
-        public void onDanhSachPhanCongThemClick()
+        public void onDanhSachPhanCongThemClick(Doan doanHienTai)
         {
-
+            PhanCong phanCong = new PhanCong();
+            phanCong.Doan = doanHienTai;
+            userControl = new ChiTietPhanCong(phanCong, danhSachNhanVien, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
         }
 
         public void onDanhSachPhanCongSuaClick(PhanCong phanCong)
         {
+            userControl = new ChiTietPhanCong(phanCong, danhSachNhanVien, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
         }
 
         public void onDanhSachPhanCongXoaClick(PhanCong phanCong)
         {
+            context.PhanCongs.Remove(phanCong);
+            context.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachDoan(doans, listTouris, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
+        }
+
+        public void onLuuClick(PhanCong phanCong)
+        {
+            context.PhanCongs.AddOrUpdate(phanCong);
+            context.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachDoan(doans, listTouris, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
+        }
+
+        public void onHuyClick()
+        {
+            userControl = new DanhSachDoan(doans, listTouris, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onSelectKhach_LuuClick(Doan doanHienTai,List<Khach> danhSachKhachTrongDoanUpdate)
+        {
+            context.DoanKhachs.RemoveRange(context.DoanKhachs.Where(c => c.Doan.Id == doanHienTai.Id).ToList());
+            foreach (Khach khach in danhSachKhachTrongDoanUpdate) {
+                DoanKhach doanKhach = new DoanKhach();
+                doanKhach.Doan = doanHienTai;
+                doanKhach.Khach = khach;
+                context.DoanKhachs.Add(doanKhach);
+            }
+            context.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachDoan(doans, listTouris, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
         }
     }
 

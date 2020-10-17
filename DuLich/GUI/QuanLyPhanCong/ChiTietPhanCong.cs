@@ -8,26 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuLich.Model.Entity;
+using DuLich.Entity;
 
 namespace DuLich.View.QuanLyPhanCong
 {
     public partial class ChiTietPhanCong : UserControl
     {
         private IChiTietPhanCongListener chiTietPhanCongListener;
-        private PhanCong PhanCong;
+        private PhanCong phanCongHienTai;
+        private List<NhanVien> danhSachNhanVien;
         private bool isEditing = false;
-        public ChiTietPhanCong(PhanCong phanCong,IChiTietPhanCongListener chiTietPhanCongListener)
+        public ChiTietPhanCong(PhanCong phanCong,List<NhanVien> danhSachNhanVien,IChiTietPhanCongListener chiTietPhanCongListener)
         {
             InitializeComponent();
             this.chiTietPhanCongListener = chiTietPhanCongListener;
-            this.PhanCong = phanCong;
+            this.phanCongHienTai = phanCong;
+            this.danhSachNhanVien = danhSachNhanVien;
+            if(phanCongHienTai.MaPhanCong == 0)
+            {
+                CreateNewRecord();
+            }
             InitUI();
+        }
+        public void CreateNewRecord()
+        {
+            phanCongHienTai.NhanVien = danhSachNhanVien.First();
+            phanCongHienTai.NhiemVu = "";
         }
 
         private void InitUI()
         {
-            tb_maphancong.Text = PhanCong.MaPhanCong.ToString();
-            if (PhanCong.MaPhanCong == 0)
+            tb_maphancong.Text = phanCongHienTai.MaPhanCong.ToString();
+            if (phanCongHienTai.MaPhanCong == 0)
             {
                 tb_maphancong.Visible = false;
                 tv_maphancong.Visible = false;
@@ -36,14 +48,21 @@ namespace DuLich.View.QuanLyPhanCong
                 tv_maphancong.Visible = false;
                 tb_maphancong.Enabled = false;
             } 
-            tb_nhiemvu.Text = PhanCong.NhiemVu.ToString();
+            tb_nhiemvu.Text = phanCongHienTai.NhiemVu.ToString();
+            foreach (NhanVien nhanVien in danhSachNhanVien)
+            {
+                combobox_nhanvien.Items.Add(nhanVien);
+            }
+
+            combobox_nhanvien.Text = phanCongHienTai.NhanVien.TenNhanVien;
+          
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if (Validation(PhanCong))
+            if (Validation(phanCongHienTai))
             {
-                chiTietPhanCongListener.onLuuClick(PhanCong);
+                chiTietPhanCongListener.onLuuClick(phanCongHienTai);
             }else
             {
                 MessageBox.Show("Giá trị không được bỏ trống");
@@ -68,10 +87,15 @@ namespace DuLich.View.QuanLyPhanCong
         {
 
         }
+        private void comboxnhanvien_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            phanCongHienTai.NhanVien = danhSachNhanVien.ToArray()[combobox_nhanvien.SelectedIndex];
+        }
+
 
         private void tb_nhiemvu_TextChanged(object sender, EventArgs e)
         {
-            PhanCong.NhiemVu = tb_nhiemvu.Text.Trim();
+            phanCongHienTai.NhiemVu = tb_nhiemvu.Text.Trim();
         }
     }
 }
