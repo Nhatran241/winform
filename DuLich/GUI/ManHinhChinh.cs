@@ -499,6 +499,16 @@ namespace DuLich
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
+
+        public void onDanhSachDoanThemKhach(Doan doan)
+        {
+            LoadDataFromDataBase();
+            userControl = new KhachDoan(khaches,doan.Khaches.ToList(), this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+       
     }
 
         

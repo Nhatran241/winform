@@ -76,5 +76,11 @@ namespace DuLich.GUI.QuanLyDoan
         {
             doan.Touris = touris.ToArray()[comboBox1.SelectedIndex];
         }
+
+        private void listview_doan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            
+        }
     }
 }

@@ -19,5 +19,9 @@ namespace DuLich.Entity
         public virtual ICollection<Gia> Gias { get; set; }
         public virtual ICollection<Doan> Doans { get; set; }
         public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

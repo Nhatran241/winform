@@ -78,6 +78,12 @@
     <Compile Include="GUI\QuanLyDoan\DanhSachDoan.designer.cs">
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanLyDoan\KhachDoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\KhachDoan.Designer.cs">
+      <DependentUpon>KhachDoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanLyKhach\ChiTietKhach.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\DanhSachDoan.resx">
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDoan\KhachDoan.resx">
+      <DependentUpon>KhachDoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyKhach\ChiTietKhach.resx">
       <DependentUpon>ChiTietKhach.cs</DependentUpon>

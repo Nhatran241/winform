@@ -35,6 +35,7 @@
             this.ngayketthuc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_sua_doan = new System.Windows.Forms.Button();
             this.btn_xoa_doan = new System.Windows.Forms.Button();
+            this.themKhach = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_them_doan
@@ -61,6 +62,7 @@
             this.listview_doan.TabIndex = 4;
             this.listview_doan.UseCompatibleStateImageBehavior = false;
             this.listview_doan.View = System.Windows.Forms.View.Details;
+            this.listview_doan.SelectedIndexChanged += new System.EventHandler(this.listview_doan_SelectedIndexChanged);
             // 
             // giatri
             // 
@@ -81,7 +83,7 @@
             // 
             // btn_sua_doan
             // 
-            this.btn_sua_doan.Location = new System.Drawing.Point(175, 3);
+            this.btn_sua_doan.Location = new System.Drawing.Point(135, 3);
             this.btn_sua_doan.Name = "btn_sua_doan";
             this.btn_sua_doan.Size = new System.Drawing.Size(75, 23);
             this.btn_sua_doan.TabIndex = 6;
@@ -91,7 +93,7 @@
             // 
             // btn_xoa_doan
             // 
-            this.btn_xoa_doan.Location = new System.Drawing.Point(354, 3);
+            this.btn_xoa_doan.Location = new System.Drawing.Point(384, 3);
             this.btn_xoa_doan.Name = "btn_xoa_doan";
             this.btn_xoa_doan.Size = new System.Drawing.Size(75, 23);
             this.btn_xoa_doan.TabIndex = 7;
@@ -99,10 +101,21 @@
             this.btn_xoa_doan.UseVisualStyleBackColor = true;
             this.btn_xoa_doan.Click += new System.EventHandler(this.btn_xoa_doan_Click);
             // 
+            // themKhach
+            // 
+            this.themKhach.Location = new System.Drawing.Point(248, 3);
+            this.themKhach.Name = "themKhach";
+            this.themKhach.Size = new System.Drawing.Size(102, 23);
+            this.themKhach.TabIndex = 8;
+            this.themKhach.Text = "Them Khach";
+            this.themKhach.UseVisualStyleBackColor = true;
+            this.themKhach.Click += new System.EventHandler(this.themKhach_Click);
+            // 
             // DanhSachDoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.themKhach);
             this.Controls.Add(this.btn_xoa_doan);
             this.Controls.Add(this.btn_sua_doan);
             this.Controls.Add(this.btn_them_doan);
@@ -121,5 +134,6 @@
         private System.Windows.Forms.ColumnHeader ngayketthuc;
         private System.Windows.Forms.Button btn_sua_doan;
         private System.Windows.Forms.Button btn_xoa_doan;
+        private System.Windows.Forms.Button themKhach;
     }
 }

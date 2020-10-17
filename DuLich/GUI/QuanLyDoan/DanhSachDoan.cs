@@ -15,6 +15,8 @@ namespace DuLich.GUI.QuanLyDoan
     {
         private IDanhSachDoanListener danhSachDoanCallBack;
         private IEnumerable<Doan> doans;
+        private IEnumerable<Khach> khaches;
+        private int position;
         public DanhSachDoan(IEnumerable<Doan> doans, IDanhSachDoanListener danhSachDoanCallBack)
         {
             InitializeComponent();
@@ -55,6 +57,7 @@ namespace DuLich.GUI.QuanLyDoan
             void onDanhSachDoanThemClick();
             void onDanhSachDoanSuaClick(Doan doan);
             void onDanhSachDoanXoaClick(Doan doan);
+            void onDanhSachDoanThemKhach(Doan doan);
         }
 
         private void btn_them_doan_Click_1(object sender, EventArgs e)
@@ -64,7 +67,7 @@ namespace DuLich.GUI.QuanLyDoan
 
         private void btn_sua_doan_Click_1(object sender, EventArgs e)
         {
-            int position = listview_doan.SelectedItems[0].Index;
+            position = listview_doan.SelectedItems[0].Index;
             danhSachDoanCallBack.onDanhSachDoanSuaClick(doans.ToArray()[position]);
         }
 
@@ -81,7 +84,7 @@ namespace DuLich.GUI.QuanLyDoan
         {
             if (listview_doan.SelectedItems.Count > 0)
             {
-                int position = listview_doan.SelectedItems[0].Index;
+                position = listview_doan.SelectedItems[0].Index;
                 danhSachDoanCallBack.onDanhSachDoanSuaClick(doans.ToArray()[position]);
             }
                 
@@ -95,5 +98,31 @@ namespace DuLich.GUI.QuanLyDoan
                 danhSachDoanCallBack.onDanhSachDoanXoaClick(doans.ToArray()[position]);
             }
         }
+
+        private void listview_doan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int position = listview_doan.SelectedIndices.Count;
+            if (position > 0)
+            {
+                btn_sua_doan.Visible = true;
+                btn_xoa_doan.Visible = true;
+            }
+            else
+            {
+                btn_sua_doan.Visible = false;
+                btn_xoa_doan.Visible = false;
+            }
+        }
+
+        private void themKhach_Click(object sender, EventArgs e)
+        {
+            if (listview_doan.SelectedItems.Count > 0)
+            {
+                position = listview_doan.SelectedItems[0].Index;
+                danhSachDoanCallBack.onDanhSachDoanThemKhach(doans.ToArray()[position]);
+            }
+        }
+
+        
     }
 }
