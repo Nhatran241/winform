@@ -64,7 +64,10 @@
     <Compile Include="BUS\KhachBus.cs" />
     <Compile Include="BUS\LoaiBus.cs" />
     <Compile Include="BUS\TourBus.cs" />
+    <Compile Include="Entity\DoanKhach.cs" />
     <Compile Include="Entity\Doan.cs" />
+    <Compile Include="Entity\NhanVien.cs" />
+    <Compile Include="Entity\PhanCong.cs" />
     <Compile Include="Entity\Khach.cs" />
     <Compile Include="GUI\QuanLyDoan\ChiTietDoan.cs">
       <SubType>UserControl</SubType>
@@ -72,10 +75,16 @@
     <Compile Include="GUI\QuanLyDoan\ChiTietDoan.Designer.cs">
       <DependentUpon>ChiTietDoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanLyDoan\DanhSachDoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\QuanLyDoan\DanhSachDoan.designer.cs">
+    <Compile Include="GUI\QuanLyDoan\DanhSachDoan.Designer.cs">
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyKhach\ChiTietKhach.cs">
@@ -89,6 +98,18 @@
     </Compile>
     <Compile Include="GUI\QuanLyKhach\DanhSachKhach.Designer.cs">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.Designer.cs">
+      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\DanhSachPhanCong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\DanhSachPhanCong.Designer.cs">
+      <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DAL\DuLichContext.cs" />
@@ -158,6 +179,9 @@
     <EmbeddedResource Include="GUI\QuanLyDoan\ChiTietDoan.resx">
       <DependentUpon>ChiTietDoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDoan\SelectKhach.resx">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\DanhSachDoan.resx">
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyKhach\DanhSachKhach.resx">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyPhanCong\ChiTietPhanCong.resx">
+      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyPhanCong\DanhSachPhanCong.resx">
+      <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>

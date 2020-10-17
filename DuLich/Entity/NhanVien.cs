@@ -9,19 +9,19 @@ using System.Threading.Tasks;
 
 namespace DuLich.Entity
 {
-    public class Khach
+    public class NhanVien
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int KhachId { get; set; }
-        public String Ten { get; set; }
+        public int MaNhanVien { get; set; }
+        public String TenNhanVien { get; set; }
         public String DiaChi { get; set; }
         public String SoDienThoai { get; set; }
         public String SoCmnd { get; set; }
-        public ICollection<DoanKhach> DoanKhachs { get; set; }
+        public ICollection<PhanCong> PhanCongs { get; set; }
         public override string ToString()
         {
-            return Ten;
+            return TenNhanVien;
         }
     }
 }

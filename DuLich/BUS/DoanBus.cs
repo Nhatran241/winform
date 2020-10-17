@@ -12,12 +12,12 @@ namespace DuLich.BUS
     {
         public override void AddOrUpdate(Doan entity)
         {
-            context.Doans.AddOrUpdate(entity);
+            context.Doans.Add(entity);
         }
 
         public override Doan Get(int id)
         {
-            return context.Doans.Where(c => c.DoanId == id).FirstOrDefault();
+            return context.Doans.Where(c => c.Id == id).FirstOrDefault();
         }
 
         public override List<Doan> GetAll()

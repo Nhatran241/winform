@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using DuLich.Entity;
 using DuLich.View.QuanLyTouris;
 using DuLich.Model.Entity;
-using DuLich.GUI.QuanLyDoan;
 
 namespace DuLich.View
 {
@@ -67,8 +66,6 @@ namespace DuLich.View
             textbox_id.Visible = false;
             tour_id.Visible = false;
             btn_xoa.Visible = false;
-            tv_title.Visible = true;
-            textbox_name.Text = "";
             isEditing = true;
             UpdateComponentState();
         }
@@ -80,7 +77,6 @@ namespace DuLich.View
             textbox_id.Enabled = false;
             textbox_name.Enabled = false;
             combobox_loai.Enabled = false;
-            tv_title.Visible = false;
         }
         private void EnableComponent()
         {

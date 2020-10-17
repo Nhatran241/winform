@@ -8,92 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuLich.Entity;
+using DuLich.Model.Entity;
 
-namespace DuLich.GUI.QuanLyDoan
+namespace DuLich.View.QuanLyDoan
 {
     public partial class DanhSachDoan : UserControl
     {
-        private IDanhSachDoanListener danhSachDoanCallBack;
-        private IEnumerable<Doan> doans;
-        public DanhSachDoan(IEnumerable<Doan> doans, IDanhSachDoanListener danhSachDoanCallBack)
+        private IDanhSachDoanListener danhSachDoanListener;
+        private List<Doan> danhSachDoan;
+        public DanhSachDoan(List<Doan> doans, List<Touris> tours,IDanhSachDoanListener danhSachDoanListener)
         {
             InitializeComponent();
-            this.danhSachDoanCallBack = danhSachDoanCallBack;
-            this.doans = doans;
-            InitData(doans);
+            danhSachDoan = doans;
+            this.danhSachDoanListener = danhSachDoanListener;
+            InitData(danhSachDoan, tours);
         }
 
-        private void InitData(IEnumerable<Doan> doans)
+        private void InitData(IEnumerable<Doan> doans,IEnumerable<Touris> tour)
         {
-
-            foreach (Doan doan in doans)
+          foreach(Doan doan in doans)
             {
-                listview_doan.Items.Add(new ListViewItem(new string[] { doan.Touris.Name, doan.ThoiGianBatDau.ToString(), doan.ThoiGianKetThuc.ToString() }));
-            }
+                list_doan.Items.Add(new ListViewItem(new string[] { doan.Id.ToString(), doan.Name , tour.First(c =>c.Id == doan.Touris.Id).Name}));
+            } 
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int position = listview_doan.SelectedIndices.Count;
-            if (position > 0)
-            {
-                btn_sua_doan.Visible = true;
-                btn_xoa_doan.Visible = true;
-            }
-            else
-            {
-                btn_sua_doan.Visible = false;
-                btn_xoa_doan.Visible = false;
-            }
-
+            int position = list_doan.SelectedItems[0].Index;
+            danhSachDoanListener.onDanhSachDoan_DoanSelectedIndex(position);
         }
-
-       
-        
         public interface IDanhSachDoanListener
         {
-            void onDanhSachDoanThemClick();
-            void onDanhSachDoanSuaClick(Doan doan);
-            void onDanhSachDoanXoaClick(Doan doan);
-        }
-
-        private void btn_them_doan_Click_1(object sender, EventArgs e)
-        {
-            danhSachDoanCallBack.onDanhSachDoanThemClick();
-        }
-
-        private void btn_sua_doan_Click_1(object sender, EventArgs e)
-        {
-            int position = listview_doan.SelectedItems[0].Index;
-            danhSachDoanCallBack.onDanhSachDoanSuaClick(doans.ToArray()[position]);
-        }
-
-        private void btn_xoa_doan_Click_1(object sender, EventArgs e)
-        {
-            if (listview_doan.SelectedItems.Count > 0)
-            {
-                int position = listview_doan.SelectedItems[0].Index;
-                danhSachDoanCallBack.onDanhSachDoanXoaClick(doans.ToArray()[position]);
-            }
-        }
-
-        private void btn_sua_doan_Click(object sender, EventArgs e)
-        {
-            if (listview_doan.SelectedItems.Count > 0)
-            {
-                int position = listview_doan.SelectedItems[0].Index;
-                danhSachDoanCallBack.onDanhSachDoanSuaClick(doans.ToArray()[position]);
-            }
-                
-        }
-
-        private void btn_xoa_doan_Click(object sender, EventArgs e)
-        {
-            if (listview_doan.SelectedItems.Count > 0)
-            {
-                int position = listview_doan.SelectedItems[0].Index;
-                danhSachDoanCallBack.onDanhSachDoanXoaClick(doans.ToArray()[position]);
-            }
+            void onDanhSachDoan_DoanSelectedIndex(int position);
         }
     }
 }
