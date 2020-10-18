@@ -9,20 +9,16 @@ using System.Threading.Tasks;
 
 namespace DuLich.Entity
 {
-    public class Touris
+    public class Doan
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public String Name { get; set; }
-        public virtual Loai Loai { get; set; }
-        public virtual ICollection<Gia> Gias { get; set; }
-        public virtual ICollection<Doan> Doans { get; set; }
-        public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        public DateTime ThoiGianBatDau { get; set; }
+        public DateTime ThoiGianKetThuc { get; set; }
+        public Touris Touris { get; set; }
+        public ICollection<DoanKhach> DoanKhachs { get; set; }
+        public ICollection<PhanCong> PhanCongs { get; set; }
     }
 }
