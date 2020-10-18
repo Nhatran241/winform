@@ -49,7 +49,8 @@ namespace DuLich.Entity
                         new NhanVien { TenNhanVien= "Nhật",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
                         new NhanVien { TenNhanVien= "Nam",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
                         new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"}
-                }.ForEach(x => NhanViens.Add(x));
+                        new NhanVien { TenNhanVien= "Kha",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"}
+                    }.ForEach(x => NhanViens.Add(x));
                     SaveChanges();
                 }
             }
@@ -82,6 +83,12 @@ namespace DuLich.Entity
                         .HasMany<ChiTietTour>(g => g.ChiTietTours)
                         .WithRequired(s => s.touris)
                         .WillCascadeOnDelete();
+
+            // Xóa đoàn xóa luôn những phân công liên quan
+            modelBuilder.Entity<Doan>()
+                       .HasMany<PhanCong>(g => g.PhanCongs)
+                       .WithRequired(s => s.Doan)
+                       .WillCascadeOnDelete();
 
             // xóa đoàn thì xóa những đoàn khách liên quan nhưng ko xóa đoàn
             modelBuilder.Entity<Doan>()
