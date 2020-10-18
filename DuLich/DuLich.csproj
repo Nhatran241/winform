@@ -99,6 +99,18 @@
     <Compile Include="GUI\QuanLyKhach\DanhSachKhach.Designer.cs">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.Designer.cs">
+      <DependentUpon>ChiTietNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyNhanVien\DanhSachNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyNhanVien\DanhSachNhanVien.Designer.cs">
+      <DependentUpon>DanhSachNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,6 +202,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyKhach\DanhSachKhach.resx">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyNhanVien\ChiTietNhanVien.resx">
+      <DependentUpon>ChiTietNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyNhanVien\DanhSachNhanVien.resx">
+      <DependentUpon>DanhSachNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyPhanCong\ChiTietPhanCong.resx">
       <DependentUpon>ChiTietPhanCong.cs</DependentUpon>

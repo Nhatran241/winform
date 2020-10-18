@@ -47,6 +47,7 @@ namespace DuLich
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_taodoan = new System.Windows.Forms.Button();
+            this.btn_quanlynhanvien = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel_main_content
@@ -132,11 +133,23 @@ namespace DuLich
             this.btn_taodoan.UseVisualStyleBackColor = true;
             this.btn_taodoan.Click += new System.EventHandler(this.btn_taodoan_Click);
             // 
+            // btn_quanlynhanvien
+            // 
+            this.btn_quanlynhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quanlynhanvien.Location = new System.Drawing.Point(10, 374);
+            this.btn_quanlynhanvien.Name = "btn_quanlynhanvien";
+            this.btn_quanlynhanvien.Size = new System.Drawing.Size(165, 32);
+            this.btn_quanlynhanvien.TabIndex = 11;
+            this.btn_quanlynhanvien.Text = "Quản Lý Nhân Viên";
+            this.btn_quanlynhanvien.UseVisualStyleBackColor = true;
+            this.btn_quanlynhanvien.Click += new System.EventHandler(this.btn_quanlynhanvien_Click);
+            // 
             // ManHinhChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 548);
+            this.Controls.Add(this.btn_quanlynhanvien);
             this.Controls.Add(this.btn_taodoan);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -163,6 +176,7 @@ namespace DuLich
         private Button button1;
         private Button button2;
         private Button btn_taodoan;
+        private Button btn_quanlynhanvien;
     }
 }
 
