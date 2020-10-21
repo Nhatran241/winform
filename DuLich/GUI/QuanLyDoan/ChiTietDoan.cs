@@ -137,6 +137,39 @@ namespace DuLich.View
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             doanHienTai.Touris = danhSachTour.ToArray()[combobox_loai.SelectedIndex];
+            List<Gia> giaCuaTour = doanHienTai.Touris.Gias.ToList();
+            if (giaCuaTour.Count() == 0)
+            {
+                tv_tourkogia.Visible = true;
+                datepicker_batdau.Visible = false;
+                datepicker_ketthuc.Visible = false;
+                tv_ngaybatdau.Visible = false;
+                tv_ngayketthuc.Visible = false;
+                btn_chinhsua.Visible = false;
+            }
+            else {
+                tv_tourkogia.Visible = false;
+                btn_chinhsua.Visible = true;
+                datepicker_batdau.Visible = true;
+                datepicker_ketthuc.Visible = true;
+                tv_ngaybatdau.Visible = true;
+                tv_ngayketthuc.Visible = true;
+                DateTime minTime = giaCuaTour.First().ThoiGianBatDau;
+                DateTime maxTime = giaCuaTour.First().ThoiGianKetThuc;
+                foreach(Gia gia in giaCuaTour)
+                {
+                    if (gia.ThoiGianBatDau <= minTime)
+                        minTime = gia.ThoiGianBatDau;
+                    if (gia.ThoiGianKetThuc >= maxTime)
+                        maxTime = gia.ThoiGianKetThuc;
+                }
+                datepicker_batdau.MinDate = minTime;
+                datepicker_batdau.MaxDate = maxTime;
+                datepicker_ketthuc.MinDate = minTime;
+                datepicker_ketthuc.MaxDate = maxTime;
+            }
+           
+
         }
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
         {
@@ -254,6 +287,25 @@ namespace DuLich.View
 
             if (doanHienTai.ThoiGianBatDau.Year < 1500)
                 doanHienTai.ThoiGianBatDau = DateTime.Today;
+            TinhToanDoanhThu();
+        }
+
+        private void TinhToanDoanhThu()
+        {
+            /**
+             * Ước tính doanh thu = chi phí tour - tổng chi phí phát sinh [Chi Phí Đoàn]
+             */
+            Gia giaApDung = doanHienTai.Touris.Gias.First();
+            foreach (Gia gia in doanHienTai.Touris.Gias)
+            {
+                if (doanHienTai.ThoiGianBatDau >= gia.ThoiGianBatDau && doanHienTai.ThoiGianKetThuc <= gia.ThoiGianKetThuc)
+                {
+                    giaApDung = gia;
+                    break;
+                }
+            }
+            tv_doanhthuuoctinh.Text = giaApDung.GiaTri.ToString();
+
         }
 
         private void datepicker_ketthuc_ValueChanged(object sender, EventArgs e)
@@ -267,6 +319,7 @@ namespace DuLich.View
 
             if (doanHienTai.ThoiGianKetThuc.Year < 1500)
                 doanHienTai.ThoiGianKetThuc = DateTime.Today;
+            TinhToanDoanhThu();
         }
     }
 }

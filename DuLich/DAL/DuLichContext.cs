@@ -10,7 +10,13 @@ namespace DuLich.Entity
 {
     public class DuLichContext : DbContext
     {
-    
+        private static DuLichContext instance;
+        public static DuLichContext GetInstance()
+        {
+            if (instance == null)
+                instance = new DuLichContext();
+            return instance;
+        }
         public DuLichContext() : base("dulichdb")
         {
             try
@@ -48,7 +54,7 @@ namespace DuLich.Entity
                     new List<NhanVien>{
                         new NhanVien { TenNhanVien= "Nhật",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
                         new NhanVien { TenNhanVien= "Nam",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
-                        new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"}
+                        new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
                         new NhanVien { TenNhanVien= "Kha",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"}
                     }.ForEach(x => NhanViens.Add(x));
                     SaveChanges();

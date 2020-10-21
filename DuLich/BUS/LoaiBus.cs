@@ -1,38 +1,31 @@
-﻿using DuLich.Model.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace DuLich.BUS
+namespace BUS
 {
-    class LoaiBus:BaseBus<Loai>
+    public class LoaiTourBus
     {
-        public override void AddOrUpdate(Loai entity)
+
+        private int ma;
+        public int MaLoai
         {
-            context.Loai.AddOrUpdate(entity);
+            get { return ma; }
+            set { ma = value; }
         }
 
-        public override void RemoveRange(List<Loai> listEntity)
+        private string ten;
+        public string TenLoai
         {
-            context.Loai.RemoveRange(listEntity);
+            get { return ten; }
+            set { ten = value; }
         }
 
-        public override List<Loai> GetAll()
+        public LoaiTourBus(int _ma, string _ten)
         {
-            return context.Loai.ToList();
-        }
-
-        public override Loai Get(int id)
-        {
-            return context.Loai.Where(c => c.Id == id).FirstOrDefault();
-        }
-
-        public override void Remove(Loai entity)
-        {
-            context.Loai.Remove(entity);
+            MaLoai = _ma;
+            TenLoai = _ten;
         }
     }
 }

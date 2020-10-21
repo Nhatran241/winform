@@ -1,38 +1,42 @@
-﻿using DuLich.Entity;
+﻿using DAL;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DuLich.BUS
+namespace BUS
 {
-    class TourBus : BaseBus<Touris>
+    public class TourBus
     {
-        public override void AddOrUpdate(Touris entity)
+        private int maTour;
+        public int MaTour
         {
-            context.Touris.AddOrUpdate(entity);
+            get { return maTour; }
+            set { maTour = value; }
+        }
+        private string tenTour;
+        public string TenTour
+        {
+            get { return tenTour; }
+            set { tenTour = value; }
+        }
+        private LoaiTourBus loai;
+        public LoaiTourBus LoaiTour
+        {
+            get { return loai; }
+            set { loai = value; }
         }
 
-        public override Touris Get(int id)
+        public TourBus(int _maTour, string _tenTour,LoaiTourBus _loaiTourBus)
         {
-            return context.Touris.Where(c => c.Id == id).FirstOrDefault();
+            MaTour = _maTour;
+            TenTour = _tenTour;
         }
 
-        public override List<Touris> GetAll()
+        public TourBus()
         {
-            return context.Touris.ToList();
         }
 
-        public override void Remove(Touris entity)
+        internal void Update()
         {
-            context.Touris.Remove(entity);
-        }
-
-        public override void RemoveRange(List<Touris> listEntity)
-        {
-            context.Touris.RemoveRange(listEntity);
+            DalTour.Update(this);
         }
     }
 }

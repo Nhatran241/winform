@@ -20,5 +20,6 @@ namespace DuLich.Entity
         public Touris Touris { get; set; }
         public ICollection<DoanKhach> DoanKhachs { get; set; }
         public ICollection<PhanCong> PhanCongs { get; set; }
+        public ICollection<ChiPhi> ChiPhis { get; set; }
     }
 }

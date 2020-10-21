@@ -52,9 +52,10 @@ namespace DuLich
             // 
             // panel_main_content
             // 
-            this.panel_main_content.Location = new System.Drawing.Point(182, 37);
+            this.panel_main_content.BackColor = System.Drawing.SystemColors.Desktop;
+            this.panel_main_content.Location = new System.Drawing.Point(196, 37);
             this.panel_main_content.Name = "panel_main_content";
-            this.panel_main_content.Size = new System.Drawing.Size(512, 512);
+            this.panel_main_content.Size = new System.Drawing.Size(800, 600);
             this.panel_main_content.TabIndex = 3;
             // 
             // btn_quanlytour
@@ -148,7 +149,7 @@ namespace DuLich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 548);
+            this.ClientSize = new System.Drawing.Size(1008, 641);
             this.Controls.Add(this.btn_quanlynhanvien);
             this.Controls.Add(this.btn_taodoan);
             this.Controls.Add(this.button2);

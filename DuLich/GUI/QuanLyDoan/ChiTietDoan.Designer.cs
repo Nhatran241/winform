@@ -44,8 +44,11 @@ namespace DuLich.View
             this.btn_xoa = new System.Windows.Forms.Button();
             this.datepicker_ketthuc = new System.Windows.Forms.DateTimePicker();
             this.datepicker_batdau = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tv_ngayketthuc = new System.Windows.Forms.Label();
             this.tv_ngaybatdau = new System.Windows.Forms.Label();
+            this.tv_tourkogia = new System.Windows.Forms.Label();
+            this.tv_doanhthuuoctinh = new System.Windows.Forms.Label();
+            this.tab_chiphi = new System.Windows.Forms.TabPage();
             this.tab_chitiet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,14 +106,15 @@ namespace DuLich.View
             this.tour_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tour_loai.Location = new System.Drawing.Point(10, 115);
             this.tour_loai.Name = "tour_loai";
-            this.tour_loai.Size = new System.Drawing.Size(109, 24);
+            this.tour_loai.Size = new System.Drawing.Size(54, 24);
             this.tour_loai.TabIndex = 20;
-            this.tour_loai.Text = "Nhân Viên";
+            this.tour_loai.Text = "Tour";
             // 
             // tab_chitiet
             // 
             this.tab_chitiet.Controls.Add(this.tab_phancong);
             this.tab_chitiet.Controls.Add(this.tab_khach);
+            this.tab_chitiet.Controls.Add(this.tab_chiphi);
             this.tab_chitiet.Location = new System.Drawing.Point(14, 250);
             this.tab_chitiet.Name = "tab_chitiet";
             this.tab_chitiet.SelectedIndex = 0;
@@ -133,7 +137,7 @@ namespace DuLich.View
             this.tab_khach.Location = new System.Drawing.Point(4, 22);
             this.tab_khach.Name = "tab_khach";
             this.tab_khach.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_khach.Size = new System.Drawing.Size(487, 315);
+            this.tab_khach.Size = new System.Drawing.Size(487, 233);
             this.tab_khach.TabIndex = 1;
             this.tab_khach.Text = "Khách";
             this.tab_khach.UseVisualStyleBackColor = true;
@@ -166,7 +170,6 @@ namespace DuLich.View
             this.datepicker_ketthuc.Name = "datepicker_ketthuc";
             this.datepicker_ketthuc.Size = new System.Drawing.Size(181, 20);
             this.datepicker_ketthuc.TabIndex = 27;
-            this.datepicker_batdau.ValueChanged += new System.EventHandler(this.datepicker_ketthuc_ValueChanged);
             // 
             // datepicker_batdau
             // 
@@ -176,15 +179,15 @@ namespace DuLich.View
             this.datepicker_batdau.TabIndex = 26;
             this.datepicker_batdau.ValueChanged += new System.EventHandler(this.datepicker_batdau_ValueChanged);
             // 
-            // label1
+            // tv_ngayketthuc
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 209);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 24);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Ngày Kết Thúc";
+            this.tv_ngayketthuc.AutoSize = true;
+            this.tv_ngayketthuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_ngayketthuc.Location = new System.Drawing.Point(3, 209);
+            this.tv_ngayketthuc.Name = "tv_ngayketthuc";
+            this.tv_ngayketthuc.Size = new System.Drawing.Size(135, 24);
+            this.tv_ngayketthuc.TabIndex = 25;
+            this.tv_ngayketthuc.Text = "Ngày Kết Thúc";
             // 
             // tv_ngaybatdau
             // 
@@ -196,13 +199,45 @@ namespace DuLich.View
             this.tv_ngaybatdau.TabIndex = 24;
             this.tv_ngaybatdau.Text = "Ngay Bat Dau";
             // 
+            // tv_tourkogia
+            // 
+            this.tv_tourkogia.AutoSize = true;
+            this.tv_tourkogia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tourkogia.Location = new System.Drawing.Point(10, 185);
+            this.tv_tourkogia.Name = "tv_tourkogia";
+            this.tv_tourkogia.Size = new System.Drawing.Size(491, 24);
+            this.tv_tourkogia.TabIndex = 28;
+            this.tv_tourkogia.Text = "Tour này chưa có giá vui lòng thêm giá trước khi tạo đoàn";
+            this.tv_tourkogia.Visible = false;
+            // 
+            // tv_doanhthuuoctinh
+            // 
+            this.tv_doanhthuuoctinh.AutoSize = true;
+            this.tv_doanhthuuoctinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_doanhthuuoctinh.Location = new System.Drawing.Point(268, 232);
+            this.tv_doanhthuuoctinh.Name = "tv_doanhthuuoctinh";
+            this.tv_doanhthuuoctinh.Size = new System.Drawing.Size(187, 24);
+            this.tv_doanhthuuoctinh.TabIndex = 29;
+            this.tv_doanhthuuoctinh.Text = "Doanh Thu Ước Tính";
+            // 
+            // tab_chiphi
+            // 
+            this.tab_chiphi.Location = new System.Drawing.Point(4, 22);
+            this.tab_chiphi.Name = "tab_chiphi";
+            this.tab_chiphi.Size = new System.Drawing.Size(487, 233);
+            this.tab_chiphi.TabIndex = 2;
+            this.tab_chiphi.Text = "Chi Phí";
+            this.tab_chiphi.UseVisualStyleBackColor = true;
+            // 
             // ChiTietDoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tv_doanhthuuoctinh);
+            this.Controls.Add(this.tv_tourkogia);
             this.Controls.Add(this.datepicker_ketthuc);
             this.Controls.Add(this.datepicker_batdau);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tv_ngayketthuc);
             this.Controls.Add(this.tv_ngaybatdau);
             this.Controls.Add(this.btn_xoa);
             this.Controls.Add(this.btn_chinhsua);
@@ -236,7 +271,10 @@ namespace DuLich.View
         private System.Windows.Forms.Button btn_xoa;
         private DateTimePicker datepicker_ketthuc;
         private DateTimePicker datepicker_batdau;
-        private Label label1;
+        private Label tv_ngayketthuc;
         private Label tv_ngaybatdau;
+        private Label tv_tourkogia;
+        private Label tv_doanhthuuoctinh;
+        private TabPage tab_chiphi;
     }
 }

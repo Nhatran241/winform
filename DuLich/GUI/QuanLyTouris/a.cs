@@ -15,30 +15,33 @@ namespace DuLich.View.QuanLyTouris
     public partial class DanhSachTouris : UserControl
     {
         private OnItemClickListener onItemClickListener;
+        public DanhSachTouris()
+        {
+            InitializeComponent();
+        }
         public DanhSachTouris(IEnumerable<Touris> tourisList, IEnumerable<Loai> loaisList,OnItemClickListener onItemClickListener)
         {
             InitializeComponent();
             this.onItemClickListener = onItemClickListener;
-            InitData(tourisList, loaisList);
+           // InitData(tourisList, loaisList);
         }
 
         private void InitData(IEnumerable<Touris> tourisList,IEnumerable<Loai> loaisList)
         {
-          foreach(Touris tour in tourisList)
-            {
-                list_touris.Items.Add(new ListViewItem(new string[] { tour.Id.ToString(), tour.Name , loaisList.First(c =>c.Id == tour.Loai.Id).TenLoai}));
-            } 
+            dataGridView1.DataSource = tourisList;
+            //(dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Field = '{0}'", textBoxFilter.Text);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            int position = list_touris.SelectedItems[0].Index;
-            onItemClickListener.onItemClicked(position);
+           // int position = list_touris.SelectedItems[0].Index;
+            //onItemClickListener.onItemClicked(position);
         }
         public interface OnItemClickListener
         {
             void onItemClicked(int position);
         }
+
     }
 }

@@ -17,7 +17,6 @@ namespace DuLich.View
     {
         private OnChiTietTourListener onChiTietClickListener;
         private UserControl chiTietUserControl;
-        private QuanLyTourisState quanLyTourisState = QuanLyTourisState.DANHSACHGIA;
         private bool isEditing = false;
         public ChiTietTouris(Touris touris,IEnumerable<Loai> loais, IEnumerable<Gia> gias, List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour, OnChiTietTourListener onChiTietClickListener)
         {
@@ -121,7 +120,6 @@ namespace DuLich.View
             chiTietUserControl = new DanhSachGia(gias,this);
             tab_gia.Controls.Clear();
             tab_gia.Controls.Add(chiTietUserControl);
-            quanLyTourisState = QuanLyTourisState.DANHSACHGIA;
         }
 
         public void LoadDanhSachDiaDiem()
@@ -130,7 +128,6 @@ namespace DuLich.View
             chiTietUserControl = new DanhSachDiaDiem(tatCaDiaDiem,diaDiemCuaTour,this);
             tab_diadiem.Controls.Clear();
             tab_diadiem.Controls.Add(chiTietUserControl);
-            quanLyTourisState = QuanLyTourisState.DANHSACHDIADIEM;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

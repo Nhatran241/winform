@@ -107,7 +107,7 @@ namespace DuLich.View.QuanLyDiaDiem
             this.Controls.Add(this.btn_them_diadiem);
             this.Controls.Add(this.list_diadiem);
             this.Name = "QuanLyDiaDiem";
-            this.Size = new System.Drawing.Size(512, 512);
+            this.Size = new System.Drawing.Size(767, 414);
             this.ResumeLayout(false);
 
         }

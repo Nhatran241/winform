@@ -48,7 +48,7 @@ namespace DuLich.View
             // textbox_id
             // 
             this.textbox_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_id.Location = new System.Drawing.Point(125, 7);
+            this.textbox_id.Location = new System.Drawing.Point(104, 7);
             this.textbox_id.Name = "textbox_id";
             this.textbox_id.Size = new System.Drawing.Size(218, 29);
             this.textbox_id.TabIndex = 13;
@@ -58,7 +58,7 @@ namespace DuLich.View
             this.combobox_loai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combobox_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combobox_loai.FormattingEnabled = true;
-            this.combobox_loai.Location = new System.Drawing.Point(125, 118);
+            this.combobox_loai.Location = new System.Drawing.Point(115, 63);
             this.combobox_loai.Name = "combobox_loai";
             this.combobox_loai.Size = new System.Drawing.Size(218, 32);
             this.combobox_loai.TabIndex = 12;
@@ -78,7 +78,7 @@ namespace DuLich.View
             // 
             this.tour_name.AutoSize = true;
             this.tour_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tour_name.Location = new System.Drawing.Point(10, 62);
+            this.tour_name.Location = new System.Drawing.Point(349, 10);
             this.tour_name.Name = "tour_name";
             this.tour_name.Size = new System.Drawing.Size(97, 24);
             this.tour_name.TabIndex = 18;
@@ -87,7 +87,7 @@ namespace DuLich.View
             // textbox_name
             // 
             this.textbox_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_name.Location = new System.Drawing.Point(125, 57);
+            this.textbox_name.Location = new System.Drawing.Point(452, 7);
             this.textbox_name.Name = "textbox_name";
             this.textbox_name.Size = new System.Drawing.Size(218, 29);
             this.textbox_name.TabIndex = 19;
@@ -97,7 +97,7 @@ namespace DuLich.View
             // 
             this.tour_loai.AutoSize = true;
             this.tour_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tour_loai.Location = new System.Drawing.Point(10, 115);
+            this.tour_loai.Location = new System.Drawing.Point(10, 71);
             this.tour_loai.Name = "tour_loai";
             this.tour_loai.Size = new System.Drawing.Size(99, 24);
             this.tour_loai.TabIndex = 20;
@@ -107,10 +107,10 @@ namespace DuLich.View
             // 
             this.tab_chitiet.Controls.Add(this.tab_gia);
             this.tab_chitiet.Controls.Add(this.tab_diadiem);
-            this.tab_chitiet.Location = new System.Drawing.Point(14, 168);
+            this.tab_chitiet.Location = new System.Drawing.Point(14, 160);
             this.tab_chitiet.Name = "tab_chitiet";
             this.tab_chitiet.SelectedIndex = 0;
-            this.tab_chitiet.Size = new System.Drawing.Size(495, 341);
+            this.tab_chitiet.Size = new System.Drawing.Size(775, 440);
             this.tab_chitiet.TabIndex = 21;
             this.tab_chitiet.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1_Selected);
             // 
@@ -120,7 +120,7 @@ namespace DuLich.View
             this.tab_gia.Location = new System.Drawing.Point(4, 22);
             this.tab_gia.Name = "tab_gia";
             this.tab_gia.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_gia.Size = new System.Drawing.Size(487, 315);
+            this.tab_gia.Size = new System.Drawing.Size(767, 414);
             this.tab_gia.TabIndex = 0;
             this.tab_gia.Text = "Giá";
             // 
@@ -136,10 +136,10 @@ namespace DuLich.View
             // 
             // btn_chinhsua
             // 
-            this.btn_chinhsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_chinhsua.Location = new System.Drawing.Point(370, 10);
+            this.btn_chinhsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_chinhsua.Location = new System.Drawing.Point(685, 10);
             this.btn_chinhsua.Name = "btn_chinhsua";
-            this.btn_chinhsua.Size = new System.Drawing.Size(118, 47);
+            this.btn_chinhsua.Size = new System.Drawing.Size(100, 40);
             this.btn_chinhsua.TabIndex = 22;
             this.btn_chinhsua.Text = "Chỉnh Sửa";
             this.btn_chinhsua.UseVisualStyleBackColor = true;
@@ -147,10 +147,10 @@ namespace DuLich.View
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_xoa.Location = new System.Drawing.Point(370, 92);
+            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_xoa.Location = new System.Drawing.Point(685, 71);
             this.btn_xoa.Name = "btn_xoa";
-            this.btn_xoa.Size = new System.Drawing.Size(118, 47);
+            this.btn_xoa.Size = new System.Drawing.Size(100, 40);
             this.btn_xoa.TabIndex = 23;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@ namespace DuLich.View
             this.Controls.Add(this.combobox_loai);
             this.Controls.Add(this.tour_id);
             this.Name = "ChiTietTouris";
-            this.Size = new System.Drawing.Size(512, 512);
+            this.Size = new System.Drawing.Size(800, 600);
             this.tab_chitiet.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
