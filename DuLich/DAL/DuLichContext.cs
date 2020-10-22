@@ -59,7 +59,18 @@ namespace DuLich.Entity
                     }.ForEach(x => NhanViens.Add(x));
                     SaveChanges();
                 }
-            }
+                if (LoaiChiPhis.ToList().Count == 0)
+                {
+                    new List<LoaiChiPhi>
+            {
+                new LoaiChiPhi { name= "Ăn Uống"},
+                new LoaiChiPhi { name= "Khách Sạn "},
+                new LoaiChiPhi { name= "Phương Tiện"}
+            }.ForEach(x => LoaiChiPhis.Add(x));
+                    SaveChanges();
+                }
+               
+        }
             catch(Exception e) { }
         }
         public DbSet<Touris> Touris { get; set; }
@@ -72,6 +83,8 @@ namespace DuLich.Entity
         public DbSet<Khach> Khaches { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<PhanCong> PhanCongs { get; set; }
+        public DbSet<ChiPhi> ChiPhis { get; set; }
+        public DbSet<LoaiChiPhi> LoaiChiPhis { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -93,6 +106,12 @@ namespace DuLich.Entity
             // Xóa đoàn xóa luôn những phân công liên quan
             modelBuilder.Entity<Doan>()
                        .HasMany<PhanCong>(g => g.PhanCongs)
+                       .WithRequired(s => s.Doan)
+                       .WillCascadeOnDelete();
+
+            // Xóa đoàn xóa luôn những chi phí liên quan
+            modelBuilder.Entity<Doan>()
+                       .HasMany<ChiPhi>(g => g.ChiPhis)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
 

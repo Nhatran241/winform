@@ -12,6 +12,7 @@ using DuLich.View.QuanLyTouris;
 using DuLich.Model.Entity;
 using DuLich.View.QuanLyPhanCong;
 using DuLich.View.QuanLyDoan;
+using DuLich.GUI.QuanLyChiPhi;
 
 namespace DuLich.View
 {
@@ -19,6 +20,7 @@ namespace DuLich.View
     {
         private IChiTietDoanListener chiTietDoanListener;
         private DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener;
+        private DanhSachChiPhi.IDanhSachChiPhiListener danhSachChiPhiListener;
         private SelectKhach.ISelectKhachListener selectKhachListener;
         private UserControl chiTietUserControl;
         private bool isEditing = false;
@@ -28,14 +30,17 @@ namespace DuLich.View
         private List<PhanCong> danhSachPhanCong;
         private List<Khach> danhSachTatCaKhach;
         private List<Khach> danhSachKhachTrongDoan;
+        private List<ChiPhi> danhSachChiPhi;
 
-        public ChiTietDoan(Doan doan, IEnumerable<Touris> listTour, List<PhanCong> phanCongs, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener)
+        public ChiTietDoan(Doan doan, IEnumerable<Touris> listTour, List<PhanCong> phanCongs,List<ChiPhi> danhSachChiPhi, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener,DanhSachChiPhi.IDanhSachChiPhiListener danhSachChiPhiListener)
         {
             InitializeComponent();
             this.doanHienTai = doan;
             this.chiTietDoanListener = chiTietDoanListener;
             this.danhSachPhanCongListener = danhSachPhanCongListener;
             this.selectKhachListener = selectKhachListener;
+            this.danhSachChiPhiListener = danhSachChiPhiListener;
+            this.danhSachChiPhi = danhSachChiPhi;
             this.danhSachTour = listTour;
             this.danhSachPhanCong = phanCongs;
             this.danhSachTatCaKhach = tatcakhach;
@@ -113,6 +118,11 @@ namespace DuLich.View
             tab_khach.Controls.Clear();
             tab_khach.Controls.Add(new SelectKhach(doanHienTai,danhSachTatCaKhach,danhSachKhachTrongDoan,selectKhachListener));
         }
+        private void LoadDanhSachChiPhi(List<ChiPhi> danhSachChiPhi)
+        {
+            tab_chiphi.Controls.Clear();
+            tab_chiphi.Controls.Add(new DanhSachChiPhi(doanHienTai,danhSachChiPhi,danhSachChiPhiListener));
+        }
 
         public void InitUI(Doan doan)
         {
@@ -176,12 +186,17 @@ namespace DuLich.View
             if (e.TabPage.Name=="tab_phancong") {
                 LoadDanhSachPhanCong(danhSachPhanCong);
             }
-            else
+            else if(e.TabPage.Name == "tab_khach")
             {
                 LoadDanhSachKhach(danhSachTatCaKhach,danhSachKhachTrongDoan);
-
+            }else
+            {
+                LoadDanhSachChiPhi(danhSachChiPhi);
             }
         }
+
+      
+
         public interface IChiTietDoanListener
         {
             void onChiTietDoanClick_CapNhat(Doan doanSauKhiCapNhat);

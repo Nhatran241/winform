@@ -14,17 +14,17 @@ namespace DuLich.GUI.QuanLyChiPhi
 {
     public partial class ChiTietChiPhi : UserControl
     {
-        private IChiTietPhanCongListener chiTietPhanCongListener;
-        private PhanCong phanCongHienTai;
-        private List<NhanVien> danhSachNhanVien;
+        private IChiTietChiPhiListener chiTietChiPhiListener;
+        private ChiPhi chiPhiHienTai;
+        private List<LoaiChiPhi> danhSachLoaiChiPhi;
         private bool isEditing = false;
-        public ChiTietChiPhi(PhanCong phanCong,List<NhanVien> danhSachNhanVien,IChiTietPhanCongListener chiTietPhanCongListener)
+        public ChiTietChiPhi(ChiPhi chiPhi,List<LoaiChiPhi> danhSachLoaiChiPhi, IChiTietChiPhiListener chiTietChiPhiListener)
         {
             InitializeComponent();
-            this.chiTietPhanCongListener = chiTietPhanCongListener;
-            this.phanCongHienTai = phanCong;
-            this.danhSachNhanVien = danhSachNhanVien;
-            if(phanCongHienTai.MaPhanCong == 0)
+            this.chiTietChiPhiListener = chiTietChiPhiListener;
+            this.chiPhiHienTai = chiPhi;
+            this.danhSachLoaiChiPhi = danhSachLoaiChiPhi;
+            if(chiPhi.id == 0)
             {
                 CreateNewRecord();
             }
@@ -32,37 +32,33 @@ namespace DuLich.GUI.QuanLyChiPhi
         }
         public void CreateNewRecord()
         {
-            phanCongHienTai.NhanVien = danhSachNhanVien.First();
-            phanCongHienTai.NhiemVu = "";
+            chiPhiHienTai.LoaiChiPhi = danhSachLoaiChiPhi.First();
+            chiPhiHienTai.ghiChu = "";
+            chiPhiHienTai.giaTri = 0;
         }
 
         private void InitUI()
         {
-            tb_maphancong.Text = phanCongHienTai.MaPhanCong.ToString();
-            if (phanCongHienTai.MaPhanCong == 0)
+            tb_machiphi.Text = chiPhiHienTai.id.ToString();
+            if (chiPhiHienTai.id == 0)
             {
-                tb_maphancong.Visible = false;
-                tv_maphancong.Visible = false;
+                tb_machiphi.Visible = false;
+                tv_machiphi.Visible = false;
             } else {
-                tb_maphancong.Visible = false;
-                tv_maphancong.Visible = false;
-                tb_maphancong.Enabled = false;
+                tb_machiphi.Visible = false;
+                tv_machiphi.Visible = false;
+                tb_machiphi.Enabled = false;
             } 
-            tb_nhiemvu.Text = phanCongHienTai.NhiemVu.ToString();
-            foreach (NhanVien nhanVien in danhSachNhanVien)
-            {
-                combobox_nhanvien.Items.Add(nhanVien);
-            }
-
-            combobox_nhanvien.Text = phanCongHienTai.NhanVien.TenNhanVien;
-          
+            tb_chiphi.Text = chiPhiHienTai.giaTri.ToString();
+            combobox_loaichiphi.DataSource = danhSachLoaiChiPhi;
+        combobox_loaichiphi.Text = chiPhiHienTai.LoaiChiPhi.name;
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if (Validation(phanCongHienTai))
+            if (Validation(chiPhiHienTai))
             {
-                chiTietPhanCongListener.onLuuClick(phanCongHienTai);
+                chiTietChiPhiListener.onLuuClick(chiPhiHienTai);
             }else
             {
                 MessageBox.Show("Giá trị không được bỏ trống");
@@ -71,14 +67,14 @@ namespace DuLich.GUI.QuanLyChiPhi
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
-            chiTietPhanCongListener.onHuyClick();
+            chiTietChiPhiListener.onHuyClick();
         }
-        public interface IChiTietPhanCongListener
+        public interface IChiTietChiPhiListener
         {
-            void onLuuClick(PhanCong phanCong);
+            void onLuuClick(ChiPhi chiPhi);
             void onHuyClick();
         }
-        private bool Validation(PhanCong phanCong)
+        private bool Validation(ChiPhi chiPhi)
         {
             return true;
         }
@@ -87,15 +83,20 @@ namespace DuLich.GUI.QuanLyChiPhi
         {
 
         }
-        private void comboxnhanvien_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboxloaichiphi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            phanCongHienTai.NhanVien = danhSachNhanVien.ToArray()[combobox_nhanvien.SelectedIndex];
+            chiPhiHienTai.LoaiChiPhi = danhSachLoaiChiPhi.ToArray()[combobox_loaichiphi.SelectedIndex];
         }
 
 
-        private void tb_nhiemvu_TextChanged(object sender, EventArgs e)
+        private void tb_giatri_TextChanged(object sender, EventArgs e)
         {
-            phanCongHienTai.NhiemVu = tb_nhiemvu.Text.Trim();
+            chiPhiHienTai.giaTri = long.Parse(tb_chiphi.Text.Trim());
+        }
+
+        private void tv_maphancong_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

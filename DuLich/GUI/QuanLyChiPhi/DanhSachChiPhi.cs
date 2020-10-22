@@ -16,24 +16,24 @@ namespace DuLich.GUI.QuanLyChiPhi
     {
         private IDanhSachChiPhiListener danhSachChiPhiListener;
         private List<ChiPhi> danhSachChiPhi;
-        public DanhSachChiPhi(List<ChiPhi> danhSachChiPhi, IDanhSachChiPhiListener danhSachChiPhiListener)
+        private Doan doanHienTai;
+        public DanhSachChiPhi(Doan doanHienTai,List<ChiPhi> danhSachChiPhi, IDanhSachChiPhiListener danhSachChiPhiListener)
         {
             InitializeComponent();
+            this.doanHienTai = doanHienTai;
             this.danhSachChiPhi = danhSachChiPhi;
             this.danhSachChiPhiListener = danhSachChiPhiListener;
             InitData(danhSachChiPhi);
         }
+
         private void InitData(List<ChiPhi> danhSachChiPhi)
         {
-
-            foreach (ChiPhi chiPhi in danhSachChiPhi)
-            {
-                listview_doan.Items.Add(new ListViewItem(new string[] { chiPhi.LoaiChiPhi.name,chiPhi.giaTri.ToString(),chiPhi.ghiChu }));
-            }
+            dataGridView1.DataSource = danhSachChiPhi;
         }
+
         private void listview_doan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int position = listview_doan.SelectedIndices.Count;
+            int position = dataGridView1.CurrentCell.RowIndex;
             if (position > 0)
             {
                 btn_sua_doan.Visible = true;
@@ -47,34 +47,27 @@ namespace DuLich.GUI.QuanLyChiPhi
         }
         public interface IDanhSachChiPhiListener
         {
-            void onDanhSachChiPhi_ThemClick();
+            void onDanhSachChiPhi_ThemClick(Doan doanHienTai);
             void onDanhSachChiPhi_SuaClick(ChiPhi chiPhi);
             void onDanhSachChiPhi_XoaClick(ChiPhi chiPhi);
         }
 
         private void btn_them_doan_Click(object sender, EventArgs e)
         {
-            danhSachChiPhiListener.onDanhSachChiPhi_ThemClick();
+            danhSachChiPhiListener.onDanhSachChiPhi_ThemClick(doanHienTai);
         }
 
         private void btn_xoa_doan_Click(object sender, EventArgs e)
         {
-            if (listview_doan.SelectedItems.Count > 0)
-            {
-                int position = listview_doan.SelectedItems[0].Index;
-                danhSachChiPhiListener.onDanhSachChiPhi_XoaClick(danhSachChiPhi.ToArray()[position]);
-            }
+            int position = dataGridView1.CurrentCell.RowIndex;
+            danhSachChiPhiListener.onDanhSachChiPhi_XoaClick(danhSachChiPhi.ToArray()[position]);
             
         }
 
         private void btn_sua_doan_Click(object sender, EventArgs e)
         {
-            if (listview_doan.SelectedItems.Count > 0)
-            {
-                int position = listview_doan.SelectedItems[0].Index;
-                danhSachChiPhiListener.onDanhSachChiPhi_XoaClick(danhSachChiPhi.ToArray()[position]);
-            }
-
+            int position = dataGridView1.CurrentCell.RowIndex;
+            danhSachChiPhiListener.onDanhSachChiPhi_XoaClick(danhSachChiPhi.ToArray()[position]);
         }
     }
 }
