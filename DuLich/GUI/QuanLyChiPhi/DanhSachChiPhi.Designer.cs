@@ -33,11 +33,11 @@
             this.btn_xoa_doan = new System.Windows.Forms.Button();
             this.btn_sua_doan = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.chiPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loaiChiPhiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaTriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ghiChuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chiPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chiPhiBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,12 +85,8 @@
             this.dataGridView1.DataSource = this.chiPhiBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 32);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(582, 348);
+            this.dataGridView1.Size = new System.Drawing.Size(789, 369);
             this.dataGridView1.TabIndex = 15;
-            // 
-            // chiPhiBindingSource
-            // 
-            this.chiPhiBindingSource.DataSource = typeof(DuLich.Model.Entity.ChiPhi);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -116,6 +112,10 @@
             this.ghiChuDataGridViewTextBoxColumn.HeaderText = "ghiChu";
             this.ghiChuDataGridViewTextBoxColumn.Name = "ghiChuDataGridViewTextBoxColumn";
             // 
+            // chiPhiBindingSource
+            // 
+            this.chiPhiBindingSource.DataSource = typeof(DuLich.Model.Entity.ChiPhi);
+            // 
             // DanhSachChiPhi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,7 +125,7 @@
             this.Controls.Add(this.btn_xoa_doan);
             this.Controls.Add(this.btn_sua_doan);
             this.Name = "DanhSachChiPhi";
-            this.Size = new System.Drawing.Size(585, 383);
+            this.Size = new System.Drawing.Size(792, 404);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chiPhiBindingSource)).EndInit();
             this.ResumeLayout(false);

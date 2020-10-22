@@ -32,55 +32,37 @@ namespace DuLich.View.QuanLyDoan
         {
             this.listbox_tatcakhach = new System.Windows.Forms.ListBox();
             this.listbox_khachtrongdoan = new System.Windows.Forms.ListBox();
-            this.btn_xoa = new System.Windows.Forms.Button();
-            this.btn_them = new System.Windows.Forms.Button();
             this.tv_khachtrongdoan = new System.Windows.Forms.Label();
             this.tv_tatcakhach = new System.Windows.Forms.Label();
+            this.btn_up = new System.Windows.Forms.Button();
             this.btn_luu = new System.Windows.Forms.Button();
+            this.btn_them = new System.Windows.Forms.Button();
+            this.btn_xoa = new System.Windows.Forms.Button();
+            this.btn_down = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listbox_tatcakhach
             // 
             this.listbox_tatcakhach.FormattingEnabled = true;
-            this.listbox_tatcakhach.Location = new System.Drawing.Point(0, 77);
+            this.listbox_tatcakhach.Location = new System.Drawing.Point(8, 45);
             this.listbox_tatcakhach.Name = "listbox_tatcakhach";
-            this.listbox_tatcakhach.Size = new System.Drawing.Size(200, 238);
+            this.listbox_tatcakhach.Size = new System.Drawing.Size(300, 342);
             this.listbox_tatcakhach.TabIndex = 0;
             this.listbox_tatcakhach.SelectedIndexChanged += new System.EventHandler(this.listbox_chondiadiem_SelectedIndexChanged);
             // 
             // listbox_khachtrongdoan
             // 
             this.listbox_khachtrongdoan.FormattingEnabled = true;
-            this.listbox_khachtrongdoan.Location = new System.Drawing.Point(284, 77);
+            this.listbox_khachtrongdoan.Location = new System.Drawing.Point(480, 45);
             this.listbox_khachtrongdoan.Name = "listbox_khachtrongdoan";
-            this.listbox_khachtrongdoan.Size = new System.Drawing.Size(200, 238);
+            this.listbox_khachtrongdoan.Size = new System.Drawing.Size(300, 342);
             this.listbox_khachtrongdoan.TabIndex = 1;
-            // 
-            // btn_xoa
-            // 
-            this.btn_xoa.Location = new System.Drawing.Point(217, 135);
-            this.btn_xoa.Name = "btn_xoa";
-            this.btn_xoa.Size = new System.Drawing.Size(50, 40);
-            this.btn_xoa.TabIndex = 2;
-            this.btn_xoa.Text = "Xóa";
-            this.btn_xoa.UseVisualStyleBackColor = true;
-            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
-            // 
-            // btn_them
-            // 
-            this.btn_them.Location = new System.Drawing.Point(217, 89);
-            this.btn_them.Name = "btn_them";
-            this.btn_them.Size = new System.Drawing.Size(50, 40);
-            this.btn_them.TabIndex = 3;
-            this.btn_them.Text = "Thêm";
-            this.btn_them.UseVisualStyleBackColor = true;
-            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
             // tv_khachtrongdoan
             // 
             this.tv_khachtrongdoan.AutoSize = true;
             this.tv_khachtrongdoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tv_khachtrongdoan.Location = new System.Drawing.Point(324, 31);
+            this.tv_khachtrongdoan.Location = new System.Drawing.Point(551, 9);
             this.tv_khachtrongdoan.Name = "tv_khachtrongdoan";
             this.tv_khachtrongdoan.Size = new System.Drawing.Size(170, 24);
             this.tv_khachtrongdoan.TabIndex = 4;
@@ -90,25 +72,65 @@ namespace DuLich.View.QuanLyDoan
             // 
             this.tv_tatcakhach.AutoSize = true;
             this.tv_tatcakhach.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tv_tatcakhach.Location = new System.Drawing.Point(22, 31);
+            this.tv_tatcakhach.Location = new System.Drawing.Point(44, 9);
             this.tv_tatcakhach.Name = "tv_tatcakhach";
             this.tv_tatcakhach.Size = new System.Drawing.Size(123, 24);
             this.tv_tatcakhach.TabIndex = 5;
             this.tv_tatcakhach.Text = "Tất Cả Khách";
             // 
+            // btn_up
+            // 
+            this.btn_up.Image = global::DuLich.Properties.Resources.up_arrow;
+            this.btn_up.Location = new System.Drawing.Point(373, 187);
+            this.btn_up.Name = "btn_up";
+            this.btn_up.Size = new System.Drawing.Size(50, 50);
+            this.btn_up.TabIndex = 6;
+            this.btn_up.Click += new System.EventHandler(this.btn_up_Click);
+            // 
             // btn_luu
             // 
-            this.btn_luu.Location = new System.Drawing.Point(217, 181);
+            this.btn_luu.Image = global::DuLich.Properties.Resources.download;
+            this.btn_luu.Location = new System.Drawing.Point(373, 337);
             this.btn_luu.Name = "btn_luu";
-            this.btn_luu.Size = new System.Drawing.Size(50, 40);
+            this.btn_luu.Size = new System.Drawing.Size(50, 50);
             this.btn_luu.TabIndex = 0;
-            this.btn_luu.Text = "Lưu";
             this.btn_luu.Click += new System.EventHandler(this.btn_luu_Click);
+            // 
+            // btn_them
+            // 
+            this.btn_them.Image = global::DuLich.Properties.Resources.plus;
+            this.btn_them.Location = new System.Drawing.Point(373, 45);
+            this.btn_them.Name = "btn_them";
+            this.btn_them.Size = new System.Drawing.Size(50, 50);
+            this.btn_them.TabIndex = 3;
+            this.btn_them.UseVisualStyleBackColor = true;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
+            // 
+            // btn_xoa
+            // 
+            this.btn_xoa.Image = global::DuLich.Properties.Resources.remove;
+            this.btn_xoa.Location = new System.Drawing.Point(373, 113);
+            this.btn_xoa.Name = "btn_xoa";
+            this.btn_xoa.Size = new System.Drawing.Size(50, 50);
+            this.btn_xoa.TabIndex = 2;
+            this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
+            // 
+            // btn_down
+            // 
+            this.btn_down.Image = global::DuLich.Properties.Resources.down_arrow;
+            this.btn_down.Location = new System.Drawing.Point(373, 260);
+            this.btn_down.Name = "btn_down";
+            this.btn_down.Size = new System.Drawing.Size(50, 50);
+            this.btn_down.TabIndex = 7;
+            this.btn_down.Click += new System.EventHandler(this.btn_down_Click);
             // 
             // SelectKhach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_down);
+            this.Controls.Add(this.btn_up);
             this.Controls.Add(this.btn_luu);
             this.Controls.Add(this.tv_tatcakhach);
             this.Controls.Add(this.tv_khachtrongdoan);
@@ -117,7 +139,7 @@ namespace DuLich.View.QuanLyDoan
             this.Controls.Add(this.listbox_khachtrongdoan);
             this.Controls.Add(this.listbox_tatcakhach);
             this.Name = "SelectKhach";
-            this.Size = new System.Drawing.Size(487, 315);
+            this.Size = new System.Drawing.Size(792, 404);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +154,7 @@ namespace DuLich.View.QuanLyDoan
         private Label tv_khachtrongdoan;
         private Label tv_tatcakhach;
         private Button btn_luu;
+        private Button btn_up;
+        private Button btn_down;
     }
 }

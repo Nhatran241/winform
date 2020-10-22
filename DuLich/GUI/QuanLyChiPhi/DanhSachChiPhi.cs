@@ -49,7 +49,7 @@ namespace DuLich.GUI.QuanLyChiPhi
         {
             void onDanhSachChiPhi_ThemClick(Doan doanHienTai);
             void onDanhSachChiPhi_SuaClick(ChiPhi chiPhi);
-            void onDanhSachChiPhi_XoaClick(ChiPhi chiPhi);
+            void onDanhSachChiPhi_XoaClick(Doan doanHienTai,ChiPhi chiPhi);
         }
 
         private void btn_them_doan_Click(object sender, EventArgs e)
@@ -60,14 +60,14 @@ namespace DuLich.GUI.QuanLyChiPhi
         private void btn_xoa_doan_Click(object sender, EventArgs e)
         {
             int position = dataGridView1.CurrentCell.RowIndex;
-            danhSachChiPhiListener.onDanhSachChiPhi_XoaClick(danhSachChiPhi.ToArray()[position]);
+            danhSachChiPhiListener.onDanhSachChiPhi_XoaClick(doanHienTai,danhSachChiPhi.ToArray()[position]);
             
         }
 
         private void btn_sua_doan_Click(object sender, EventArgs e)
         {
             int position = dataGridView1.CurrentCell.RowIndex;
-            danhSachChiPhiListener.onDanhSachChiPhi_XoaClick(danhSachChiPhi.ToArray()[position]);
+            danhSachChiPhiListener.onDanhSachChiPhi_SuaClick(danhSachChiPhi.ToArray()[position]);
         }
     }
 }

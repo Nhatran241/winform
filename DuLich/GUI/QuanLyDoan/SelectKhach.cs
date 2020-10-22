@@ -14,25 +14,21 @@ namespace DuLich.View.QuanLyDoan
 {
     public partial class SelectKhach : UserControl
     {
-        private List<Khach> danhSachTatCaKhach;
-        private List<Khach> danhSachKhachTrongDoan;
-        private List<Khach> danhSachKhachTrongDoanTam;
+        private List<Khach> danhSachTatCaKhach = new List<Khach>();
+        private List<Khach> danhSachKhachTrongDoan = new List<Khach>();
+        private List<Khach> danhSachKhachTrongDoanTam = new List<Khach>();
         private ISelectKhachListener selectKhachListener;
         private Doan doanHienTai;
         public SelectKhach(Doan doanHienTai,List<Khach> danhSachTatCaKhach , List<Khach> danhSachKhachTrongDoan, ISelectKhachListener selectKhachListener)
         {
             InitializeComponent();
             UpdateComponentState();
-            this.danhSachTatCaKhach = danhSachTatCaKhach;
-            this.danhSachKhachTrongDoan = danhSachKhachTrongDoan;
+            this.danhSachTatCaKhach.AddRange(danhSachTatCaKhach);
+            this.danhSachKhachTrongDoan.AddRange(danhSachKhachTrongDoan);
+            this.danhSachKhachTrongDoanTam.AddRange(danhSachKhachTrongDoan);
             this.selectKhachListener = selectKhachListener;
             this.doanHienTai = doanHienTai;
-            danhSachKhachTrongDoanTam = new List<Khach>();
-            if (danhSachKhachTrongDoan != null)
-            {
-                danhSachKhachTrongDoanTam.AddRange(danhSachKhachTrongDoan);
-            }
-            initData(danhSachTatCaKhach, danhSachKhachTrongDoan);
+            initData();
         }
 
         public void UpdateComponentState()
@@ -41,25 +37,19 @@ namespace DuLich.View.QuanLyDoan
         }
          
 
-        private void initData(List<Khach> danhSachTatCaKhach, List<Khach> danhSachKhachTrongDoan)
+        private void initData()
         {
-            if(danhSachTatCaKhach != null && danhSachKhachTrongDoan!=null)
+            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
+            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
+            if (danhSachTatCaKhach != null && danhSachKhachTrongDoan!=null)
             {
-                foreach (Khach khach in danhSachTatCaKhach)
-                {
-                    if (!danhSachKhachTrongDoan.Contains(khach))
-                    {
-                        listbox_tatcakhach.Items.Add(khach);
-                    }
-                }
+                danhSachTatCaKhach.RemoveAll(c=>danhSachKhachTrongDoan.Contains(c));
             }
-            if (danhSachTatCaKhach != null)
-            {
-                foreach (Khach khack in danhSachKhachTrongDoan)
-                {
-                    listbox_khachtrongdoan.Items.Add(khack);
-                }
-            }
+            listbox_khachtrongdoan.DataSource = null;
+            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
+
+            listbox_tatcakhach.DataSource = null;
+            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
         }
 
         private void btn_them_Click(object sender, EventArgs e)
@@ -67,21 +57,71 @@ namespace DuLich.View.QuanLyDoan
             if (listbox_tatcakhach.SelectedItem == null)
                 return;
             danhSachKhachTrongDoan.Add((Khach)listbox_tatcakhach.SelectedItem);
-            listbox_khachtrongdoan.Items.Add((Khach)listbox_tatcakhach.SelectedItem);
-            listbox_tatcakhach.Items.Remove(listbox_tatcakhach.SelectedItem);
             danhSachTatCaKhach.Remove((Khach)listbox_tatcakhach.SelectedItem);
+
+            listbox_khachtrongdoan.DataSource = null;
+            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
+            listbox_khachtrongdoan.SelectedIndex = listbox_khachtrongdoan.Items.Count - 1;
+
+            listbox_tatcakhach.DataSource = null;
+            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
+            listbox_tatcakhach.SelectedIndex = listbox_tatcakhach.Items.Count - 1;
             checkSuThayDoi();
+        }
+
+        private void btn_up_Click(object sender, EventArgs e)
+        {
+            if (listbox_khachtrongdoan.SelectedItem == null)
+                return;
+            int position = listbox_khachtrongdoan.SelectedIndex;
+            if (position != 0) {
+                Khach temp = (Khach)listbox_khachtrongdoan.SelectedItem;
+                danhSachKhachTrongDoan.RemoveAt(position);
+                danhSachKhachTrongDoan.Insert(position - 1, temp);
+                listbox_khachtrongdoan.SelectedIndex = position - 1;
+
+                listbox_khachtrongdoan.DataSource = null;
+                listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
+
+                listbox_tatcakhach.DataSource = null;
+                listbox_tatcakhach.DataSource = danhSachTatCaKhach;
+                checkSuThayDoi();
+            }
+        }
+
+        private void btn_down_Click(object sender, EventArgs e)
+        {
+            if (listbox_khachtrongdoan.SelectedItem == null)
+                return;
+            int position = listbox_khachtrongdoan.SelectedIndex;
+            if (position != danhSachKhachTrongDoan.Count-1)
+            {
+                Khach temp = (Khach)listbox_khachtrongdoan.SelectedItem;
+                danhSachKhachTrongDoan.RemoveAt(position);
+                danhSachKhachTrongDoan.Insert(position + 1, temp);
+                listbox_khachtrongdoan.SelectedIndex = position + 1;
+
+                listbox_khachtrongdoan.DataSource = null;
+                listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
+
+                listbox_tatcakhach.DataSource = null;
+                listbox_tatcakhach.DataSource = danhSachTatCaKhach;
+                checkSuThayDoi();
+            }
         }
 
         private void checkSuThayDoi()
         {
             if (danhSachKhachTrongDoan.Count == danhSachKhachTrongDoanTam.Count)
             {
-                foreach (Khach khach in danhSachKhachTrongDoan) {
-                    if (!danhSachKhachTrongDoanTam.Contains(khach)) {
+                foreach(Khach khach in danhSachKhachTrongDoan)
+                {
+                    if (!danhSachKhachTrongDoanTam.Contains(khach))
+                    {
                         ShowLuuButton();
                         return;
                     }
+                    HideLuuButton();
                 }
             }
             else {
@@ -98,10 +138,16 @@ namespace DuLich.View.QuanLyDoan
             if (listbox_khachtrongdoan.SelectedItem == null)
                 return;
 
-            listbox_tatcakhach.Items.Add(listbox_khachtrongdoan.SelectedItem);
             danhSachTatCaKhach.Add((Khach)listbox_khachtrongdoan.SelectedItem);
             danhSachKhachTrongDoan.Remove((Khach)listbox_khachtrongdoan.SelectedItem);
-            listbox_khachtrongdoan.Items.Remove((Khach)listbox_khachtrongdoan.SelectedItem);
+
+            listbox_khachtrongdoan.DataSource = null;
+            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
+            listbox_khachtrongdoan.SelectedIndex = listbox_khachtrongdoan.Items.Count - 1;
+
+            listbox_tatcakhach.DataSource = null;
+            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
+            listbox_tatcakhach.SelectedIndex = listbox_tatcakhach.Items.Count - 1;
             checkSuThayDoi();
         }
 
@@ -124,5 +170,6 @@ namespace DuLich.View.QuanLyDoan
         {
             btn_luu.Visible = false;
         }
+
     }
 }

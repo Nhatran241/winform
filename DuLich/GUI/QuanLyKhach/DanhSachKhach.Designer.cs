@@ -33,9 +33,9 @@
             this.Ten = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DiaChi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SoDienThoai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.scmnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_xoa_doan = new System.Windows.Forms.Button();
             this.btn_sua_doan = new System.Windows.Forms.Button();
-            this.scmnd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btn_them_doan
@@ -59,7 +59,7 @@
             this.listview_doan.HideSelection = false;
             this.listview_doan.Location = new System.Drawing.Point(0, 31);
             this.listview_doan.Name = "listview_doan";
-            this.listview_doan.Size = new System.Drawing.Size(487, 282);
+            this.listview_doan.Size = new System.Drawing.Size(789, 370);
             this.listview_doan.TabIndex = 8;
             this.listview_doan.UseCompatibleStateImageBehavior = false;
             this.listview_doan.View = System.Windows.Forms.View.Details;
@@ -82,6 +82,11 @@
             this.SoDienThoai.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SoDienThoai.Width = 138;
             // 
+            // scmnd
+            // 
+            this.scmnd.Text = "So CMND";
+            this.scmnd.Width = 104;
+            // 
             // btn_xoa_doan
             // 
             this.btn_xoa_doan.Location = new System.Drawing.Point(354, 3);
@@ -102,11 +107,6 @@
             this.btn_sua_doan.UseVisualStyleBackColor = true;
             this.btn_sua_doan.Click += new System.EventHandler(this.btn_sua_doan_Click);
             // 
-            // scmnd
-            // 
-            this.scmnd.Text = "So CMND";
-            this.scmnd.Width = 104;
-            // 
             // DanhSachKhach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,7 +116,7 @@
             this.Controls.Add(this.btn_xoa_doan);
             this.Controls.Add(this.btn_sua_doan);
             this.Name = "DanhSachKhach";
-            this.Size = new System.Drawing.Size(487, 315);
+            this.Size = new System.Drawing.Size(792, 404);
             this.ResumeLayout(false);
 
         }

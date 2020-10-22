@@ -67,14 +67,14 @@ namespace DuLich.View.QuanLyPhanCong
             if (listview_phancong.SelectedItems.Count > 0)
             {
                 int position = listview_phancong.SelectedItems[0].Index;
-                danhSachPhanCongListener.onDanhSachPhanCongXoaClick(PhanCongs.ToArray()[position]);
+                danhSachPhanCongListener.onDanhSachPhanCongXoaClick(doanHienTai,PhanCongs.ToArray()[position]);
             }
         }
         public interface IDanhSachPhanCongListener
         {
             void onDanhSachPhanCongThemClick(Doan doanHienTai);
             void onDanhSachPhanCongSuaClick(PhanCong phanCong);
-            void onDanhSachPhanCongXoaClick(PhanCong phanCong);
+            void onDanhSachPhanCongXoaClick(Doan doanHienTai,PhanCong phanCong);
         }
     }
 }

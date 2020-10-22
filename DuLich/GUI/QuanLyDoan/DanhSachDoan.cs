@@ -10,36 +10,205 @@ using System.Windows.Forms;
 using DuLich.Entity;
 using DuLich.Model.Entity;
 
-namespace DuLich.View.QuanLyDoan
+namespace DuLich.GUI.QuanLyDoan
 {
-    public partial class DanhSachDoan : UserControl
+    public partial class DanhSachDoan : UserControl,SearchDoan.ISearchDoanListener
     {
         private IDanhSachDoanListener danhSachDoanListener;
         private List<Doan> danhSachDoan;
-        public DanhSachDoan(List<Doan> doans, List<Touris> tours,IDanhSachDoanListener danhSachDoanListener)
+        private List<Touris> danhSachTour;
+        private List<NhanVien> danhSachNhanVien;
+        private List<Khach> danhSachKhach;
+
+        public DanhSachDoan(List<Doan> doans, List<Touris> tours,List<NhanVien> nhanViens,List<Khach> khaches,IDanhSachDoanListener danhSachDoanListener)
         {
             InitializeComponent();
             danhSachDoan = doans;
+            danhSachKhach = khaches;
+            danhSachNhanVien = nhanViens;
+            danhSachTour = tours;
             this.danhSachDoanListener = danhSachDoanListener;
-            InitData(danhSachDoan, tours);
+            InitData();
+        }
+     
+
+        private void OnDoanDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int position = dataGridViewDoan.CurrentCell.RowIndex;
+            danhSachDoanListener.onDanhSachDoan_DoanDoubleClick(danhSachDoan.ToList()[position]);
         }
 
-        private void InitData(IEnumerable<Doan> doans,IEnumerable<Touris> tour)
+
+        private void InitData()
         {
-          foreach(Doan doan in doans)
+            dataGridViewDoan.DataSource = danhSachDoan.ToList();
+            DateTime min = danhSachDoan.First().ThoiGianBatDau;
+            DateTime max = danhSachDoan.First().ThoiGianKetThuc;
+            foreach(Doan doan in danhSachDoan)
             {
-                list_doan.Items.Add(new ListViewItem(new string[] { doan.Id.ToString(), doan.Name , tour.First(c =>c.Id == doan.Touris.Id).Name}));
-            } 
+                if (doan.ThoiGianBatDau < min)
+                    min = doan.ThoiGianBatDau;
+                if (doan.ThoiGianKetThuc > max)
+                    max = doan.ThoiGianKetThuc;
+            }
+            searchDoan1.SetData(danhSachTour,danhSachNhanVien,danhSachKhach,max,min, this);
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        public void onSearchDoan(Touris tour, string ten, NhanVien nhanVien, Khach khach, DateTime min, DateTime max)
         {
-            int position = list_doan.SelectedItems[0].Index;
-            danhSachDoanListener.onDanhSachDoan_DoanSelectedIndex(position);
+            if (!ten.Equals(""))
+            {
+                if (tour.Id == -1)
+                {
+                    if(nhanVien.MaNhanVien == -1)
+                    {
+                        if(khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)&&c.ThoiGianBatDau>= min && c.ThoiGianKetThuc <=max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
+                            &&(c.DoanKhachs!=null &&c.DoanKhachs.Where(d=>d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                    else
+                    {
+
+                        if (khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
+                            && (c.PhanCongs!=null &&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
+                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhachs!= null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                }
+                else
+                {
+                    if (nhanVien.MaNhanVien == -1)
+                    {
+                        if (khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
+                            && c.Touris.Id == tour.Id
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
+                            && c.Touris.Id == tour.Id
+                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                    else
+                    {
+
+                        if (khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
+                            && c.Touris.Id == tour.Id
+                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
+                            && c.Touris.Id == tour.Id
+                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (tour.Id == -1)
+                {
+                    if (nhanVien.MaNhanVien == -1)
+                    {
+                        if (khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c =>c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
+                            (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                    else
+                    {
+
+                        if (khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c =>
+                            (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
+                            (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                }
+                else
+                {
+                    if (nhanVien.MaNhanVien == -1)
+                    {
+                        if (khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
+                            c.Touris.Id == tour.Id
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
+                            c.Touris.Id == tour.Id
+                            && (c.DoanKhachs!= null &&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                    else
+                    {
+
+                        if (khach.KhachId == -1)
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
+                            c.Touris.Id == tour.Id
+                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                        else
+                        {
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
+                            c.Touris.Id == tour.Id
+                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
+                        }
+                    }
+                }
+            }
         }
+
         public interface IDanhSachDoanListener
         {
-            void onDanhSachDoan_DoanSelectedIndex(int position);
+            void onDanhSachDoan_DoanDoubleClick(Doan doan);
         }
     }
 }

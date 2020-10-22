@@ -62,7 +62,7 @@ namespace DuLich.View.QuanLyPhanCong
         {
             if (Validation(phanCongHienTai))
             {
-                chiTietPhanCongListener.onLuuClick(phanCongHienTai);
+                chiTietPhanCongListener.onChiTietPhanCong_LuuClick(phanCongHienTai.Doan,phanCongHienTai);
             }else
             {
                 MessageBox.Show("Giá trị không được bỏ trống");
@@ -71,12 +71,12 @@ namespace DuLich.View.QuanLyPhanCong
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
-            chiTietPhanCongListener.onHuyClick();
+            chiTietPhanCongListener.onChiTietPhanCong_HuyClick();
         }
         public interface IChiTietPhanCongListener
         {
-            void onLuuClick(PhanCong phanCong);
-            void onHuyClick();
+            void onChiTietPhanCong_LuuClick(Doan doanHienTai,PhanCong phanCong);
+            void onChiTietPhanCong_HuyClick();
         }
         private bool Validation(PhanCong phanCong)
         {

@@ -13,7 +13,7 @@ namespace DuLich.GUI.QuanLyTouris
 {
     public partial class SearchTour : UserControl
     {
-        private List<Loai> danhSachLoai;
+        private List<Loai> danhSachLoai = new List<Loai>();
         private Loai filterLoai = new Loai();
         private String filterTen = "";
         private ISearchListener searchListener;
@@ -26,7 +26,7 @@ namespace DuLich.GUI.QuanLyTouris
         {
             tv_searchbox.Text = "Tên Tour";
             tv_combo.Text = "Loại";
-            this.danhSachLoai = loai;
+            this.danhSachLoai.AddRange(loai);
             this.searchListener = searchListener;
             filterLoai.Id = -1;
             filterLoai.TenLoai = "Tất cả";

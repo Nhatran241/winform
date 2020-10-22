@@ -3,6 +3,7 @@ using DAL;
 using DuLich.BUS;
 using DuLich.Entity;
 using DuLich.GUI.QuanLyChiPhi;
+using DuLich.GUI.QuanLyDoan;
 using DuLich.GUI.QuanLyKhach;
 using DuLich.GUI.QuanLyNhanVien;
 using DuLich.GUI.QuanLyTouris;
@@ -306,14 +307,12 @@ foreach (ChiTietTour chiTiet in listChiTietTour) {
  */
 namespace DuLich
 {
-    public partial class ManHinhChinh : DanhSachDoan.IDanhSachDoanListener,
-        ChiTietKhach.IChiTietKhachListener, ChiTietDoan.IChiTietDoanListener, DanhSachPhanCong.IDanhSachPhanCongListener,
-        ChiTietPhanCong.IChiTietPhanCongListener, SelectKhach.ISelectKhachListener,DanhSachChiPhi.IDanhSachChiPhiListener,ChiTietChiPhi.IChiTietChiPhiListener
+    public partial class ManHinhChinh : DanhSachDoan.IDanhSachDoanListener
     {
         private void button1_Click(object sender, EventArgs e)
         {
             LoadDataFromDataBase();
-            userControl = new DanhSachDoan(doans, listTouris, this);
+            userControl = new DanhSachDoan(doans, listTouris,danhSachNhanVien,khaches, this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
@@ -327,6 +326,27 @@ namespace DuLich
             panel_main_content.Controls.Add(userControl);
         }
 
+        public void onDanhSachDoan_DoanDoubleClick(Doan doan)
+        {
+            userControl = new ChiTietDoan(doan, listTouris,
+                danhSachPhanCong.Where(c => c.Doan.Id == doan.Id).ToList(),
+                danhSachChiPhi.Where(c => c.Doan.Id == doan.Id).ToList(),
+                khaches,
+                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doan.Id).Count() > 0).ToList(), this, this, this, this); ;
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+    }
+}
+
+/**
+ * Quản Lý Đoàn - Chi Tiết Đoàn -Thêm- Cập Nhật - Xóa
+ */
+
+namespace DuLich
+{
+    public partial class ManHinhChinh : ChiTietDoan.IChiTietDoanListener
+    {
         public void onChiTietDoanClick_CapNhat(Doan doanSauKhiCapNhat)
         {
             context.Doans.AddOrUpdate(doanSauKhiCapNhat);
@@ -335,7 +355,14 @@ namespace DuLich
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new ChiTietDoan(doans.LastOrDefault(), listTouris, danhSachPhanCong, danhSachChiPhi, null, null, this, this, this,this);
+                    userControl = new ChiTietDoan(
+                        doanSauKhiCapNhat, 
+                        listTouris,
+                        danhSachPhanCong.Where(c=>c.Doan.Id == doanSauKhiCapNhat.Id).ToList(),
+                        danhSachChiPhi.Where(c=>c.Doan.Id == doanSauKhiCapNhat.Id).ToList(),
+                        khaches,
+                        khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanSauKhiCapNhat.Id).Count() > 0).ToList(),this,this,this,this);
+
                     //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
@@ -361,35 +388,101 @@ namespace DuLich
             });
         }
 
-        public void onDanhSachDoan_DoanSelectedIndex(int position)
+
+    
+
+    }
+}
+
+/**
+ * Quản Lý Đoàn - Chi Phí
+ */
+namespace DuLich
+{
+    public partial class ManHinhChinh : DanhSachChiPhi.IDanhSachChiPhiListener, ChiTietChiPhi.IChiTietChiPhiListener
+    {
+        public void onDanhSachChiPhi_ThemClick(Doan doanHienTai)
         {
-            Doan selectedDoan = doans.ToArray()[position];
-            userControl = new ChiTietDoan(selectedDoan, listTouris,
-                danhSachPhanCong.Where(c => c.Doan.Id == selectedDoan.Id).ToList(),
-                danhSachChiPhi.Where(c => c.Doan.Id == selectedDoan.Id).ToList(),
+            ChiPhi chiPhi = new ChiPhi();
+            chiPhi.Doan = doanHienTai;
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(new ChiTietChiPhi(chiPhi, danhSachLoaiChiPhi, this));
+        }
+
+        public void onDanhSachChiPhi_SuaClick(ChiPhi chiPhi)
+        {
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(new ChiTietChiPhi(chiPhi, danhSachLoaiChiPhi, this));
+        }
+
+        public void onDanhSachChiPhi_XoaClick(Doan doanHienTai,ChiPhi chiPhi)
+        {
+            context.ChiPhis.Remove(chiPhi);
+            context.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    (userControl as ChiTietDoan).UpdateData(
+                          danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
                 khaches,
-                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == selectedDoan.Id).Count() > 0).ToList(), this, this, this, this); ;
+                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
+                });
+            });
+        }
+
+        public void onChiTietChiPhi_LuuClick(Doan doanHienTai,ChiPhi chiPhi)
+        {
+            context.ChiPhis.AddOrUpdate(chiPhi);
+            context.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    (userControl as ChiTietDoan).UpdateData(
+                          danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                khaches,
+                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList());
+
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+
+            });
+        }
+        public void onChiTietChiPhi_HuyClick()
+        {
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
 
+    }
+}
+/**
+ * Quản Lý Đoàn - Phân Công
+ */
+namespace DuLich
+{
+    public partial class ManHinhChinh : DanhSachPhanCong.IDanhSachPhanCongListener,
+        ChiTietPhanCong.IChiTietPhanCongListener
+    {
         public void onDanhSachPhanCongThemClick(Doan doanHienTai)
         {
             PhanCong phanCong = new PhanCong();
             phanCong.Doan = doanHienTai;
-            userControl = new ChiTietPhanCong(phanCong, danhSachNhanVien, this);
             panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            panel_main_content.Controls.Add(new ChiTietPhanCong(phanCong, danhSachNhanVien, this));
         }
 
         public void onDanhSachPhanCongSuaClick(PhanCong phanCong)
         {
-            userControl = new ChiTietPhanCong(phanCong, danhSachNhanVien, this);
             panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            panel_main_content.Controls.Add(new ChiTietPhanCong(phanCong, danhSachNhanVien, this));
         }
 
-        public void onDanhSachPhanCongXoaClick(PhanCong phanCong)
+        public void onDanhSachPhanCongXoaClick(Doan doanHienTai,PhanCong phanCong)
         {
             context.PhanCongs.Remove(phanCong);
             context.SaveChangesAsync().ContinueWith(task =>
@@ -397,14 +490,16 @@ namespace DuLich
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachDoan(doans, listTouris, this);
-                    panel_main_content.Controls.Clear();
-                    panel_main_content.Controls.Add(userControl);
+                    (userControl as ChiTietDoan).UpdateData(
+                          danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                khaches,
+                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
                 });
             });
         }
 
-        public void onLuuClick(PhanCong phanCong)
+        public void onChiTietPhanCong_LuuClick(Doan doanHienTai,PhanCong phanCong)
         {
             context.PhanCongs.AddOrUpdate(phanCong);
             context.SaveChangesAsync().ContinueWith(task =>
@@ -412,20 +507,34 @@ namespace DuLich
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachDoan(doans, listTouris, this);
+                    (userControl as ChiTietDoan).UpdateData(
+                          danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                khaches,
+                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
+
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
+
                 });
             });
         }
-
-        public void onHuyClick()
+        public void onChiTietPhanCong_HuyClick()
         {
-            userControl = new DanhSachDoan(doans, listTouris, this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
 
+    }
+}
+/**
+ * Quản Lý Đoàn - Khách
+ */
+
+namespace DuLich
+{
+    public partial class ManHinhChinh :  SelectKhach.ISelectKhachListener
+    {
         public void onSelectKhach_LuuClick(Doan doanHienTai, List<Khach> danhSachKhachTrongDoanUpdate)
         {
             context.DoanKhachs.RemoveRange(context.DoanKhachs.Where(c => c.Doan.Id == doanHienTai.Id).ToList());
@@ -441,58 +550,15 @@ namespace DuLich
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachDoan(doans, listTouris, this);
-                    panel_main_content.Controls.Clear();
-                    panel_main_content.Controls.Add(userControl);
+                    (userControl as ChiTietDoan).UpdateData(
+                          danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
+                khaches,
+                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
                 });
             });
         }
-
-        public void onDanhSachChiPhi_ThemClick(Doan doanHienTai)
-        {
-            ChiPhi chiPhi = new ChiPhi();
-            chiPhi.Doan = doanHienTai;
-            userControl = new ChiTietChiPhi(chiPhi, danhSachLoaiChiPhi, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
-        }
-
-        public void onDanhSachChiPhi_SuaClick(ChiPhi chiPhi)
-        {
-            userControl = new ChiTietChiPhi(chiPhi, danhSachLoaiChiPhi, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
-        }
-
-        public void onDanhSachChiPhi_XoaClick(ChiPhi chiPhi)
-        {
-            context.ChiPhis.Remove(chiPhi);
-            context.SaveChangesAsync().ContinueWith(task =>
-            {
-                LoadDataFromDataBase();
-                panel_main_content.Invoke((MethodInvoker)delegate
-                {
-                    userControl = new DanhSachDoan(doans, listTouris, this);
-                    panel_main_content.Controls.Clear();
-                    panel_main_content.Controls.Add(userControl);
-                });
-            });
-        }
-
-        public void onLuuClick(ChiPhi chiPhi)
-        {
-            context.ChiPhis.AddOrUpdate(chiPhi);
-            context.SaveChangesAsync().ContinueWith(task =>
-            {
-                LoadDataFromDataBase();
-                panel_main_content.Invoke((MethodInvoker)delegate
-                {
-                    userControl = new DanhSachDoan(doans, listTouris, this);
-                    panel_main_content.Controls.Clear();
-                    panel_main_content.Controls.Add(userControl);
-                });
-            });
-        }
+      
     }
 }
 
@@ -587,7 +653,7 @@ namespace DuLich
  */
 namespace DuLich
 {
-    public partial class ManHinhChinh : DanhSachKhach.IDanhSachKhachListener
+    public partial class ManHinhChinh : DanhSachKhach.IDanhSachKhachListener,ChiTietKhach.IChiTietKhachListener
     {
         private void button2_Click(object sender, EventArgs e)
         {

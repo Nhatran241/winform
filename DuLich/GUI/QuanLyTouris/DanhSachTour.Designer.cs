@@ -37,7 +37,7 @@ namespace DuLich.GUI.QuanLyTouris
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.search1 = new SearchTour();
+            this.search1 = new DuLich.GUI.QuanLyTouris.SearchTour();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -107,7 +107,7 @@ namespace DuLich.GUI.QuanLyTouris
             // DanhSachTour
             // 
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.search1);
             this.Controls.Add(this.dataGridViewTour);
             this.Name = "DanhSachTour";

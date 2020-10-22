@@ -52,7 +52,7 @@ namespace DuLich
             // 
             // panel_main_content
             // 
-            this.panel_main_content.BackColor = System.Drawing.SystemColors.Desktop;
+            this.panel_main_content.BackColor = System.Drawing.SystemColors.Control;
             this.panel_main_content.Location = new System.Drawing.Point(196, 37);
             this.panel_main_content.Name = "panel_main_content";
             this.panel_main_content.Size = new System.Drawing.Size(800, 600);

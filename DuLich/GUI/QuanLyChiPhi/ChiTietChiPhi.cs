@@ -58,7 +58,7 @@ namespace DuLich.GUI.QuanLyChiPhi
         {
             if (Validation(chiPhiHienTai))
             {
-                chiTietChiPhiListener.onLuuClick(chiPhiHienTai);
+                chiTietChiPhiListener.onChiTietChiPhi_LuuClick(chiPhiHienTai.Doan,chiPhiHienTai);
             }else
             {
                 MessageBox.Show("Giá trị không được bỏ trống");
@@ -67,12 +67,12 @@ namespace DuLich.GUI.QuanLyChiPhi
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
-            chiTietChiPhiListener.onHuyClick();
+            chiTietChiPhiListener.onChiTietChiPhi_HuyClick();
         }
         public interface IChiTietChiPhiListener
         {
-            void onLuuClick(ChiPhi chiPhi);
-            void onHuyClick();
+            void onChiTietChiPhi_LuuClick(Doan doanHienTai,ChiPhi chiPhi);
+            void onChiTietChiPhi_HuyClick();
         }
         private bool Validation(ChiPhi chiPhi)
         {

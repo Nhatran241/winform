@@ -17,7 +17,6 @@ namespace DuLich.Model.Entity
         public long GiaTri { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-
         public Touris touris { get; set; }
         public int TourisId { get; set; }
     }
