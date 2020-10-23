@@ -38,6 +38,8 @@
             this.tb_sdt = new System.Windows.Forms.TextBox();
             this.tv_socmnd_nhanvien = new System.Windows.Forms.Label();
             this.tv_sdt_nhanvien = new System.Windows.Forms.Label();
+            this.datepicker_ngaysinh = new System.Windows.Forms.DateTimePicker();
+            this.tv_ngaybatdau = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_huy_nhanvien
@@ -136,10 +138,30 @@
             this.tv_sdt_nhanvien.TabIndex = 16;
             this.tv_sdt_nhanvien.Text = "Số Điện Thoại";
             // 
+            // datepicker_ngaysinh
+            // 
+            this.datepicker_ngaysinh.Location = new System.Drawing.Point(194, 268);
+            this.datepicker_ngaysinh.Name = "datepicker_ngaysinh";
+            this.datepicker_ngaysinh.Size = new System.Drawing.Size(181, 20);
+            this.datepicker_ngaysinh.TabIndex = 28;
+            this.datepicker_ngaysinh.ValueChanged += new System.EventHandler(this.datepicker_ngaysinh_ValueChanged);
+            // 
+            // tv_ngaybatdau
+            // 
+            this.tv_ngaybatdau.AutoSize = true;
+            this.tv_ngaybatdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_ngaybatdau.Location = new System.Drawing.Point(20, 268);
+            this.tv_ngaybatdau.Name = "tv_ngaybatdau";
+            this.tv_ngaybatdau.Size = new System.Drawing.Size(85, 20);
+            this.tv_ngaybatdau.TabIndex = 27;
+            this.tv_ngaybatdau.Text = "Ngày Sinh";
+            // 
             // ChiTietNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.datepicker_ngaysinh);
+            this.Controls.Add(this.tv_ngaybatdau);
             this.Controls.Add(this.tb_cmnd);
             this.Controls.Add(this.tb_sdt);
             this.Controls.Add(this.tv_socmnd_nhanvien);
@@ -151,7 +173,7 @@
             this.Controls.Add(this.tv_diachi_nhanvien);
             this.Controls.Add(this.tv_ma_nhanvien);
             this.Name = "ChiTietNhanVien";
-            this.Size = new System.Drawing.Size(487, 315);
+            this.Size = new System.Drawing.Size(800, 600);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +191,7 @@
         private System.Windows.Forms.TextBox tb_sdt;
         private System.Windows.Forms.Label tv_socmnd_nhanvien;
         private System.Windows.Forms.Label tv_sdt_nhanvien;
+        private System.Windows.Forms.DateTimePicker datepicker_ngaysinh;
+        private System.Windows.Forms.Label tv_ngaybatdau;
     }
 }

@@ -132,6 +132,12 @@
     <Compile Include="GUI\QuanLyNhanVien\DanhSachNhanVien.Designer.cs">
       <DependentUpon>DanhSachNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanLyNhanVien\SearchNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyNhanVien\SearchNhanVien.Designer.cs">
+      <DependentUpon>SearchNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,12 +186,6 @@
     </Compile>
     <Compile Include="GUI\QuanLyTouris\DanhSachDiaDiem.Designer.cs">
       <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\QuanLyTouris\a.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyTouris\a.Designer.cs">
-      <DependentUpon>a.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyDiaDiem\QuanLyDiaDiem.cs">
       <SubType>UserControl</SubType>
@@ -246,6 +246,9 @@
     <EmbeddedResource Include="GUI\QuanLyNhanVien\DanhSachNhanVien.resx">
       <DependentUpon>DanhSachNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyNhanVien\SearchNhanVien.resx">
+      <DependentUpon>SearchNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyPhanCong\ChiTietPhanCong.resx">
       <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,9 +263,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachGia.resx">
       <DependentUpon>DanhSachGia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyTouris\a.resx">
-      <DependentUpon>a.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietTouris.resx">
       <DependentUpon>ChiTietTouris.cs</DependentUpon>
@@ -289,6 +289,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DuLich.Entity.Doan.datasource" />
+    <None Include="Properties\DataSources\DuLich.Entity.NhanVien.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.Touris.datasource" />
     <None Include="Properties\DataSources\DuLich.Model.Entity.ChiPhi.datasource" />
     <None Include="Properties\DataSources\DuLich.Model.Entity.Gia.datasource" />

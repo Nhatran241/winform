@@ -18,6 +18,7 @@ namespace DuLich.Entity
         public String DiaChi { get; set; }
         public String SoDienThoai { get; set; }
         public String SoCmnd { get; set; }
+        public DateTime NgaySinh { get; set; }
         public ICollection<PhanCong> PhanCongs { get; set; }
         public override string ToString()
         {

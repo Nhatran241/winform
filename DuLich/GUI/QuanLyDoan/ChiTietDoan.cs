@@ -120,14 +120,17 @@ namespace DuLich.View
             InitUI(doanHienTai);
             if (tab_chitiet.SelectedTab.Name.Equals("tab_phancong"))
             {
-                LoadDanhSachPhanCong(danhSachPhanCong);
+                if(danhSachPhanCong != null)
+                    LoadDanhSachPhanCong(danhSachPhanCong);
             }else if (tab_chitiet.SelectedTab.Name.Equals("tab_khach"))
             {
-                LoadDanhSachKhach(danhSachTatCaKhach, danhSachKhachTrongDoan);
+                if (danhSachKhachTrongDoan != null)
+                    LoadDanhSachKhach(danhSachTatCaKhach, danhSachKhachTrongDoan);
             }
             else
             {
-                LoadDanhSachChiPhi(danhSachChiPhi);
+                if (danhSachChiPhi != null)
+                    LoadDanhSachChiPhi(danhSachChiPhi);
             }
             
         }
@@ -179,8 +182,16 @@ namespace DuLich.View
                 panel_thongbao.Visible = true;
             }else
             {
-                datepicker_batdau.Value = DateTime.Today;
-                datepicker_ketthuc.Value = DateTime.Today;
+                if(doanHienTai.Id != 0)
+                {
+                    datepicker_batdau.Value = doanHienTai.ThoiGianBatDau;
+                    datepicker_ketthuc.Value = doanHienTai.ThoiGianKetThuc;
+                }
+                else
+                {
+                    datepicker_batdau.Value = DateTime.Today;
+                    datepicker_ketthuc.Value = DateTime.Today;
+                }
             }
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -213,18 +224,30 @@ namespace DuLich.View
                 if (maxTime < DateTime.Today)
                 {
                     panel_thongbao.Visible = true;
+                    datepicker_batdau.Visible = false;
+                    datepicker_ketthuc.Visible = false;
+                    tv_ngaybatdau.Visible = false;
+                    tv_ngayketthuc.Visible = false;
+                    btn_chinhsua.Visible = false;
                 }
                 else
                 {
-
                     panel_thongbao.Visible = false;
                     btn_chinhsua.Visible = true;
                     datepicker_batdau.Visible = true;
                     datepicker_ketthuc.Visible = true;
                     tv_ngaybatdau.Visible = true;
                     tv_ngayketthuc.Visible = true;
-                    datepicker_batdau.Value = DateTime.Today;
-                    datepicker_ketthuc.Value = DateTime.Today;
+                    if (doanHienTai.Id != 0)
+                    {
+                        datepicker_batdau.Value = doanHienTai.ThoiGianBatDau;
+                        datepicker_ketthuc.Value = doanHienTai.ThoiGianKetThuc;
+                    }
+                    else
+                    {
+                        datepicker_batdau.Value = DateTime.Today;
+                        datepicker_ketthuc.Value = DateTime.Today;
+                    }
                 }
 
             }

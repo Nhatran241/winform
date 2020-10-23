@@ -17,6 +17,7 @@ namespace DuLich.View.QuanLyPhanCong
         private IChiTietPhanCongListener chiTietPhanCongListener;
         private PhanCong phanCongHienTai;
         private List<NhanVien> danhSachNhanVien;
+        private List<String> danhSachNhiemVu;
         private bool isEditing = false;
         public ChiTietPhanCong(PhanCong phanCong,List<NhanVien> danhSachNhanVien,IChiTietPhanCongListener chiTietPhanCongListener)
         {
@@ -24,7 +25,11 @@ namespace DuLich.View.QuanLyPhanCong
             this.chiTietPhanCongListener = chiTietPhanCongListener;
             this.phanCongHienTai = phanCong;
             this.danhSachNhanVien = danhSachNhanVien;
-            if(phanCongHienTai.MaPhanCong == 0)
+            danhSachNhiemVu = new List<string>();
+            danhSachNhiemVu.Add("Hướng Dẫn Viên");
+            danhSachNhiemVu.Add("Lái Xe");
+            danhSachNhiemVu.Add("Trưởng Đoàn");
+            if (phanCongHienTai.MaPhanCong == 0)
             {
                 CreateNewRecord();
             }
@@ -33,28 +38,22 @@ namespace DuLich.View.QuanLyPhanCong
         public void CreateNewRecord()
         {
             phanCongHienTai.NhanVien = danhSachNhanVien.First();
-            phanCongHienTai.NhiemVu = "";
+            phanCongHienTai.NhiemVu = danhSachNhiemVu.First();
         }
 
         private void InitUI()
         {
-            tb_maphancong.Text = phanCongHienTai.MaPhanCong.ToString();
-            if (phanCongHienTai.MaPhanCong == 0)
+            if (phanCongHienTai.MaPhanCong != 0)
             {
-                tb_maphancong.Visible = false;
-                tv_maphancong.Visible = false;
-            } else {
-                tb_maphancong.Visible = false;
-                tv_maphancong.Visible = false;
-                tb_maphancong.Enabled = false;
-            } 
-            tb_nhiemvu.Text = phanCongHienTai.NhiemVu.ToString();
-            foreach (NhanVien nhanVien in danhSachNhanVien)
-            {
-                combobox_nhanvien.Items.Add(nhanVien);
+                tb_maphancong.Text = phanCongHienTai.MaPhanCong.ToString();
             }
-
+            else tb_maphancong.Text = "Mã tự động";
+            tb_maphancong.Enabled = false;
+            combobox_nhanvien.DataSource = danhSachNhanVien;
             combobox_nhanvien.Text = phanCongHienTai.NhanVien.TenNhanVien;
+
+            cb_nhiemvu.DataSource = danhSachNhiemVu;
+            cb_nhiemvu.Text = phanCongHienTai.NhiemVu;
           
         }
 
@@ -92,10 +91,9 @@ namespace DuLich.View.QuanLyPhanCong
             phanCongHienTai.NhanVien = danhSachNhanVien.ToArray()[combobox_nhanvien.SelectedIndex];
         }
 
-
-        private void tb_nhiemvu_TextChanged(object sender, EventArgs e)
+        private void cb_nhiemvu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            phanCongHienTai.NhiemVu = tb_nhiemvu.Text.Trim();
+            phanCongHienTai.NhiemVu = danhSachNhiemVu.ToArray()[cb_nhiemvu.SelectedIndex];
         }
     }
 }

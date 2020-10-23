@@ -320,7 +320,7 @@ namespace DuLich
 
         private void btn_taodoan_Click(object sender, EventArgs e)
         {
-            userControl = new ChiTietDoan(new Doan(), listTouris, danhSachPhanCong,danhSachChiPhi, null, null, this, this, this,this);
+            userControl = new ChiTietDoan(new Doan(), listTouris, null,null, null, null, this, this, this,this);
             //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);

@@ -40,6 +40,7 @@ namespace DuLich.GUI.QuanLyNhanVien
                 tb_diaChi.Text = nhanVien.DiaChi.ToString();
             if (!string.IsNullOrEmpty(nhanVien.SoCmnd))
                 tb_cmnd.Text = nhanVien.SoCmnd.ToString();
+            datepicker_ngaysinh.MaxDate = DateTime.Today.AddDays(-(18 * 365));
         }
 
         private void tb_name_TextChanged(object sender, EventArgs e)
@@ -85,6 +86,11 @@ namespace DuLich.GUI.QuanLyNhanVien
         private void btn_huy_Click(object sender, EventArgs e)
         {
             chiTietNhanVienListener.onChiTietNhanVien_HuyClick();
+        }
+
+        private void datepicker_ngaysinh_ValueChanged(object sender, EventArgs e)
+        {
+            nhanVien.NgaySinh = datepicker_ngaysinh.Value;
         }
     }
 }
