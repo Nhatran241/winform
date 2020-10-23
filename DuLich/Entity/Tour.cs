@@ -1,4 +1,5 @@
-﻿using DuLich.Model.Entity;
+﻿using DuLich.DAL;
+using DuLich.Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DuLich.Entity
 {
-    public class Touris
+    public class Tour
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,10 +20,18 @@ namespace DuLich.Entity
         public virtual ICollection<Gia> Gias { get; set; }
         public virtual ICollection<Doan> Doans { get; set; }
         public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
-
         public override string ToString()
         {
             return Name;
+        }
+
+        public void AddOrUpdate()
+        {
+            TourDal.GetTourDal().AddOrUpdate(this);
+        }
+        public void Delete()
+        {
+            TourDal.GetTourDal().Delete(this);
         }
     }
 }

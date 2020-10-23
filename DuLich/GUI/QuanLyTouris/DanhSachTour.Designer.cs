@@ -90,7 +90,7 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Touris);
+            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Tour);
             // 
             // search1
             // 

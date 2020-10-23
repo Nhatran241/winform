@@ -14,10 +14,10 @@ namespace DuLich.GUI.QuanLyDoan
 {
     public partial class SearchDoan :UserControl
     {
-        private List<Touris> danhSachTour = new List<Touris>();
+        private List<Tour> danhSachTour = new List<Tour>();
         private List<NhanVien> danhSachNhanVien = new List<NhanVien>();
         private List<Khach> danhSachKhach = new List<Khach>();
-        private Touris filterTour = new Touris();
+        private Tour filterTour = new Tour();
         private NhanVien filterNhanVien = new NhanVien();
         private Khach filterKhach = new Khach();
         private String filterTen = "";
@@ -29,7 +29,7 @@ namespace DuLich.GUI.QuanLyDoan
         {
             InitializeComponent();
         }
-        public void SetData(List<Touris> danhSachTour,List<NhanVien> danhSachNhanVien,List<Khach> danhSachKhach,DateTime maxDate,DateTime minDate,ISearchDoanListener searchDoanListener)
+        public void SetData(List<Tour> danhSachTour,List<NhanVien> danhSachNhanVien,List<Khach> danhSachKhach,DateTime maxDate,DateTime minDate,ISearchDoanListener searchDoanListener)
         {
             this.danhSachTour.AddRange(danhSachTour);
             this.danhSachKhach.AddRange(danhSachKhach);
@@ -77,7 +77,7 @@ namespace DuLich.GUI.QuanLyDoan
 
         public interface ISearchDoanListener
         {
-            void onSearchDoan(Touris tour, string ten,NhanVien nhanVien,Khach khach,DateTime min,DateTime max);
+            void onSearchDoan(Tour tour, string ten,NhanVien nhanVien,Khach khach,DateTime min,DateTime max);
         }
 
 

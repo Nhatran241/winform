@@ -73,7 +73,7 @@ namespace DuLich.Entity
         }
             catch(Exception e) { }
         }
-        public DbSet<Touris> Touris { get; set; }
+        public DbSet<Tour> Touris { get; set; }
         public DbSet<Gia> Gia { get; set; }
         public DbSet<Loai> Loai { get; set; }
         public DbSet<DiaDiem> DiaDiem { get; set; }
@@ -89,16 +89,16 @@ namespace DuLich.Entity
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // XÓa tour xóa giá luôn
-            modelBuilder.Entity<Touris>()
+            modelBuilder.Entity<Tour>()
                         .HasMany<Gia>(g => g.Gias)
                         .WithRequired(s => s.touris)
                         .WillCascadeOnDelete();
-            modelBuilder.Entity<Touris>()
+            modelBuilder.Entity<Tour>()
                       .HasMany<Doan>(g => g.Doans)
                       .WithRequired(s => s.Touris)
                       .WillCascadeOnDelete();
             // Xóa luôn chi tiết
-            modelBuilder.Entity<Touris>()
+            modelBuilder.Entity<Tour>()
                         .HasMany<ChiTietTour>(g => g.ChiTietTours)
                         .WithRequired(s => s.touris)
                         .WillCascadeOnDelete();

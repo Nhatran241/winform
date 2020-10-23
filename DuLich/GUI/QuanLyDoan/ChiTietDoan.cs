@@ -26,13 +26,13 @@ namespace DuLich.View
         private bool isEditing = false;
 
         private Doan doanHienTai;
-        private IEnumerable<Touris> danhSachTour;
+        private IEnumerable<Tour> danhSachTour;
         private List<PhanCong> danhSachPhanCong;
         private List<Khach> danhSachTatCaKhach;
         private List<Khach> danhSachKhachTrongDoan;
         private List<ChiPhi> danhSachChiPhi;
 
-        public ChiTietDoan(Doan doan, IEnumerable<Touris> listTour, List<PhanCong> phanCongs,List<ChiPhi> danhSachChiPhi, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener,DanhSachChiPhi.IDanhSachChiPhiListener danhSachChiPhiListener)
+        public ChiTietDoan(Doan doan, IEnumerable<Tour> listTour, List<PhanCong> phanCongs,List<ChiPhi> danhSachChiPhi, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener,DanhSachChiPhi.IDanhSachChiPhiListener danhSachChiPhiListener)
         {
             InitializeComponent();
             this.doanHienTai = doan;
@@ -159,7 +159,7 @@ namespace DuLich.View
             }
             else textbox_id.Text = "Mã tự động";
             textbox_name.Text = doan.Name;
-            foreach (Touris tour in danhSachTour)
+            foreach (Tour tour in danhSachTour)
             {
                 combobox_loai.Items.Add(tour);
             }
@@ -385,6 +385,7 @@ namespace DuLich.View
                     if(doanHienTai.ThoiGianBatDau>=gia.ThoiGianBatDau&&doanHienTai.ThoiGianBatDau <= gia.ThoiGianKetThuc)
                     {
                         tb_giatour.Text = gia.GiaTri.ToString();
+                        doanHienTai.GiaTour = long.Parse(gia.GiaTri.ToString());
                         return;
                     }
                 }

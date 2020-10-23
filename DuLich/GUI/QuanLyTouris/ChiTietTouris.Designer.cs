@@ -42,6 +42,7 @@ namespace DuLich.View
             this.tab_diadiem = new System.Windows.Forms.TabPage();
             this.btn_chinhsua = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
+            this.tab_thongke = new System.Windows.Forms.TabPage();
             this.tab_chitiet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +108,7 @@ namespace DuLich.View
             // 
             this.tab_chitiet.Controls.Add(this.tab_gia);
             this.tab_chitiet.Controls.Add(this.tab_diadiem);
+            this.tab_chitiet.Controls.Add(this.tab_thongke);
             this.tab_chitiet.Location = new System.Drawing.Point(14, 160);
             this.tab_chitiet.Name = "tab_chitiet";
             this.tab_chitiet.SelectedIndex = 0;
@@ -129,7 +131,7 @@ namespace DuLich.View
             this.tab_diadiem.Location = new System.Drawing.Point(4, 22);
             this.tab_diadiem.Name = "tab_diadiem";
             this.tab_diadiem.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_diadiem.Size = new System.Drawing.Size(487, 315);
+            this.tab_diadiem.Size = new System.Drawing.Size(767, 414);
             this.tab_diadiem.TabIndex = 1;
             this.tab_diadiem.Text = "Địa Điểm";
             this.tab_diadiem.UseVisualStyleBackColor = true;
@@ -155,6 +157,16 @@ namespace DuLich.View
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
             this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
+            // 
+            // tab_thongke
+            // 
+            this.tab_thongke.AutoScroll = true;
+            this.tab_thongke.Location = new System.Drawing.Point(4, 22);
+            this.tab_thongke.Name = "tab_thongke";
+            this.tab_thongke.Size = new System.Drawing.Size(767, 414);
+            this.tab_thongke.TabIndex = 2;
+            this.tab_thongke.Text = "Thống Kê";
+            this.tab_thongke.UseVisualStyleBackColor = true;
             // 
             // ChiTietTouris
             // 
@@ -190,5 +202,6 @@ namespace DuLich.View
         private System.Windows.Forms.TabPage tab_diadiem;
         private System.Windows.Forms.Button btn_chinhsua;
         private System.Windows.Forms.Button btn_xoa;
+        private TabPage tab_thongke;
     }
 }

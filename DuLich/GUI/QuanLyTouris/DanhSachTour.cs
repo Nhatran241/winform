@@ -17,12 +17,12 @@ namespace DuLich.GUI.QuanLyTouris
     public partial class DanhSachTour : UserControl,SearchTour.ISearchListener
     {
         private IDanhSachTourListener danhSachTourListener;
-        private IEnumerable<Touris> danhSachTour;
+        private IEnumerable<Tour> danhSachTour;
         public DanhSachTour()
         {
             InitializeComponent();
         }
-        public DanhSachTour(IEnumerable<Touris> tourisList, List<Loai> loaisList, IDanhSachTourListener danhSachTourListener)
+        public DanhSachTour(IEnumerable<Tour> tourisList, List<Loai> loaisList, IDanhSachTourListener danhSachTourListener)
         {
             InitializeComponent();
             this.danhSachTourListener = danhSachTourListener;
@@ -30,7 +30,7 @@ namespace DuLich.GUI.QuanLyTouris
             InitData(tourisList, loaisList);
         }
 
-        private void InitData(IEnumerable<Touris> tourisList, List<Loai> loaisList)
+        private void InitData(IEnumerable<Tour> tourisList, List<Loai> loaisList)
         {
             search1.SetData(loaisList, this);
             dataGridViewTour.DataSource = tourisList;
@@ -39,7 +39,7 @@ namespace DuLich.GUI.QuanLyTouris
      
         public interface IDanhSachTourListener
         {
-            void onTourSelected(Touris touris);
+            void onTourSelected(Tour touris);
         }
 
         private void TourSelected(object sender, DataGridViewCellEventArgs e)

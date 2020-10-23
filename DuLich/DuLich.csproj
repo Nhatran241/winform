@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,15 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BUS\BaseBus.cs" />
-    <Compile Include="BUS\ChiTietTourBus.cs" />
-    <Compile Include="BUS\DiaDiemBus.cs" />
-    <Compile Include="BUS\DoanBus.cs" />
-    <Compile Include="BUS\GiaBus.cs" />
-    <Compile Include="BUS\KhachBus.cs" />
-    <Compile Include="BUS\LoaiBus.cs" />
-    <Compile Include="BUS\TourBus.cs" />
-    <Compile Include="DAL\DalTour.cs" />
+    <Compile Include="DAL\TourDal.cs" />
     <Compile Include="Entity\LoaiChiPhi.cs" />
     <Compile Include="Entity\ChiPhi.cs" />
     <Compile Include="Entity\DoanKhach.cs" />
@@ -95,12 +88,6 @@
     </Compile>
     <Compile Include="GUI\QuanLyDoan\SearchDoan.Designer.cs">
       <DependentUpon>SearchDoan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\QuanLyDoan\SelectKhach.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
-      <DependentUpon>SelectKhach.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyDoan\DanhSachDoan.cs">
       <SubType>UserControl</SubType>
@@ -150,6 +137,24 @@
     <Compile Include="GUI\QuanLyPhanCong\DanhSachPhanCong.Designer.cs">
       <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.Designer.cs">
+      <DependentUpon>DanhSachChonDiaDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\ThongKeTheoTour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\ThongKeTheoTour.Designer.cs">
+      <DependentUpon>ThongKeTheoTour.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanLyTouris\DanhSachTour.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,7 +173,7 @@
     <Compile Include="Entity\DiaDiem.cs" />
     <Compile Include="Entity\Gia.cs" />
     <Compile Include="Entity\Loai.cs" />
-    <Compile Include="Entity\Touris.cs" />
+    <Compile Include="Entity\Tour.cs" />
     <Compile Include="GUI\QuanLyTouris\ChiTietGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,9 +233,6 @@
     <EmbeddedResource Include="GUI\QuanLyDoan\SearchDoan.resx">
       <DependentUpon>SearchDoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyDoan\SelectKhach.resx">
-      <DependentUpon>SelectKhach.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\DanhSachDoan.resx">
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +262,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachDiaDiem.resx">
       <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDoan\SelectKhach.resx">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.resx">
+      <DependentUpon>DanhSachChonDiaDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyTouris\ThongKeTheoTour.resx">
+      <DependentUpon>ThongKeTheoTour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachGia.resx">
       <DependentUpon>DanhSachGia.cs</DependentUpon>

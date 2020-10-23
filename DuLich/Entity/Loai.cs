@@ -17,7 +17,7 @@ namespace DuLich.Model.Entity
         public int Id { get; set; }
         public String TenLoai { get; set; }
 
-        public ICollection<Touris> Touris { get; set; }
+        public ICollection<Tour> Touris { get; set; }
         public override string ToString()
         {
             return TenLoai;

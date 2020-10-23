@@ -16,11 +16,11 @@ namespace DuLich.GUI.QuanLyDoan
     {
         private IDanhSachDoanListener danhSachDoanListener;
         private List<Doan> danhSachDoan;
-        private List<Touris> danhSachTour;
+        private List<Tour> danhSachTour;
         private List<NhanVien> danhSachNhanVien;
         private List<Khach> danhSachKhach;
 
-        public DanhSachDoan(List<Doan> doans, List<Touris> tours,List<NhanVien> nhanViens,List<Khach> khaches,IDanhSachDoanListener danhSachDoanListener)
+        public DanhSachDoan(List<Doan> doans, List<Tour> tours,List<NhanVien> nhanViens,List<Khach> khaches,IDanhSachDoanListener danhSachDoanListener)
         {
             InitializeComponent();
             danhSachDoan = doans;
@@ -54,7 +54,7 @@ namespace DuLich.GUI.QuanLyDoan
             searchDoan1.SetData(danhSachTour,danhSachNhanVien,danhSachKhach,max,min, this);
         }
 
-        public void onSearchDoan(Touris tour, string ten, NhanVien nhanVien, Khach khach, DateTime min, DateTime max)
+        public void onSearchDoan(Tour tour, string ten, NhanVien nhanVien, Khach khach, DateTime min, DateTime max)
         {
             if (!ten.Equals(""))
             {

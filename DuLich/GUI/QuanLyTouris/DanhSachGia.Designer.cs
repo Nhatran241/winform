@@ -136,7 +136,7 @@ namespace DuLich.View.QuanLyTouris
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Touris);
+            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Tour);
             // 
             // DanhSachGia
             // 

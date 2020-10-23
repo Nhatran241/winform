@@ -15,7 +15,7 @@ namespace DuLich.Model.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaChiTietTour { get; set; }
         public DiaDiem diaDiem { get; set; }
-        public Touris touris { get; set; }
+        public Tour touris { get; set; }
         public int ThuTu { get; set; }
     }
 }
