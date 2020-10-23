@@ -27,6 +27,8 @@ namespace DuLich.GUI.QuanLyNhanVien
             this.searchNhanVienListener = searchNhanVienListener;
             this.minDate = min;
             this.maxDate = max;
+            datepicker_batdau.Value = min;
+            datepicker_ketthuc.Value = max;
             InitData();
         }
 
@@ -37,8 +39,6 @@ namespace DuLich.GUI.QuanLyNhanVien
             datepicker_batdau.MaxDate = maxDate;
             datepicker_ketthuc.MaxDate = maxDate;
             datepicker_ketthuc.MinDate = minDate;
-            datepicker_batdau.Value = minDate;
-            datepicker_ketthuc.Value = maxDate;
         }
 
 

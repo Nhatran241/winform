@@ -32,14 +32,14 @@ namespace DuLich.GUI.QuanLyNhanVien
         }
         private void InitUI()
         {
-            if(!string.IsNullOrEmpty(nhanVien.TenNhanVien))
-            tb_name.Text = nhanVien.TenNhanVien.ToString();
-            if (!string.IsNullOrEmpty(nhanVien.SoDienThoai))
+            if(nhanVien.MaNhanVien != 0)
+            {
+                tb_name.Text = nhanVien.TenNhanVien.ToString();
                 tb_sdt.Text = nhanVien.SoDienThoai.ToString();
-            if (!string.IsNullOrEmpty(nhanVien.DiaChi ))
                 tb_diaChi.Text = nhanVien.DiaChi.ToString();
-            if (!string.IsNullOrEmpty(nhanVien.SoCmnd))
                 tb_cmnd.Text = nhanVien.SoCmnd.ToString();
+                datepicker_ngaysinh.Value = nhanVien.NgaySinh;
+            }
             datepicker_ngaysinh.MaxDate = DateTime.Today.AddDays(-(18 * 365));
         }
 
