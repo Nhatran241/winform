@@ -32,14 +32,21 @@ namespace DuLich.GUI.QuanLyNhanVien
         }
         private void InitUI()
         {
-            if(nhanVien.MaNhanVien != 0)
+            List<string> gioitinh = new List<string> { "Nam", "Nữ", "Khác" };
+            if (nhanVien.MaNhanVien != 0)
             {
                 tb_name.Text = nhanVien.TenNhanVien.ToString();
                 tb_sdt.Text = nhanVien.SoDienThoai.ToString();
                 tb_diaChi.Text = nhanVien.DiaChi.ToString();
                 tb_cmnd.Text = nhanVien.SoCmnd.ToString();
                 datepicker_ngaysinh.Value = nhanVien.NgaySinh;
+                cb_gioitinh.Text = nhanVien.GioiTinh;
             }
+            foreach(string s in gioitinh)
+            {
+                cb_gioitinh.Items.Add(s);
+            }
+
             datepicker_ngaysinh.MaxDate = DateTime.Today.AddDays(-(18 * 365));
         }
 
@@ -91,6 +98,11 @@ namespace DuLich.GUI.QuanLyNhanVien
         private void datepicker_ngaysinh_ValueChanged(object sender, EventArgs e)
         {
             nhanVien.NgaySinh = datepicker_ngaysinh.Value;
+        }
+
+        private void cb_gioitinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nhanVien.GioiTinh = (string)cb_gioitinh.SelectedItem;
         }
     }
 }

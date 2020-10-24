@@ -16,6 +16,7 @@ namespace DuLich.GUI.QuanLyNhanVien
         private String filterTen = "";
         private DateTime minDate = new DateTime();
         private DateTime maxDate = new DateTime();
+        private string gioitinh = "Bất kỳ";
         private ISearchNhanVienListener searchNhanVienListener;
 
         public SearchNhanVien()
@@ -39,6 +40,8 @@ namespace DuLich.GUI.QuanLyNhanVien
             datepicker_batdau.MaxDate = maxDate;
             datepicker_ketthuc.MaxDate = maxDate;
             datepicker_ketthuc.MinDate = minDate;
+            List<string> list = new List<string> { "Bất kỳ", "Nam", "Nữ", "Khác" };
+            cb_gioitinh.DataSource = list;
         }
 
 
@@ -46,12 +49,12 @@ namespace DuLich.GUI.QuanLyNhanVien
         {
             filterTen = tb_search.Text.Trim().ToLower();
             if(searchNhanVienListener != null)
-                searchNhanVienListener.onSearchNhanVien(filterTen,minDate,maxDate);
+                searchNhanVienListener.onSearchNhanVien(filterTen,gioitinh,minDate,maxDate);
         }
 
         public interface ISearchNhanVienListener
         {
-            void onSearchNhanVien(string ten,DateTime min,DateTime max);
+            void onSearchNhanVien(string ten,string gioiTinh,DateTime min,DateTime max);
         }
 
 
@@ -62,7 +65,7 @@ namespace DuLich.GUI.QuanLyNhanVien
             minDate = datepicker_batdau.Value;
             if (minDate >= maxDate)
                 datepicker_ketthuc.Value = minDate;
-            searchNhanVienListener.onSearchNhanVien(filterTen, minDate, maxDate);
+            searchNhanVienListener.onSearchNhanVien(filterTen,gioitinh, minDate, maxDate);
         }
 
         private void datepicker_ketthuc_ValueChanged(object sender, EventArgs e)
@@ -71,7 +74,13 @@ namespace DuLich.GUI.QuanLyNhanVien
             maxDate = datepicker_ketthuc.Value;
             if (maxDate < minDate)
                 datepicker_batdau.Value = maxDate;
-            searchNhanVienListener.onSearchNhanVien(filterTen, minDate, maxDate);
+            searchNhanVienListener.onSearchNhanVien(filterTen,gioitinh, minDate, maxDate);
+        }
+
+        private void cb_gioitinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            gioitinh = (string)cb_gioitinh.SelectedItem;
+            searchNhanVienListener.onSearchNhanVien(filterTen,gioitinh , minDate, maxDate);
         }
     }
 }

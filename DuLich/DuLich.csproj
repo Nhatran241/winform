@@ -65,6 +65,7 @@
     <Compile Include="Entity\NhanVien.cs" />
     <Compile Include="Entity\PhanCong.cs" />
     <Compile Include="Entity\Khach.cs" />
+    <Compile Include="GioiTinh.cs" />
     <Compile Include="GUI\QuanLyChiPhi\ChiTietChiPhi.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,20 +184,14 @@
     <Compile Include="GUI\QuanLyTouris\DanhSachGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\QuanLyTouris\DanhSachDiaDiem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="GUI\QuanLyTouris\DanhSachGia.Designer.cs">
       <DependentUpon>DanhSachGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyTouris\DanhSachDiaDiem.Designer.cs">
-      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\QuanLyDiaDiem\QuanLyDiaDiem.cs">
+    <Compile Include="GUI\QuanLyDiaDiem\DanhSachDiaDiem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\QuanLyDiaDiem\QuanLyDiaDiem.Designer.cs">
-      <DependentUpon>QuanLyDiaDiem.cs</DependentUpon>
+    <Compile Include="GUI\QuanLyDiaDiem\DanhSachDiaDiem.Designer.cs">
+      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyDiaDiem\ChiTietDiaDiem.cs">
       <SubType>UserControl</SubType>
@@ -224,8 +219,8 @@
     <EmbeddedResource Include="GUI\QuanLyChiPhi\DanhSachChiPhi.resx">
       <DependentUpon>DanhSachChiPhi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyDiaDiem\QuanLyDiaDiem.resx">
-      <DependentUpon>QuanLyDiaDiem.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\QuanLyDiaDiem\DanhSachDiaDiem.resx">
+      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\ChiTietDoan.resx">
       <DependentUpon>ChiTietDoan.cs</DependentUpon>
@@ -259,9 +254,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachDiaDiem.resx">
-      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\SelectKhach.resx">
       <DependentUpon>SelectKhach.cs</DependentUpon>
@@ -303,6 +295,7 @@
     <None Include="Properties\DataSources\DuLich.Entity.NhanVien.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.Touris.datasource" />
     <None Include="Properties\DataSources\DuLich.Model.Entity.ChiPhi.datasource" />
+    <None Include="Properties\DataSources\DuLich.Model.Entity.DiaDiem.datasource" />
     <None Include="Properties\DataSources\DuLich.Model.Entity.Gia.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

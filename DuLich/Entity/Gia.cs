@@ -19,5 +19,9 @@ namespace DuLich.Model.Entity
         public DateTime ThoiGianKetThuc { get; set; }
         public Tour touris { get; set; }
         public int TourisId { get; set; }
+        public override string ToString()
+        {
+            return GiaTri.ToString();
+        }
     }
 }

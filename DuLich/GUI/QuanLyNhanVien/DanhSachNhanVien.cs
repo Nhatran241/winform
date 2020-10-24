@@ -76,15 +76,22 @@ namespace DuLich.GUI.QuanLyNhanVien
 
         }
 
-        public void onSearchNhanVien(string ten, DateTime min, DateTime max)
+        public void onSearchNhanVien(string ten,string gioitinh, DateTime min, DateTime max)
         {
             if (ten.Equals(""))
             {
-                dataGridViewNhanVien.DataSource = danhSachNhanVien.Where(c => c.NgaySinh >= min && c.NgaySinh <= max).ToList();
+                if(gioitinh.Equals("Bất kỳ"))
+                {
+                    dataGridViewNhanVien.DataSource = danhSachNhanVien.Where(c => c.NgaySinh >= min && c.NgaySinh <= max).ToList();
+                }
+                else dataGridViewNhanVien.DataSource = danhSachNhanVien.Where(c => c.NgaySinh >= min && c.NgaySinh <= max&&c.GioiTinh.Equals(gioitinh)).ToList();
             }
             else
             {
-                dataGridViewNhanVien.DataSource = danhSachNhanVien.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.TenNhanVien.ToLower().Contains(ten)).ToList();
+                if(gioitinh.Equals("Bất kỳ"))
+                {
+                    dataGridViewNhanVien.DataSource = danhSachNhanVien.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.TenNhanVien.ToLower().Contains(ten)).ToList();
+                }else dataGridViewNhanVien.DataSource = danhSachNhanVien.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.TenNhanVien.ToLower().Contains(ten) && c.GioiTinh.Equals(gioitinh)).ToList();
             }
         }
     }

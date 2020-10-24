@@ -35,6 +35,8 @@ namespace DuLich.GUI.QuanLyNhanVien
             this.datepicker_batdau = new System.Windows.Forms.DateTimePicker();
             this.tv_ngayketthuc = new System.Windows.Forms.Label();
             this.tv_ngaybatdau = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cb_gioitinh = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // tb_search
@@ -90,10 +92,30 @@ namespace DuLich.GUI.QuanLyNhanVien
             this.tv_ngaybatdau.TabIndex = 28;
             this.tv_ngaybatdau.Text = "Có ngày sinh từ :";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(555, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Giới Tính";
+            // 
+            // cb_gioitinh
+            // 
+            this.cb_gioitinh.FormattingEnabled = true;
+            this.cb_gioitinh.Location = new System.Drawing.Point(612, 31);
+            this.cb_gioitinh.Name = "cb_gioitinh";
+            this.cb_gioitinh.Size = new System.Drawing.Size(121, 21);
+            this.cb_gioitinh.TabIndex = 33;
+            this.cb_gioitinh.SelectedIndexChanged += new System.EventHandler(this.cb_gioitinh_SelectedIndexChanged);
+            // 
             // SearchNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cb_gioitinh);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.datepicker_ketthuc);
             this.Controls.Add(this.datepicker_batdau);
             this.Controls.Add(this.tv_ngayketthuc);
@@ -101,7 +123,7 @@ namespace DuLich.GUI.QuanLyNhanVien
             this.Controls.Add(this.tv_searchbox);
             this.Controls.Add(this.tb_search);
             this.Name = "SearchNhanVien";
-            this.Size = new System.Drawing.Size(800, 28);
+            this.Size = new System.Drawing.Size(800, 61);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +136,7 @@ namespace DuLich.GUI.QuanLyNhanVien
         private System.Windows.Forms.DateTimePicker datepicker_batdau;
         private System.Windows.Forms.Label tv_ngayketthuc;
         private System.Windows.Forms.Label tv_ngaybatdau;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cb_gioitinh;
     }
 }

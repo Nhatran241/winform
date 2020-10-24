@@ -36,10 +36,6 @@ namespace DuLich.View
             this.danhSachGia = gias;
             this.danhSachTatCaDiaDiem = tatCaDiaDiem;
             this.danhSachDiaDiemCuaTor = diaDiemCuaTour;
-            foreach(DiaDiem diaDiem in diaDiemCuaTour)
-            {
-                Console.WriteLine(diaDiem.TenDiaDiem);
-            }
             if (currentTouris == null)
             {
                 CreateNewRecord();
@@ -52,19 +48,22 @@ namespace DuLich.View
         {
             if (currentTouris.Id == 0)
             {
-                tab_chitiet.Visible = false;
+                tab_chitiet.Enabled = false;
             }
-            else tab_chitiet.Visible = true;
+            else
+            {
+                tab_chitiet.Enabled = true;
+            }
             if (isEditing)
             {
                 EnableComponent();
-                btn_chinhsua.Text = "Lưu";
-               
+                btn_chinhsua.Image = Properties.Resources.diskette;
+
             }
             else
             {
                 DisableComponent();
-                btn_chinhsua.Text = "Chỉnh Sửa";
+                btn_chinhsua.Image = Properties.Resources.edit__1_;
             }
        
         }
@@ -73,16 +72,12 @@ namespace DuLich.View
         {
             currentTouris = new Tour();
             currentLoai = danhSachLoai.First();
-            textbox_id.Visible = false;
-            tour_id.Visible = false;
             btn_xoa.Visible = false;
             isEditing = true;
             UpdateComponentState();
         }
         private void DisableComponent()
         {
-            textbox_id.Visible = true;
-            tour_id.Visible = true;
             btn_xoa.Visible = true;
             textbox_id.Enabled = false;
             textbox_name.Enabled = false;
@@ -124,7 +119,11 @@ namespace DuLich.View
         }
         public void InitUI(Tour touris)
         {
-            textbox_id.Text = touris.Id.ToString();
+            if (touris.Id != 0)
+            {
+                textbox_id.Text = touris.Id.ToString();
+            }
+            else textbox_id.Text = "Mã tự động";
             textbox_name.Text = touris.Name;
             foreach (Loai loai in danhSachLoai)
             {

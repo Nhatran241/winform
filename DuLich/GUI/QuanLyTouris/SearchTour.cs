@@ -29,9 +29,9 @@ namespace DuLich.GUI.QuanLyTouris
             this.danhSachLoai.AddRange(loai);
             this.searchListener = searchListener;
             filterLoai.Id = -1;
-            filterLoai.TenLoai = "Tất cả";
-            danhSachLoai.Add(filterLoai);
-            InitData(loai);
+            filterLoai.TenLoai = "Bất kỳ";
+            danhSachLoai.Insert(0,filterLoai);
+            InitData(danhSachLoai);
         }
 
         private void InitData(List<Loai> danhSachLoai)

@@ -49,8 +49,10 @@ namespace DuLich.View
             this.btn_chinhsua = new System.Windows.Forms.Button();
             this.panel_thongbao = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.tb_giatour = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_loinhuan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cb_giatour = new System.Windows.Forms.ComboBox();
             this.tab_chitiet.SuspendLayout();
             this.panel_thongbao.SuspendLayout();
             this.SuspendLayout();
@@ -107,7 +109,7 @@ namespace DuLich.View
             // 
             this.tour_loai.AutoSize = true;
             this.tour_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tour_loai.Location = new System.Drawing.Point(361, 10);
+            this.tour_loai.Location = new System.Drawing.Point(370, 10);
             this.tour_loai.Name = "tour_loai";
             this.tour_loai.Size = new System.Drawing.Size(43, 20);
             this.tour_loai.TabIndex = 20;
@@ -156,14 +158,15 @@ namespace DuLich.View
             // 
             // datepicker_ketthuc
             // 
-            this.datepicker_ketthuc.Location = new System.Drawing.Point(458, 107);
+            this.datepicker_ketthuc.Location = new System.Drawing.Point(470, 137);
             this.datepicker_ketthuc.Name = "datepicker_ketthuc";
             this.datepicker_ketthuc.Size = new System.Drawing.Size(181, 20);
             this.datepicker_ketthuc.TabIndex = 27;
+            this.datepicker_ketthuc.ValueChanged += new System.EventHandler(this.datepicker_ketthuc_ValueChanged_1);
             // 
             // datepicker_batdau
             // 
-            this.datepicker_batdau.Location = new System.Drawing.Point(133, 106);
+            this.datepicker_batdau.Location = new System.Drawing.Point(133, 138);
             this.datepicker_batdau.Name = "datepicker_batdau";
             this.datepicker_batdau.Size = new System.Drawing.Size(181, 20);
             this.datepicker_batdau.TabIndex = 26;
@@ -173,7 +176,7 @@ namespace DuLich.View
             // 
             this.tv_ngayketthuc.AutoSize = true;
             this.tv_ngayketthuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tv_ngayketthuc.Location = new System.Drawing.Point(333, 107);
+            this.tv_ngayketthuc.Location = new System.Drawing.Point(333, 138);
             this.tv_ngayketthuc.Name = "tv_ngayketthuc";
             this.tv_ngayketthuc.Size = new System.Drawing.Size(119, 20);
             this.tv_ngayketthuc.TabIndex = 25;
@@ -183,7 +186,7 @@ namespace DuLich.View
             // 
             this.tv_ngaybatdau.AutoSize = true;
             this.tv_ngaybatdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tv_ngaybatdau.Location = new System.Drawing.Point(14, 106);
+            this.tv_ngaybatdau.Location = new System.Drawing.Point(10, 141);
             this.tv_ngaybatdau.Name = "tv_ngaybatdau";
             this.tv_ngaybatdau.Size = new System.Drawing.Size(113, 20);
             this.tv_ngaybatdau.TabIndex = 24;
@@ -214,9 +217,9 @@ namespace DuLich.View
             // panel_thongbao
             // 
             this.panel_thongbao.Controls.Add(this.label1);
-            this.panel_thongbao.Location = new System.Drawing.Point(0, 133);
+            this.panel_thongbao.Location = new System.Drawing.Point(0, 164);
             this.panel_thongbao.Name = "panel_thongbao";
-            this.panel_thongbao.Size = new System.Drawing.Size(800, 507);
+            this.panel_thongbao.Size = new System.Drawing.Size(800, 476);
             this.panel_thongbao.TabIndex = 28;
             this.panel_thongbao.Visible = false;
             // 
@@ -230,32 +233,55 @@ namespace DuLich.View
             this.label1.TabIndex = 0;
             this.label1.Text = "Tour này chưa có giá để áp dụng hoặc giá đã quá hạn";
             // 
-            // tb_giatour
+            // label3
             // 
-            this.tb_giatour.Enabled = false;
-            this.tb_giatour.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_giatour.Location = new System.Drawing.Point(470, 52);
-            this.tb_giatour.Name = "tb_giatour";
-            this.tb_giatour.Size = new System.Drawing.Size(218, 29);
-            this.tb_giatour.TabIndex = 30;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(361, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 20);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Lợi Nhuận";
+            // 
+            // tb_loinhuan
+            // 
+            this.tb_loinhuan.Enabled = false;
+            this.tb_loinhuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_loinhuan.Location = new System.Drawing.Point(470, 92);
+            this.tb_loinhuan.Name = "tb_loinhuan";
+            this.tb_loinhuan.Size = new System.Drawing.Size(218, 29);
+            this.tb_loinhuan.TabIndex = 32;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(359, 58);
+            this.label2.Location = new System.Drawing.Point(370, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
-            this.label2.TabIndex = 29;
+            this.label2.TabIndex = 33;
             this.label2.Text = "Giá Tour";
+            // 
+            // cb_giatour
+            // 
+            this.cb_giatour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_giatour.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_giatour.FormattingEnabled = true;
+            this.cb_giatour.Location = new System.Drawing.Point(470, 52);
+            this.cb_giatour.Name = "cb_giatour";
+            this.cb_giatour.Size = new System.Drawing.Size(218, 32);
+            this.cb_giatour.TabIndex = 34;
+            this.cb_giatour.SelectedIndexChanged += new System.EventHandler(this.cb_giatour_SelectedIndexChanged);
             // 
             // ChiTietDoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel_thongbao);
-            this.Controls.Add(this.tb_giatour);
+            this.Controls.Add(this.cb_giatour);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.tb_loinhuan);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel_thongbao);
             this.Controls.Add(this.datepicker_ketthuc);
             this.Controls.Add(this.datepicker_batdau);
             this.Controls.Add(this.tv_ngayketthuc);
@@ -299,7 +325,9 @@ namespace DuLich.View
         private TabPage tab_chiphi;
         private Panel panel_thongbao;
         private Label label1;
-        private TextBox tb_giatour;
+        private Label label3;
+        private TextBox tb_loinhuan;
         private Label label2;
+        private ComboBox cb_giatour;
     }
 }

@@ -26,15 +26,11 @@ namespace DuLich.View.QuanLyTouris
 
         private void InitUI()
         {
-            tb_magia.Text = gia.MaGia.ToString();
             if (gia.MaGia == 0)
             {
-                tb_magia.Visible = false;
-                tv_magia.Visible = false;
+                tb_magia.Text = "Mã tự động";
             } else {
-                tb_magia.Visible = false;
-                tv_magia.Visible = false;
-                tb_magia.Enabled = false;
+                tb_magia.Text = gia.MaGia.ToString();
             } 
             tb_giatri.Text = gia.GiaTri.ToString();
             if(gia.ThoiGianBatDau.Year < 1500 && gia.ThoiGianKetThuc.Year < 1500)

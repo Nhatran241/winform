@@ -35,14 +35,14 @@ namespace DuLich.View.QuanLyTouris
             this.btn_them_gia = new System.Windows.Forms.Button();
             this.btn_xoa_gia = new System.Windows.Forms.Button();
             this.btn_sua_gia = new System.Windows.Forms.Button();
-            this.dataGridViewTour = new System.Windows.Forms.DataGridView();
+            this.dataGridViewGia = new System.Windows.Forms.DataGridView();
             this.maGiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaTriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianBatDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianKetThucDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -65,42 +65,41 @@ namespace DuLich.View.QuanLyTouris
             this.btn_xoa_gia.TabIndex = 2;
             this.btn_xoa_gia.Text = "Xoa";
             this.btn_xoa_gia.UseVisualStyleBackColor = true;
-            this.btn_xoa_gia.Visible = false;
             this.btn_xoa_gia.Click += new System.EventHandler(this.btn_xoa_gia_Click);
             // 
             // btn_sua_gia
             // 
-            this.btn_sua_gia.Location = new System.Drawing.Point(138, 4);
+            this.btn_sua_gia.Location = new System.Drawing.Point(353, 4);
             this.btn_sua_gia.Name = "btn_sua_gia";
             this.btn_sua_gia.Size = new System.Drawing.Size(75, 23);
             this.btn_sua_gia.TabIndex = 3;
             this.btn_sua_gia.Text = "Sua";
             this.btn_sua_gia.UseVisualStyleBackColor = true;
-            this.btn_sua_gia.Visible = false;
             this.btn_sua_gia.Click += new System.EventHandler(this.btn_sua_gia_Click);
             // 
-            // dataGridViewTour
+            // dataGridViewGia
             // 
-            this.dataGridViewTour.AllowUserToAddRows = false;
-            this.dataGridViewTour.AllowUserToDeleteRows = false;
-            this.dataGridViewTour.AutoGenerateColumns = false;
-            this.dataGridViewTour.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewTour.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridViewTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewGia.AllowUserToAddRows = false;
+            this.dataGridViewGia.AllowUserToDeleteRows = false;
+            this.dataGridViewGia.AutoGenerateColumns = false;
+            this.dataGridViewGia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewGia.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewGia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maGiaDataGridViewTextBoxColumn,
             this.giaTriDataGridViewTextBoxColumn,
             this.thoiGianBatDauDataGridViewTextBoxColumn,
             this.thoiGianKetThucDataGridViewTextBoxColumn});
-            this.dataGridViewTour.DataSource = this.giaBindingSource;
-            this.dataGridViewTour.Location = new System.Drawing.Point(0, 33);
-            this.dataGridViewTour.MultiSelect = false;
-            this.dataGridViewTour.Name = "dataGridViewTour";
-            this.dataGridViewTour.ReadOnly = true;
-            this.dataGridViewTour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTour.Size = new System.Drawing.Size(767, 378);
-            this.dataGridViewTour.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaDoubleClick);
-            this.dataGridViewTour.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaClick);
+            this.dataGridViewGia.DataSource = this.giaBindingSource;
+            this.dataGridViewGia.Location = new System.Drawing.Point(0, 33);
+            this.dataGridViewGia.MultiSelect = false;
+            this.dataGridViewGia.Name = "dataGridViewGia";
+            this.dataGridViewGia.ReadOnly = true;
+            this.dataGridViewGia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewGia.Size = new System.Drawing.Size(767, 378);
+            this.dataGridViewGia.TabIndex = 0;
+            this.dataGridViewGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaClick);
+            this.dataGridViewGia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaDoubleClick);
             // 
             // maGiaDataGridViewTextBoxColumn
             // 
@@ -142,13 +141,13 @@ namespace DuLich.View.QuanLyTouris
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridViewTour);
+            this.Controls.Add(this.dataGridViewGia);
             this.Controls.Add(this.btn_sua_gia);
             this.Controls.Add(this.btn_xoa_gia);
             this.Controls.Add(this.btn_them_gia);
             this.Name = "DanhSachGia";
             this.Size = new System.Drawing.Size(767, 414);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -160,7 +159,7 @@ namespace DuLich.View.QuanLyTouris
         private Button btn_them_gia;
         private Button btn_xoa_gia;
         private Button btn_sua_gia;
-        private DataGridView dataGridViewTour;
+        private DataGridView dataGridViewGia;
         private BindingSource tourisBindingSource;
         private DataGridViewTextBoxColumn maGiaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn giaTriDataGridViewTextBoxColumn;

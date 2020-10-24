@@ -39,15 +39,12 @@ namespace DuLich.GUI.QuanLyChiPhi
 
         private void InitUI()
         {
-            tb_machiphi.Text = chiPhiHienTai.id.ToString();
             if (chiPhiHienTai.id == 0)
             {
-                tb_machiphi.Visible = false;
-                tv_machiphi.Visible = false;
-            } else {
-                tb_machiphi.Visible = false;
-                tv_machiphi.Visible = false;
-                tb_machiphi.Enabled = false;
+                tb_machiphi.Text = "Mã tự động";
+            } else
+            {
+                tb_machiphi.Text = chiPhiHienTai.id.ToString();
             } 
             tb_chiphi.Text = chiPhiHienTai.giaTri.ToString();
             combobox_loaichiphi.DataSource = danhSachLoaiChiPhi;
@@ -97,6 +94,11 @@ namespace DuLich.GUI.QuanLyChiPhi
         private void tv_maphancong_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tb_ghichu_TextChanged(object sender, EventArgs e)
+        {
+            chiPhiHienTai.ghiChu = tb_ghichu.Text;
         }
     }
 }

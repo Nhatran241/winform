@@ -29,7 +29,7 @@ namespace DuLich.GUI.QuanLyDoan
         {
             InitializeComponent();
         }
-        public void SetData(List<Tour> danhSachTour,List<NhanVien> danhSachNhanVien,List<Khach> danhSachKhach,DateTime maxDate,DateTime minDate,ISearchDoanListener searchDoanListener)
+        public void SetData(List<Tour> danhSachTour,List<NhanVien> danhSachNhanVien,List<Khach> danhSachKhach,DateTime minDate,DateTime maxDate,ISearchDoanListener searchDoanListener)
         {
             this.danhSachTour.AddRange(danhSachTour);
             this.danhSachKhach.AddRange(danhSachKhach);
@@ -54,12 +54,12 @@ namespace DuLich.GUI.QuanLyDoan
             cb_tour.DataSource = danhSachTour;
             cb_khach.DataSource = danhSachKhach;
             cb_nhanvien.DataSource = danhSachNhanVien;
-            datepickbatdau.MinDate = minDate;
             datepickbatdau.MaxDate = maxDate;
+            datepickbatdau.MinDate = minDate;
             datepickketthuc.MaxDate = maxDate;
             datepickketthuc.MinDate = minDate;
-            datepickbatdau.Value = minDate;
-            datepickketthuc.Value = maxDate;
+            datepickbatdau.Value = datepickbatdau.MinDate;
+            datepickketthuc.Value = datepickketthuc.MaxDate;
         }
 
         private void cb_search_SelectedIndexChanged(object sender, EventArgs e)

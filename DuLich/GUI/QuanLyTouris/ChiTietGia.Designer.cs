@@ -84,6 +84,7 @@
             // 
             // tb_magia
             // 
+            this.tb_magia.Enabled = false;
             this.tb_magia.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_magia.Location = new System.Drawing.Point(191, 16);
             this.tb_magia.Name = "tb_magia";

@@ -13,6 +13,7 @@ using DuLich.Model.Entity;
 using DuLich.View.QuanLyPhanCong;
 using DuLich.View.QuanLyDoan;
 using DuLich.GUI.QuanLyChiPhi;
+using System.Net.Sockets;
 
 namespace DuLich.View
 {
@@ -76,10 +77,9 @@ namespace DuLich.View
         public void CreateNewRecord()
         {
             this.doanHienTai = new Doan();
-            doanHienTai.Touris = danhSachTour.First();
+            if(doanHienTai.Touris != null)
+                doanHienTai.Touris = danhSachTour.First();
             textbox_id.Enabled = false;
-            //textbox_id.Visible = false;
-           // doan_id.Visible = false;
             btn_xoa.Visible = false;
             isEditing = true;
             UpdateComponentState();
@@ -92,6 +92,7 @@ namespace DuLich.View
             textbox_id.Enabled = false;
             textbox_name.Enabled = false;
             combobox_loai.Enabled = false;
+            cb_giatour.Enabled = false;
             datepicker_batdau.Enabled = false;
             datepicker_ketthuc.Enabled = false;
         }
@@ -101,6 +102,7 @@ namespace DuLich.View
             //textbox_id.Enabled = false;
             textbox_name.Enabled = true;
             combobox_loai.Enabled = true;
+            cb_giatour.Enabled = true;
             datepicker_batdau.Enabled = true;
             datepicker_ketthuc.Enabled = true;
         }
@@ -156,104 +158,62 @@ namespace DuLich.View
             if (doan.Id != 0)
             {
                 textbox_id.Text = doan.Id.ToString();
+                datepicker_batdau.Value = doanHienTai.ThoiGianBatDau;
+                datepicker_ketthuc.Value = doanHienTai.ThoiGianKetThuc;
+                datepicker_batdau.MinDate = doanHienTai.GiaApDung.ThoiGianBatDau;
+                datepicker_ketthuc.MinDate = doanHienTai.GiaApDung.ThoiGianKetThuc;
             }
-            else textbox_id.Text = "Mã tự động";
+            else
+            {
+                textbox_id.Text = "Mã tự động";
+            }
             textbox_name.Text = doan.Name;
-            foreach (Tour tour in danhSachTour)
-            {
-                combobox_loai.Items.Add(tour);
-            }
-            combobox_loai.Text = doanHienTai.Touris.Name;
-            DateTime minTime = doanHienTai.Touris.Gias.First().ThoiGianBatDau;
-            DateTime maxTime = doanHienTai.Touris.Gias.First().ThoiGianKetThuc;
-            foreach (Gia gia in doanHienTai.Touris.Gias)
-            {
-                if (gia.ThoiGianBatDau <= minTime)
-                    minTime = gia.ThoiGianBatDau;
-                if (gia.ThoiGianKetThuc >= maxTime)
-                    maxTime = gia.ThoiGianKetThuc;
-            }
-            datepicker_batdau.MinDate = minTime;
-            datepicker_batdau.MaxDate = maxTime;
-            datepicker_ketthuc.MinDate = minTime;
-            datepicker_ketthuc.MaxDate = maxTime;
-            if(maxTime < DateTime.Today)
-            {
-                panel_thongbao.Visible = true;
-            }else
-            {
-                if(doanHienTai.Id != 0)
+            if(combobox_loai.Items.Count ==0) {
+                foreach (Tour tour in danhSachTour)
                 {
-                    datepicker_batdau.Value = doanHienTai.ThoiGianBatDau;
-                    datepicker_ketthuc.Value = doanHienTai.ThoiGianKetThuc;
-                }
-                else
-                {
-                    datepicker_batdau.Value = DateTime.Today;
-                    datepicker_ketthuc.Value = DateTime.Today;
+                    combobox_loai.Items.Add(tour);
                 }
             }
+           
+            if(doanHienTai.Touris != null)
+                combobox_loai.Text = doanHienTai.Touris.Name;
+            if (doanHienTai.Touris!= null && doanHienTai.Touris.Gias != null)
+            {
+                if(cb_giatour.Items.Count ==0)
+                {
+                    foreach (Gia gia in doanHienTai.Touris.Gias)
+                    {
+                        cb_giatour.Items.Add(gia);
+                    }
+                }
+                cb_giatour.SelectedItem = doanHienTai.GiaApDung;
+            }
+            UpDateLoiNhuan();
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!isEditing)
+                return;
             doanHienTai.Touris = danhSachTour.ToArray()[combobox_loai.SelectedIndex];
-            List<Gia> giaCuaTour = doanHienTai.Touris.Gias.ToList();
-            if (giaCuaTour.Count() == 0)
-            {
-                datepicker_batdau.Visible = false;
-                datepicker_ketthuc.Visible = false;
-                tv_ngaybatdau.Visible = false;
-                tv_ngayketthuc.Visible = false;
-                btn_chinhsua.Visible = false;
-                panel_thongbao.Visible = true;
-            }
-            else {
-                DateTime minTime = giaCuaTour.First().ThoiGianBatDau;
-                DateTime maxTime = giaCuaTour.First().ThoiGianKetThuc;
-                foreach(Gia gia in giaCuaTour)
-                {
-                    if (gia.ThoiGianBatDau <= minTime)
-                        minTime = gia.ThoiGianBatDau;
-                    if (gia.ThoiGianKetThuc >= maxTime)
-                        maxTime = gia.ThoiGianKetThuc;
-                }
-                datepicker_batdau.MinDate = minTime;
-                datepicker_batdau.MaxDate = maxTime;
-                datepicker_ketthuc.MinDate = minTime;
-                datepicker_ketthuc.MaxDate = maxTime; 
-                if (maxTime < DateTime.Today)
-                {
-                    panel_thongbao.Visible = true;
-                    datepicker_batdau.Visible = false;
-                    datepicker_ketthuc.Visible = false;
-                    tv_ngaybatdau.Visible = false;
-                    tv_ngayketthuc.Visible = false;
-                    btn_chinhsua.Visible = false;
-                }
-                else
-                {
-                    panel_thongbao.Visible = false;
-                    btn_chinhsua.Visible = true;
-                    datepicker_batdau.Visible = true;
-                    datepicker_ketthuc.Visible = true;
-                    tv_ngaybatdau.Visible = true;
-                    tv_ngayketthuc.Visible = true;
-                    if (doanHienTai.Id != 0)
-                    {
-                        datepicker_batdau.Value = doanHienTai.ThoiGianBatDau;
-                        datepicker_ketthuc.Value = doanHienTai.ThoiGianKetThuc;
-                    }
-                    else
-                    {
-                        datepicker_batdau.Value = DateTime.Today;
-                        datepicker_ketthuc.Value = DateTime.Today;
-                    }
-                }
-
-            }
-           
-
+            cb_giatour.DataSource = doanHienTai.Touris.Gias.ToList();
         }
+        private void cb_giatour_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            doanHienTai.GiaApDung = doanHienTai.Touris.Gias.ToArray()[cb_giatour.SelectedIndex];
+            UpdateMinMaxDatepicker();
+        }
+
+        private void UpdateMinMaxDatepicker()
+        {
+            DateTimePicker temp = new DateTimePicker();
+            datepicker_batdau.MinDate = temp.MinDate;
+            datepicker_batdau.MaxDate = temp.MaxDate;
+            datepicker_ketthuc.MinDate = temp.MinDate;
+            datepicker_batdau.MaxDate = doanHienTai.GiaApDung.ThoiGianKetThuc;
+            datepicker_batdau.MinDate = doanHienTai.GiaApDung.ThoiGianBatDau;
+            datepicker_ketthuc.MinDate = doanHienTai.GiaApDung.ThoiGianBatDau;
+        }
+
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
         {
             if (e.TabPage.Name=="tab_phancong") {
@@ -311,52 +271,6 @@ namespace DuLich.View
             return true;
         }
 
-        /*
-        public void onDanhSachGiaThemClick()
-        {
-            Gia gia = new Gia();
-            gia.touris = currentTouris;
-            chiTietUserControl = new ChiTietGia(gia,this);
-            tab_phancong.Controls.Clear();
-            tab_phancong.Controls.Add(chiTietUserControl);
-        }
-        */
-        /*
-        public void onDanhSachGiaSuaClick(Gia gia)
-        {
-            chiTietUserControl = new ChiTietGia(gia,this);
-            tab_phancong.Controls.Clear();
-            tab_phancong.Controls.Add(chiTietUserControl);
-        }
-
-        public void onDanhSachGiaXoaClick(Gia gia)
-        {
-            onChiTietClickListener.onXoaGia(gia, currentTouris);
-        }
-
-        public void onLuuClick(Gia gia)
-        {
-            Console.WriteLine("" + gia.MaGia + "/" + gia.GiaTri + ":" + gia.ThoiGianBatDau + "-" + gia.ThoiGianKetThuc);
-            if (gia.MaGia == 0)
-            {
-                onChiTietClickListener.onThemGia(gia,currentTouris);
-            }
-            else onChiTietClickListener.onSuaGia(gia, currentTouris);
-        }
-
-        public void onHuyClick()
-        {
-            LoadDanhSachGia();
-        }
-
-        public void onClickLuu(List<DiaDiem> diaDiemCuaTourNew)
-        {
-           
-        }
-        */
-
-
-
         private void btn_xoa_Click(object sender, EventArgs e)
         {
             chiTietDoanListener.onChiTietDoanClick_Xoa(doanHienTai);
@@ -372,28 +286,50 @@ namespace DuLich.View
                 doanHienTai.ThoiGianKetThuc = doanHienTai.ThoiGianBatDau;
                 datepicker_ketthuc.Value = doanHienTai.ThoiGianBatDau;
             }
-            TinhGiaTour();
+            UpDateLoiNhuan();
 
         }
 
-        private void TinhGiaTour()
+        private void UpDateLoiNhuan()
         {
-            if(doanHienTai.Touris.Gias != null)
+            if (doanHienTai.GiaApDung != null)
             {
-                foreach (Gia gia in doanHienTai.Touris.Gias)
+                if (doanHienTai.ChiPhis != null)
                 {
-                    if(doanHienTai.ThoiGianBatDau>=gia.ThoiGianBatDau&&doanHienTai.ThoiGianBatDau <= gia.ThoiGianKetThuc)
-                    {
-                        tb_giatour.Text = gia.GiaTri.ToString();
-                        doanHienTai.GiaTour = long.Parse(gia.GiaTri.ToString());
-                        return;
-                    }
+                    tb_loinhuan.Text = (doanHienTai.GiaApDung.GiaTri - doanHienTai.ChiPhis.Sum(c => c.giaTri)).ToString();
                 }
+                else tb_loinhuan.Text = doanHienTai.GiaApDung.GiaTri.ToString();
             }
-           
+            else tb_loinhuan.Text = "0";
         }
 
-        private void datepicker_ketthuc_ValueChanged(object sender, EventArgs e)
+        /**
+private void TinhGiaTour()
+{
+   long giaTam = doanHienTai.GiaTour;
+   if(doanHienTai.Touris.Gias != null)
+   {
+       foreach (Gia gia in doanHienTai.Touris.Gias)
+       {
+           if(doanHienTai.ThoiGianBatDau>=gia.ThoiGianBatDau&&doanHienTai.ThoiGianBatDau <= gia.ThoiGianKetThuc)
+           {
+               tb_giatour.Text = gia.GiaTri.ToString();
+               doanHienTai.GiaTour = long.Parse(gia.GiaTri.ToString());
+               long tongChiPhi = danhSachChiPhi.Sum(c => c.giaTri);
+               tb_loinhuan.Text = (doanHienTai.GiaTour - tongChiPhi).ToString();
+               return;
+           }
+       }
+
+       doanHienTai.GiaTour = giaTam;
+       tb_loinhuan.Text = (doanHienTai.GiaTour - danhSachChiPhi.Sum(c => c.giaTri)).ToString();
+   }
+  
+}
+*/
+
+
+        private void datepicker_ketthuc_ValueChanged_1(object sender, EventArgs e)
         {
             doanHienTai.ThoiGianKetThuc = datepicker_ketthuc.Value;
             if (doanHienTai.ThoiGianKetThuc < doanHienTai.ThoiGianBatDau)
@@ -401,7 +337,8 @@ namespace DuLich.View
                 doanHienTai.ThoiGianKetThuc = doanHienTai.ThoiGianBatDau;
                 datepicker_ketthuc.Value = doanHienTai.ThoiGianBatDau;
             }
-
         }
+
+     
     }
 }

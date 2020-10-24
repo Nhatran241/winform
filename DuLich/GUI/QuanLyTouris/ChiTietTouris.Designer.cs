@@ -40,16 +40,17 @@ namespace DuLich.View
             this.tab_chitiet = new System.Windows.Forms.TabControl();
             this.tab_gia = new System.Windows.Forms.TabPage();
             this.tab_diadiem = new System.Windows.Forms.TabPage();
+            this.tab_thongke = new System.Windows.Forms.TabPage();
             this.btn_chinhsua = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
-            this.tab_thongke = new System.Windows.Forms.TabPage();
             this.tab_chitiet.SuspendLayout();
             this.SuspendLayout();
             // 
             // textbox_id
             // 
+            this.textbox_id.Enabled = false;
             this.textbox_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_id.Location = new System.Drawing.Point(104, 7);
+            this.textbox_id.Location = new System.Drawing.Point(115, 7);
             this.textbox_id.Name = "textbox_id";
             this.textbox_id.Size = new System.Drawing.Size(218, 29);
             this.textbox_id.TabIndex = 13;
@@ -68,20 +69,20 @@ namespace DuLich.View
             // tour_id
             // 
             this.tour_id.AutoSize = true;
-            this.tour_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tour_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tour_id.Location = new System.Drawing.Point(10, 10);
             this.tour_id.Name = "tour_id";
-            this.tour_id.Size = new System.Drawing.Size(88, 24);
+            this.tour_id.Size = new System.Drawing.Size(71, 20);
             this.tour_id.TabIndex = 9;
             this.tour_id.Text = "Mã Tour";
             // 
             // tour_name
             // 
             this.tour_name.AutoSize = true;
-            this.tour_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tour_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tour_name.Location = new System.Drawing.Point(349, 10);
             this.tour_name.Name = "tour_name";
-            this.tour_name.Size = new System.Drawing.Size(97, 24);
+            this.tour_name.Size = new System.Drawing.Size(76, 20);
             this.tour_name.TabIndex = 18;
             this.tour_name.Text = "Tên Tour";
             // 
@@ -97,10 +98,10 @@ namespace DuLich.View
             // tour_loai
             // 
             this.tour_loai.AutoSize = true;
-            this.tour_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tour_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tour_loai.Location = new System.Drawing.Point(10, 71);
             this.tour_loai.Name = "tour_loai";
-            this.tour_loai.Size = new System.Drawing.Size(99, 24);
+            this.tour_loai.Size = new System.Drawing.Size(80, 20);
             this.tour_loai.TabIndex = 20;
             this.tour_loai.Text = "Loại Tour";
             // 
@@ -136,28 +137,6 @@ namespace DuLich.View
             this.tab_diadiem.Text = "Địa Điểm";
             this.tab_diadiem.UseVisualStyleBackColor = true;
             // 
-            // btn_chinhsua
-            // 
-            this.btn_chinhsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_chinhsua.Location = new System.Drawing.Point(685, 10);
-            this.btn_chinhsua.Name = "btn_chinhsua";
-            this.btn_chinhsua.Size = new System.Drawing.Size(100, 40);
-            this.btn_chinhsua.TabIndex = 22;
-            this.btn_chinhsua.Text = "Chỉnh Sửa";
-            this.btn_chinhsua.UseVisualStyleBackColor = true;
-            this.btn_chinhsua.Click += new System.EventHandler(this.btn_chinhsua_Click);
-            // 
-            // btn_xoa
-            // 
-            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_xoa.Location = new System.Drawing.Point(685, 71);
-            this.btn_xoa.Name = "btn_xoa";
-            this.btn_xoa.Size = new System.Drawing.Size(100, 40);
-            this.btn_xoa.TabIndex = 23;
-            this.btn_xoa.Text = "Xóa";
-            this.btn_xoa.UseVisualStyleBackColor = true;
-            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
-            // 
             // tab_thongke
             // 
             this.tab_thongke.AutoScroll = true;
@@ -167,6 +146,28 @@ namespace DuLich.View
             this.tab_thongke.TabIndex = 2;
             this.tab_thongke.Text = "Thống Kê";
             this.tab_thongke.UseVisualStyleBackColor = true;
+            // 
+            // btn_chinhsua
+            // 
+            this.btn_chinhsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_chinhsua.Image = global::DuLich.Properties.Resources.edit__1_;
+            this.btn_chinhsua.Location = new System.Drawing.Point(735, 7);
+            this.btn_chinhsua.Name = "btn_chinhsua";
+            this.btn_chinhsua.Size = new System.Drawing.Size(50, 50);
+            this.btn_chinhsua.TabIndex = 22;
+            this.btn_chinhsua.UseVisualStyleBackColor = true;
+            this.btn_chinhsua.Click += new System.EventHandler(this.btn_chinhsua_Click);
+            // 
+            // btn_xoa
+            // 
+            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_xoa.Image = global::DuLich.Properties.Resources.delete__2_;
+            this.btn_xoa.Location = new System.Drawing.Point(735, 71);
+            this.btn_xoa.Name = "btn_xoa";
+            this.btn_xoa.Size = new System.Drawing.Size(50, 50);
+            this.btn_xoa.TabIndex = 23;
+            this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
             // ChiTietTouris
             // 

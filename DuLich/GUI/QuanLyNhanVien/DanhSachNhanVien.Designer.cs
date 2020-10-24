@@ -38,10 +38,11 @@
             this.diaChiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soDienThoaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soCmndDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nhanVienBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchNhanVien1 = new DuLich.GUI.QuanLyNhanVien.SearchNhanVien();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource)).BeginInit();
@@ -49,7 +50,7 @@
             // 
             // btn_them_nhanvien
             // 
-            this.btn_them_nhanvien.Location = new System.Drawing.Point(23, 51);
+            this.btn_them_nhanvien.Location = new System.Drawing.Point(22, 67);
             this.btn_them_nhanvien.Name = "btn_them_nhanvien";
             this.btn_them_nhanvien.Size = new System.Drawing.Size(75, 23);
             this.btn_them_nhanvien.TabIndex = 9;
@@ -59,7 +60,7 @@
             // 
             // btn_xoa_nhanvien
             // 
-            this.btn_xoa_nhanvien.Location = new System.Drawing.Point(693, 51);
+            this.btn_xoa_nhanvien.Location = new System.Drawing.Point(693, 67);
             this.btn_xoa_nhanvien.Name = "btn_xoa_nhanvien";
             this.btn_xoa_nhanvien.Size = new System.Drawing.Size(75, 23);
             this.btn_xoa_nhanvien.TabIndex = 11;
@@ -69,7 +70,7 @@
             // 
             // btn_sua_nhanvien
             // 
-            this.btn_sua_nhanvien.Location = new System.Drawing.Point(348, 51);
+            this.btn_sua_nhanvien.Location = new System.Drawing.Point(347, 67);
             this.btn_sua_nhanvien.Name = "btn_sua_nhanvien";
             this.btn_sua_nhanvien.Size = new System.Drawing.Size(75, 23);
             this.btn_sua_nhanvien.TabIndex = 10;
@@ -95,14 +96,15 @@
             this.diaChiDataGridViewTextBoxColumn,
             this.soDienThoaiDataGridViewTextBoxColumn,
             this.soCmndDataGridViewTextBoxColumn,
-            this.NgaySinh});
+            this.NgaySinh,
+            this.GioiTinh});
             this.dataGridViewNhanVien.DataSource = this.nhanVienBindingSource1;
-            this.dataGridViewNhanVien.Location = new System.Drawing.Point(-3, 80);
+            this.dataGridViewNhanVien.Location = new System.Drawing.Point(-3, 106);
             this.dataGridViewNhanVien.MultiSelect = false;
             this.dataGridViewNhanVien.Name = "dataGridViewNhanVien";
             this.dataGridViewNhanVien.ReadOnly = true;
             this.dataGridViewNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewNhanVien.Size = new System.Drawing.Size(800, 517);
+            this.dataGridViewNhanVien.Size = new System.Drawing.Size(800, 491);
             this.dataGridViewNhanVien.TabIndex = 12;
             // 
             // maNhanVienDataGridViewTextBoxColumn
@@ -140,6 +142,20 @@
             this.soCmndDataGridViewTextBoxColumn.Name = "soCmndDataGridViewTextBoxColumn";
             this.soCmndDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // NgaySinh
+            // 
+            this.NgaySinh.DataPropertyName = "NgaySinh";
+            this.NgaySinh.HeaderText = "NgaySinh";
+            this.NgaySinh.Name = "NgaySinh";
+            this.NgaySinh.ReadOnly = true;
+            // 
+            // GioiTinh
+            // 
+            this.GioiTinh.DataPropertyName = "GioiTinh";
+            this.GioiTinh.HeaderText = "GioiTinh";
+            this.GioiTinh.Name = "GioiTinh";
+            this.GioiTinh.ReadOnly = true;
+            // 
             // nhanVienBindingSource1
             // 
             this.nhanVienBindingSource1.DataSource = typeof(DuLich.Entity.NhanVien);
@@ -152,15 +168,8 @@
             // 
             this.searchNhanVien1.Location = new System.Drawing.Point(0, 0);
             this.searchNhanVien1.Name = "searchNhanVien1";
-            this.searchNhanVien1.Size = new System.Drawing.Size(800, 46);
+            this.searchNhanVien1.Size = new System.Drawing.Size(800, 61);
             this.searchNhanVien1.TabIndex = 13;
-            // 
-            // NgaySinh
-            // 
-            this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "NgaySinh";
-            this.NgaySinh.Name = "NgaySinh";
-            this.NgaySinh.ReadOnly = true;
             // 
             // DanhSachNhanVien
             // 
@@ -187,13 +196,14 @@
         private System.Windows.Forms.Button btn_sua_nhanvien;
         private System.Windows.Forms.BindingSource nhanVienBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewNhanVien;
+        private System.Windows.Forms.BindingSource nhanVienBindingSource1;
+        private SearchNhanVien searchNhanVien1;
         private System.Windows.Forms.DataGridViewTextBoxColumn maNhanVienDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenNhanVienDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn diaChiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn soDienThoaiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn soCmndDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource nhanVienBindingSource1;
-        private SearchNhanVien searchNhanVien1;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
     }
 }

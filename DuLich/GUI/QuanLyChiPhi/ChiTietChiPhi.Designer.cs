@@ -75,6 +75,7 @@ namespace DuLich.GUI.QuanLyChiPhi
             // 
             // tb_machiphi
             // 
+            this.tb_machiphi.Enabled = false;
             this.tb_machiphi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_machiphi.Location = new System.Drawing.Point(191, 16);
             this.tb_machiphi.Name = "tb_machiphi";
@@ -139,6 +140,7 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.tb_ghichu.Size = new System.Drawing.Size(218, 96);
             this.tb_ghichu.TabIndex = 15;
             this.tb_ghichu.Text = "";
+            this.tb_ghichu.TextChanged += new System.EventHandler(this.tb_ghichu_TextChanged);
             // 
             // ChiTietChiPhi
             // 

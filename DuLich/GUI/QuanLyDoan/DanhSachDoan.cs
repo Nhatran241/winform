@@ -42,16 +42,21 @@ namespace DuLich.GUI.QuanLyDoan
         private void InitData()
         {
             dataGridViewDoan.DataSource = danhSachDoan.ToList();
-            DateTime min = danhSachDoan.First().ThoiGianBatDau;
-            DateTime max = danhSachDoan.First().ThoiGianKetThuc;
-            foreach(Doan doan in danhSachDoan)
+            if(danhSachDoan.Count != 0)
             {
-                if (doan.ThoiGianBatDau < min)
-                    min = doan.ThoiGianBatDau;
-                if (doan.ThoiGianKetThuc > max)
-                    max = doan.ThoiGianKetThuc;
+                DateTime min = danhSachDoan.First().ThoiGianBatDau;
+                DateTime max = danhSachDoan.First().ThoiGianKetThuc;
+                foreach (Doan doan in danhSachDoan)
+                {
+                    if (doan.ThoiGianBatDau < min)
+                        min = doan.ThoiGianBatDau;
+                    if (doan.ThoiGianKetThuc > max)
+                        max = doan.ThoiGianKetThuc;
+                }
+                searchDoan1.SetData(danhSachTour, danhSachNhanVien, danhSachKhach, min, max, this);
             }
-            searchDoan1.SetData(danhSachTour,danhSachNhanVien,danhSachKhach,max,min, this);
+            else searchDoan1.SetData(danhSachTour, danhSachNhanVien, danhSachKhach, DateTime.MinValue, DateTime.MaxValue, this);
+
         }
 
         public void onSearchDoan(Tour tour, string ten, NhanVien nhanVien, Khach khach, DateTime min, DateTime max)
