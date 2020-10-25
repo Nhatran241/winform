@@ -95,5 +95,10 @@ namespace DuLich.GUI.QuanLyKhach
                 danhSachKhachListener.onDanhSachKhach_XoaClick(danhSachKhach[position]);
             }
         }
+
+        private void searchKhach1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

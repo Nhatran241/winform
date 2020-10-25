@@ -174,6 +174,12 @@
     <Compile Include="GUI\QuanLyTouris\SearchTour.Designer.cs">
       <DependentUpon>SearchTour.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ThongKe\ThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\ThongKe.Designer.cs">
+      <DependentUpon>ThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DAL\DuLichContext.cs" />
     <Compile Include="Entity\ChiTietTour.cs" />
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\SearchTour.resx">
       <DependentUpon>SearchTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\ThongKe.resx">
+      <DependentUpon>ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

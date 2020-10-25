@@ -33,9 +33,6 @@
             this.btn_xoa_doan = new System.Windows.Forms.Button();
             this.btn_sua_doan = new System.Windows.Forms.Button();
             this.dataGridviewKhach = new System.Windows.Forms.DataGridView();
-            this.khachBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.searchKhach1 = new DuLich.GUI.QuanLyKhach.SearchKhach();
-            this.khachBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,9 +40,12 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.khachBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.khachBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.searchKhach1 = new DuLich.GUI.QuanLyKhach.SearchKhach();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridviewKhach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_them_doan
@@ -107,17 +107,6 @@
             this.dataGridviewKhach.Size = new System.Drawing.Size(800, 491);
             this.dataGridviewKhach.TabIndex = 16;
             // 
-            // searchKhach1
-            // 
-            this.searchKhach1.Location = new System.Drawing.Point(0, 0);
-            this.searchKhach1.Name = "searchKhach1";
-            this.searchKhach1.Size = new System.Drawing.Size(800, 61);
-            this.searchKhach1.TabIndex = 17;
-            // 
-            // khachBindingSource1
-            // 
-            this.khachBindingSource1.DataSource = typeof(DuLich.Entity.Khach);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "KhachId";
@@ -167,6 +156,18 @@
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
+            // khachBindingSource1
+            // 
+            this.khachBindingSource1.DataSource = typeof(DuLich.Entity.Khach);
+            // 
+            // searchKhach1
+            // 
+            this.searchKhach1.Location = new System.Drawing.Point(0, 0);
+            this.searchKhach1.Name = "searchKhach1";
+            this.searchKhach1.Size = new System.Drawing.Size(800, 61);
+            this.searchKhach1.TabIndex = 17;
+            this.searchKhach1.Load += new System.EventHandler(this.searchKhach1_Load);
+            // 
             // DanhSachKhach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,8 +180,8 @@
             this.Name = "DanhSachKhach";
             this.Size = new System.Drawing.Size(800, 600);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridviewKhach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -45,6 +45,7 @@ namespace DuLich
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_quanlynhanvien = new System.Windows.Forms.Button();
+            this.btn_thongke = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel_main_content
@@ -110,11 +111,22 @@ namespace DuLich
             this.btn_quanlynhanvien.UseVisualStyleBackColor = true;
             this.btn_quanlynhanvien.Click += new System.EventHandler(this.btn_quanlynhanvien_Click);
             // 
+            // btn_thongke
+            // 
+            this.btn_thongke.Location = new System.Drawing.Point(12, 355);
+            this.btn_thongke.Name = "btn_thongke";
+            this.btn_thongke.Size = new System.Drawing.Size(165, 33);
+            this.btn_thongke.TabIndex = 12;
+            this.btn_thongke.Text = "Thống Kê";
+            this.btn_thongke.UseVisualStyleBackColor = true;
+            this.btn_thongke.Click += new System.EventHandler(this.btn_thongke_Click);
+            // 
             // ManHinhChinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 641);
+            this.Controls.Add(this.btn_thongke);
             this.Controls.Add(this.btn_quanlynhanvien);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -136,6 +148,7 @@ namespace DuLich
         private Button button1;
         private Button button2;
         private Button btn_quanlynhanvien;
+        private Button btn_thongke;
     }
 }
 

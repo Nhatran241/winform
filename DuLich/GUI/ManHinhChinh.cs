@@ -5,6 +5,7 @@ using DuLich.GUI.QuanLyDoan;
 using DuLich.GUI.QuanLyKhach;
 using DuLich.GUI.QuanLyNhanVien;
 using DuLich.GUI.QuanLyTouris;
+using DuLich.GUI.ThongKe;
 using DuLich.Model.Entity;
 using DuLich.View;
 using DuLich.View.QuanLyDiaDiem;
@@ -72,7 +73,6 @@ namespace DuLich
              */
             danhSachTour = context.Touris.ToList();
         }
-
     }
 
 }
@@ -897,6 +897,24 @@ namespace DuLich
         {
             LoadDataFromDataBase();
             userControl = new DanhSachNhanVien(danhSachNhanVien, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+    }
+}
+
+/**
+ * Thống Kê 
+ */
+namespace DuLich
+{
+    public partial class ManHinhChinh
+    {
+        private void btn_thongke_Click(object sender, EventArgs e)
+        {
+
+            LoadDataFromDataBase();
+            userControl = new ThongKe(danhSachNhanVien,danhSachPhanCong,danhSachTour,danhSachDoan);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
