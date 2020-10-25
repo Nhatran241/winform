@@ -32,14 +32,21 @@ namespace DuLich.GUI.QuanLyKhach
         }
         private void InitUI()
         {
-            if(!string.IsNullOrEmpty(khach.Ten))
-            tb_name.Text = khach.Ten.ToString();
-            if (!string.IsNullOrEmpty(khach.SoDienThoai))
+            List<string> gioitinh = new List<string> { "Nam", "Nữ", "Khác" };
+            if (khach.KhachId != 0)
+            {
+                tb_name.Text = khach.Ten.ToString();
                 tb_sdt.Text = khach.SoDienThoai.ToString();
-            if (!string.IsNullOrEmpty(khach.DiaChi ))
                 tb_diaChi.Text = khach.DiaChi.ToString();
-            if (!string.IsNullOrEmpty(khach.SoCmnd))
                 tb_cmnd.Text = khach.SoCmnd.ToString();
+                datepicker_ngaysinh.Value = khach.NgaySinh;
+                cb_gioitinh.Text = khach.GioiTinh;
+            }
+            foreach (string s in gioitinh)
+            {
+                cb_gioitinh.Items.Add(s);
+            }
+            datepicker_ngaysinh.MaxDate = DateTime.Today.AddDays(-(18 * 365));
         }
 
         private void tb_name_TextChanged(object sender, EventArgs e)
@@ -85,6 +92,16 @@ namespace DuLich.GUI.QuanLyKhach
         private void btn_huy_Click(object sender, EventArgs e)
         {
             chiTietKhachListener.onHuyKhachClick();
+        }
+
+        private void datepicker_ngaysinh_ValueChanged(object sender, EventArgs e)
+        {
+            khach.NgaySinh = datepicker_ngaysinh.Value;
+        }
+
+        private void cb_gioitinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            khach.GioiTinh = (string)cb_gioitinh.SelectedItem;
         }
     }
 }

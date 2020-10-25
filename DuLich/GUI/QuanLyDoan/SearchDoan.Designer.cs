@@ -45,7 +45,7 @@
             // cb_tour
             // 
             this.cb_tour.FormattingEnabled = true;
-            this.cb_tour.Location = new System.Drawing.Point(38, 17);
+            this.cb_tour.Location = new System.Drawing.Point(49, 14);
             this.cb_tour.Name = "cb_tour";
             this.cb_tour.Size = new System.Drawing.Size(113, 21);
             this.cb_tour.TabIndex = 0;
@@ -53,16 +53,16 @@
             // 
             // tb_search
             // 
-            this.tb_search.Location = new System.Drawing.Point(218, 18);
+            this.tb_search.Location = new System.Drawing.Point(325, 15);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(173, 20);
+            this.tb_search.Size = new System.Drawing.Size(249, 20);
             this.tb_search.TabIndex = 1;
             this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // tv_combo
             // 
             this.tv_combo.AutoSize = true;
-            this.tv_combo.Location = new System.Drawing.Point(3, 20);
+            this.tv_combo.Location = new System.Drawing.Point(14, 17);
             this.tv_combo.Name = "tv_combo";
             this.tv_combo.Size = new System.Drawing.Size(29, 13);
             this.tv_combo.TabIndex = 2;
@@ -71,7 +71,7 @@
             // tv_searchbox
             // 
             this.tv_searchbox.AutoSize = true;
-            this.tv_searchbox.Location = new System.Drawing.Point(157, 21);
+            this.tv_searchbox.Location = new System.Drawing.Point(264, 17);
             this.tv_searchbox.Name = "tv_searchbox";
             this.tv_searchbox.Size = new System.Drawing.Size(55, 13);
             this.tv_searchbox.TabIndex = 3;
@@ -80,7 +80,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 57);
+            this.label1.Location = new System.Drawing.Point(3, 77);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             // datepickbatdau
             // 
-            this.datepickbatdau.Location = new System.Drawing.Point(115, 51);
+            this.datepickbatdau.Location = new System.Drawing.Point(83, 77);
             this.datepickbatdau.Name = "datepickbatdau";
             this.datepickbatdau.Size = new System.Drawing.Size(200, 20);
             this.datepickbatdau.TabIndex = 5;
@@ -96,7 +96,7 @@
             // 
             // datepickketthuc
             // 
-            this.datepickketthuc.Location = new System.Drawing.Point(443, 51);
+            this.datepickketthuc.Location = new System.Drawing.Point(374, 77);
             this.datepickketthuc.Name = "datepickketthuc";
             this.datepickketthuc.Size = new System.Drawing.Size(200, 20);
             this.datepickketthuc.TabIndex = 7;
@@ -105,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(345, 57);
+            this.label2.Location = new System.Drawing.Point(289, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 13);
             this.label2.TabIndex = 6;
@@ -114,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(410, 21);
+            this.label3.Location = new System.Drawing.Point(14, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 9;
@@ -123,7 +123,7 @@
             // cb_khach
             // 
             this.cb_khach.FormattingEnabled = true;
-            this.cb_khach.Location = new System.Drawing.Point(470, 17);
+            this.cb_khach.Location = new System.Drawing.Point(83, 45);
             this.cb_khach.Name = "cb_khach";
             this.cb_khach.Size = new System.Drawing.Size(117, 21);
             this.cb_khach.TabIndex = 8;
@@ -132,7 +132,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(607, 21);
+            this.label4.Location = new System.Drawing.Point(371, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 11;
@@ -141,7 +141,7 @@
             // cb_nhanvien
             // 
             this.cb_nhanvien.FormattingEnabled = true;
-            this.cb_nhanvien.Location = new System.Drawing.Point(689, 17);
+            this.cb_nhanvien.Location = new System.Drawing.Point(457, 45);
             this.cb_nhanvien.Name = "cb_nhanvien";
             this.cb_nhanvien.Size = new System.Drawing.Size(117, 21);
             this.cb_nhanvien.TabIndex = 10;
@@ -164,7 +164,7 @@
             this.Controls.Add(this.tb_search);
             this.Controls.Add(this.cb_tour);
             this.Name = "SearchDoan";
-            this.Size = new System.Drawing.Size(809, 90);
+            this.Size = new System.Drawing.Size(591, 103);
             this.ResumeLayout(false);
             this.PerformLayout();
 

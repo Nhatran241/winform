@@ -44,7 +44,6 @@ namespace DuLich
             this.btn_quanlydiadiem = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.btn_taodoan = new System.Windows.Forms.Button();
             this.btn_quanlynhanvien = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -70,7 +69,7 @@ namespace DuLich
             // btn_quanlydiadiem
             // 
             this.btn_quanlydiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quanlydiadiem.Location = new System.Drawing.Point(11, 171);
+            this.btn_quanlydiadiem.Location = new System.Drawing.Point(11, 173);
             this.btn_quanlydiadiem.Name = "btn_quanlydiadiem";
             this.btn_quanlydiadiem.Size = new System.Drawing.Size(165, 32);
             this.btn_quanlydiadiem.TabIndex = 7;
@@ -81,40 +80,29 @@ namespace DuLich
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 239);
+            this.button1.Location = new System.Drawing.Point(12, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 32);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Danh sách đoàn";
+            this.button1.Text = "Quản Lý Đoàn";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(10, 336);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(11, 236);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 32);
             this.button2.TabIndex = 9;
-            this.button2.Text = "Danh sách khách";
+            this.button2.Text = "Quản Lý Khách";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btn_taodoan
-            // 
-            this.btn_taodoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_taodoan.Location = new System.Drawing.Point(12, 277);
-            this.btn_taodoan.Name = "btn_taodoan";
-            this.btn_taodoan.Size = new System.Drawing.Size(164, 33);
-            this.btn_taodoan.TabIndex = 10;
-            this.btn_taodoan.Text = "Tạo Đoàn";
-            this.btn_taodoan.UseVisualStyleBackColor = true;
-            this.btn_taodoan.Click += new System.EventHandler(this.btn_taodoan_Click);
             // 
             // btn_quanlynhanvien
             // 
             this.btn_quanlynhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quanlynhanvien.Location = new System.Drawing.Point(10, 374);
+            this.btn_quanlynhanvien.Location = new System.Drawing.Point(11, 296);
             this.btn_quanlynhanvien.Name = "btn_quanlynhanvien";
             this.btn_quanlynhanvien.Size = new System.Drawing.Size(165, 32);
             this.btn_quanlynhanvien.TabIndex = 11;
@@ -128,7 +116,6 @@ namespace DuLich
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 641);
             this.Controls.Add(this.btn_quanlynhanvien);
-            this.Controls.Add(this.btn_taodoan);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_quanlydiadiem);
@@ -148,7 +135,6 @@ namespace DuLich
         private Button btn_quanlydiadiem;
         private Button button1;
         private Button button2;
-        private Button btn_taodoan;
         private Button btn_quanlynhanvien;
     }
 }

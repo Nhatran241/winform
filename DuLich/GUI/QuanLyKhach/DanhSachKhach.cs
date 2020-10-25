@@ -11,70 +11,89 @@ using DuLich.Entity;
 
 namespace DuLich.GUI.QuanLyKhach
 {
-    public partial class DanhSachKhach : UserControl
+    public partial class DanhSachKhach : UserControl,SearchKhach.ISearchKhachListener
     {
-        private IDanhSachKhachListener danhSachKhachCallBack;
-        private IEnumerable<Khach> khaches;
-        public DanhSachKhach(IEnumerable<Khach> khaches, IDanhSachKhachListener danhSachKhachCallBack)
+        private IDanhSachKhachListener danhSachKhachListener;
+        private List<Khach> danhSachKhach;
+        public DanhSachKhach(List<Khach> danhSachKhach, IDanhSachKhachListener danhSachKhachListener)
         {
             InitializeComponent();
-            this.danhSachKhachCallBack = danhSachKhachCallBack;
-            this.khaches = khaches;
-            InitData(khaches);
+            this.danhSachKhachListener = danhSachKhachListener;
+            this.danhSachKhach = danhSachKhach;
+            InitData();
         }
-        private void InitData(IEnumerable<Khach> khaches)
+        private void InitData()
         {
+            dataGridviewKhach.DataSource = danhSachKhach;
+            if(danhSachKhach.Count > 0)
+            {
+                DateTime min = danhSachKhach.First().NgaySinh;
+                DateTime max = danhSachKhach.First().NgaySinh;
+                foreach (Khach khach in danhSachKhach)
+                {
+                    if (khach.NgaySinh < min)
+                        min = khach.NgaySinh;
 
-            foreach (Khach khach in khaches)
-            {
-                listview_doan.Items.Add(new ListViewItem(new string[] { khach.Ten,khach.DiaChi, khach.SoDienThoai,khach.SoCmnd }));
-            }
-        }
-        private void listview_doan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int position = listview_doan.SelectedIndices.Count;
-            if (position > 0)
-            {
-                btn_sua_doan.Visible = true;
-                btn_xoa_doan.Visible = true;
-            }
-            else
-            {
-                btn_sua_doan.Visible = false;
-                btn_xoa_doan.Visible = false;
-            }
+                    if (khach.NgaySinh > max)
+                        max = khach.NgaySinh;
+                }
+                searchKhach1.SetData(this, min, max);
+            }else searchKhach1.SetData(this,DateTime.MinValue,DateTime.MaxValue);
+
         }
         public interface IDanhSachKhachListener
         {
-            void onDanhSachKhachThemClick();
-            void onDanhSachKhachSuaClick(Khach doan);
-            void onDanhSachKhachXoaClick(Khach doan);
+            void onDanhSachKhach_ThemClick();
+            void onDanhSachKhach_SuaClick(Khach khach);
+            void onDanhSachKhach_XoaClick(Khach khach);
         }
 
-        private void btn_them_doan_Click(object sender, EventArgs e)
-        {
-            danhSachKhachCallBack.onDanhSachKhachThemClick();
-        }
+      
 
-        private void btn_xoa_doan_Click(object sender, EventArgs e)
+        public void onSeachKhach(string ten, string gioitinh, DateTime min, DateTime max)
         {
-            if (listview_doan.SelectedItems.Count > 0)
+            if (ten.Equals(""))
             {
-                int position = listview_doan.SelectedItems[0].Index;
-                danhSachKhachCallBack.onDanhSachKhachXoaClick(khaches.ToArray()[position]);
+                if (gioitinh.Equals("Bất kỳ"))
+                {
+                    dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max).ToList();
+                }
+                else dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.GioiTinh.Equals(gioitinh)).ToList();
             }
-            
+            else
+            {
+                if (gioitinh.Equals("Bất kỳ"))
+                {
+                    dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.Ten.ToLower().Contains(ten)).ToList();
+                }
+                else dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.Ten.ToLower().Contains(ten) && c.GioiTinh.Equals(gioitinh)).ToList();
+            }
         }
 
-        private void btn_sua_doan_Click(object sender, EventArgs e)
+        private void btn_them_khach_Click(object sender, EventArgs e)
         {
-            if (listview_doan.SelectedItems.Count > 0)
-            {
-                int position = listview_doan.SelectedItems[0].Index;
-                danhSachKhachCallBack.onDanhSachKhachSuaClick(khaches.ToArray()[position]);
 
+            danhSachKhachListener.onDanhSachKhach_ThemClick();
+           
+        }
+
+        private void btn_sua_khach_Click(object sender, EventArgs e)
+        {
+            if (dataGridviewKhach.CurrentCell != null)
+            {
+                int position = dataGridviewKhach.CurrentCell.RowIndex;
+                danhSachKhachListener.onDanhSachKhach_SuaClick(danhSachKhach[position]);
             }
 
+        }
+
+        private void btn_xoa_khach_Click(object sender, EventArgs e)
+        {
+            if (dataGridviewKhach.CurrentCell != null)
+            {
+                int position = dataGridviewKhach.CurrentCell.RowIndex;
+                danhSachKhachListener.onDanhSachKhach_XoaClick(danhSachKhach[position]);
+            }
         }
     }
 }

@@ -38,6 +38,10 @@
             this.tb_sdt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cb_gioitinh = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.datepicker_ngaysinh = new System.Windows.Forms.DateTimePicker();
+            this.tv_ngaybatdau = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_huy
@@ -136,10 +140,51 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Số Điện Thoại";
             // 
+            // cb_gioitinh
+            // 
+            this.cb_gioitinh.FormattingEnabled = true;
+            this.cb_gioitinh.Location = new System.Drawing.Point(206, 314);
+            this.cb_gioitinh.Name = "cb_gioitinh";
+            this.cb_gioitinh.Size = new System.Drawing.Size(121, 21);
+            this.cb_gioitinh.TabIndex = 34;
+            this.cb_gioitinh.SelectedIndexChanged += new System.EventHandler(this.cb_gioitinh_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(20, 311);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 24);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Giới Tính";
+            // 
+            // datepicker_ngaysinh
+            // 
+            this.datepicker_ngaysinh.Location = new System.Drawing.Point(194, 267);
+            this.datepicker_ngaysinh.Name = "datepicker_ngaysinh";
+            this.datepicker_ngaysinh.Size = new System.Drawing.Size(181, 20);
+            this.datepicker_ngaysinh.TabIndex = 32;
+            this.datepicker_ngaysinh.ValueChanged += new System.EventHandler(this.datepicker_ngaysinh_ValueChanged);
+            // 
+            // tv_ngaybatdau
+            // 
+            this.tv_ngaybatdau.AutoSize = true;
+            this.tv_ngaybatdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_ngaybatdau.Location = new System.Drawing.Point(20, 268);
+            this.tv_ngaybatdau.Name = "tv_ngaybatdau";
+            this.tv_ngaybatdau.Size = new System.Drawing.Size(85, 20);
+            this.tv_ngaybatdau.TabIndex = 31;
+            this.tv_ngaybatdau.Text = "Ngày Sinh";
+            // 
             // ChiTietKhach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cb_gioitinh);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.datepicker_ngaysinh);
+            this.Controls.Add(this.tv_ngaybatdau);
             this.Controls.Add(this.tb_cmnd);
             this.Controls.Add(this.tb_sdt);
             this.Controls.Add(this.label1);
@@ -151,7 +196,7 @@
             this.Controls.Add(this.tv_giatri);
             this.Controls.Add(this.tv_magia);
             this.Name = "ChiTietKhach";
-            this.Size = new System.Drawing.Size(487, 315);
+            this.Size = new System.Drawing.Size(492, 370);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +214,9 @@
         private System.Windows.Forms.TextBox tb_sdt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cb_gioitinh;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker datepicker_ngaysinh;
+        private System.Windows.Forms.Label tv_ngaybatdau;
     }
 }

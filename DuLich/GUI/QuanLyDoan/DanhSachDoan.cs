@@ -214,6 +214,22 @@ namespace DuLich.GUI.QuanLyDoan
         public interface IDanhSachDoanListener
         {
             void onDanhSachDoan_DoanDoubleClick(Doan doan);
+            void onDanhSachDoan_ThemClick();
+            void onDanhSachDoan_XoaClick(Doan doan);
+        }
+
+        private void btn_xoa_Click(object sender, EventArgs e)
+        {
+            if(dataGridViewDoan.CurrentCell != null)
+            {
+                int position = dataGridViewDoan.CurrentCell.RowIndex;
+                danhSachDoanListener.onDanhSachDoan_XoaClick(danhSachDoan[position]);
+            }
+        }
+
+        private void btn_them_Click(object sender, EventArgs e)
+        {
+            danhSachDoanListener.onDanhSachDoan_ThemClick();
         }
     }
 }

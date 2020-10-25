@@ -108,6 +108,12 @@
     <Compile Include="GUI\QuanLyKhach\DanhSachKhach.Designer.cs">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanLyKhach\SearchKhach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyKhach\SearchKhach.Designer.cs">
+      <DependentUpon>SearchKhach.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     <EmbeddedResource Include="GUI\QuanLyKhach\DanhSachKhach.resx">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyKhach\SearchKhach.resx">
+      <DependentUpon>SearchKhach.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyNhanVien\ChiTietNhanVien.resx">
       <DependentUpon>ChiTietNhanVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +301,7 @@
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DuLich.Entity.Doan.datasource" />
+    <None Include="Properties\DataSources\DuLich.Entity.Khach.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.NhanVien.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.Touris.datasource" />
     <None Include="Properties\DataSources\DuLich.Model.Entity.ChiPhi.datasource" />

@@ -422,13 +422,6 @@ namespace DuLich
         }
 
 
-        private void btn_taodoan_Click(object sender, EventArgs e)
-        {
-            userControl = new ChiTietDoan(new Doan(), danhSachTour, null,null, null, null, this, this, this,this);
-            //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
-        }
 
         public void onDanhSachDoan_DoanDoubleClick(Doan doan)
         {
@@ -439,6 +432,29 @@ namespace DuLich
                 khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doan.Id).Count() > 0).ToList(), this, this, this, this); ;
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachDoan_ThemClick()
+        {
+            userControl = new ChiTietDoan(new Doan(), danhSachTour, null, null, null, null, this, this, this, this);
+            //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachDoan_XoaClick(Doan doan)
+        {
+            context.Doans.Remove(doan);
+            context.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachKhach(khaches, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
         }
     }
 }
@@ -767,36 +783,6 @@ namespace DuLich
             panel_main_content.Controls.Add(userControl);
         }
 
-        public void onDanhSachKhachThemClick()
-        {
-            Khach khach = new Khach();
-            userControl = new ChiTietKhach(khach, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
-        }
-
-        public void onDanhSachKhachSuaClick(Khach doan)
-        {
-            userControl = new ChiTietKhach(doan, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
-        }
-
-        public void onDanhSachKhachXoaClick(Khach doan)
-        {
-            context.Khaches.Remove(doan);
-            context.SaveChangesAsync().ContinueWith(task =>
-            {
-                LoadDataFromDataBase();
-                panel_main_content.Invoke((MethodInvoker)delegate
-                {
-                    userControl = new DanhSachKhach(khaches, this);
-                    panel_main_content.Controls.Clear();
-                    panel_main_content.Controls.Add(userControl);
-                });
-            });
-        }
-
         public void onLuuKhachClick(Khach khach)
         {
             context.Khaches.AddOrUpdate(khach);
@@ -820,6 +806,34 @@ namespace DuLich
             panel_main_content.Controls.Add(userControl);
         }
 
+        public void onDanhSachKhach_ThemClick() {
+            Khach khach = new Khach();
+            userControl = new ChiTietKhach(khach, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachKhach_SuaClick(Khach khach)
+        {
+            userControl = new ChiTietKhach(khach, this);
+            panel_main_content.Controls.Clear();
+            panel_main_content.Controls.Add(userControl);
+        }
+
+        public void onDanhSachKhach_XoaClick(Khach khach)
+        {
+            context.Khaches.Remove(khach);
+            context.SaveChangesAsync().ContinueWith(task =>
+            {
+                LoadDataFromDataBase();
+                panel_main_content.Invoke((MethodInvoker)delegate
+                {
+                    userControl = new DanhSachKhach(khaches, this);
+                    panel_main_content.Controls.Clear();
+                    panel_main_content.Controls.Add(userControl);
+                });
+            });
+        }
     }
 }
 /**
