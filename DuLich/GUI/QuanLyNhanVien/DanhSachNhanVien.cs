@@ -25,17 +25,21 @@ namespace DuLich.GUI.QuanLyNhanVien
         private void InitData()
         {
             dataGridViewNhanVien.DataSource = danhSachNhanVien;
-            DateTime min = danhSachNhanVien.First().NgaySinh;
-            DateTime max = danhSachNhanVien.First().NgaySinh;
-            foreach(NhanVien nhanVien in danhSachNhanVien)
+            if(danhSachNhanVien.Count > 0)
             {
-                if (nhanVien.NgaySinh < min)
-                    min = nhanVien.NgaySinh;
+                DateTime min = danhSachNhanVien.First().NgaySinh;
+                DateTime max = danhSachNhanVien.First().NgaySinh;
+                foreach (NhanVien nhanVien in danhSachNhanVien)
+                {
+                    if (nhanVien.NgaySinh < min)
+                        min = nhanVien.NgaySinh;
 
-                if (nhanVien.NgaySinh > max)
-                    max = nhanVien.NgaySinh;
-            }
-            searchNhanVien1.SetData(this, min, max);
+                    if (nhanVien.NgaySinh > max)
+                        max = nhanVien.NgaySinh;
+                }
+                searchNhanVien1.SetData(this, min, max);
+            }else searchNhanVien1.SetData(this, DateTime.MinValue, DateTime.MaxValue);
+
         }
         private void listview_nhanvien_SelectedIndexChanged(object sender, EventArgs e)
         {

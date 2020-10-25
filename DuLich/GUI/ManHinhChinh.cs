@@ -914,7 +914,7 @@ namespace DuLich
         {
 
             LoadDataFromDataBase();
-            userControl = new ThongKe(danhSachNhanVien,danhSachPhanCong,danhSachTour,danhSachDoan);
+            userControl = new ThongKe(danhSachNhanVien,danhSachPhanCong,danhSachTour,danhSachDoan,khaches);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }

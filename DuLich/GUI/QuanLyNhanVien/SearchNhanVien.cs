@@ -26,20 +26,25 @@ namespace DuLich.GUI.QuanLyNhanVien
         public void SetData(ISearchNhanVienListener searchNhanVienListener,DateTime min,DateTime max)
         {
             this.searchNhanVienListener = searchNhanVienListener;
-            this.minDate = min;
-            this.maxDate = max;
-            datepicker_batdau.Value = min;
-            datepicker_ketthuc.Value = max;
+            if (min != DateTime.MinValue && max != DateTime.MaxValue)
+            {
+                this.minDate = min;
+                this.maxDate = max;
+                datepicker_ketthuc.Value = max;
+                datepicker_batdau.Value = min;
+            }
             InitData();
         }
 
         private void InitData()
         {
-
-            datepicker_batdau.MinDate = minDate;
-            datepicker_batdau.MaxDate = maxDate;
-            datepicker_ketthuc.MaxDate = maxDate;
-            datepicker_ketthuc.MinDate = minDate;
+            if (minDate != DateTime.MinValue && maxDate != DateTime.MaxValue)
+            {
+                datepicker_batdau.MinDate = minDate;
+                datepicker_batdau.MaxDate = maxDate;
+                datepicker_ketthuc.MaxDate = maxDate;
+                datepicker_ketthuc.MinDate = minDate;
+            }
             List<string> list = new List<string> { "Bất kỳ", "Nam", "Nữ", "Khác" };
             cb_gioitinh.DataSource = list;
         }
