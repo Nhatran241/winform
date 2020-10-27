@@ -125,7 +125,8 @@ namespace DuLich.GUI.ThongKe
                 {
                     foreach (Doan doan1 in tour.Doans.Where(c=>c.ThoiGianBatDau >= datepicker_tu_khacdoan.Value && c.ThoiGianKetThuc <= datepicker_den_khachdoan.Value).ToList())
                     {
-                        khachTrongTour.AddRange(danhSachKhach.Where(c => doan1.DoanKhachs.Select(d => d.Khach.KhachId).ToList().Contains(c.KhachId)).ToList());
+                        if(doan1.DoanKhachs!=null)
+                            khachTrongTour.AddRange(danhSachKhach.Where(c => doan1.DoanKhachs.Select(d => d.Khach.KhachId).ToList().Contains(c.KhachId)).ToList());
                     }
                 }
                 DataPoint khachPoint = new DataPoint();
