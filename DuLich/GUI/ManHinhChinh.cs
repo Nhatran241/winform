@@ -31,7 +31,7 @@ namespace DuLich
     {
         private DuLichContext context = new DuLichContext();
         private UserControl userControl;
-        private List<Khach> khaches = new List<Khach>();
+        private List<Khach> danhSachKhac = new List<Khach>();
         private List<Doan> danhSachDoan = new List<Doan>();
         private List<PhanCong> danhSachPhanCong = new List<PhanCong>();
         private List<NhanVien> danhSachNhanVien = new List<NhanVien>();
@@ -42,6 +42,13 @@ namespace DuLich
         private List<DoanKhach> danhSachDoanKhach = new List<DoanKhach>();
         private List<ChiPhi> danhSachChiPhi = new List<ChiPhi>();
         private List<LoaiChiPhi> danhSachLoaiChiPhi = new List<LoaiChiPhi>();
+        /**
+         * 3 Lớp
+         */
+        private KhachDal khachDal = KhachDal.GetInstance();
+        private NhanVienDal nhanVienDal = NhanVienDal.GetInstance();
+
+
 
 
         public ManHinhChinh()
@@ -61,9 +68,7 @@ namespace DuLich
             danhSachDoan = context.Doans.ToList();
             listLoais = context.Loai.ToList();
             danhSachDiaDiem = context.DiaDiem.ToList();
-            khaches = context.Khaches.ToList();
             danhSachPhanCong = context.PhanCongs.ToList();
-            danhSachNhanVien = context.NhanViens.ToList();
             danhSachDoanKhach = context.DoanKhachs.ToList();
             danhSachChiPhi = context.ChiPhis.ToList();
             danhSachLoaiChiPhi = context.LoaiChiPhis.ToList();
@@ -72,7 +77,9 @@ namespace DuLich
              * 3 lớp
              */
             danhSachTour = context.Touris.ToList();
-        }
+            danhSachKhac = khachDal.GetAll();
+            danhSachNhanVien = nhanVienDal.GetAll();
+        }   
     }
 
 }
@@ -416,7 +423,7 @@ namespace DuLich
         private void button1_Click(object sender, EventArgs e)
         {
             LoadDataFromDataBase();
-            userControl = new DanhSachDoan(danhSachDoan, danhSachTour,danhSachNhanVien,khaches, this);
+            userControl = new DanhSachDoan(danhSachDoan, danhSachTour,danhSachNhanVien,danhSachKhac, this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
@@ -428,8 +435,8 @@ namespace DuLich
             userControl = new ChiTietDoan(doan, danhSachTour,
                 danhSachPhanCong.Where(c => c.Doan.Id == doan.Id).ToList(),
                 danhSachChiPhi.Where(c => c.Doan.Id == doan.Id).ToList(),
-                khaches,
-                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doan.Id).Count() > 0).ToList(), this, this, this, this); ;
+                danhSachKhac,
+                danhSachKhac.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doan.Id).Count() > 0).ToList(), this, this, this, this); ;
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
@@ -450,7 +457,7 @@ namespace DuLich
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachKhach(khaches, this);
+                    userControl = new DanhSachKhach(danhSachKhac, this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
                 });
@@ -480,8 +487,8 @@ namespace DuLich
                         danhSachTour,
                         danhSachPhanCong.Where(c=>c.Doan.Id == doanSauKhiCapNhat.Id).ToList(),
                         danhSachChiPhi.Where(c=>c.Doan.Id == doanSauKhiCapNhat.Id).ToList(),
-                        khaches,
-                        khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanSauKhiCapNhat.Id).Count() > 0).ToList(),this,this,this,this);
+                        danhSachKhac,
+                        danhSachKhac.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanSauKhiCapNhat.Id).Count() > 0).ToList(),this,this,this,this);
 
                     //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
                     panel_main_content.Controls.Clear();
@@ -501,7 +508,7 @@ namespace DuLich
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachKhach(khaches, this);
+                    userControl = new DanhSachKhach(danhSachKhac, this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
                 });
@@ -546,8 +553,8 @@ namespace DuLich
                     (userControl as ChiTietDoan).UpdateData(
                           danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
                 danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
-                khaches,
-                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
+                danhSachKhac,
+                danhSachKhac.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
                 });
             });
         }
@@ -563,8 +570,8 @@ namespace DuLich
                     (userControl as ChiTietDoan).UpdateData(
                           danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
                 danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
-                khaches,
-                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList());
+                danhSachKhac,
+                danhSachKhac.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList());
 
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
@@ -613,8 +620,8 @@ namespace DuLich
                     (userControl as ChiTietDoan).UpdateData(
                           danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
                 danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
-                khaches,
-                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
+                danhSachKhac,
+                danhSachKhac.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
                 });
             });
         }
@@ -630,8 +637,8 @@ namespace DuLich
                     (userControl as ChiTietDoan).UpdateData(
                           danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
                 danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
-                khaches,
-                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
+                danhSachKhac,
+                danhSachKhac.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
 
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
@@ -673,8 +680,8 @@ namespace DuLich
                     (userControl as ChiTietDoan).UpdateData(
                           danhSachPhanCong.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
                 danhSachChiPhi.Where(c => c.Doan.Id == doanHienTai.Id).ToList(),
-                khaches,
-                khaches.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
+                danhSachKhac,
+                danhSachKhac.Where(b => context.DoanKhachs.Where(c => c.Khach.KhachId == b.KhachId && c.Doan.Id == doanHienTai.Id).Count() > 0).ToList()); ;
                 });
             });
         }
@@ -778,20 +785,20 @@ namespace DuLich
         private void button2_Click(object sender, EventArgs e)
         {
             LoadDataFromDataBase();
-            userControl = new DanhSachKhach(khaches, this);
+            userControl = new DanhSachKhach(danhSachKhac, this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
 
         public void onLuuKhachClick(Khach khach)
         {
-            context.Khaches.AddOrUpdate(khach);
-            context.SaveChangesAsync().ContinueWith(task =>
+            khach.AddOrUpdate();
+            khachDal.Save().ContinueWith(task =>
             {
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachKhach(khaches, this);
+                    userControl = new DanhSachKhach(danhSachKhac, this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
                 });
@@ -801,7 +808,7 @@ namespace DuLich
         public void onHuyKhachClick()
         {
             LoadDataFromDataBase();
-            userControl = new DanhSachKhach(khaches, this);
+            userControl = new DanhSachKhach(danhSachKhac, this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
@@ -822,13 +829,13 @@ namespace DuLich
 
         public void onDanhSachKhach_XoaClick(Khach khach)
         {
-            context.Khaches.Remove(khach);
-            context.SaveChangesAsync().ContinueWith(task =>
+            khach.Delete();
+            khachDal.Save().ContinueWith(task =>
             {
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachKhach(khaches, this);
+                    userControl = new DanhSachKhach(danhSachKhac, this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
                 });
@@ -866,8 +873,8 @@ namespace DuLich
 
     public void onDanhSachNhanVien_XoaClick(NhanVien nhanVien)
     {
-            context.NhanViens.Remove(nhanVien);
-            context.SaveChangesAsync().ContinueWith(task =>
+            nhanVien.Delete();
+            nhanVienDal.Save().ContinueWith(task =>
             {
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
@@ -880,8 +887,8 @@ namespace DuLich
         }
     public void onChiTietNhanVien_LuuClick(NhanVien nhanVien)
     {
-            context.NhanViens.AddOrUpdate(nhanVien);
-            context.SaveChangesAsync().ContinueWith(task =>
+            nhanVien.AddOrUpdate();
+            nhanVienDal.Save().ContinueWith(task =>
             {
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
@@ -914,7 +921,7 @@ namespace DuLich
         {
 
             LoadDataFromDataBase();
-            userControl = new ThongKe(danhSachNhanVien,danhSachPhanCong,danhSachTour,danhSachDoan,khaches);
+            userControl = new ThongKe(danhSachNhanVien,danhSachPhanCong,danhSachTour,danhSachDoan,danhSachKhac);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }

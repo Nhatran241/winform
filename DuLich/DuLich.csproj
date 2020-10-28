@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\NhanVienDal.cs" />
+    <Compile Include="DAL\KhachDal.cs" />
     <Compile Include="DAL\TourDal.cs" />
     <Compile Include="Entity\LoaiChiPhi.cs" />
     <Compile Include="Entity\ChiPhi.cs" />

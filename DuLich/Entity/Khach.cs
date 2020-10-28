@@ -1,4 +1,5 @@
-﻿using DuLich.Model.Entity;
+﻿using DuLich.DAL;
+using DuLich.Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -24,6 +25,15 @@ namespace DuLich.Entity
         public override string ToString()
         {
             return Ten;
+        }
+
+        public void AddOrUpdate()
+        {
+            KhachDal.GetInstance().AddOrUpdate(this);
+        }
+        public void Delete()
+        {
+            KhachDal.GetInstance().Delete(this);
         }
     }
 }
