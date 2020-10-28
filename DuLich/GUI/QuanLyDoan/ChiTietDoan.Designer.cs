@@ -53,6 +53,8 @@ namespace DuLich.View
             this.tb_loinhuan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cb_giatour = new System.Windows.Forms.ComboBox();
+            this.tb_tongchiphi = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tab_chitiet.SuspendLayout();
             this.panel_thongbao.SuspendLayout();
             this.SuspendLayout();
@@ -273,10 +275,31 @@ namespace DuLich.View
             this.cb_giatour.TabIndex = 34;
             this.cb_giatour.SelectedIndexChanged += new System.EventHandler(this.cb_giatour_SelectedIndexChanged);
             // 
+            // tb_tongchiphi
+            // 
+            this.tb_tongchiphi.Enabled = false;
+            this.tb_tongchiphi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_tongchiphi.Location = new System.Drawing.Point(125, 98);
+            this.tb_tongchiphi.Name = "tb_tongchiphi";
+            this.tb_tongchiphi.Size = new System.Drawing.Size(218, 29);
+            this.tb_tongchiphi.TabIndex = 36;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(16, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 20);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Tổng Chi Phí";
+            // 
             // ChiTietDoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tb_tongchiphi);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.cb_giatour);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_loinhuan);
@@ -329,5 +352,7 @@ namespace DuLich.View
         private TextBox tb_loinhuan;
         private Label label2;
         private ComboBox cb_giatour;
+        private TextBox tb_tongchiphi;
+        private Label label4;
     }
 }

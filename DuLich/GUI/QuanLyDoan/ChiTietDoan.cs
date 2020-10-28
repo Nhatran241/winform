@@ -296,11 +296,21 @@ namespace DuLich.View
             {
                 if (doanHienTai.ChiPhis != null)
                 {
-                    tb_loinhuan.Text = (doanHienTai.GiaApDung.GiaTri - doanHienTai.ChiPhis.Sum(c => c.giaTri)).ToString();
+                    long tongChiPhi = doanHienTai.ChiPhis.Sum(c => c.giaTri);
+                    tb_tongchiphi.Text = tongChiPhi.ToString();
+                    tb_loinhuan.Text = (doanHienTai.GiaApDung.GiaTri - tongChiPhi).ToString();
                 }
-                else tb_loinhuan.Text = doanHienTai.GiaApDung.GiaTri.ToString();
+                else
+                {
+                    tb_loinhuan.Text = doanHienTai.GiaApDung.GiaTri.ToString();
+                    tb_tongchiphi.Text = "0";
+                }
             }
-            else tb_loinhuan.Text = "0";
+            else
+            {
+                tb_loinhuan.Text = "0";
+                tb_tongchiphi.Text = "0";
+            }
         }
 
         /**

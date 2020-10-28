@@ -19,7 +19,7 @@ namespace DuLich.View.QuanLyDoan
         private List<Khach> danhSachKhachTrongDoanTam = new List<Khach>();
         private ISelectKhachListener selectKhachListener;
         private Doan doanHienTai;
-        public SelectKhach(Doan doanHienTai,List<Khach> danhSachTatCaKhach , List<Khach> danhSachKhachTrongDoan, ISelectKhachListener selectKhachListener)
+        public SelectKhach(Doan doanHienTai, List<Khach> danhSachTatCaKhach, List<Khach> danhSachKhachTrongDoan, ISelectKhachListener selectKhachListener)
         {
             InitializeComponent();
             UpdateComponentState();
@@ -35,80 +35,66 @@ namespace DuLich.View.QuanLyDoan
         {
             btn_luu.Visible = false;
         }
-         
+
 
         private void initData()
         {
-            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
-            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
-            if (danhSachTatCaKhach != null && danhSachKhachTrongDoan!=null)
+            if (danhSachTatCaKhach != null && danhSachKhachTrongDoan != null)
             {
-                danhSachTatCaKhach.RemoveAll(c=>danhSachKhachTrongDoan.Contains(c));
+                danhSachTatCaKhach.RemoveAll(c => danhSachKhachTrongDoan.Contains(c));
             }
-            listbox_khachtrongdoan.DataSource = null;
-            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
+            resetData();
 
-            listbox_tatcakhach.DataSource = null;
-            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
+        }
+
+        private void resetData()
+        {
+            listbox_tatcakhach.Items.Clear();
+            foreach (Khach khach in danhSachTatCaKhach)
+            {
+                ListViewItem listViewItem1 = new ListViewItem(new string[] {
+            khach.KhachId+"",
+            khach.Ten,
+            khach.SoDienThoai});
+                this.listbox_tatcakhach.Items.Add(listViewItem1);
+            }
+            if (listbox_tatcakhach.Items.Count >= 1)
+                listbox_tatcakhach.Items[listbox_tatcakhach.Items.Count - 1].Selected = true;
+
+            listbox_khachtrongdoan.Items.Clear();
+            foreach (Khach khach in danhSachKhachTrongDoan)
+            {
+                ListViewItem listViewItem1 = new ListViewItem(new string[] {
+            khach.KhachId+"",
+            khach.Ten,
+            khach.SoDienThoai});
+                this.listbox_khachtrongdoan.Items.Add(listViewItem1);
+            }
+            if (listbox_khachtrongdoan.Items.Count >= 1)
+                listbox_khachtrongdoan.Items[listbox_khachtrongdoan.Items.Count - 1].Selected = true;
+
         }
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            if (listbox_tatcakhach.SelectedItem == null)
+            if (listbox_tatcakhach.SelectedItems.Count == 0)
                 return;
-            danhSachKhachTrongDoan.Add((Khach)listbox_tatcakhach.SelectedItem);
-            danhSachTatCaKhach.Remove((Khach)listbox_tatcakhach.SelectedItem);
-
-            listbox_khachtrongdoan.DataSource = null;
-            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
-            listbox_khachtrongdoan.SelectedIndex = listbox_khachtrongdoan.Items.Count - 1;
-
-            listbox_tatcakhach.DataSource = null;
-            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
-            listbox_tatcakhach.SelectedIndex = listbox_tatcakhach.Items.Count - 1;
+            Khach khach = (Khach)danhSachTatCaKhach[listbox_tatcakhach.SelectedItems[0].Index];
+            danhSachKhachTrongDoan.Add(khach);
+            ListViewItem listViewItem1 = new ListViewItem(new string[] {
+            khach.KhachId+"",
+            khach.Ten,
+            khach.SoDienThoai});
+            listbox_khachtrongdoan.Items.Add(listViewItem1);
+            if(listbox_khachtrongdoan.Items.Count>=1)
+                listbox_khachtrongdoan.Items[listbox_khachtrongdoan.Items.Count - 1].Selected = true;
+            danhSachTatCaKhach.RemoveAt(listbox_tatcakhach.SelectedItems[0].Index);
+            listbox_tatcakhach.Items.RemoveAt(listbox_tatcakhach.SelectedItems[0].Index);
+            if (listbox_tatcakhach.Items.Count >= 1)
+                listbox_tatcakhach.Items[listbox_tatcakhach.Items.Count - 1].Selected = true;
             checkSuThayDoi();
         }
 
-        private void btn_up_Click(object sender, EventArgs e)
-        {
-            if (listbox_khachtrongdoan.SelectedItem == null)
-                return;
-            int position = listbox_khachtrongdoan.SelectedIndex;
-            if (position != 0) {
-                Khach temp = (Khach)listbox_khachtrongdoan.SelectedItem;
-                danhSachKhachTrongDoan.RemoveAt(position);
-                danhSachKhachTrongDoan.Insert(position - 1, temp);
-                listbox_khachtrongdoan.SelectedIndex = position - 1;
-
-                listbox_khachtrongdoan.DataSource = null;
-                listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
-
-                listbox_tatcakhach.DataSource = null;
-                listbox_tatcakhach.DataSource = danhSachTatCaKhach;
-                checkSuThayDoi();
-            }
-        }
-
-        private void btn_down_Click(object sender, EventArgs e)
-        {
-            if (listbox_khachtrongdoan.SelectedItem == null)
-                return;
-            int position = listbox_khachtrongdoan.SelectedIndex;
-            if (position != danhSachKhachTrongDoan.Count-1)
-            {
-                Khach temp = (Khach)listbox_khachtrongdoan.SelectedItem;
-                danhSachKhachTrongDoan.RemoveAt(position);
-                danhSachKhachTrongDoan.Insert(position + 1, temp);
-                listbox_khachtrongdoan.SelectedIndex = position + 1;
-
-                listbox_khachtrongdoan.DataSource = null;
-                listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
-
-                listbox_tatcakhach.DataSource = null;
-                listbox_tatcakhach.DataSource = danhSachTatCaKhach;
-                checkSuThayDoi();
-            }
-        }
 
         private void checkSuThayDoi()
         {
@@ -135,19 +121,23 @@ namespace DuLich.View.QuanLyDoan
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            if (listbox_khachtrongdoan.SelectedItem == null)
+            if (listbox_khachtrongdoan.SelectedItems.Count == 0)
                 return;
+            Khach khach = (Khach)danhSachKhachTrongDoan[listbox_khachtrongdoan.SelectedItems[0].Index];
+            danhSachTatCaKhach.Add(khach);
+            ListViewItem listViewItem1 = new ListViewItem(new string[] {
+            khach.KhachId+"",
+            khach.Ten,
+            khach.SoDienThoai});
+            listbox_tatcakhach.Items.Add(listViewItem1);
 
-            danhSachTatCaKhach.Add((Khach)listbox_khachtrongdoan.SelectedItem);
-            danhSachKhachTrongDoan.Remove((Khach)listbox_khachtrongdoan.SelectedItem);
+            if (listbox_tatcakhach.Items.Count >= 1)
+                listbox_tatcakhach.Items[listbox_tatcakhach.Items.Count - 1].Selected = true;
 
-            listbox_khachtrongdoan.DataSource = null;
-            listbox_khachtrongdoan.DataSource = danhSachKhachTrongDoan;
-            listbox_khachtrongdoan.SelectedIndex = listbox_khachtrongdoan.Items.Count - 1;
-
-            listbox_tatcakhach.DataSource = null;
-            listbox_tatcakhach.DataSource = danhSachTatCaKhach;
-            listbox_tatcakhach.SelectedIndex = listbox_tatcakhach.Items.Count - 1;
+            danhSachKhachTrongDoan.RemoveAt(listbox_khachtrongdoan.SelectedItems[0].Index);
+            listbox_khachtrongdoan.Items.RemoveAt(listbox_khachtrongdoan.SelectedItems[0].Index);
+            if (listbox_khachtrongdoan.Items.Count >= 1)
+                listbox_khachtrongdoan.Items[listbox_khachtrongdoan.Items.Count - 1].Selected = true;
             checkSuThayDoi();
         }
 
@@ -170,6 +160,5 @@ namespace DuLich.View.QuanLyDoan
         {
             btn_luu.Visible = false;
         }
-
     }
 }
