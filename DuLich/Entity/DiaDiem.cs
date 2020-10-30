@@ -1,4 +1,5 @@
-﻿using DuLich.Entity;
+﻿using DuLich.DAL;
+using DuLich.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,6 +20,14 @@ namespace DuLich.Model.Entity
         public override string ToString()
         {
             return TenDiaDiem;
+        }
+        public void AddOrUpdate()
+        {
+            DiaDiemDal.GetInstance().AddOrUpdate(this);
+        }
+        public void Delete()
+        {
+            DiaDiemDal.GetInstance().Delete(this);
         }
     }
 }

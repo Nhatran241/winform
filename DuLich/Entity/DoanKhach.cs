@@ -1,4 +1,5 @@
-﻿using DuLich.Entity;
+﻿using DuLich.DAL;
+using DuLich.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,5 +17,13 @@ namespace DuLich.Model.Entity
         public int MaDoanKhach { get; set; }
         public Khach Khach { get; set; }
         public Doan Doan { get; set; }
+        public void AddOrUpdate()
+        {
+            DoanKhachDal.GetInstance().AddOrUpdate(this);
+        }
+        public void Delete()
+        {
+            DoanKhachDal.GetInstance().Delete(this);
+        }
     }
 }

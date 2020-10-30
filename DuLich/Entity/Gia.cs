@@ -1,4 +1,5 @@
-﻿using DuLich.Entity;
+﻿using DuLich.DAL;
+using DuLich.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,10 +19,17 @@ namespace DuLich.Model.Entity
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
         public Tour touris { get; set; }
-        public int TourisId { get; set; }
         public override string ToString()
         {
             return GiaTri.ToString();
+        }
+        public void AddOrUpdate()
+        {
+            GiaDal.GetInstance().AddOrUpdate(this);
+        }
+        public void Delete()
+        {
+            GiaDal.GetInstance().Delete(this);
         }
     }
 }

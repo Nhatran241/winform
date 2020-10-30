@@ -14,13 +14,15 @@ namespace DuLich.View.QuanLyTouris
 {
     public partial class DanhSachGia : UserControl
     {
-        private IDanhSachGiaListener danhSachGiaCallBack;
-        private IEnumerable<Gia> gias;
-        public DanhSachGia(IEnumerable<Gia> gias, IDanhSachGiaListener danhSachGiaCallBack)
+        private IDanhSachGiaListener danhSachGiaListener;
+        private List<Gia> gias;
+        private Tour currentTour;
+        public DanhSachGia(Tour currentTouris,List<Gia> gias, IDanhSachGiaListener danhSachGiaListener)
         {
             InitializeComponent();
-            this.danhSachGiaCallBack = danhSachGiaCallBack;
+            this.danhSachGiaListener = danhSachGiaListener;
             this.gias = gias;
+            this.currentTour = currentTouris;
             InitData(gias);
         }
         private void InitData(IEnumerable<Gia> gias)
@@ -36,12 +38,12 @@ namespace DuLich.View.QuanLyTouris
         private void GiaDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int position = dataGridViewGia.CurrentCell.RowIndex;
-            danhSachGiaCallBack.onDanhSachGiaSuaClick(gias.ToList()[position]);
+            danhSachGiaListener.onDanhSachGiaSuaClick(gias.ToList()[position]);
         }
 
         private void btn_them_gia_Click(object sender, EventArgs e)
         {
-            danhSachGiaCallBack.onDanhSachGiaThemClick();
+            danhSachGiaListener.onDanhSachGiaThemClick(currentTour);
         }
      
 
@@ -50,7 +52,7 @@ namespace DuLich.View.QuanLyTouris
             if(dataGridViewGia.CurrentCell != null)
             {
                 int position = dataGridViewGia.CurrentCell.RowIndex;
-                danhSachGiaCallBack.onDanhSachGiaSuaClick(gias.ToArray()[position]);
+                danhSachGiaListener.onDanhSachGiaSuaClick(gias.ToArray()[position]);
             }
         }
 
@@ -59,14 +61,14 @@ namespace DuLich.View.QuanLyTouris
             if (dataGridViewGia.CurrentCell != null)
             {
                 int position = dataGridViewGia.CurrentCell.RowIndex;
-                danhSachGiaCallBack.onDanhSachGiaXoaClick(gias.ToArray()[position]);
+                danhSachGiaListener.onDanhSachGiaXoaClick(currentTour,gias.ToArray()[position]);
             }
         }
         public interface IDanhSachGiaListener
         {
-            void onDanhSachGiaThemClick();
+            void onDanhSachGiaThemClick(Tour tourHienTai);
             void onDanhSachGiaSuaClick(Gia gia);
-            void onDanhSachGiaXoaClick(Gia gia);
+            void onDanhSachGiaXoaClick(Tour tourHienTai,Gia gia);
         }
 
     }

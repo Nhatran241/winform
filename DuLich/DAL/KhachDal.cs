@@ -10,7 +10,7 @@ namespace DuLich.DAL
 {
     class KhachDal
     {
-        private DuLichContext context = new DuLichContext();
+        private DuLichContext context = DuLichContext.GetInstance();
         private static KhachDal instance;
        
         public static KhachDal GetInstance()

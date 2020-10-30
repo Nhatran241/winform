@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuLich.Model.Entity;
+using DuLich.Entity;
 
 namespace DuLich.View.QuanLyTouris
 {
@@ -48,7 +49,7 @@ namespace DuLich.View.QuanLyTouris
         {
             if (Validation(gia))
             {
-                chiTietGiaListener.onLuuClick(gia);
+                chiTietGiaListener.onChiTietGia_LuuClick(gia);
             }else
             {
                 MessageBox.Show("Giá trị không được bỏ trống");
@@ -57,12 +58,12 @@ namespace DuLich.View.QuanLyTouris
 
         private void btn_huy_Click(object sender, EventArgs e)
         {
-            chiTietGiaListener.onHuyClick();
+            chiTietGiaListener.onChiTietGia_HuyClick();
         }
         public interface IChiTietGiaListener
         {
-            void onLuuClick(Gia gia);
-            void onHuyClick();
+            void onChiTietGia_LuuClick(Gia gia);
+            void onChiTietGia_HuyClick();
         }
         private bool Validation(Gia gia)
         {

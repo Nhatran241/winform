@@ -1,4 +1,5 @@
-﻿using DuLich.Entity;
+﻿using DuLich.DAL;
+using DuLich.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,5 +19,13 @@ namespace DuLich.Model.Entity
         public LoaiChiPhi LoaiChiPhi { get; set; }
         public long giaTri { get; set; }
         public string ghiChu { get; set; }
+        public void AddOrUpdate()
+        {
+            ChiPhiDal.GetInstance().AddOrUpdate(this);
+        }
+        public void Delete()
+        {
+            ChiPhiDal.GetInstance().Delete(this);
+        }
     }
 }

@@ -10,8 +10,6 @@ namespace DuLich.Entity
 {
     public class DuLichContext : DbContext
     {
-        /**
-         * 
         private static DuLichContext instance;
         public static DuLichContext GetInstance()
         {
@@ -19,7 +17,6 @@ namespace DuLich.Entity
                 instance = new DuLichContext();
             return instance;
         }
-        */
         public DuLichContext() : base("dulichdb")
         {
             try

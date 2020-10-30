@@ -13,11 +13,11 @@ using DuLich.Model.Entity;
 
 namespace DuLich.View
 {
-    public partial class ChiTietTouris : UserControl,DanhSachGia.IDanhSachGiaListener,ChiTietGia.IChiTietGiaListener
+    public partial class ChiTietTouris : UserControl
     {
         private OnChiTietTourListener onChiTietClickListener;
         private DanhSachChonDiaDiem.IDanhSachChonDiaDiemListener danhSachChonDiaDiemListener;
-        private UserControl chiTietUserControl;
+        private DanhSachGia.IDanhSachGiaListener danhSachGiaListener;
         private bool isEditing = false;
 
         private Tour currentTouris;
@@ -26,11 +26,12 @@ namespace DuLich.View
         private List<Gia> danhSachGia;
         private List<DiaDiem> danhSachTatCaDiaDiem;
         private List<DiaDiem> danhSachDiaDiemCuaTor;
-        public ChiTietTouris(Tour touris,List<Loai> loais, List<Gia> gias, List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour, OnChiTietTourListener onChiTietClickListener,DanhSachChonDiaDiem.IDanhSachChonDiaDiemListener danhSachChonDiaDiemListener)
+        public ChiTietTouris(Tour touris,List<Loai> loais, List<Gia> gias, List<DiaDiem> tatCaDiaDiem, List<DiaDiem> diaDiemCuaTour, OnChiTietTourListener onChiTietClickListener,DanhSachChonDiaDiem.IDanhSachChonDiaDiemListener danhSachChonDiaDiemListener,DanhSachGia.IDanhSachGiaListener danhSachGiaListener)
         {
             InitializeComponent();
             this.onChiTietClickListener = onChiTietClickListener;
             this.danhSachChonDiaDiemListener = danhSachChonDiaDiemListener;
+            this.danhSachGiaListener = danhSachGiaListener;
             currentTouris = touris;
             this.danhSachLoai = loais;
             this.danhSachGia = gias;
@@ -137,7 +138,7 @@ namespace DuLich.View
         public void LoadDanhSachGia()
         {
             tab_gia.Controls.Clear();
-            tab_gia.Controls.Add(new DanhSachGia(danhSachGia, this));
+            tab_gia.Controls.Add(new DanhSachGia(currentTouris,danhSachGia, danhSachGiaListener));
         }
 
         public void LoadDanhSachDiaDiem()
@@ -176,10 +177,6 @@ namespace DuLich.View
         {
             void onChiTietTourCapNhatClick(Tour tourisAfterUpdate);
             void onChiTietTourXoaTourClick(Tour currentTouris);
-            void onThemGia(Gia gia,Tour touris);
-            void onSuaGia(Gia gia,Tour touris);
-            void onXoaGia(Gia gia,Tour touris);
-            void onHuyGia();
         }
 
         
@@ -216,42 +213,6 @@ namespace DuLich.View
             if (tourisAfterUpdate.Name == "" || tourisAfterUpdate.Loai.Id == 0)
                 return false;
             return true;
-        }
-
-        public void onDanhSachGiaThemClick()
-        {
-            Gia gia = new Gia();
-            gia.touris = currentTouris;
-            chiTietUserControl = new ChiTietGia(gia,this);
-            tab_gia.Controls.Clear();
-            tab_gia.Controls.Add(chiTietUserControl);
-        }
-
-        public void onDanhSachGiaSuaClick(Gia gia)
-        {
-            chiTietUserControl = new ChiTietGia(gia,this);
-            tab_gia.Controls.Clear();
-            tab_gia.Controls.Add(chiTietUserControl);
-        }
-
-        public void onDanhSachGiaXoaClick(Gia gia)
-        {
-            onChiTietClickListener.onXoaGia(gia, currentTouris);
-        }
-
-        public void onLuuClick(Gia gia)
-        {
-            Console.WriteLine("" + gia.MaGia + "/" + gia.GiaTri + ":" + gia.ThoiGianBatDau + "-" + gia.ThoiGianKetThuc);
-            if (gia.MaGia == 0)
-            {
-                onChiTietClickListener.onThemGia(gia,currentTouris);
-            }
-            else onChiTietClickListener.onSuaGia(gia, currentTouris);
-        }
-
-        public void onHuyClick()
-        {
-            LoadDanhSachGia();
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)

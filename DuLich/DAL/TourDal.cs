@@ -10,7 +10,7 @@ namespace DuLich.DAL
 {
     class TourDal
     {
-        private DuLichContext context = new DuLichContext();
+        private DuLichContext context =  DuLichContext.GetInstance();
         private static TourDal instance;
        
         public static TourDal GetTourDal()

@@ -1,4 +1,5 @@
 ﻿using DuLich.Entity;
+using DuLich.Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -8,31 +9,31 @@ using System.Threading.Tasks;
 
 namespace DuLich.DAL
 {
-    class NhanVienDal
+    class PhanCongDal
     {
         private DuLichContext context = DuLichContext.GetInstance();
-        private static NhanVienDal instance;
+        private static PhanCongDal instance;
        
-        public static NhanVienDal GetInstance()
+        public static PhanCongDal GetInstance()
         {
             if (instance == null)
-                instance = new NhanVienDal();
+                instance = new PhanCongDal();
             return instance;
         }
 
-
-        public List<NhanVien> GetAll()
+        public List<PhanCong> GetAll()
         {
-            return context.NhanViens.ToList();
+            return context.PhanCongs.ToList();
         }
-        public void AddOrUpdate(NhanVien newNhanVien)
+        public void AddOrUpdate(PhanCong phanCong)
         {
-            context.NhanViens.AddOrUpdate(newNhanVien);
+            context.PhanCongs.AddOrUpdate(phanCong);
         }
-        public void Delete(NhanVien nhanVien)
+        public void Delete(PhanCong phanCong)
         {
-            context.NhanViens.Remove(nhanVien);
+            context.PhanCongs.Remove(phanCong);
         }
+     
         public Task Save()
         {
             return context.SaveChangesAsync();

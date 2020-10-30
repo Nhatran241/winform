@@ -8,30 +8,30 @@ using System.Threading.Tasks;
 
 namespace DuLich.DAL
 {
-    class NhanVienDal
+    class DoanDal
     {
         private DuLichContext context = DuLichContext.GetInstance();
-        private static NhanVienDal instance;
+        private static DoanDal instance;
        
-        public static NhanVienDal GetInstance()
+        public static DoanDal GetInstance()
         {
             if (instance == null)
-                instance = new NhanVienDal();
+                instance = new DoanDal();
             return instance;
         }
 
 
-        public List<NhanVien> GetAll()
+        public List<Doan> GetAll()
         {
-            return context.NhanViens.ToList();
+            return context.Doans.ToList();
         }
-        public void AddOrUpdate(NhanVien newNhanVien)
+        public void AddOrUpdate(Doan doan)
         {
-            context.NhanViens.AddOrUpdate(newNhanVien);
+            context.Doans.AddOrUpdate(doan);
         }
-        public void Delete(NhanVien nhanVien)
+        public void Delete(Doan doan)
         {
-            context.NhanViens.Remove(nhanVien);
+            context.Doans.Remove(doan);
         }
         public Task Save()
         {
