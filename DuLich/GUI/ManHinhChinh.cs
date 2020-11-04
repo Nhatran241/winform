@@ -132,9 +132,9 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += doan.Name + " ";
+                        message += doan.Name + " /n";
                     }
-                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn :" + message + " nên không thể xóa tour này");
+                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : /n" + message + " nên không thể xóa tour này");
                 }
                 else
                 {
@@ -155,7 +155,9 @@ namespace DuLich
         {
             LoadDataFromDataBase();
             panel_main_content.Controls.Clear();
+            panel_main_content.SuspendLayout();
             panel_main_content.Controls.Add(new DanhSachTour(danhSachTour, danhSachLoai, this));
+            panel_main_content.ResumeLayout();
         }
 
 
@@ -198,9 +200,9 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += doan.Name + " ";
+                        message += doan.Name + " \n";
                     }
-                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn :"+message+" nên không thể xóa tour này");
+                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : \n "+message+" nên không thể xóa tour này");
                 }
                 else
                 {
@@ -339,9 +341,9 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += doan.Name + " ";
+                        message += doan.Name + " \n";
                     }
-                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn :" + message + " nên không thể xóa tour này");
+                    DialogResult innerDialogResukt = MessageBox.Show("Giá này đang được áp dụng ở các đoàn : \n" + message + " nên không thể xóa được giá này");
                 }
                 else
                 {
@@ -430,7 +432,8 @@ namespace DuLich
 
         public void onDanhSachDoan_DoanDoubleClick(Doan doan)
         {
-            userControl = new ChiTietDoan(doan, danhSachTour,
+            List<Tour> listTourHasPrice = TourDal.GetTourDal().GetListTourHasPrice();
+            userControl = new ChiTietDoan(doan,listTourHasPrice,
                 danhSachPhanCong.Where(c => c.Doan.Id == doan.Id).ToList(),
                 danhSachChiPhi.Where(c => c.Doan.Id == doan.Id).ToList(),
                 danhSachKhac,
@@ -441,7 +444,8 @@ namespace DuLich
 
         public void onDanhSachDoan_ThemClick()
         {
-            userControl = new ChiTietDoan(new Doan(), danhSachTour, null, null, null, null, this, this, this, this);
+            List<Tour> listTourHasPrice = TourDal.GetTourDal().GetListTourHasPrice();
+            userControl = new ChiTietDoan(new Doan(), listTourHasPrice, null, null, null, null, this, this, this, this);
             //userControl = new ChiTietTouris(null, listLoais, Enumerable.Empty<Gia>(), listDiaDiems, Enumerable.Empty<DiaDiem>().ToList(), this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
@@ -480,9 +484,10 @@ namespace DuLich
                 LoadDataFromDataBase();
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
+                    List<Tour> listTourHasPrice = TourDal.GetTourDal().GetListTourHasPrice();
                     userControl = new ChiTietDoan(
-                        doanSauKhiCapNhat, 
-                        danhSachTour,
+                        doanSauKhiCapNhat,
+                        listTourHasPrice,
                         danhSachPhanCong.Where(c=>c.Doan.Id == doanSauKhiCapNhat.Id).ToList(),
                         danhSachChiPhi.Where(c=>c.Doan.Id == doanSauKhiCapNhat.Id).ToList(),
                         danhSachKhac,

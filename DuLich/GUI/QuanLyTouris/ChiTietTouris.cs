@@ -209,8 +209,7 @@ namespace DuLich.View
 
         private bool Validation(Tour tourisAfterUpdate)
         {
-            Console.WriteLine(tourisAfterUpdate.Name + "/" + tourisAfterUpdate.Loai.Id);
-            if (tourisAfterUpdate.Name == "" || tourisAfterUpdate.Loai.Id == 0)
+            if (tourisAfterUpdate.Name == null ||tourisAfterUpdate.Name == "" || tourisAfterUpdate.Loai.Id == 0)
                 return false;
             return true;
         }

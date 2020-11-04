@@ -93,7 +93,7 @@ namespace DuLich.View.QuanLyTouris
             series1.ChartArea = "ChartArea1";
             series1.Name = "Doanh Số";
             this.chart_thongkedoanhthu.Series.Add(series1);
-            this.chart_thongkedoanhthu.Size = new System.Drawing.Size(732, 400);
+            this.chart_thongkedoanhthu.Size = new System.Drawing.Size(725, 400);
             this.chart_thongkedoanhthu.TabIndex = 3;
             this.chart_thongkedoanhthu.Text = "chart1";
             // 
@@ -122,7 +122,7 @@ namespace DuLich.View.QuanLyTouris
             // cb_nam
             // 
             this.cb_nam.FormattingEnabled = true;
-            this.cb_nam.Location = new System.Drawing.Point(631, 124);
+            this.cb_nam.Location = new System.Drawing.Point(624, 124);
             this.cb_nam.Name = "cb_nam";
             this.cb_nam.Size = new System.Drawing.Size(121, 21);
             this.cb_nam.TabIndex = 7;
@@ -152,7 +152,7 @@ namespace DuLich.View.QuanLyTouris
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ThongKeTheoTour";
-            this.Size = new System.Drawing.Size(767, 1000);
+            this.Size = new System.Drawing.Size(760, 650);
             ((System.ComponentModel.ISupportInitialize)(this.chart_thongkedoanhthu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).EndInit();

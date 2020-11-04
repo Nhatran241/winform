@@ -52,10 +52,10 @@ namespace DuLich.Entity
                 if (NhanViens.ToList().Count == 0)
                 {
                     new List<NhanVien>{
-                        new NhanVien { TenNhanVien= "Nhật",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365)},
-                        new NhanVien { TenNhanVien= "Nam",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365)},
-                        new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365)},
-                        new NhanVien { TenNhanVien= "Kha",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365)}
+                        new NhanVien { TenNhanVien= "Nhật",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"},
+                        new NhanVien { TenNhanVien= "Nam",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"},
+                        new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"},
+                        new NhanVien { TenNhanVien= "Kha",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"}
                     }.ForEach(x => NhanViens.Add(x));
                     SaveChanges();
                 }

@@ -32,16 +32,17 @@ namespace DuLich.View.QuanLyTouris
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_them_gia = new System.Windows.Forms.Button();
             this.btn_xoa_gia = new System.Windows.Forms.Button();
             this.btn_sua_gia = new System.Windows.Forms.Button();
             this.dataGridViewGia = new System.Windows.Forms.DataGridView();
+            this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.maGiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaTriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianBatDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianKetThucDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
@@ -101,6 +102,14 @@ namespace DuLich.View.QuanLyTouris
             this.dataGridViewGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaClick);
             this.dataGridViewGia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaDoubleClick);
             // 
+            // giaBindingSource
+            // 
+            this.giaBindingSource.DataSource = typeof(DuLich.Model.Entity.Gia);
+            // 
+            // tourisBindingSource
+            // 
+            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Tour);
+            // 
             // maGiaDataGridViewTextBoxColumn
             // 
             this.maGiaDataGridViewTextBoxColumn.DataPropertyName = "MaGia";
@@ -111,6 +120,9 @@ namespace DuLich.View.QuanLyTouris
             // giaTriDataGridViewTextBoxColumn
             // 
             this.giaTriDataGridViewTextBoxColumn.DataPropertyName = "GiaTri";
+            dataGridViewCellStyle1.Format = "C1";
+            dataGridViewCellStyle1.NullValue = null;
+            this.giaTriDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.giaTriDataGridViewTextBoxColumn.HeaderText = "GiaTri";
             this.giaTriDataGridViewTextBoxColumn.Name = "giaTriDataGridViewTextBoxColumn";
             this.giaTriDataGridViewTextBoxColumn.ReadOnly = true;
@@ -128,14 +140,6 @@ namespace DuLich.View.QuanLyTouris
             this.thoiGianKetThucDataGridViewTextBoxColumn.HeaderText = "ThoiGianKetThuc";
             this.thoiGianKetThucDataGridViewTextBoxColumn.Name = "thoiGianKetThucDataGridViewTextBoxColumn";
             this.thoiGianKetThucDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // giaBindingSource
-            // 
-            this.giaBindingSource.DataSource = typeof(DuLich.Model.Entity.Gia);
-            // 
-            // tourisBindingSource
-            // 
-            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Tour);
             // 
             // DanhSachGia
             // 
@@ -161,10 +165,10 @@ namespace DuLich.View.QuanLyTouris
         private Button btn_sua_gia;
         private DataGridView dataGridViewGia;
         private BindingSource tourisBindingSource;
+        private BindingSource giaBindingSource;
         private DataGridViewTextBoxColumn maGiaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn giaTriDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn thoiGianBatDauDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn thoiGianKetThucDataGridViewTextBoxColumn;
-        private BindingSource giaBindingSource;
     }
 }

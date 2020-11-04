@@ -33,7 +33,7 @@ namespace DuLich.View
         private List<Khach> danhSachKhachTrongDoan;
         private List<ChiPhi> danhSachChiPhi;
 
-        public ChiTietDoan(Doan doan, IEnumerable<Tour> listTour, List<PhanCong> phanCongs,List<ChiPhi> danhSachChiPhi, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener,DanhSachChiPhi.IDanhSachChiPhiListener danhSachChiPhiListener)
+        public ChiTietDoan(Doan doan, List<Tour> listTour, List<PhanCong> phanCongs,List<ChiPhi> danhSachChiPhi, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener,DanhSachChiPhi.IDanhSachChiPhiListener danhSachChiPhiListener)
         {
             InitializeComponent();
             this.doanHienTai = doan;
@@ -46,6 +46,11 @@ namespace DuLich.View
             this.danhSachPhanCong = phanCongs;
             this.danhSachTatCaKhach = tatcakhach;
             this.danhSachKhachTrongDoan = khachtrongdoan;
+            if(danhSachTour.Count() == 0)
+            {
+                panel_thongbao.Visible = true;
+                return;
+            }
             if (doan.Id == 0)
                 CreateNewRecord();
             UpdateComponentState();
@@ -77,7 +82,7 @@ namespace DuLich.View
         public void CreateNewRecord()
         {
             this.doanHienTai = new Doan();
-            if(doanHienTai.Touris != null)
+            if(doanHienTai.Touris == null)
                 doanHienTai.Touris = danhSachTour.First();
             textbox_id.Enabled = false;
             btn_xoa.Visible = false;

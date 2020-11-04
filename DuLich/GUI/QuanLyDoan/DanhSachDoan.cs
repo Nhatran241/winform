@@ -56,7 +56,6 @@ namespace DuLich.GUI.QuanLyDoan
                 searchDoan1.SetData(danhSachTour, danhSachNhanVien, danhSachKhach, min, max, this);
             }
             else searchDoan1.SetData(danhSachTour, danhSachNhanVien, danhSachKhach, DateTime.MinValue, DateTime.MaxValue, this);
-
         }
 
         public void onSearchDoan(Tour tour, string ten, NhanVien nhanVien, Khach khach, DateTime min, DateTime max)

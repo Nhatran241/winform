@@ -99,6 +99,7 @@
             this.tb_giatri.Size = new System.Drawing.Size(181, 29);
             this.tb_giatri.TabIndex = 5;
             this.tb_giatri.TextChanged += new System.EventHandler(this.tb_giatri_TextChanged);
+            this.tb_giatri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_giatri_KeyPress_1);
             // 
             // datepicker_batdau
             // 

@@ -219,9 +219,9 @@ namespace DuLich.View
             // panel_thongbao
             // 
             this.panel_thongbao.Controls.Add(this.label1);
-            this.panel_thongbao.Location = new System.Drawing.Point(0, 164);
+            this.panel_thongbao.Location = new System.Drawing.Point(0, 0);
             this.panel_thongbao.Name = "panel_thongbao";
-            this.panel_thongbao.Size = new System.Drawing.Size(800, 476);
+            this.panel_thongbao.Size = new System.Drawing.Size(800, 640);
             this.panel_thongbao.TabIndex = 28;
             this.panel_thongbao.Visible = false;
             // 
@@ -231,9 +231,9 @@ namespace DuLich.View
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(128, 244);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(530, 25);
+            this.label1.Size = new System.Drawing.Size(575, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tour này chưa có giá để áp dụng hoặc giá đã quá hạn";
+            this.label1.Text = "Không có tour nào đang hoạt động hoặc tour không có giá ";
             // 
             // label3
             // 
@@ -298,12 +298,6 @@ namespace DuLich.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tb_tongchiphi);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cb_giatour);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_loinhuan);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel_thongbao);
             this.Controls.Add(this.datepicker_ketthuc);
             this.Controls.Add(this.datepicker_batdau);
@@ -318,6 +312,12 @@ namespace DuLich.View
             this.Controls.Add(this.textbox_id);
             this.Controls.Add(this.combobox_loai);
             this.Controls.Add(this.doan_id);
+            this.Controls.Add(this.tb_tongchiphi);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cb_giatour);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tb_loinhuan);
+            this.Controls.Add(this.label3);
             this.Name = "ChiTietDoan";
             this.Size = new System.Drawing.Size(800, 600);
             this.tab_chitiet.ResumeLayout(false);

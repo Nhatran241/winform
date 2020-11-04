@@ -17,7 +17,6 @@ namespace DuLich.View.QuanLyTouris
     {
         private Tour tour;
         List<DataPoint> dataPoints = new List<DataPoint>();
-        List<DoanKhach> doanKhaches = new List<DoanKhach>();
         List<String> nam = new List<String>();
         public ThongKeTheoTour(Tour tour)
         {
@@ -28,7 +27,22 @@ namespace DuLich.View.QuanLyTouris
         private void InitData()
         {
             nam.Add("Bất Kỳ");
-            cb_nam.DataSource = nam;
+            if (tour.Doans != null)
+            {
+                foreach (Doan doan in tour.Doans.ToList())
+                {
+                    if (!nam.Contains(doan.ThoiGianBatDau.Year.ToString()))
+                    {
+                        nam.Add(doan.ThoiGianBatDau.Year.ToString());
+                    }
+                }
+            }
+            cb_nam.Items.Clear();
+            foreach (String str in nam)
+            {
+                cb_nam.Items.Add(str);
+            }
+            cb_nam.SelectedIndex = 0;
         }
 
 
@@ -49,11 +63,12 @@ namespace DuLich.View.QuanLyTouris
             dataPoints.Add(new DataPoint(12D, 0D));
             if(tour.Doans != null)
             {
-                foreach (Doan doan in tour.Doans)
+                foreach (Doan doan in tour.Doans.ToList())
                 {
                     if (nam[cb_nam.SelectedIndex].Equals("Bất Kỳ") || doan.ThoiGianBatDau.Year == int.Parse(nam[cb_nam.SelectedIndex]))
-                        dataPoints[doan.ThoiGianBatDau.Month - 1].YValues[0] += (doan.GiaApDung.GiaTri / 1000000) * 1D;
+                        dataPoints[doan.ThoiGianBatDau.Month - 1].YValues[0] += (doan.GiaApDung.GiaTri / 1) * 1D;
                 }
+              
             }
             chart_thongkedoanhthu.Series[0].Points.Clear();
             foreach (DataPoint dataPoint in dataPoints)
@@ -61,6 +76,8 @@ namespace DuLich.View.QuanLyTouris
                 chart_thongkedoanhthu.Series[0].Points.Add(dataPoint);
                 chart_thongkedoanhthu.Update();
             }
+            tv_tongdoan.Text = tour.GetListDoanOfTour().Count().ToString();
+            tv_tongkhach.Text = tour.GetListKhachOfTour().Count().ToString();
         }
     }
 }

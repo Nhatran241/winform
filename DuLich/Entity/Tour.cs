@@ -33,5 +33,14 @@ namespace DuLich.Entity
         {
             TourDal.GetTourDal().Delete(this);
         }
+        public List<Doan> GetListDoanOfTour()
+        {
+            return TourDal.GetTourDal().GetListDoanByTour(this);
+        }
+
+        public List<Khach> GetListKhachOfTour()
+        {
+            return TourDal.GetTourDal().GetListKhachByTour(this);
+        }
     }
 }
