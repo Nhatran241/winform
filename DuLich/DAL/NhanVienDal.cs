@@ -10,32 +10,23 @@ namespace DuLich.DAL
 {
     class NhanVienDal
     {
-        private DuLichContext context = DuLichContext.GetInstance();
-        private static NhanVienDal instance;
-       
-        public static NhanVienDal GetInstance()
-        {
-            if (instance == null)
-                instance = new NhanVienDal();
-            return instance;
-        }
+        static DuLichContext context = DuLichContext.GetInstance();
 
-
-        public List<NhanVien> GetAll()
+        public static List<NhanVien> GetAll()
         {
             return context.NhanViens.ToList();
         }
-        public void AddOrUpdate(NhanVien newNhanVien)
+        public static Task AddOrUpdate(NhanVien newNhanVien)
         {
             context.NhanViens.AddOrUpdate(newNhanVien);
+            return context.SaveChangesAsync();
+
         }
-        public void Delete(NhanVien nhanVien)
+        public static Task Delete(NhanVien nhanVien)
         {
             context.NhanViens.Remove(nhanVien);
-        }
-        public Task Save()
-        {
             return context.SaveChangesAsync();
+
         }
     }
 }

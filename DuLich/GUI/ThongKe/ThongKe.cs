@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuLich.Entity;
 using DuLich.Model.Entity;
@@ -15,26 +11,19 @@ namespace DuLich.GUI.ThongKe
 {
     public partial class ThongKe : UserControl
     {
-        private Tour tour;
         private List<NhanVien> danhSachNhanVien;
-        private List<PhanCong> danhSachPhanCong;
         private List<Tour> danhSachTour;
         private List<Doan> danhSachDoan;
         private List<Khach> danhSachKhach;
-        List<DoanKhach> doanKhaches = new List<DoanKhach>();
         List<String> nam = new List<String>();
-        public ThongKe(List<NhanVien> danhSachNhanVien,List<PhanCong> danhSachPhanCong,List<Tour> danhSachTour,List<Doan> danhSachDoan,List<Khach> danhSachKhach)
+        public ThongKe(List<NhanVien> danhSachNhanVien,List<Tour> danhSachTour,List<Doan> danhSachDoan,List<Khach> danhSachKhach)
         {
             InitializeComponent();
             this.danhSachNhanVien = danhSachNhanVien;
-            this.danhSachPhanCong = danhSachPhanCong;
             this.danhSachTour = danhSachTour;
             this.danhSachDoan = danhSachDoan;
             this.danhSachKhach = danhSachKhach;
             InitData();
-            InitThongKeNhanVienDiTour();
-            InitThongKeTour();
-            InitThongKeTour_SoLuongKhachDoan();
         }
 
         private void InitThongKeTour()
@@ -49,7 +38,7 @@ namespace DuLich.GUI.ThongKe
             {
                 DataPoint danhThuPoint = new DataPoint();
                 danhThuPoint.AxisLabel = tour.Name;
-                danhThuPoint.YValues[0] = danhSachDoan.Where(c => c.Touris.Id == tour.Id&&c.ThoiGianBatDau>=datepicker_tu_doanhthutour.Value && c.ThoiGianKetThuc <= datepicker_den_doanhthutour.Value).Sum(c => c.GiaApDung.GiaTri);
+                danhThuPoint.YValues[0] = tour.TongDoanhThuTourByTime(datepicker_tu_doanhthutour.Value, datepicker_den_doanhthutour.Value);
                 danhThu.Add(danhThuPoint);
 
                
@@ -58,14 +47,11 @@ namespace DuLich.GUI.ThongKe
                  */
                 DataPoint chiPhiPoint = new DataPoint();
                 chiPhiPoint.AxisLabel = tour.Name; 
-                List<Doan> doanCuaTour = danhSachDoan.Where(c => c.Touris.Id == tour.Id
-                   && c.ThoiGianBatDau >= datepicker_tu_doanhthutour.Value
-                   && c.ThoiGianKetThuc <= datepicker_den_doanhthutour.Value).ToList();
-                foreach (Doan doan in doanCuaTour)
+                foreach (Doan doan in tour.GetListDoanOfTourByTime(datepicker_tu_doanhthutour.Value, datepicker_den_doanhthutour.Value))
                 {
                     if(doan.ChiPhis != null)
                     {
-                        chiPhiPoint.YValues[0]+=doan.ChiPhis.Sum(c => c.giaTri);
+                        chiPhiPoint.YValues[0]+=doan.TongChiPhiDoan();
                     }
                 }
                 chiPhi.Add(chiPhiPoint);
@@ -114,24 +100,16 @@ namespace DuLich.GUI.ThongKe
             {
                 DataPoint doanPoint = new DataPoint();
                 doanPoint.AxisLabel = tour.Name;
-                doanPoint.YValues[0]=danhSachDoan.Count(c => c.Touris.Id == tour.Id&&c.ThoiGianBatDau>=datepicker_tu_khacdoan.Value&&c.ThoiGianKetThuc<=datepicker_den_khachdoan.Value);
+                doanPoint.YValues[0] = tour.GetListDoanOfTourByTime(datepicker_tu_khacdoan.Value, datepicker_den_khachdoan.Value).Count();
                 doan.Add(doanPoint);
 
                 /**
                  * Khách
                  */
-                List<Khach> khachTrongTour = new List<Khach>();
-                if(tour.Doans != null)
-                {
-                    foreach (Doan doan1 in tour.Doans.Where(c=>c.ThoiGianBatDau >= datepicker_tu_khacdoan.Value && c.ThoiGianKetThuc <= datepicker_den_khachdoan.Value).ToList())
-                    {
-                        if(doan1.DoanKhachs!=null)
-                            khachTrongTour.AddRange(danhSachKhach.Where(c => doan1.DoanKhachs.Select(d => d.Khach.KhachId).ToList().Contains(c.KhachId)).ToList());
-                    }
-                }
+               
                 DataPoint khachPoint = new DataPoint();
                 khachPoint.AxisLabel = tour.Name;
-                khachPoint.YValues[0] = khachTrongTour.Distinct().ToList().Count();
+                khachPoint.YValues[0] = tour.GetListKhachOfTourByTime(datepicker_tu_khacdoan.Value, datepicker_den_khachdoan.Value).Count();
                 khach.Add(khachPoint);
             }
             /**
@@ -163,7 +141,7 @@ namespace DuLich.GUI.ThongKe
                 ListViewItem listViewItem1 = new ListViewItem(new string[] {
                 nhanVien.MaNhanVien.ToString(),
                 nhanVien.TenNhanVien,
-                danhSachPhanCong.Count(c=>c.NhanVien.MaNhanVien == nhanVien.MaNhanVien &&c.Doan.ThoiGianBatDau>=dateTimePicker1.Value && c.Doan.ThoiGianKetThuc<= dateTimePicker2.Value).ToString()});
+                nhanVien.GetListDoanPhanCongByTime(dateTimePicker1.Value,dateTimePicker2.Value).Count().ToString()});
                 listview_solanditour.Items.Add(listViewItem1);
             }
         }

@@ -15,17 +15,8 @@ namespace DuLich.Model.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaChiTietTour { get; set; }
-        public DiaDiem diaDiem { get; set; }
-        public Tour touris { get; set; }
+        public virtual DiaDiem diaDiem { get; set; }
+        public virtual Tour touris { get; set; }
         public int ThuTu { get; set; }
-
-        public void AddOrUpdate()
-        {
-            ChiTietTourDal.GetInstance().AddOrUpdate(this);
-        }
-        public void Delete()
-        {
-            ChiTietTourDal.GetInstance().Delete(this);
-        }
     }
 }

@@ -21,19 +21,19 @@ namespace DuLich.Entity
         public String SoCmnd { get; set; }
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
-        public ICollection<DoanKhach> DoanKhachs { get; set; }
+        public virtual ICollection<DoanKhach> DoanKhachs { get; set; }
         public override string ToString()
         {
             return Ten;
         }
 
-        public void AddOrUpdate()
+        public Task AddOrUpdate()
         {
-            KhachDal.GetInstance().AddOrUpdate(this);
+            return KhachDal.AddOrUpdate(this);
         }
-        public void Delete()
+        public Task Delete()
         {
-            KhachDal.GetInstance().Delete(this);
+            return KhachDal.Delete(this);
         }
     }
 }

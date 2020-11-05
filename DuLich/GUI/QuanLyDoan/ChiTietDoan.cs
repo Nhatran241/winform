@@ -63,8 +63,19 @@ namespace DuLich.View
             if (doanHienTai.Id == 0)
             {
                 tab_chitiet.Enabled = false;
+                tb_loinhuan.Visible = false;
+                tb_tongchiphi.Visible = false;
+                tv_loinhuan.Visible = false;
+                tv_tongchiphi.Visible = false;
             }
-            else tab_chitiet.Enabled = true;
+            else
+            {
+                tab_chitiet.Enabled = true;
+                tb_loinhuan.Visible = true;
+                tb_tongchiphi.Visible = true;
+                tv_loinhuan.Visible = true;
+                tv_tongchiphi.Visible = true;
+            }
             if (isEditing)
             {
                 EnableComponent();

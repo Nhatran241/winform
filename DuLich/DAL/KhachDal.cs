@@ -10,31 +10,20 @@ namespace DuLich.DAL
 {
     class KhachDal
     {
-        private DuLichContext context = DuLichContext.GetInstance();
-        private static KhachDal instance;
-       
-        public static KhachDal GetInstance()
-        {
-            if (instance == null)
-                instance = new KhachDal();
-            return instance;
-        }
+        static DuLichContext context = DuLichContext.GetInstance();
 
-
-        public List<Khach> GetAll()
+        public static List<Khach> GetAll()
         {
             return context.Khaches.ToList();
         }
-        public void AddOrUpdate(Khach newKhach)
+        public static Task AddOrUpdate(Khach newKhach)
         {
             context.Khaches.AddOrUpdate(newKhach);
+            return context.SaveChangesAsync();
         }
-        public void Delete(Khach khach)
+        public static Task Delete(Khach khach)
         {
             context.Khaches.Remove(khach);
-        }
-        public Task Save()
-        {
             return context.SaveChangesAsync();
         }
     }

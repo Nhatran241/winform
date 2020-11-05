@@ -11,60 +11,60 @@ namespace DuLich.DAL
 {
     class TourDal
     {
-        private DuLichContext context =  DuLichContext.GetInstance();
-        private static TourDal instance;
-       
-        public static TourDal GetTourDal()
-        {
-            if (instance == null)
-                instance = new TourDal();
-            return instance;
-        }
+        static DuLichContext context = DuLichContext.GetInstance();
 
 
-        public List<Tour> GetAll()
+        public static List<Tour> GetAll()
         {
             return context.Touris.ToList();
         }
-        public void AddOrUpdate(Tour newTour)
+        public static Task AddOrUpdate(Tour newTour)
         {
             context.Touris.AddOrUpdate(newTour);
-        }
-        public void Delete(Tour touris)
-        {
-            context.Touris.Remove(touris);
-        }
-        public Task Save()
-        {
             return context.SaveChangesAsync();
         }
-
-        public List<Doan> GetListDoanByTour(Tour tour)
+        public static Task Delete(Tour touris)
         {
-            if(tour.Doans != null)
-                return tour.Doans.ToList();
-            return new List<Doan>();
+            context.Touris.Remove(touris);
+            return context.SaveChangesAsync();
         }
-        public List<Doan> GetListDoanByTourId(int id)
+        public static List<Doan> GetListDoanByTourId(int id)
         {
             return context.Doans.Where(c => c.Touris.Id == id).ToList();
         }
 
-        public List<Khach> GetListKhachByTour(Tour tour)
+    
+
+        public static List<DiaDiem> GetListDiaDiemByTour(Tour tour)
         {
-            List<Khach> khachTrongTour = new List<Khach>();
-            if (tour.Doans != null)
+            List<DiaDiem> danhSachDiaDiemCuaTor = new List<DiaDiem>();
+            foreach (ChiTietTour chiTietTour in tour.ChiTietTours.OrderBy(c => c.ThuTu).ToList())
             {
-                foreach (Doan doan1 in tour.Doans.ToList())
-                {
-                    if (doan1.DoanKhachs != null)
-                        khachTrongTour.AddRange(context.Khaches.ToList().Where(c => doan1.DoanKhachs.Select(d => d.Khach.KhachId).ToList().Contains(c.KhachId)).ToList());
-                }
+                DiaDiem diaDiem = context.DiaDiem.Where(c => c.MaDienDiem == chiTietTour.diaDiem.MaDienDiem).First();
+                if (!danhSachDiaDiemCuaTor.Contains(diaDiem))
+                    danhSachDiaDiemCuaTor.Add(diaDiem);
             }
-            return khachTrongTour.Distinct().ToList();
+            return danhSachDiaDiemCuaTor;
         }
 
-        public List<Tour> GetListTourHasPrice()
+        public static void DeleteAllChiTietByTour(Tour tour)
+        {
+            if (tour.ChiTietTours != null)
+            {
+                context.ChiTietTour.RemoveRange(tour.ChiTietTours);
+            }
+        }
+
+        public static Task UpdateListDiaDiemTour(List<ChiTietTour> danhSachChiTietTour)
+        {
+            foreach(ChiTietTour chiTietTour in danhSachChiTietTour)
+            {
+                context.ChiTietTour.AddOrUpdate(chiTietTour);
+            }
+            return context.SaveChangesAsync();
+        }
+
+        public static List<Tour> GetListTourHasPrice()
         {
             return GetAll().Where(c => c.Gias!=null && c.Gias.Count >0).ToList();
         }

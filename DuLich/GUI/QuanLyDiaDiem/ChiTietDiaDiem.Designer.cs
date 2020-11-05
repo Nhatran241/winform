@@ -38,7 +38,7 @@
             // 
             // btn_huy
             // 
-            this.btn_huy.Location = new System.Drawing.Point(413, 103);
+            this.btn_huy.Location = new System.Drawing.Point(413, 97);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(50, 40);
             this.btn_huy.TabIndex = 15;
@@ -48,7 +48,7 @@
             // 
             // btn_luu
             // 
-            this.btn_luu.Location = new System.Drawing.Point(413, 31);
+            this.btn_luu.Location = new System.Drawing.Point(413, 25);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(50, 40);
             this.btn_luu.TabIndex = 14;
@@ -67,9 +67,11 @@
             // 
             // tb_madiadiem
             // 
+            this.tb_madiadiem.Enabled = false;
             this.tb_madiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_madiadiem.Location = new System.Drawing.Point(196, 28);
             this.tb_madiadiem.Name = "tb_madiadiem";
+            this.tb_madiadiem.ReadOnly = true;
             this.tb_madiadiem.Size = new System.Drawing.Size(181, 29);
             this.tb_madiadiem.TabIndex = 12;
             // 

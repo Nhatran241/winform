@@ -18,18 +18,88 @@ namespace DuLich.Entity
         public String Name { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-        public Gia GiaApDung { get; set; }
-        public Tour Touris { get; set; }
-        public ICollection<DoanKhach> DoanKhachs { get; set; }
-        public ICollection<PhanCong> PhanCongs { get; set; }
-        public ICollection<ChiPhi> ChiPhis { get; set; }
-        public void AddOrUpdate()
+        public virtual Gia GiaApDung { get; set; }
+        public virtual Tour Touris { get; set; }
+        public virtual ICollection<DoanKhach> DoanKhachs { get; set; }
+        public virtual ICollection<PhanCong> PhanCongs { get; set; }
+        public virtual ICollection<ChiPhi> ChiPhis { get; set; }
+        public Task AddOrUpdate()
         {
-            DoanDal.GetInstance().AddOrUpdate(this);
+            return DoanDal.AddOrUpdate(this);
         }
-        public void Delete()
+        public Task Delete()
         {
-            DoanDal.GetInstance().Delete(this);
+            return DoanDal.Delete(this);
+        }
+
+        public void DeleteAllKhach()
+        {
+            DoanDal.DeleteAllKhach(this);
+        }
+
+        public Task UpdateListDoanKhach(List<Khach> danhSachKhachTrongDoanUpdate)
+        {
+            List<DoanKhach> danhSachDoanKhach = new List<DoanKhach>();
+            foreach (Khach khach in danhSachKhachTrongDoanUpdate)
+            {
+                DoanKhach doanKhach = new DoanKhach();
+                doanKhach.Doan = this;
+                doanKhach.Khach = khach;
+                danhSachDoanKhach.Add(doanKhach);
+            }
+            return DoanDal.UpdateListDoanKhach(danhSachDoanKhach);
+
+        }
+
+        public List<PhanCong> GetListPhanCong()
+        {
+            if (PhanCongs == null)
+                return new List<PhanCong>();
+            return PhanCongs.ToList();
+        }
+
+        public List<ChiPhi> GetListChiPhi()
+        {
+            if (ChiPhis == null)
+                return new List<ChiPhi>();
+            return ChiPhis.ToList();
+        }
+
+        public List<Khach> GetListKhach()
+        {
+            List<Khach> listKhack = new List<Khach>();
+            if (DoanKhachs == null)
+                return listKhack;
+            foreach(DoanKhach doanKhach in DoanKhachs)
+            {
+                listKhack.Add(doanKhach.Khach);
+            }
+            return listKhack;
+        }
+
+        public double TongChiPhiDoan()
+        {
+            return ChiPhis.Sum(c => c.giaTri);
+        }
+
+        public Task DeleteChiPhi(ChiPhi chiPhi)
+        {
+            return DoanDal.DeleteChiPhi(chiPhi);
+        }
+
+        public Task AddOrUpdateChiPhi(ChiPhi chiPhi)
+        {
+            return DoanDal.AddOrUpdateChiPhi(chiPhi);
+        }
+
+        public Task DeletePhanCong(PhanCong phanCong)
+        {
+            return DoanDal.DeletePhanCong(phanCong);
+        }
+
+        public Task AddOrUpdatePhanCong(PhanCong phanCong)
+        {
+            return DoanDal.AddOrUpdatePhanCong(phanCong);
         }
     }
 }

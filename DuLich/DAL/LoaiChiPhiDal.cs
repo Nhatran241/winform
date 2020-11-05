@@ -11,17 +11,9 @@ namespace DuLich.DAL
 {
     class LoaiChiPhiDal
     {
-        private DuLichContext context = DuLichContext.GetInstance();
-        private static LoaiChiPhiDal instance;
-       
-        public static LoaiChiPhiDal GetInstance()
-        {
-            if (instance == null)
-                instance = new LoaiChiPhiDal();
-            return instance;
-        }
+        static DuLichContext context = DuLichContext.GetInstance();
 
-        public List<LoaiChiPhi> GetAll()
+        public static List<LoaiChiPhi> GetAll()
         {
             return context.LoaiChiPhis.ToList();
         }

@@ -15,17 +15,9 @@ namespace DuLich.Model.Entity
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public Doan Doan { get; set; }
-        public LoaiChiPhi LoaiChiPhi { get; set; }
+        public virtual Doan Doan { get; set; }
+        public virtual LoaiChiPhi LoaiChiPhi { get; set; }
         public long giaTri { get; set; }
         public string ghiChu { get; set; }
-        public void AddOrUpdate()
-        {
-            ChiPhiDal.GetInstance().AddOrUpdate(this);
-        }
-        public void Delete()
-        {
-            ChiPhiDal.GetInstance().Delete(this);
-        }
     }
 }

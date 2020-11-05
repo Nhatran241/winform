@@ -19,18 +19,18 @@ namespace DuLich.Model.Entity
         public long GiaTri { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-        public Tour touris { get; set; }
+        public virtual Tour touris { get; set; }
         public override string ToString()
         {
             return GiaTri.ToString();
         }
-        public void AddOrUpdate()
+        public Task AddOrUpdate()
         {
-            GiaDal.GetInstance().AddOrUpdate(this);
+            return GiaDal.AddOrUpdate(this);
         }
-        public void Delete()
+        public Task Delete()
         {
-            GiaDal.GetInstance().Delete(this);
+            return GiaDal.Delete(this);
         }
     }
 }

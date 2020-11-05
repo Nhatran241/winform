@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DuLich.Model.Entity;
+using DuLich.DAL;
 
 namespace DuLich.View.QuanLyDiaDiem
 {
@@ -27,17 +28,13 @@ namespace DuLich.View.QuanLyDiaDiem
 
         private void InitUI()
         {
-            tb_madiadiem.Text = diaDiem.MaDienDiem.ToString();
             if (diaDiem.MaDienDiem == 0)
             {
-                tb_madiadiem.Visible = false;
-                tv_madiadiem.Visible = false;
+                tb_madiadiem.Text = "Mã tự động";
             }
             else
             {
-                tb_madiadiem.Visible = true;
-                tv_madiadiem.Visible = true;
-                tb_madiadiem.Enabled = false;
+                tb_madiadiem.Text = diaDiem.MaDienDiem.ToString();
                 tb_tendiadiem.Text = diaDiem.TenDiaDiem.ToString();
             }
         }
@@ -50,7 +47,7 @@ namespace DuLich.View.QuanLyDiaDiem
             }
             else
             {
-                MessageBox.Show("Địa điểm không hợp lệ hoặc đã tồn tại");
+                MessageBox.Show("Tên địa điểm không được để trống hoặc không được trùng");
             }
         }
 
@@ -65,6 +62,10 @@ namespace DuLich.View.QuanLyDiaDiem
         }
         private bool Validation(DiaDiem diaDiem)
         {
+            if (diaDiem.TenDiaDiem == null || diaDiem.TenDiaDiem.Equals(""))
+                return false;
+            if (diaDiem.GetDiaDiemByName(diaDiem.TenDiaDiem) != null)
+                return false;
             return true;
         }
 

@@ -11,31 +11,20 @@ namespace DuLich.DAL
 {
     class GiaDal
     {
-        private DuLichContext context = DuLichContext.GetInstance();
-        private static GiaDal instance;
-       
-        public static GiaDal GetInstance()
-        {
-            if (instance == null)
-                instance = new GiaDal();
-            return instance;
-        }
+        static DuLichContext context = DuLichContext.GetInstance();
 
-
-        public List<Gia> GetAll()
+        public static List<Gia> GetAll()
         {
             return context.Gia.ToList();
         }
-        public void AddOrUpdate(Gia gia)
+        public static Task AddOrUpdate(Gia gia)
         {
             context.Gia.AddOrUpdate(gia);
+            return context.SaveChangesAsync();
         }
-        public void Delete(Gia gia)
+        public static Task Delete(Gia gia)
         {
             context.Gia.Remove(gia);
-        }
-        public Task Save()
-        {
             return context.SaveChangesAsync();
         }
     }

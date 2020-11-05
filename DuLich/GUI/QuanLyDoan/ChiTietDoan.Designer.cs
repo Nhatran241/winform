@@ -49,12 +49,12 @@ namespace DuLich.View
             this.btn_chinhsua = new System.Windows.Forms.Button();
             this.panel_thongbao = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tv_loinhuan = new System.Windows.Forms.Label();
             this.tb_loinhuan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cb_giatour = new System.Windows.Forms.ComboBox();
             this.tb_tongchiphi = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tv_tongchiphi = new System.Windows.Forms.Label();
             this.tab_chitiet.SuspendLayout();
             this.panel_thongbao.SuspendLayout();
             this.SuspendLayout();
@@ -219,9 +219,9 @@ namespace DuLich.View
             // panel_thongbao
             // 
             this.panel_thongbao.Controls.Add(this.label1);
-            this.panel_thongbao.Location = new System.Drawing.Point(0, 0);
+            this.panel_thongbao.Location = new System.Drawing.Point(0, 3);
             this.panel_thongbao.Name = "panel_thongbao";
-            this.panel_thongbao.Size = new System.Drawing.Size(800, 640);
+            this.panel_thongbao.Size = new System.Drawing.Size(800, 637);
             this.panel_thongbao.TabIndex = 28;
             this.panel_thongbao.Visible = false;
             // 
@@ -235,15 +235,15 @@ namespace DuLich.View
             this.label1.TabIndex = 0;
             this.label1.Text = "Không có tour nào đang hoạt động hoặc tour không có giá ";
             // 
-            // label3
+            // tv_loinhuan
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(361, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 20);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Lợi Nhuận";
+            this.tv_loinhuan.AutoSize = true;
+            this.tv_loinhuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_loinhuan.Location = new System.Drawing.Point(361, 98);
+            this.tv_loinhuan.Name = "tv_loinhuan";
+            this.tv_loinhuan.Size = new System.Drawing.Size(85, 20);
+            this.tv_loinhuan.TabIndex = 31;
+            this.tv_loinhuan.Text = "Lợi Nhuận";
             // 
             // tb_loinhuan
             // 
@@ -284,15 +284,15 @@ namespace DuLich.View
             this.tb_tongchiphi.Size = new System.Drawing.Size(218, 29);
             this.tb_tongchiphi.TabIndex = 36;
             // 
-            // label4
+            // tv_tongchiphi
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 20);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Tổng Chi Phí";
+            this.tv_tongchiphi.AutoSize = true;
+            this.tv_tongchiphi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tongchiphi.Location = new System.Drawing.Point(16, 104);
+            this.tv_tongchiphi.Name = "tv_tongchiphi";
+            this.tv_tongchiphi.Size = new System.Drawing.Size(105, 20);
+            this.tv_tongchiphi.TabIndex = 35;
+            this.tv_tongchiphi.Text = "Tổng Chi Phí";
             // 
             // ChiTietDoan
             // 
@@ -313,11 +313,11 @@ namespace DuLich.View
             this.Controls.Add(this.combobox_loai);
             this.Controls.Add(this.doan_id);
             this.Controls.Add(this.tb_tongchiphi);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.tv_tongchiphi);
             this.Controls.Add(this.cb_giatour);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_loinhuan);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tv_loinhuan);
             this.Name = "ChiTietDoan";
             this.Size = new System.Drawing.Size(800, 600);
             this.tab_chitiet.ResumeLayout(false);
@@ -348,11 +348,11 @@ namespace DuLich.View
         private TabPage tab_chiphi;
         private Panel panel_thongbao;
         private Label label1;
-        private Label label3;
+        private Label tv_loinhuan;
         private TextBox tb_loinhuan;
         private Label label2;
         private ComboBox cb_giatour;
         private TextBox tb_tongchiphi;
-        private Label label4;
+        private Label tv_tongchiphi;
     }
 }

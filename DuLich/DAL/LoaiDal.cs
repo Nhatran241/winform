@@ -11,18 +11,10 @@ namespace DuLich.DAL
 {
     class LoaiDal
     {
-        private DuLichContext context = DuLichContext.GetInstance();
-        private static LoaiDal instance;
-       
-        public static LoaiDal GetInstance()
-        {
-            if (instance == null)
-                instance = new LoaiDal();
-            return instance;
-        }
+        static DuLichContext context = DuLichContext.GetInstance();
 
 
-        public List<Loai> GetAll()
+        public static List<Loai> GetAll()
         {
             return context.Loai.ToList();
         }

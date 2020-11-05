@@ -96,18 +96,16 @@ namespace DuLich.GUI.QuanLyDoan
 
         private void datepickbatdau_ValueChanged(object sender, EventArgs e)
         {
-            minDate = datepickbatdau.Value;
-            if (minDate >= maxDate)
-                datepickketthuc.Value = minDate;
-            searchDoanListener.onSearchDoan(filterTour, filterTen, filterNhanVien, filterKhach, minDate, maxDate);
+            if (datepickbatdau.Value >= datepickketthuc.Value)
+                datepickketthuc.Value = datepickbatdau.Value;
+            searchDoanListener.onSearchDoan(filterTour, filterTen, filterNhanVien, filterKhach, datepickbatdau.Value, datepickketthuc.Value);
         }
 
         private void datepickketthuc_ValueChanged(object sender, EventArgs e)
         {
-            maxDate = datepickketthuc.Value;
-            if (maxDate < minDate)
-                datepickbatdau.Value = maxDate;
-            searchDoanListener.onSearchDoan(filterTour, filterTen, filterNhanVien, filterKhach, minDate, maxDate);
+            if (datepickketthuc.Value < datepickbatdau.Value)
+                datepickbatdau.Value = datepickketthuc.Value;
+            searchDoanListener.onSearchDoan(filterTour, filterTen, filterNhanVien, filterKhach, datepickbatdau.Value, datepickketthuc.Value);
         }
     }
 }

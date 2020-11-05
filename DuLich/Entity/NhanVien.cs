@@ -21,19 +21,36 @@ namespace DuLich.Entity
         public String SoCmnd { get; set; }
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
-        public ICollection<PhanCong> PhanCongs { get; set; }
+        public virtual ICollection<PhanCong> PhanCongs { get; set; }
         public override string ToString()
         {
             return TenNhanVien;
         }
 
-        public void AddOrUpdate()
+        public Task AddOrUpdate()
         {
-            NhanVienDal.GetInstance().AddOrUpdate(this);
+            return NhanVienDal.AddOrUpdate(this);
         }
-        public void Delete()
+        public Task Delete()
         {
-            NhanVienDal.GetInstance().Delete(this);
+            return NhanVienDal.Delete(this);
+        }
+
+        public List<Doan> GetListDoanPhanCong()
+        {
+            List<Doan> listDoanPhanCong = new List<Doan>();
+            if (PhanCongs == null)
+                return listDoanPhanCong;
+            foreach(PhanCong phanCong in PhanCongs)
+            {
+                listDoanPhanCong.Add(phanCong.Doan);
+            }
+            return listDoanPhanCong.Distinct().ToList();
+        }
+
+        public List<Doan> GetListDoanPhanCongByTime(DateTime from, DateTime to)
+        {
+            return GetListDoanPhanCong().Where(c => c.ThoiGianBatDau >= from && c.ThoiGianKetThuc <= to).ToList();
         }
     }
 }

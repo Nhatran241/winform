@@ -57,17 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\DoanKhachDal.cs" />
     <Compile Include="DAL\LoaiChiPhiDal.cs" />
-    <Compile Include="DAL\PhanCongDal.cs" />
     <Compile Include="DAL\DiaDiemDal.cs" />
-    <Compile Include="DAL\ChiPhiDal.cs" />
     <Compile Include="DAL\LoaiDal.cs" />
     <Compile Include="DAL\GiaDal.cs" />
     <Compile Include="DAL\DoanDal.cs" />
     <Compile Include="DAL\NhanVienDal.cs" />
     <Compile Include="DAL\KhachDal.cs" />
-    <Compile Include="DAL\ChiTietTourDal.cs" />
     <Compile Include="DAL\TourDal.cs" />
     <Compile Include="Entity\LoaiChiPhi.cs" />
     <Compile Include="Entity\ChiPhi.cs" />
@@ -242,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyChiPhi\DanhSachChiPhi.resx">
       <DependentUpon>DanhSachChiPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDiaDiem\ChiTietDiaDiem.resx">
+      <DependentUpon>ChiTietDiaDiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDiaDiem\DanhSachDiaDiem.resx">
       <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>

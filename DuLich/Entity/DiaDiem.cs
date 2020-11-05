@@ -16,18 +16,32 @@ namespace DuLich.Model.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaDienDiem { get; set; }
         public String TenDiaDiem { get; set; }
-        public ICollection<ChiTietTour> Touris { get; set; }
+        public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
         public override string ToString()
         {
             return TenDiaDiem;
         }
-        public void AddOrUpdate()
+        public Task AddOrUpdate()
         {
-            DiaDiemDal.GetInstance().AddOrUpdate(this);
+            return DiaDiemDal.AddOrUpdate(this);
         }
-        public void Delete()
+        public Task Delete()
         {
-            DiaDiemDal.GetInstance().Delete(this);
+            return DiaDiemDal.Delete(this);
+        }
+        public DiaDiem GetDiaDiemByName(String name)
+        {
+            return DiaDiemDal.GetDiaDiemByName(name);
+        }
+
+        public List<Tour> GetListTour()
+        {
+            List<Tour> listTour = new List<Tour>();
+            foreach (ChiTietTour chiTietTour in ChiTietTours)
+            {
+                listTour.Add(chiTietTour.touris);
+            }
+            return listTour;
         }
     }
 }

@@ -11,32 +11,26 @@ namespace DuLich.DAL
 {
     class DiaDiemDal
     {
-        private DuLichContext context = DuLichContext.GetInstance();
-        private static DiaDiemDal instance;
-       
-        public static DiaDiemDal GetInstance()
-        {
-            if (instance == null)
-                instance = new DiaDiemDal();
-            return instance;
-        }
+        static DuLichContext context = DuLichContext.GetInstance();
 
-        public List<DiaDiem> GetAll()
+        public static List<DiaDiem> GetAll()
         {
             return context.DiaDiem.ToList();
         }
-        public void AddOrUpdate(DiaDiem diaDiem)
+        public static Task AddOrUpdate(DiaDiem diaDiem)
         {
             context.DiaDiem.AddOrUpdate(diaDiem);
+            return context.SaveChangesAsync();
         }
-        public void Delete(DiaDiem diaDiem)
+        public static Task Delete(DiaDiem diaDiem)
         {
             context.DiaDiem.Remove(diaDiem);
+            return context.SaveChangesAsync();
         }
      
-        public Task Save()
+        public static DiaDiem GetDiaDiemByName(string name)
         {
-            return context.SaveChangesAsync();
+            return context.DiaDiem.Where(c => c.TenDiaDiem == name).FirstOrDefault();
         }
     }
 }

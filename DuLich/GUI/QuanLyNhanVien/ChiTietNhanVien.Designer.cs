@@ -110,6 +110,7 @@
             this.tb_cmnd.Size = new System.Drawing.Size(181, 29);
             this.tb_cmnd.TabIndex = 19;
             this.tb_cmnd.TextChanged += new System.EventHandler(this.tb_cmnd_TextChanged);
+            this.tb_cmnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_cmnd_KeyPress);
             // 
             // tb_sdt
             // 
@@ -119,6 +120,7 @@
             this.tb_sdt.Size = new System.Drawing.Size(181, 29);
             this.tb_sdt.TabIndex = 18;
             this.tb_sdt.TextChanged += new System.EventHandler(this.tb_sdt_TextChanged);
+            this.tb_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_sdt_KeyPress);
             // 
             // tv_socmnd_nhanvien
             // 
@@ -170,10 +172,11 @@
             // 
             // cb_gioitinh
             // 
+            this.cb_gioitinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_gioitinh.FormattingEnabled = true;
-            this.cb_gioitinh.Location = new System.Drawing.Point(206, 315);
+            this.cb_gioitinh.Location = new System.Drawing.Point(194, 317);
             this.cb_gioitinh.Name = "cb_gioitinh";
-            this.cb_gioitinh.Size = new System.Drawing.Size(121, 21);
+            this.cb_gioitinh.Size = new System.Drawing.Size(181, 21);
             this.cb_gioitinh.TabIndex = 30;
             this.cb_gioitinh.SelectedIndexChanged += new System.EventHandler(this.cb_gioitinh_SelectedIndexChanged);
             // 
