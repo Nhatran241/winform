@@ -35,21 +35,24 @@ namespace DuLich.View.QuanLyTouris
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.chart_thongkedoanhthu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tv_tongdoan = new System.Windows.Forms.Label();
             this.tv_tongkhach = new System.Windows.Forms.Label();
             this.cb_nam = new System.Windows.Forms.ComboBox();
             this.tourisBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.chart_thongkedoanhthu)).BeginInit();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,22 +84,6 @@ namespace DuLich.View.QuanLyTouris
             this.label3.Size = new System.Drawing.Size(232, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Thống Kê Doanh Thu Theo Tháng";
-            // 
-            // chart_thongkedoanhthu
-            // 
-            chartArea1.AxisX.Title = "Tháng";
-            chartArea1.AxisY.Title = "Doanh Thu ( Triệu VNĐ )";
-            chartArea1.AxisY2.Title = "Doanh Thu (Triệu VNĐ)";
-            chartArea1.Name = "ChartArea1";
-            this.chart_thongkedoanhthu.ChartAreas.Add(chartArea1);
-            this.chart_thongkedoanhthu.Location = new System.Drawing.Point(20, 158);
-            this.chart_thongkedoanhthu.Name = "chart_thongkedoanhthu";
-            series1.ChartArea = "ChartArea1";
-            series1.Name = "Doanh Số";
-            this.chart_thongkedoanhthu.Series.Add(series1);
-            this.chart_thongkedoanhthu.Size = new System.Drawing.Size(725, 400);
-            this.chart_thongkedoanhthu.TabIndex = 3;
-            this.chart_thongkedoanhthu.Text = "chart1";
             // 
             // tv_tongdoan
             // 
@@ -131,33 +118,60 @@ namespace DuLich.View.QuanLyTouris
             // 
             // tourisBindingSource1
             // 
-            this.tourisBindingSource1.DataSource = typeof(Tour);
+            this.tourisBindingSource1.DataSource = typeof(DuLich.BUS.Tour);
             // 
             // giaBindingSource
             // 
-            this.giaBindingSource.DataSource = typeof(Gia);
+            this.giaBindingSource.DataSource = typeof(DuLich.BUS.Gia);
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(Tour);
+            this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
+            // 
+            // chart1
+            // 
+            chartArea1.AxisX.Title = "Tour";
+            chartArea1.AxisY.Title = "USD";
+            chartArea1.AxisY2.Title = "Doanh Thu (Triệu VNĐ)";
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(13, 168);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Doanh Thu";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Chi Phí";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Lợi Nhuận";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(732, 413);
+            this.chart1.TabIndex = 8;
+            this.chart1.Text = "chart_thongkedoanhthu";
             // 
             // ThongKeTheoTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.cb_nam);
             this.Controls.Add(this.tv_tongkhach);
             this.Controls.Add(this.tv_tongdoan);
-            this.Controls.Add(this.chart_thongkedoanhthu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ThongKeTheoTour";
             this.Size = new System.Drawing.Size(760, 650);
-            ((System.ComponentModel.ISupportInitialize)(this.chart_thongkedoanhthu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,10 +185,10 @@ namespace DuLich.View.QuanLyTouris
         private Label label2;
         private Label label3;
         private Series series1; 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart_thongkedoanhthu;
         private BindingSource tourisBindingSource1;
         private Label tv_tongdoan;
         private Label tv_tongkhach;
         private ComboBox cb_nam;
+        private Chart chart1;
     }
 }

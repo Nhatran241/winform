@@ -34,15 +34,15 @@ namespace DuLich.GUI.ThongKe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label3 = new System.Windows.Forms.Label();
             this.chart_thongkedoanhthu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.listview_solanditour = new System.Windows.Forms.ListView();
@@ -87,27 +87,27 @@ namespace DuLich.GUI.ThongKe
             // 
             // chart_thongkedoanhthu
             // 
-            chartArea5.AxisX.Title = "Tour";
-            chartArea5.AxisY.Title = "Triệu (VNĐ)";
-            chartArea5.AxisY2.Title = "Doanh Thu (Triệu VNĐ)";
-            chartArea5.Name = "ChartArea1";
-            this.chart_thongkedoanhthu.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart_thongkedoanhthu.Legends.Add(legend5);
+            chartArea1.AxisX.Title = "Tour";
+            chartArea1.AxisY.Title = "USD";
+            chartArea1.AxisY2.Title = "Doanh Thu (Triệu VNĐ)";
+            chartArea1.Name = "ChartArea1";
+            this.chart_thongkedoanhthu.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_thongkedoanhthu.Legends.Add(legend1);
             this.chart_thongkedoanhthu.Location = new System.Drawing.Point(20, 473);
             this.chart_thongkedoanhthu.Name = "chart_thongkedoanhthu";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Doanh Thu";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Chi Phí";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Lợi Nhuận";
-            this.chart_thongkedoanhthu.Series.Add(series11);
-            this.chart_thongkedoanhthu.Series.Add(series12);
-            this.chart_thongkedoanhthu.Series.Add(series13);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Doanh Thu";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Chi Phí";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Lợi Nhuận";
+            this.chart_thongkedoanhthu.Series.Add(series1);
+            this.chart_thongkedoanhthu.Series.Add(series2);
+            this.chart_thongkedoanhthu.Series.Add(series3);
             this.chart_thongkedoanhthu.Size = new System.Drawing.Size(732, 413);
             this.chart_thongkedoanhthu.TabIndex = 3;
             this.chart_thongkedoanhthu.Text = "chart1";
@@ -265,23 +265,23 @@ namespace DuLich.GUI.ThongKe
             // 
             // chart_soluongkhachvadoan
             // 
-            chartArea6.AxisX.Title = "Tour";
-            chartArea6.AxisY.Title = "Số lượng";
-            chartArea6.AxisY2.Title = "Doanh Thu (Triệu VNĐ)";
-            chartArea6.Name = "ChartArea1";
-            this.chart_soluongkhachvadoan.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart_soluongkhachvadoan.Legends.Add(legend6);
+            chartArea2.AxisX.Title = "Tour";
+            chartArea2.AxisY.Title = "Số lượng";
+            chartArea2.AxisY2.Title = "Doanh Thu (Triệu VNĐ)";
+            chartArea2.Name = "ChartArea1";
+            this.chart_soluongkhachvadoan.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart_soluongkhachvadoan.Legends.Add(legend2);
             this.chart_soluongkhachvadoan.Location = new System.Drawing.Point(20, 955);
             this.chart_soluongkhachvadoan.Name = "chart_soluongkhachvadoan";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Khách";
-            series15.ChartArea = "ChartArea1";
-            series15.Legend = "Legend1";
-            series15.Name = "Đoàn";
-            this.chart_soluongkhachvadoan.Series.Add(series14);
-            this.chart_soluongkhachvadoan.Series.Add(series15);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Khách";
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Đoàn";
+            this.chart_soluongkhachvadoan.Series.Add(series4);
+            this.chart_soluongkhachvadoan.Series.Add(series5);
             this.chart_soluongkhachvadoan.Size = new System.Drawing.Size(732, 413);
             this.chart_soluongkhachvadoan.TabIndex = 20;
             this.chart_soluongkhachvadoan.Text = "chart1";
@@ -298,15 +298,15 @@ namespace DuLich.GUI.ThongKe
             // 
             // tourisBindingSource1
             // 
-            this.tourisBindingSource1.DataSource = typeof(Tour);
+            this.tourisBindingSource1.DataSource = typeof(DuLich.BUS.Tour);
             // 
             // giaBindingSource
             // 
-            this.giaBindingSource.DataSource = typeof(Gia);
+            this.giaBindingSource.DataSource = typeof(DuLich.BUS.Gia);
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(Tour);
+            this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
             // 
             // ThongKe
             // 
