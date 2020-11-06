@@ -1,4 +1,6 @@
-﻿namespace DuLich.GUI.QuanLyNhanVien
+﻿using DuLich.BUS;
+
+namespace DuLich.GUI.QuanLyNhanVien
 {
     partial class DanhSachNhanVien
     {
@@ -158,11 +160,11 @@
             // 
             // nhanVienBindingSource1
             // 
-            this.nhanVienBindingSource1.DataSource = typeof(DuLich.Entity.NhanVien);
+            this.nhanVienBindingSource1.DataSource = typeof(NhanVien);
             // 
             // nhanVienBindingSource
             // 
-            this.nhanVienBindingSource.DataSource = typeof(DuLich.Entity.NhanVien);
+            this.nhanVienBindingSource.DataSource = typeof(NhanVien);
             // 
             // searchNhanVien1
             // 

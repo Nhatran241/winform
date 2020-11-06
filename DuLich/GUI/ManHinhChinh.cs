@@ -1,21 +1,15 @@
-﻿using DuLich.DAL;
-using DuLich.Entity;
+﻿using DuLich.BUS;
+using DuLich.DAL;
 using DuLich.GUI.QuanLyChiPhi;
+using DuLich.GUI.QuanLyDiaDiem;
 using DuLich.GUI.QuanLyDoan;
 using DuLich.GUI.QuanLyKhach;
 using DuLich.GUI.QuanLyNhanVien;
+using DuLich.GUI.QuanLyPhanCong;
 using DuLich.GUI.QuanLyTouris;
 using DuLich.GUI.ThongKe;
-using DuLich.Model.Entity;
-using DuLich.View;
-using DuLich.View.QuanLyDiaDiem;
-using DuLich.View.QuanLyDoan;
-using DuLich.View.QuanLyPhanCong;
-using DuLich.View.QuanLyTouris;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace DuLich

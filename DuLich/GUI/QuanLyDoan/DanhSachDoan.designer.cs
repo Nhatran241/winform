@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuLich.BUS;
+using System;
 using System.Windows.Forms;
 
 namespace DuLich.GUI.QuanLyDoan
@@ -101,7 +102,7 @@ namespace DuLich.GUI.QuanLyDoan
             // 
             // doanBindingSource
             // 
-            this.doanBindingSource.DataSource = typeof(DuLich.Entity.Doan);
+            this.doanBindingSource.DataSource = typeof(Doan);
             // 
             // searchDoan1
             // 

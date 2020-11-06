@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DuLich.View.QuanLyPhanCong
+namespace DuLich.GUI.QuanLyPhanCong
 {
     partial class DanhSachPhanCong : UserControl
     {

@@ -1,4 +1,6 @@
-﻿namespace DuLich.GUI.QuanLyChiPhi
+﻿using DuLich.BUS;
+
+namespace DuLich.GUI.QuanLyChiPhi
 {
     partial class DanhSachChiPhi
     {
@@ -114,7 +116,7 @@
             // 
             // chiPhiBindingSource
             // 
-            this.chiPhiBindingSource.DataSource = typeof(DuLich.Model.Entity.ChiPhi);
+            this.chiPhiBindingSource.DataSource = typeof(ChiPhi);
             // 
             // DanhSachChiPhi
             // 

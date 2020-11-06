@@ -1,17 +1,12 @@
 ﻿using DuLich.DAL;
-using DuLich.Entity;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace DuLich.Model.Entity
+namespace DuLich.BUS
 {
-    public class Gia
+    public partial class Gia
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,14 +18,6 @@ namespace DuLich.Model.Entity
         public override string ToString()
         {
             return GiaTri.ToString();
-        }
-        public Task AddOrUpdate()
-        {
-            return GiaDal.AddOrUpdate(this);
-        }
-        public Task Delete()
-        {
-            return GiaDal.Delete(this);
         }
     }
 }

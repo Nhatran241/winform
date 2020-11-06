@@ -1,6 +1,7 @@
-﻿using System;
+﻿using DuLich.BUS;
+using System;
 
-namespace DuLich.View.QuanLyDiaDiem
+namespace DuLich.GUI.QuanLyDiaDiem
 {
     partial class DanhSachDiaDiem
     {
@@ -112,7 +113,7 @@ namespace DuLich.View.QuanLyDiaDiem
             // 
             // diaDiemBindingSource
             // 
-            this.diaDiemBindingSource.DataSource = typeof(DuLich.Model.Entity.DiaDiem);
+            this.diaDiemBindingSource.DataSource = typeof(DiaDiem);
             // 
             // DanhSachDiaDiem
             // 

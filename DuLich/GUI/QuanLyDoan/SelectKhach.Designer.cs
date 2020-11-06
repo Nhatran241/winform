@@ -1,6 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using DuLich.BUS;
+using System.Windows.Forms;
 
-namespace DuLich.View.QuanLyDoan
+namespace DuLich.GUI.QuanLyDoan
 {
     partial class SelectKhach : UserControl
     {
@@ -183,7 +184,7 @@ namespace DuLich.View.QuanLyDoan
             // 
             // khachBindingSource
             // 
-            this.khachBindingSource.DataSource = typeof(DuLich.Entity.Khach);
+            this.khachBindingSource.DataSource = typeof(Khach);
             // 
             // SelectKhach
             // 

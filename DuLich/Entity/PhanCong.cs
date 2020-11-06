@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DuLich.Model.Entity
+namespace DuLich.BUS
 {
     public class PhanCong
     {

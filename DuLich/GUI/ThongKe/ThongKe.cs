@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using DuLich.Entity;
-using DuLich.Model.Entity;
+using DuLich.BUS;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DuLich.GUI.ThongKe

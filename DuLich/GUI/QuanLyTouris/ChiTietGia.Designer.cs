@@ -1,4 +1,4 @@
-﻿namespace DuLich.View.QuanLyTouris
+﻿namespace DuLich.GUI.QuanLyTouris
 {
     partial class ChiTietGia
     {

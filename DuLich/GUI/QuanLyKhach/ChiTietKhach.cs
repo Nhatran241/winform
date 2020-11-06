@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DuLich.Entity;
-using DuLich.Model.Entity;
+using DuLich.BUS;
 
 namespace DuLich.GUI.QuanLyKhach
 {

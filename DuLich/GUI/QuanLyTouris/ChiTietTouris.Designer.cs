@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace DuLich.View
+namespace DuLich.GUI.QuanLyTouris
 {
     partial class ChiTietTouris : UserControl  
     {

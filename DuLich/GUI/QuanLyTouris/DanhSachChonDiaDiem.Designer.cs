@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace DuLich.View.QuanLyTouris
+namespace DuLich.GUI.QuanLyTouris
 {
     partial class DanhSachChonDiaDiem : UserControl
     {

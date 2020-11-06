@@ -1,4 +1,6 @@
-﻿namespace DuLich.GUI.QuanLyKhach
+﻿using DuLich.BUS;
+
+namespace DuLich.GUI.QuanLyKhach
 {
     partial class DanhSachKhach
     {
@@ -158,7 +160,7 @@
             // 
             // khachBindingSource1
             // 
-            this.khachBindingSource1.DataSource = typeof(DuLich.Entity.Khach);
+            this.khachBindingSource1.DataSource = typeof(Khach);
             // 
             // searchKhach1
             // 
@@ -193,13 +195,6 @@
         private System.Windows.Forms.Button btn_sua_doan;
         private System.Windows.Forms.DataGridView dataGridviewKhach;
         private System.Windows.Forms.BindingSource khachBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn khachIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn diaChiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soDienThoaiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soCmndDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngaySinhDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gioiTinhDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

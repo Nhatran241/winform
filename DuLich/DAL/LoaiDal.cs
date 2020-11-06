@@ -1,11 +1,7 @@
-﻿using DuLich.Entity;
-using DuLich.Model.Entity;
-using System;
+﻿using DuLich.BUS;
+using DuLich.Entity;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DuLich.DAL
 {

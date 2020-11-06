@@ -1,12 +1,4 @@
-﻿using DuLich.Entity;
-using DuLich.Model.Entity;
-using DuLich.View;
-using DuLich.View.QuanLyTouris;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DuLich
 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuLich.BUS;
+using System;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -297,15 +298,15 @@ namespace DuLich.GUI.ThongKe
             // 
             // tourisBindingSource1
             // 
-            this.tourisBindingSource1.DataSource = typeof(DuLich.Entity.Tour);
+            this.tourisBindingSource1.DataSource = typeof(Tour);
             // 
             // giaBindingSource
             // 
-            this.giaBindingSource.DataSource = typeof(DuLich.Model.Entity.Gia);
+            this.giaBindingSource.DataSource = typeof(Gia);
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Tour);
+            this.tourisBindingSource.DataSource = typeof(Tour);
             // 
             // ThongKe
             // 

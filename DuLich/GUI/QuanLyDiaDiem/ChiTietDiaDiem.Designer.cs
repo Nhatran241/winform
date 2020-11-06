@@ -1,4 +1,5 @@
-﻿namespace DuLich.View.QuanLyDiaDiem
+﻿
+namespace DuLich.GUI.QuanLyDiaDiem
 {
     partial class ChiTietDiaDiem
     {

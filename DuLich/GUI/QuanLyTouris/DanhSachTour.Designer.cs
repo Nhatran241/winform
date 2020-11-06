@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuLich.BUS;
+using System;
 using System.Windows.Forms;
 
 namespace DuLich.GUI.QuanLyTouris
@@ -92,7 +93,7 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Tour);
+            this.tourisBindingSource.DataSource = typeof(Tour);
             // 
             // search1
             // 

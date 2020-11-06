@@ -1,7 +1,8 @@
-﻿using System;
+﻿using DuLich.BUS;
+using System;
 using System.Windows.Forms;
 
-namespace DuLich.View.QuanLyTouris
+namespace DuLich.GUI.QuanLyTouris
 {
     partial class DanhSachGia : UserControl
     {
@@ -104,11 +105,11 @@ namespace DuLich.View.QuanLyTouris
             // 
             // giaBindingSource
             // 
-            this.giaBindingSource.DataSource = typeof(DuLich.Model.Entity.Gia);
+            this.giaBindingSource.DataSource = typeof(Gia);
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(DuLich.Entity.Tour);
+            this.tourisBindingSource.DataSource = typeof(Tour);
             // 
             // maGiaDataGridViewTextBoxColumn
             // 

@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\DiaDiem.cs" />
+    <Compile Include="BUS\Doan.cs" />
+    <Compile Include="BUS\Gia.cs" />
+    <Compile Include="BUS\Khach.cs" />
+    <Compile Include="BUS\NhanVien.cs" />
+    <Compile Include="BUS\Tour.cs" />
     <Compile Include="DAL\LoaiChiPhiDal.cs" />
     <Compile Include="DAL\DiaDiemDal.cs" />
     <Compile Include="DAL\LoaiDal.cs" />
@@ -70,8 +76,8 @@
     <Compile Include="Entity\DoanKhach.cs" />
     <Compile Include="Entity\Doan.cs" />
     <Compile Include="Entity\NhanVien.cs" />
-    <Compile Include="Entity\PhanCong.cs" />
     <Compile Include="Entity\Khach.cs" />
+    <Compile Include="Entity\PhanCong.cs" />
     <Compile Include="GioiTinh.cs" />
     <Compile Include="GUI\QuanLyChiPhi\ChiTietChiPhi.cs">
       <SubType>UserControl</SubType>
@@ -181,7 +187,6 @@
     <Compile Include="GUI\QuanLyTouris\SearchTour.Designer.cs">
       <DependentUpon>SearchTour.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyTouris\Touris.cs" />
     <Compile Include="GUI\ThongKe\ThongKe.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -364,6 +369,7 @@
   <ItemGroup>
     <None Include="Resources\up-arrow.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

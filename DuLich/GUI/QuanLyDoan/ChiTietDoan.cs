@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DuLich.Entity;
-using DuLich.View.QuanLyTouris;
-using DuLich.Model.Entity;
-using DuLich.View.QuanLyPhanCong;
-using DuLich.View.QuanLyDoan;
+using DuLich.BUS;
 using DuLich.GUI.QuanLyChiPhi;
-using System.Net.Sockets;
+using DuLich.GUI.QuanLyPhanCong;
 
-namespace DuLich.View
+namespace DuLich.GUI.QuanLyDoan
 {
     public partial class ChiTietDoan : UserControl
     {

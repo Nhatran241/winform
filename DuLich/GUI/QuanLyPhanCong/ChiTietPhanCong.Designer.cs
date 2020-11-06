@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DuLich.View.QuanLyPhanCong
+namespace DuLich.GUI.QuanLyPhanCong
 {
     partial class ChiTietPhanCong
     {
