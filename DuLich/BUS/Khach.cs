@@ -9,7 +9,6 @@ namespace DuLich.BUS
 {
     public partial class Khach
     {
-
         public Task AddOrUpdate()
         {
             return KhachDal.AddOrUpdate(this);

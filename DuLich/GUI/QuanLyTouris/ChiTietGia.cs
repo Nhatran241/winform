@@ -49,7 +49,7 @@ namespace DuLich.GUI.QuanLyTouris
                 chiTietGiaListener.onChiTietGia_LuuClick(gia);
             }else
             {
-                MessageBox.Show("Giá trị không được bỏ trống");
+                MessageBox.Show("Giá trị không hợp lệ");
             }
         }
 
@@ -64,7 +64,7 @@ namespace DuLich.GUI.QuanLyTouris
         }
         private bool Validation(Gia gia)
         {
-            if (gia.GiaTri == 0)
+            if (gia.GiaTri <= 0)
                 return false;
             return true;
         }

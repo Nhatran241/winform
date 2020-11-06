@@ -58,37 +58,22 @@ namespace DuLich.GUI.QuanLyNhanVien
 
         private void tb_name_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tb_name.Text))
-            {
                 nhanVien.TenNhanVien = tb_name.Text.Trim();
-            }
-            
-           
         }
 
         private void tb_diaChi_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tb_diaChi.Text))
-            {
                 nhanVien.DiaChi = tb_diaChi.Text.Trim();
-            }
         }
 
         private void tb_sdt_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tb_sdt.Text))
-            {
                 nhanVien.SoDienThoai = tb_sdt.Text.Trim();
-            }
         }
 
         private void tb_cmnd_TextChanged(object sender, EventArgs e)
         {
-
-            if (!string.IsNullOrEmpty(tb_cmnd.Text))
-            {
                 nhanVien.SoCmnd = tb_cmnd.Text.Trim();
-            }
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
@@ -115,7 +100,7 @@ namespace DuLich.GUI.QuanLyNhanVien
             }else if (IsCmndNumber(nhanVien.SoCmnd))
             {
                 MessageBox.Show("Số chứng minh nhân dân không hợp lệ");
-            }
+            }else
             chiTietNhanVienListener.onChiTietNhanVien_LuuClick(nhanVien);
         }
         public bool IsPhoneNumber(string number)

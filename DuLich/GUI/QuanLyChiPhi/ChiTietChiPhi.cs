@@ -9,14 +9,18 @@ namespace DuLich.GUI.QuanLyChiPhi
     public partial class ChiTietChiPhi : UserControl
     {
         private IChiTietChiPhiListener chiTietChiPhiListener;
-        private ChiPhi chiPhiHienTai;
+        private ChiPhi chiPhiHienTai = new ChiPhi();
         private List<LoaiChiPhi> danhSachLoaiChiPhi;
         private bool isEditing = false;
         public ChiTietChiPhi(ChiPhi chiPhi,List<LoaiChiPhi> danhSachLoaiChiPhi, IChiTietChiPhiListener chiTietChiPhiListener)
         {
             InitializeComponent();
             this.chiTietChiPhiListener = chiTietChiPhiListener;
-            this.chiPhiHienTai = chiPhi;
+            this.chiPhiHienTai.Doan = chiPhi.Doan;
+            this.chiPhiHienTai.ghiChu = chiPhi.ghiChu;
+            this.chiPhiHienTai.giaTri = chiPhi.giaTri;
+            this.chiPhiHienTai.id = chiPhi.id;
+            this.chiPhiHienTai.LoaiChiPhi = chiPhi.LoaiChiPhi;
             this.danhSachLoaiChiPhi = danhSachLoaiChiPhi;
             if(chiPhi.id == 0)
             {
@@ -52,7 +56,7 @@ namespace DuLich.GUI.QuanLyChiPhi
                 chiTietChiPhiListener.onChiTietChiPhi_LuuClick(chiPhiHienTai.Doan,chiPhiHienTai);
             }else
             {
-                MessageBox.Show("Giá trị không được bỏ trống");
+                MessageBox.Show("Giá trị không hợp lệ");
             }
         }
 
@@ -67,6 +71,8 @@ namespace DuLich.GUI.QuanLyChiPhi
         }
         private bool Validation(ChiPhi chiPhi)
         {
+            if (chiPhi.giaTri <= 0)
+                return false;
             return true;
         }
 
@@ -82,7 +88,32 @@ namespace DuLich.GUI.QuanLyChiPhi
 
         private void tb_giatri_TextChanged(object sender, EventArgs e)
         {
-            chiPhiHienTai.giaTri = long.Parse(tb_chiphi.Text.Trim());
+            if (!tb_chiphi.Text.Contains('$'))
+            {
+                chiPhiHienTai.giaTri = long.Parse(tb_chiphi.Text.Trim().ToString());
+                tb_chiphi.Text = "$" + tb_chiphi.Text;
+            }
+            else
+            {
+                if (tb_chiphi.TextLength > 1)
+                {
+                    tb_chiphi.Text = tb_chiphi.Text.Substring(tb_chiphi.Text.IndexOf('$'));
+                    chiPhiHienTai.giaTri = (long)double.Parse(tb_chiphi.Text.Trim().Replace("$", ""));
+                    if (tb_chiphi.Text.ToArray()[1] == '0')
+                    {
+                        tb_chiphi.Text = "$" + chiPhiHienTai.giaTri;
+                        tb_chiphi.Focus();
+                        tb_chiphi.SelectionStart = tb_chiphi.Text.Length;
+                    }
+                }
+                else
+                {
+                    chiPhiHienTai.giaTri = 0;
+                    tb_chiphi.Text = "$0";
+                    tb_chiphi.Focus();
+                    tb_chiphi.SelectionStart = tb_chiphi.Text.Length;
+                }
+            }
         }
 
         private void tv_maphancong_Click(object sender, EventArgs e)
@@ -93,6 +124,21 @@ namespace DuLich.GUI.QuanLyChiPhi
         private void tb_ghichu_TextChanged(object sender, EventArgs e)
         {
             chiPhiHienTai.ghiChu = tb_ghichu.Text;
+        }
+
+        private void tb_chiphi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+              (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

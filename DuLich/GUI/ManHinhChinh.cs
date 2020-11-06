@@ -381,7 +381,7 @@ namespace DuLich
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
-                    userControl = new DanhSachKhach(KhachDal.GetAll(), this);
+                    userControl = new DanhSachDoan(DoanDal.GetAll(),TourDal.GetAll(),NhanVienDal.GetAll(),KhachDal.GetAll(), this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
                 });

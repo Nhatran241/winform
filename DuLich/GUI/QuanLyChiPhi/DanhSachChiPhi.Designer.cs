@@ -76,6 +76,8 @@ namespace DuLich.GUI.QuanLyChiPhi
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -86,7 +88,10 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.ghiChuDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.chiPhiBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 32);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(789, 369);
             this.dataGridView1.TabIndex = 15;
             // 
@@ -95,28 +100,32 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
             this.idDataGridViewTextBoxColumn.HeaderText = "id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // loaiChiPhiDataGridViewTextBoxColumn
             // 
             this.loaiChiPhiDataGridViewTextBoxColumn.DataPropertyName = "LoaiChiPhi";
             this.loaiChiPhiDataGridViewTextBoxColumn.HeaderText = "LoaiChiPhi";
             this.loaiChiPhiDataGridViewTextBoxColumn.Name = "loaiChiPhiDataGridViewTextBoxColumn";
+            this.loaiChiPhiDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // giaTriDataGridViewTextBoxColumn
             // 
             this.giaTriDataGridViewTextBoxColumn.DataPropertyName = "giaTri";
             this.giaTriDataGridViewTextBoxColumn.HeaderText = "giaTri";
             this.giaTriDataGridViewTextBoxColumn.Name = "giaTriDataGridViewTextBoxColumn";
+            this.giaTriDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ghiChuDataGridViewTextBoxColumn
             // 
             this.ghiChuDataGridViewTextBoxColumn.DataPropertyName = "ghiChu";
             this.ghiChuDataGridViewTextBoxColumn.HeaderText = "ghiChu";
             this.ghiChuDataGridViewTextBoxColumn.Name = "ghiChuDataGridViewTextBoxColumn";
+            this.ghiChuDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // chiPhiBindingSource
             // 
-            this.chiPhiBindingSource.DataSource = typeof(ChiPhi);
+            this.chiPhiBindingSource.DataSource = typeof(DuLich.BUS.ChiPhi);
             // 
             // DanhSachChiPhi
             // 

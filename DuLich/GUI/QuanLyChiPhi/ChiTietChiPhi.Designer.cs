@@ -91,6 +91,7 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.tb_chiphi.Size = new System.Drawing.Size(181, 29);
             this.tb_chiphi.TabIndex = 5;
             this.tb_chiphi.TextChanged += new System.EventHandler(this.tb_giatri_TextChanged);
+            this.tb_chiphi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_chiphi_KeyPress);
             // 
             // btn_luu
             // 
