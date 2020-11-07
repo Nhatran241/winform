@@ -67,15 +67,11 @@ namespace DuLich.View.QuanLyTouris
                 khach+""}, -1);
                 listview_thongketheodoan.Items.Add(listViewItem1);
             }
-            ListViewItem tong = new ListViewItem(new string[] {
-            "Tổng cộng :"+count+ "đoàn",
-            tongdanhthu+" $"
-            ,
-            tongchiphi+" $"
-            ,
-                tongloinhuan+ "$",
-            tongkhach+""}, -1);
-            listview_thongketheodoan.Items.Add(tong);
+            tv_tongdoan.Text = count.ToString();
+            tv_tongkhach.Text = tongkhach.ToString();
+            tv_tongdanhthu.Text = tongdanhthu.ToString();
+            tv_tongchiphi.Text = tongchiphi.ToString();
+            tv_tongloinhuan.Text = tongloinhuan.ToString();
         }
         private void label4_Click(object sender, EventArgs e)
         {

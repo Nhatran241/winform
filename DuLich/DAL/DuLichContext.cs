@@ -91,6 +91,7 @@ namespace DuLich.Entity
                         .HasMany<Gia>(g => g.Gias)
                         .WithRequired(s => s.touris)
                         .WillCascadeOnDelete();
+
             modelBuilder.Entity<Tour>()
                       .HasMany<Doan>(g => g.Doans)
                       .WithRequired(s => s.Touris)
@@ -109,7 +110,7 @@ namespace DuLich.Entity
 
             // Xóa đoàn xóa luôn những chi phí liên quan
             modelBuilder.Entity<Doan>()
-                       .HasMany<ChiPhi>(g => g.ChiPhis)
+                       .HasMany(g => g.ChiPhis)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
 

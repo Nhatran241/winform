@@ -44,10 +44,20 @@ namespace DuLich.View.QuanLyTouris
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tourisBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tv_tongdoan = new System.Windows.Forms.Label();
+            this.tv_tongkhach = new System.Windows.Forms.Label();
+            this.tv_tongdanhthu = new System.Windows.Forms.Label();
+            this.tv_tongchiphi = new System.Windows.Forms.Label();
+            this.tv_tongloinhuan = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
@@ -135,6 +145,10 @@ namespace DuLich.View.QuanLyTouris
             this.columnHeader4.Text = "Lợi Nhuận";
             this.columnHeader4.Width = 175;
             // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Số khách";
+            // 
             // tourisBindingSource1
             // 
             this.tourisBindingSource1.DataSource = typeof(DuLich.BUS.Tour);
@@ -147,14 +161,110 @@ namespace DuLich.View.QuanLyTouris
             // 
             this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
             // 
-            // columnHeader5
+            // label1
             // 
-            this.columnHeader5.Text = "Số khách";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 404);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 13);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Tổng số đoàn triển khai tour này : ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(318, 404);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(138, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Tổng số khách tham quan :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 440);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Tổng danh thu :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(262, 440);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(74, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Tổng chi phí :";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(517, 440);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Tổng lợi nhuận :";
+            // 
+            // tv_tongdoan
+            // 
+            this.tv_tongdoan.AutoSize = true;
+            this.tv_tongdoan.Location = new System.Drawing.Point(186, 404);
+            this.tv_tongdoan.Name = "tv_tongdoan";
+            this.tv_tongdoan.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongdoan.TabIndex = 31;
+            this.tv_tongdoan.Text = "0";
+            // 
+            // tv_tongkhach
+            // 
+            this.tv_tongkhach.AutoSize = true;
+            this.tv_tongkhach.Location = new System.Drawing.Point(462, 404);
+            this.tv_tongkhach.Name = "tv_tongkhach";
+            this.tv_tongkhach.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongkhach.TabIndex = 32;
+            this.tv_tongkhach.Text = "0";
+            // 
+            // tv_tongdanhthu
+            // 
+            this.tv_tongdanhthu.AutoSize = true;
+            this.tv_tongdanhthu.Location = new System.Drawing.Point(99, 440);
+            this.tv_tongdanhthu.Name = "tv_tongdanhthu";
+            this.tv_tongdanhthu.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongdanhthu.TabIndex = 33;
+            this.tv_tongdanhthu.Text = "0";
+            // 
+            // tv_tongchiphi
+            // 
+            this.tv_tongchiphi.AutoSize = true;
+            this.tv_tongchiphi.Location = new System.Drawing.Point(342, 440);
+            this.tv_tongchiphi.Name = "tv_tongchiphi";
+            this.tv_tongchiphi.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongchiphi.TabIndex = 34;
+            this.tv_tongchiphi.Text = "0";
+            // 
+            // tv_tongloinhuan
+            // 
+            this.tv_tongloinhuan.AutoSize = true;
+            this.tv_tongloinhuan.Location = new System.Drawing.Point(607, 440);
+            this.tv_tongloinhuan.Name = "tv_tongloinhuan";
+            this.tv_tongloinhuan.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongloinhuan.TabIndex = 35;
+            this.tv_tongloinhuan.Text = "0";
             // 
             // ThongKeTheoTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tv_tongloinhuan);
+            this.Controls.Add(this.tv_tongchiphi);
+            this.Controls.Add(this.tv_tongdanhthu);
+            this.Controls.Add(this.tv_tongkhach);
+            this.Controls.Add(this.tv_tongdoan);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listview_thongketheodoan);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -188,5 +298,15 @@ namespace DuLich.View.QuanLyTouris
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label5;
+        private Label label8;
+        private Label tv_tongdoan;
+        private Label tv_tongkhach;
+        private Label tv_tongdanhthu;
+        private Label tv_tongchiphi;
+        private Label tv_tongloinhuan;
     }
 }

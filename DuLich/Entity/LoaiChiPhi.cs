@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,8 +10,7 @@ namespace DuLich.BUS
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public string name { get; set; }
-        public virtual ICollection<ChiPhi> chiPhis { get; set; }
+        public String name { get; set; }
         public override string ToString()
         {
             return name;

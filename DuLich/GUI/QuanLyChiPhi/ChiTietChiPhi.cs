@@ -6,23 +6,24 @@ using System.Windows.Forms;
 
 namespace DuLich.GUI.QuanLyChiPhi
 {
-    public partial class ChiTietChiPhi : UserControl
+    public partial class ChiTietChiPhi : Form
     {
         private IChiTietChiPhiListener chiTietChiPhiListener;
-        private ChiPhi chiPhiHienTai = new ChiPhi();
-        private List<LoaiChiPhi> danhSachLoaiChiPhi;
+        private ChiPhi chiPhiHienTai;
+        private List<LoaiChiPhi> danhSachLoaiChiPhi = new List<LoaiChiPhi>();
         private bool isEditing = false;
         public ChiTietChiPhi(ChiPhi chiPhi,List<LoaiChiPhi> danhSachLoaiChiPhi, IChiTietChiPhiListener chiTietChiPhiListener)
         {
             InitializeComponent();
+            chiPhiHienTai = new ChiPhi();
+            chiPhiHienTai.Doan = chiPhi.Doan;
+            chiPhiHienTai.ghiChu = chiPhi.ghiChu;
+            chiPhiHienTai.giaTri = chiPhi.giaTri;
+            chiPhiHienTai.id = chiPhi.id;
+            chiPhiHienTai.LoaiChiPhi = chiPhi.LoaiChiPhi;
+            this.danhSachLoaiChiPhi.AddRange(danhSachLoaiChiPhi);
             this.chiTietChiPhiListener = chiTietChiPhiListener;
-            this.chiPhiHienTai.Doan = chiPhi.Doan;
-            this.chiPhiHienTai.ghiChu = chiPhi.ghiChu;
-            this.chiPhiHienTai.giaTri = chiPhi.giaTri;
-            this.chiPhiHienTai.id = chiPhi.id;
-            this.chiPhiHienTai.LoaiChiPhi = chiPhi.LoaiChiPhi;
-            this.danhSachLoaiChiPhi = danhSachLoaiChiPhi;
-            if(chiPhi.id == 0)
+            if(chiPhiHienTai.id == 0)
             {
                 CreateNewRecord();
             }
@@ -45,8 +46,11 @@ namespace DuLich.GUI.QuanLyChiPhi
                 tb_machiphi.Text = chiPhiHienTai.id.ToString();
             } 
             tb_chiphi.Text = chiPhiHienTai.giaTri.ToString();
-            combobox_loaichiphi.DataSource = danhSachLoaiChiPhi;
-        combobox_loaichiphi.Text = chiPhiHienTai.LoaiChiPhi.name;
+            foreach(LoaiChiPhi loaiChiPhi in danhSachLoaiChiPhi)
+            {
+                combobox_loaichiphi.Items.Add(loaiChiPhi);
+            }
+            combobox_loaichiphi.SelectedItem = chiPhiHienTai.LoaiChiPhi;
         }
 
         private void btn_luu_Click(object sender, EventArgs e)

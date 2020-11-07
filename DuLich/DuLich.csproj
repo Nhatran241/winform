@@ -80,7 +80,7 @@
     <Compile Include="Entity\PhanCong.cs" />
     <Compile Include="GioiTinh.cs" />
     <Compile Include="GUI\QuanLyChiPhi\ChiTietChiPhi.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyChiPhi\ChiTietChiPhi.Designer.cs">
       <DependentUpon>ChiTietChiPhi.cs</DependentUpon>
@@ -145,12 +145,6 @@
     <Compile Include="GUI\QuanLyNhanVien\SearchNhanVien.Designer.cs">
       <DependentUpon>SearchNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.Designer.cs">
-      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\QuanLyPhanCong\DanhSachPhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,6 +156,12 @@
     </Compile>
     <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
       <DependentUpon>SelectKhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\FromPhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\FromPhanCong.Designer.cs">
+      <DependentUpon>FromPhanCong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.cs">
       <SubType>UserControl</SubType>
@@ -277,11 +277,11 @@
     <EmbeddedResource Include="GUI\QuanLyNhanVien\SearchNhanVien.resx">
       <DependentUpon>SearchNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyPhanCong\ChiTietPhanCong.resx">
-      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyPhanCong\DanhSachPhanCong.resx">
       <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyPhanCong\FromPhanCong.resx">
+      <DependentUpon>FromPhanCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>

@@ -147,6 +147,7 @@ namespace DuLich.GUI.QuanLyChiPhi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(470, 341);
             this.Controls.Add(this.tb_ghichu);
             this.Controls.Add(this.tv_ghichu);
             this.Controls.Add(this.combobox_loaichiphi);
@@ -158,7 +159,6 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.Controls.Add(this.tv_chiphi);
             this.Controls.Add(this.tv_machiphi);
             this.Name = "ChiTietChiPhi";
-            this.Size = new System.Drawing.Size(487, 315);
             this.ResumeLayout(false);
             this.PerformLayout();
 

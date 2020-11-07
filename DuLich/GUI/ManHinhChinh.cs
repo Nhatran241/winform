@@ -305,7 +305,9 @@ namespace DuLich
         private void button1_Click(object sender, EventArgs e)
         {
             userControl = new DanhSachDoan(DoanDal.GetAll(), TourDal.GetAll(),NhanVienDal.GetAll(),KhachDal.GetAll(), this);
+            panel_main_content.SuspendLayout();
             panel_main_content.Controls.Clear();
+            panel_main_content.ResumeLayout();
             panel_main_content.Controls.Add(userControl);
         }
 
@@ -401,18 +403,19 @@ namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachChiPhi.IDanhSachChiPhiListener, ChiTietChiPhi.IChiTietChiPhiListener
     {
+        ChiTietChiPhi formChiPhi;
         public void onDanhSachChiPhi_ThemClick(Doan doanHienTai)
         {
             ChiPhi chiPhi = new ChiPhi();
             chiPhi.Doan = doanHienTai;
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(new ChiTietChiPhi(chiPhi, LoaiChiPhiDal.GetAll(), this));
+            formChiPhi = new ChiTietChiPhi(chiPhi, LoaiChiPhiDal.GetAll(), this);
+            formChiPhi.ShowDialog();
         }
 
         public void onDanhSachChiPhi_SuaClick(ChiPhi chiPhi)
         {
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(new ChiTietChiPhi(chiPhi, LoaiChiPhiDal.GetAll(), this));
+            formChiPhi = new ChiTietChiPhi(chiPhi, LoaiChiPhiDal.GetAll(), this);
+            formChiPhi.ShowDialog();
         }
 
         public void onDanhSachChiPhi_XoaClick(Doan doanHienTai,ChiPhi chiPhi)
@@ -436,6 +439,7 @@ namespace DuLich
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
+                    formChiPhi.Close();
                     (userControl as ChiTietDoan).UpdateData(
                           doanHienTai.GetListPhanCong(),
                           doanHienTai.GetListChiPhi(),
@@ -449,8 +453,7 @@ namespace DuLich
         }
         public void onChiTietChiPhi_HuyClick()
         {
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            formChiPhi.Close();
         }
 
     }
@@ -461,20 +464,21 @@ namespace DuLich
 namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachPhanCong.IDanhSachPhanCongListener,
-        ChiTietPhanCong.IChiTietPhanCongListener
+        FromPhanCong.IChiTietPhanCongListener
     {
+        FromPhanCong form;
         public void onDanhSachPhanCongThemClick(Doan doanHienTai)
         {
             PhanCong phanCong = new PhanCong();
             phanCong.Doan = doanHienTai;
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(new ChiTietPhanCong(phanCong, NhanVienDal.GetAll(), this));
+            form = new FromPhanCong(phanCong,NhanVienDal.GetAll(),this);
+            form.ShowDialog();
         }
 
         public void onDanhSachPhanCongSuaClick(PhanCong phanCong)
         {
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(new ChiTietPhanCong(phanCong, NhanVienDal.GetAll(), this));
+            form = new FromPhanCong(phanCong, NhanVienDal.GetAll(), this);
+            form.ShowDialog();
         }
 
         public void onDanhSachPhanCongXoaClick(Doan doanHienTai,PhanCong phanCong)
@@ -498,6 +502,7 @@ namespace DuLich
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
+                    form.Close();
                     (userControl as ChiTietDoan).UpdateData(
                          doanHienTai.GetListPhanCong(),
                          doanHienTai.GetListChiPhi(),
@@ -511,8 +516,7 @@ namespace DuLich
         }
         public void onChiTietPhanCong_HuyClick()
         {
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            form.Close();
         }
 
     }

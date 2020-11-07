@@ -9,17 +9,17 @@ namespace DuLich.GUI.QuanLyPhanCong
     public partial class DanhSachPhanCong : UserControl
     {
         private IDanhSachPhanCongListener danhSachPhanCongListener;
-        private IEnumerable<PhanCong> PhanCongs;
+        private List<PhanCong> PhanCongs = new List<PhanCong>();
         private Doan doanHienTai;
-        public DanhSachPhanCong(Doan doanHienTai,IEnumerable<PhanCong> phanCongs, IDanhSachPhanCongListener danhSachPhanCongListener)
+        public DanhSachPhanCong(Doan doanHienTai,List<PhanCong> phanCongs, IDanhSachPhanCongListener danhSachPhanCongListener)
         {
             InitializeComponent();
             this.danhSachPhanCongListener = danhSachPhanCongListener;
-            this.PhanCongs = phanCongs;
+            this.PhanCongs.AddRange(phanCongs);
             this.doanHienTai = doanHienTai;
             InitData(phanCongs);
         }
-        private void InitData(IEnumerable<PhanCong> phanCongs)
+        private void InitData(List<PhanCong> phanCongs)
         {
             foreach (PhanCong phanCong in phanCongs)
             {
@@ -68,7 +68,7 @@ namespace DuLich.GUI.QuanLyPhanCong
         {
             void onDanhSachPhanCongThemClick(Doan doanHienTai);
             void onDanhSachPhanCongSuaClick(PhanCong phanCong);
-            void onDanhSachPhanCongXoaClick(Doan doanHienTai,PhanCong phanCong);
+            void onDanhSachPhanCongXoaClick(Doan doanHienTai, PhanCong phanCong);
         }
     }
 }

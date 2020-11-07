@@ -1,5 +1,6 @@
 ﻿using DuLich.BUS;
 using DuLich.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace DuLich.DAL
             context.ChiPhis.AddOrUpdate(chiPhi);
             return context.SaveChangesAsync();
         }
+
 
         public static Task DeletePhanCong(PhanCong phanCong)
         {
