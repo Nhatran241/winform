@@ -34,87 +34,106 @@ namespace DuLich.View.QuanLyTouris
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tv_tongdoan = new System.Windows.Forms.Label();
-            this.tv_tongkhach = new System.Windows.Forms.Label();
-            this.cb_nam = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.datepicker_den_doanhthutour = new System.Windows.Forms.DateTimePicker();
+            this.datepicker_tu_doanhthutour = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listview_thongketheodoan = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tourisBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // label6
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tổng Số Đoàn Tham Quan :";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(565, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Đến";
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(201, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tổng Số Khách Tham Quan :";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(408, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Từ";
             // 
-            // label3
+            // datepicker_den_doanhthutour
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(232, 18);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Thống Kê Doanh Thu Theo Tháng";
+            this.datepicker_den_doanhthutour.Location = new System.Drawing.Point(617, 11);
+            this.datepicker_den_doanhthutour.Name = "datepicker_den_doanhthutour";
+            this.datepicker_den_doanhthutour.Size = new System.Drawing.Size(95, 20);
+            this.datepicker_den_doanhthutour.TabIndex = 22;
+            this.datepicker_den_doanhthutour.ValueChanged += new System.EventHandler(this.datepicker_den_doanhthutour_ValueChanged);
             // 
-            // tv_tongdoan
+            // datepicker_tu_doanhthutour
             // 
-            this.tv_tongdoan.AutoSize = true;
-            this.tv_tongdoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tv_tongdoan.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.tv_tongdoan.Location = new System.Drawing.Point(233, 21);
-            this.tv_tongdoan.Name = "tv_tongdoan";
-            this.tv_tongdoan.Size = new System.Drawing.Size(16, 18);
-            this.tv_tongdoan.TabIndex = 5;
-            this.tv_tongdoan.Text = "0";
+            this.datepicker_tu_doanhthutour.Location = new System.Drawing.Point(445, 10);
+            this.datepicker_tu_doanhthutour.Name = "datepicker_tu_doanhthutour";
+            this.datepicker_tu_doanhthutour.Size = new System.Drawing.Size(95, 20);
+            this.datepicker_tu_doanhthutour.TabIndex = 21;
+            this.datepicker_tu_doanhthutour.ValueChanged += new System.EventHandler(this.datepicker_tu_doanhthutour_ValueChanged);
             // 
-            // tv_tongkhach
+            // label4
             // 
-            this.tv_tongkhach.AutoSize = true;
-            this.tv_tongkhach.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tv_tongkhach.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.tv_tongkhach.Location = new System.Drawing.Point(233, 55);
-            this.tv_tongkhach.Name = "tv_tongkhach";
-            this.tv_tongkhach.Size = new System.Drawing.Size(16, 18);
-            this.tv_tongkhach.TabIndex = 6;
-            this.tv_tongkhach.Text = "0";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 10);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(360, 18);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Thống Kê Doanh Thu / Chi Phí / Lợi Nhuân theo Đoàn";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // cb_nam
+            // listview_thongketheodoan
             // 
-            this.cb_nam.FormattingEnabled = true;
-            this.cb_nam.Location = new System.Drawing.Point(624, 124);
-            this.cb_nam.Name = "cb_nam";
-            this.cb_nam.Size = new System.Drawing.Size(121, 21);
-            this.cb_nam.TabIndex = 7;
-            this.cb_nam.SelectedIndexChanged += new System.EventHandler(this.cb_nam_SelectedIndexChanged);
+            this.listview_thongketheodoan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listview_thongketheodoan.FullRowSelect = true;
+            this.listview_thongketheodoan.HideSelection = false;
+            this.listview_thongketheodoan.Location = new System.Drawing.Point(13, 46);
+            this.listview_thongketheodoan.Name = "listview_thongketheodoan";
+            this.listview_thongketheodoan.Size = new System.Drawing.Size(708, 341);
+            this.listview_thongketheodoan.TabIndex = 25;
+            this.listview_thongketheodoan.UseCompatibleStateImageBehavior = false;
+            this.listview_thongketheodoan.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Tên Đoàn";
+            this.columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Danh thu";
+            this.columnHeader2.Width = 175;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Chi Phí";
+            this.columnHeader3.Width = 175;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Lợi Nhuận";
+            this.columnHeader4.Width = 175;
             // 
             // tourisBindingSource1
             // 
@@ -128,50 +147,25 @@ namespace DuLich.View.QuanLyTouris
             // 
             this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
             // 
-            // chart1
+            // columnHeader5
             // 
-            chartArea1.AxisX.Title = "Tour";
-            chartArea1.AxisY.Title = "USD";
-            chartArea1.AxisY2.Title = "Doanh Thu (Triệu VNĐ)";
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(13, 168);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Doanh Thu";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Chi Phí";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Lợi Nhuận";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(732, 413);
-            this.chart1.TabIndex = 8;
-            this.chart1.Text = "chart_thongkedoanhthu";
+            this.columnHeader5.Text = "Số khách";
             // 
             // ThongKeTheoTour
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.cb_nam);
-            this.Controls.Add(this.tv_tongkhach);
-            this.Controls.Add(this.tv_tongdoan);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listview_thongketheodoan);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.datepicker_den_doanhthutour);
+            this.Controls.Add(this.datepicker_tu_doanhthutour);
+            this.Controls.Add(this.label4);
             this.Name = "ThongKeTheoTour";
-            this.Size = new System.Drawing.Size(760, 650);
+            this.Size = new System.Drawing.Size(760, 1200);
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,14 +175,18 @@ namespace DuLich.View.QuanLyTouris
         #endregion
         private BindingSource tourisBindingSource;
         private BindingSource giaBindingSource;
-        private Label label1;
-        private Label label2;
-        private Label label3;
         private Series series1; 
         private BindingSource tourisBindingSource1;
-        private Label tv_tongdoan;
-        private Label tv_tongkhach;
-        private ComboBox cb_nam;
-        private Chart chart1;
+        private Label label6;
+        private Label label7;
+        private DateTimePicker datepicker_den_doanhthutour;
+        private DateTimePicker datepicker_tu_doanhthutour;
+        private Label label4;
+        private ListView listview_thongketheodoan;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
     }
 }

@@ -305,7 +305,7 @@ namespace DuLich.GUI.QuanLyDoan
                 {
                     long tongChiPhi = doanHienTai.ChiPhis.Sum(c => c.giaTri);
                     tb_tongchiphi.Text = tongChiPhi.ToString();
-                    tb_loinhuan.Text = (doanHienTai.GiaApDung.GiaTri - tongChiPhi).ToString();
+                    tb_loinhuan.Text = ((doanHienTai.GiaApDung.GiaTri * doanHienTai.GetListKhach().Count()) - tongChiPhi).ToString();
                 }
                 else
                 {

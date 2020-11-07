@@ -77,7 +77,7 @@ namespace DuLich.BUS
 
         public double TongDoanhThuTourByTime(DateTime from, DateTime to)
         {
-            return GetListDoanOfTourByTime(from,to).Where(c=>c.GiaApDung != null).Sum(c => c.GiaApDung.GiaTri);
+            return GetListDoanOfTourByTime(from,to).Where(c=>c.GiaApDung != null).Sum(c => c.GiaApDung.GiaTri*c.DoanKhachs.Count());
         }
 
         public Task UpdateListDiaDiemTour(List<DiaDiem> danhSachDiaDiemTrongDoanUpdate)

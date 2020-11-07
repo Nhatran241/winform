@@ -19,110 +19,81 @@ namespace DuLich.View.QuanLyTouris
         }
         private void InitData()
         {
-            nam.Add("Bất Kỳ");
-            if (tour.Doans != null)
+            DateTime min = tour.GetListDoanOfTour().First().ThoiGianBatDau;
+            DateTime max = tour.GetListDoanOfTour().First().ThoiGianKetThuc;
+            foreach (Doan doan in tour.GetListDoanOfTour())
             {
-                foreach (Doan doan in tour.Doans.ToList())
-                {
-                    if (!nam.Contains(doan.ThoiGianBatDau.Year.ToString()))
-                    {
-                        nam.Add(doan.ThoiGianBatDau.Year.ToString());
-                    }
-                }
+                if (doan.ThoiGianBatDau < min)
+                    min = doan.ThoiGianBatDau;
+                if (doan.ThoiGianKetThuc > max)
+                    max = doan.ThoiGianKetThuc;
             }
-            cb_nam.Items.Clear();
-            foreach (String str in nam)
-            {
-                cb_nam.Items.Add(str);
-            }
-            cb_nam.SelectedIndex = 0;
+            datepicker_tu_doanhthutour.MinDate = min;
+            datepicker_tu_doanhthutour.MaxDate = max;
+            datepicker_den_doanhthutour.MinDate = min;
+            datepicker_den_doanhthutour.MaxDate = max;
+
+            datepicker_tu_doanhthutour.Value = min;
+            datepicker_den_doanhthutour.Value = max;
         }
 
 
-     
-        private void cb_nam_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void InitThongKeTour()
         {
-            List<DataPoint> danhThu = new List<DataPoint>();
-            List<DataPoint> chiPhi = new List<DataPoint>();
-            List<DataPoint> loiNhuan = new List<DataPoint>();
-            danhThu.Clear();
-            danhThu.Add(new DataPoint(1D, 0D));
-            danhThu.Add(new DataPoint(2D, 0D));
-            danhThu.Add(new DataPoint(3D, 0D));
-            danhThu.Add(new DataPoint(4D, 0D));
-            danhThu.Add(new DataPoint(5D, 0D));
-            danhThu.Add(new DataPoint(6D, 0D));
-            danhThu.Add(new DataPoint(7D, 0D));
-            danhThu.Add(new DataPoint(8D, 0D));
-            danhThu.Add(new DataPoint(9D, 0D));
-            danhThu.Add(new DataPoint(10D, 0D));
-            danhThu.Add(new DataPoint(11D, 0D));
-            danhThu.Add(new DataPoint(12D, 0D));
-
-
-            chiPhi.Clear();
-            chiPhi.Add(new DataPoint(1D, 0D));
-            chiPhi.Add(new DataPoint(2D, 0D));
-            chiPhi.Add(new DataPoint(3D, 0D));
-            chiPhi.Add(new DataPoint(4D, 0D));
-            chiPhi.Add(new DataPoint(5D, 0D));
-            chiPhi.Add(new DataPoint(6D, 0D));
-            chiPhi.Add(new DataPoint(7D, 0D));
-            chiPhi.Add(new DataPoint(8D, 0D));
-            chiPhi.Add(new DataPoint(9D, 0D));
-            chiPhi.Add(new DataPoint(10D, 0D));
-            chiPhi.Add(new DataPoint(11D, 0D));
-            chiPhi.Add(new DataPoint(12D, 0D));
-
-
-            loiNhuan.Clear();
-            loiNhuan.Add(new DataPoint(1D, 0D));
-            loiNhuan.Add(new DataPoint(2D, 0D));
-            loiNhuan.Add(new DataPoint(3D, 0D));
-            loiNhuan.Add(new DataPoint(4D, 0D));
-            loiNhuan.Add(new DataPoint(5D, 0D));
-            loiNhuan.Add(new DataPoint(6D, 0D));
-            loiNhuan.Add(new DataPoint(7D, 0D));
-            loiNhuan.Add(new DataPoint(8D, 0D));
-            loiNhuan.Add(new DataPoint(9D, 0D));
-            loiNhuan.Add(new DataPoint(10D, 0D));
-            loiNhuan.Add(new DataPoint(11D, 0D));
-            loiNhuan.Add(new DataPoint(12D, 0D));
-            if (tour.Doans != null)
+            double tongdanhthu = 0;
+            double tongchiphi = 0;
+            double tongloinhuan = 0;
+            int tongkhach = 0;
+            listview_thongketheodoan.Items.Clear();
+            int count = 0;
+            foreach(Doan doan in tour.GetListDoanOfTourByTime(datepicker_tu_doanhthutour.Value,datepicker_den_doanhthutour.Value))
             {
-                foreach (Doan doan in tour.Doans.ToList())
-                {
-                    if (nam[cb_nam.SelectedIndex].Equals("Bất Kỳ") || doan.ThoiGianBatDau.Year == int.Parse(nam[cb_nam.SelectedIndex]))
-                    {
-                        danhThu[doan.ThoiGianBatDau.Month - 1].YValues[0] += (doan.GiaApDung.GiaTri / 1) * 1D;
-                        chiPhi[doan.ThoiGianBatDau.Month - 1].YValues[0] += (doan.TongChiPhiDoan() / 1) * 1D;
-                        loiNhuan[doan.ThoiGianBatDau.Month - 1].YValues[0] = danhThu[doan.ThoiGianBatDau.Month - 1].YValues[0] - chiPhi[doan.ThoiGianBatDau.Month - 1].YValues[0];
-                    }
-
-                }
-              
+                count++;
+                double danhthu = doan.GiaApDung.GiaTri * doan.GetListKhach().Count();
+                tongdanhthu += danhthu;
+                double chiphi = doan.TongChiPhiDoan();
+                tongchiphi += chiphi;
+                double loinhuan = danhthu - chiphi;
+                tongloinhuan += loinhuan;
+                int khach = doan.GetListKhach().Count();
+                tongkhach += khach;
+                ListViewItem listViewItem1 = new ListViewItem(new string[] {
+            doan.Name,
+            danhthu+" $"
+            ,
+            chiphi+" $"
+            ,loinhuan+ "$",
+                khach+""}, -1);
+                listview_thongketheodoan.Items.Add(listViewItem1);
             }
-            chart1.Series[0].Points.Clear();
-            foreach (DataPoint dataPoint in danhThu)
-            {
-                chart1.Series[0].Points.Add(dataPoint);
-            }
+            ListViewItem tong = new ListViewItem(new string[] {
+            "Tổng cộng :"+count+ "đoàn",
+            tongdanhthu+" $"
+            ,
+            tongchiphi+" $"
+            ,
+                tongloinhuan+ "$",
+            tongkhach+""}, -1);
+            listview_thongketheodoan.Items.Add(tong);
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
 
-            chart1.Series[1].Points.Clear();
-            foreach (DataPoint dataPoint in chiPhi)
-            {
-                chart1.Series[1].Points.Add(dataPoint);
-            }
+        }
 
-            chart1.Series[2].Points.Clear();
-            foreach (DataPoint dataPoint in loiNhuan)
-            {
-                chart1.Series[2].Points.Add(dataPoint);
-            }
-            chart1.Update();
+        private void datepicker_tu_doanhthutour_ValueChanged(object sender, EventArgs e)
+        {
+            if (datepicker_tu_doanhthutour.Value > datepicker_den_doanhthutour.Value)
+                datepicker_den_doanhthutour.Value = datepicker_tu_doanhthutour.Value;
+            InitThongKeTour();
+        }
 
-            tv_tongdoan.Text = tour.GetListDoanOfTour().Count().ToString();
-            tv_tongkhach.Text = tour.GetListKhachOfTour().Count().ToString();
+        private void datepicker_den_doanhthutour_ValueChanged(object sender, EventArgs e)
+        {
+            if (datepicker_den_doanhthutour.Value < datepicker_tu_doanhthutour.Value)
+                datepicker_tu_doanhthutour.Value = datepicker_den_doanhthutour.Value;
+            InitThongKeTour();
         }
     }
 }

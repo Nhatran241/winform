@@ -36,6 +36,8 @@ namespace DuLich.DAL
         public static List<DiaDiem> GetListDiaDiemByTour(Tour tour)
         {
             List<DiaDiem> danhSachDiaDiemCuaTor = new List<DiaDiem>();
+            if (tour.ChiTietTours == null)
+                return danhSachDiaDiemCuaTor;
             foreach (ChiTietTour chiTietTour in tour.ChiTietTours.OrderBy(c => c.ThuTu).ToList())
             {
                 DiaDiem diaDiem = context.DiaDiem.Where(c => c.MaDienDiem == chiTietTour.diaDiem.MaDienDiem).First();

@@ -66,6 +66,8 @@ namespace DuLich.BUS
 
         public double TongChiPhiDoan()
         {
+            if (ChiPhis == null)
+                return 0;
             return ChiPhis.Sum(c => c.giaTri);
         }
 
