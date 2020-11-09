@@ -19,22 +19,26 @@ namespace DuLich.View.QuanLyTouris
         }
         private void InitData()
         {
-            DateTime min = tour.GetListDoanOfTour().First().ThoiGianBatDau;
-            DateTime max = tour.GetListDoanOfTour().First().ThoiGianKetThuc;
-            foreach (Doan doan in tour.GetListDoanOfTour())
+            Doan temp = tour.GetListDoanOfTour().FirstOrDefault();
+            if(temp != null)
             {
-                if (doan.ThoiGianBatDau < min)
-                    min = doan.ThoiGianBatDau;
-                if (doan.ThoiGianKetThuc > max)
-                    max = doan.ThoiGianKetThuc;
-            }
-            datepicker_tu_doanhthutour.MinDate = min;
-            datepicker_tu_doanhthutour.MaxDate = max;
-            datepicker_den_doanhthutour.MinDate = min;
-            datepicker_den_doanhthutour.MaxDate = max;
+                DateTime min = temp.ThoiGianBatDau;
+                DateTime max = temp.ThoiGianKetThuc;
+                foreach (Doan doan in tour.GetListDoanOfTour())
+                {
+                    if (doan.ThoiGianBatDau < min)
+                        min = doan.ThoiGianBatDau;
+                    if (doan.ThoiGianKetThuc > max)
+                        max = doan.ThoiGianKetThuc;
+                }
+                datepicker_tu_doanhthutour.MinDate = min;
+                datepicker_tu_doanhthutour.MaxDate = max;
+                datepicker_den_doanhthutour.MinDate = min;
+                datepicker_den_doanhthutour.MaxDate = max;
 
-            datepicker_tu_doanhthutour.Value = min;
-            datepicker_den_doanhthutour.Value = max;
+                datepicker_tu_doanhthutour.Value = min;
+                datepicker_den_doanhthutour.Value = max;
+            }
         }
 
 

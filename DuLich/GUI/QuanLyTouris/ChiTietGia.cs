@@ -5,7 +5,7 @@ using DuLich.BUS;
 
 namespace DuLich.GUI.QuanLyTouris
 {
-    public partial class ChiTietGia : UserControl
+    public partial class ChiTietGia : Form
     {
         private IChiTietGiaListener chiTietGiaListener;
         private Gia gia = new Gia();

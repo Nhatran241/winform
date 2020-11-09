@@ -50,8 +50,20 @@ namespace DuLich.DAL
 
         public static Task AddOrUpdateChiPhi(ChiPhi chiPhi)
         {
-            context.ChiPhis.AddOrUpdate(chiPhi);
-            return context.SaveChangesAsync();
+            var result = context.ChiPhis.SingleOrDefault(b => b.id == chiPhi.id);
+            if (result != null)
+            {
+                result.Doan = chiPhi.Doan;
+                result.ghiChu = chiPhi.ghiChu;
+                result.giaTri = chiPhi.giaTri;
+                result.LoaiChiPhi = chiPhi.LoaiChiPhi;
+                return context.SaveChangesAsync();
+            }
+            else
+            {
+                context.ChiPhis.Add(chiPhi);
+                return context.SaveChangesAsync();
+            }
         }
 
 
@@ -63,8 +75,19 @@ namespace DuLich.DAL
 
         public static Task AddOrUpdatePhanCong(PhanCong phanCong)
         {
-            context.PhanCongs.AddOrUpdate(phanCong);
-            return context.SaveChangesAsync();
+            var result = context.PhanCongs.SingleOrDefault(b => b.MaPhanCong == phanCong.MaPhanCong);
+            if (result != null)
+            {
+                result.NhanVien = phanCong.NhanVien;
+                result.Doan = phanCong.Doan;
+                result.NhiemVu = phanCong.NhiemVu;
+                return context.SaveChangesAsync();
+            }
+            else
+            {
+                context.PhanCongs.Add(phanCong);
+                return context.SaveChangesAsync();
+            }
         }
     }
 }

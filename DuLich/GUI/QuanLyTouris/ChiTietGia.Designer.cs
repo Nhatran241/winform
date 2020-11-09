@@ -141,6 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(485, 331);
             this.Controls.Add(this.btn_huy);
             this.Controls.Add(this.btn_luu);
             this.Controls.Add(this.datepicker_ketthuc);
@@ -152,7 +153,6 @@
             this.Controls.Add(this.tv_giatri);
             this.Controls.Add(this.tv_magia);
             this.Name = "ChiTietGia";
-            this.Size = new System.Drawing.Size(487, 315);
             this.ResumeLayout(false);
             this.PerformLayout();
 

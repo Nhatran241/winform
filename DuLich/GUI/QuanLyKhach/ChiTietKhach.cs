@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 namespace DuLich.GUI.QuanLyKhach
 {
-    public partial class ChiTietKhach : UserControl
+    public partial class ChiTietKhach : Form
     {
         private IChiTietKhachListener chiTietKhachListener;
         private Khach khach = new Khach();
@@ -58,7 +58,6 @@ namespace DuLich.GUI.QuanLyKhach
             {
                 cb_gioitinh.SelectedItem = gioitinh.First();
             }
-            datepicker_ngaysinh.MaxDate = DateTime.Today.AddDays(-(18 * 365));
         }
 
         private void tb_name_TextChanged(object sender, EventArgs e)

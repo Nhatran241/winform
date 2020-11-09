@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace DuLich.GUI.QuanLyNhanVien
 {
-    public partial class ChiTietNhanVien : UserControl
+    public partial class ChiTietNhanVien : Form
     {
         private IChiTietNhanVienListener chiTietNhanVienListener;
         private NhanVien nhanVien = new NhanVien();

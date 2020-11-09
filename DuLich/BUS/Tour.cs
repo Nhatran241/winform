@@ -67,6 +67,8 @@ namespace DuLich.BUS
 
         public List<Gia> GetListGiaOfTour()
         {
+            if (Gias == null)
+                return new List<Gia>();
             return Gias.ToList();
         }
 

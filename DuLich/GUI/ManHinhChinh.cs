@@ -219,19 +219,20 @@ namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachGia.IDanhSachGiaListener, ChiTietGia.IChiTietGiaListener
     {
+        ChiTietGia chiTietGia;
 
         public void onDanhSachGiaThemClick(Tour tourHienTai)
         {
-            panel_main_content.Controls.Clear();
             Gia gia = new Gia();
             gia.touris = tourHienTai;
-            panel_main_content.Controls.Add(new ChiTietGia(gia, this));
+            chiTietGia = new ChiTietGia(gia, this);
+            chiTietGia.ShowDialog();
         }
 
         public void onDanhSachGiaSuaClick(Gia gia)
         {
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(new ChiTietGia(gia, this));
+            chiTietGia = new ChiTietGia(gia, this);
+            chiTietGia.ShowDialog();
         }
 
         public void onDanhSachGiaXoaClick(Tour tourHienTai,Gia gia)
@@ -279,9 +280,8 @@ namespace DuLich
                 {
                     panel_main_content.Invoke((MethodInvoker)delegate
                     {
+                        chiTietGia.Close();
                         (userControl as ChiTietTouris).UpdateData(gia.touris.GetListGiaOfTour(),gia.touris.GetListDiaDiemOfTour());
-                        panel_main_content.Controls.Clear();
-                        panel_main_content.Controls.Add(userControl);
                     });
                 }
             });
@@ -289,8 +289,7 @@ namespace DuLich
 
         public void onChiTietGia_HuyClick()
         {
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            chiTietGia.Close();
         }
     }
 
@@ -555,6 +554,7 @@ namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachDiaDiem.IDanhSachDiaDiemListener, ChiTietDiaDiem.IChiTietDiaDiemListener
     {
+        ChiTietDiaDiem chiTietDiaDiem;
 
         private void btn_quanlydiadiem_Click(object sender, EventArgs e)
         {
@@ -565,9 +565,8 @@ namespace DuLich
 
         public void onDanhSachDiaDiem_ThemClick()
         {
-            userControl = new ChiTietDiaDiem(new DiaDiem(), this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            chiTietDiaDiem = new ChiTietDiaDiem(new DiaDiem(), this);
+            chiTietDiaDiem.ShowDialog();
         }
 
         public void onDanhSachDiaDiem_XoaClick(DiaDiem diaDiem)
@@ -603,9 +602,9 @@ namespace DuLich
 
         public void onDanhSachDiaDiem_SuaClick(DiaDiem diaDiem)
         {
-            userControl = new ChiTietDiaDiem(diaDiem, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+
+            chiTietDiaDiem = new ChiTietDiaDiem(diaDiem, this);
+            chiTietDiaDiem.ShowDialog();
         }
 
         public void onLuuDiaDiem(DiaDiem diaDiem)
@@ -614,6 +613,7 @@ namespace DuLich
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
+                    chiTietDiaDiem.Close();
                     userControl = new DanhSachDiaDiem(DiaDiemDal.GetAll(), this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
@@ -623,9 +623,7 @@ namespace DuLich
 
         public void onHuyDiaDiemClick()
         {
-            userControl = new DanhSachDiaDiem(DiaDiemDal.GetAll(), this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            chiTietDiaDiem.Close();
         }
     }
 }
@@ -636,6 +634,7 @@ namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachKhach.IDanhSachKhachListener,ChiTietKhach.IChiTietKhachListener
     {
+        ChiTietKhach chiTietKhach;
         private void button2_Click(object sender, EventArgs e)
         {
             userControl = new DanhSachKhach(KhachDal.GetAll(), this);
@@ -649,6 +648,7 @@ namespace DuLich
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
+                    chiTietKhach.Close();
                     userControl = new DanhSachKhach(KhachDal.GetAll(), this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
@@ -658,23 +658,19 @@ namespace DuLich
 
         public void onHuyKhachClick()
         {
-            userControl = new DanhSachKhach(KhachDal.GetAll(), this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            chiTietKhach.Close();
         }
 
         public void onDanhSachKhach_ThemClick() {
             Khach khach = new Khach();
-            userControl = new ChiTietKhach(khach, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            chiTietKhach = new ChiTietKhach(khach, this);
+            chiTietKhach.ShowDialog();
         }
 
         public void onDanhSachKhach_SuaClick(Khach khach)
         {
-            userControl = new ChiTietKhach(khach, this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            chiTietKhach = new ChiTietKhach(khach, this);
+            chiTietKhach.ShowDialog();
         }
 
         public void onDanhSachKhach_XoaClick(Khach khach)
@@ -697,7 +693,8 @@ namespace DuLich
 namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachNhanVien.IDanhSachNhanVienListener,ChiTietNhanVien.IChiTietNhanVienListener{
-    private void btn_quanlynhanvien_Click(object sender, EventArgs e)
+    ChiTietNhanVien chiTietNhanVien;
+     private void btn_quanlynhanvien_Click(object sender, EventArgs e)
     {
         userControl = new DanhSachNhanVien(NhanVienDal.GetAll(), this);
         panel_main_content.Controls.Clear();
@@ -705,17 +702,15 @@ namespace DuLich
     }
     public void onDanhSachNhanVien_SuaClick(NhanVien nhanVien)
     {
-        userControl = new ChiTietNhanVien(nhanVien, this);
-        panel_main_content.Controls.Clear();
-        panel_main_content.Controls.Add(userControl);
+        chiTietNhanVien = new ChiTietNhanVien(nhanVien, this);
+        chiTietNhanVien.ShowDialog();
     }
 
     public void onDanhSachNhanVien_ThemClick()
     {
        NhanVien nhanVien = new NhanVien();
-       userControl = new ChiTietNhanVien(nhanVien, this);
-       panel_main_content.Controls.Clear();
-       panel_main_content.Controls.Add(userControl);
+       chiTietNhanVien = new ChiTietNhanVien(nhanVien, this);
+       chiTietNhanVien.ShowDialog();
     }
 
     public void onDanhSachNhanVien_XoaClick(NhanVien nhanVien)
@@ -736,6 +731,7 @@ namespace DuLich
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
+                    chiTietNhanVien.Close();
                     userControl = new DanhSachNhanVien(NhanVienDal.GetAll(), this);
                     panel_main_content.Controls.Clear();
                     panel_main_content.Controls.Add(userControl);
@@ -745,9 +741,7 @@ namespace DuLich
 
     public void onChiTietNhanVien_HuyClick()
         {
-            userControl = new DanhSachNhanVien(NhanVienDal.GetAll(), this);
-            panel_main_content.Controls.Clear();
-            panel_main_content.Controls.Add(userControl);
+            chiTietNhanVien.Close();
         }
     }
 }

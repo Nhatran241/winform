@@ -4,7 +4,7 @@ using DuLich.BUS;
 
 namespace DuLich.GUI.QuanLyDiaDiem
 {
-    public partial class ChiTietDiaDiem : UserControl
+    public partial class ChiTietDiaDiem : Form
     {
         private IChiTietDiaDiemListener chiTietDiaDiemListener;
         private DiaDiem diaDiem = new DiaDiem();

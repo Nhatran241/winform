@@ -184,6 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(504, 384);
             this.Controls.Add(this.cb_gioitinh);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.datepicker_ngaysinh);
@@ -199,7 +200,6 @@
             this.Controls.Add(this.tv_diachi_nhanvien);
             this.Controls.Add(this.tv_ma_nhanvien);
             this.Name = "ChiTietNhanVien";
-            this.Size = new System.Drawing.Size(800, 600);
             this.ResumeLayout(false);
             this.PerformLayout();
 
