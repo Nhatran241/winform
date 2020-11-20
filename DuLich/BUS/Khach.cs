@@ -17,5 +17,16 @@ namespace DuLich.BUS
         {
             return KhachDal.Delete(this);
         }
+        public void Map(Khach khach)
+        {
+            DiaChi = khach.DiaChi;
+            DoanKhachs = khach.DoanKhachs;
+            GioiTinh = khach.GioiTinh;
+            KhachId = khach.KhachId;
+            NgaySinh = khach.NgaySinh;
+            SoCmnd = khach.SoCmnd;
+            SoDienThoai = khach.SoDienThoai;
+            Ten = khach.Ten;
+        }
     }
 }

@@ -142,7 +142,7 @@ namespace DuLich.GUI.QuanLyDoan
                         else
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
-                            (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => (d.Khach != null ? d.Khach.KhachId == khach.KhachId : true)).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
@@ -224,6 +224,11 @@ namespace DuLich.GUI.QuanLyDoan
         private void btn_them_Click(object sender, EventArgs e)
         {
             danhSachDoanListener.onDanhSachDoan_ThemClick();
+        }
+
+        private void DanhSachDoan_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

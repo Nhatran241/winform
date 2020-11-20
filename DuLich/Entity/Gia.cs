@@ -19,5 +19,6 @@ namespace DuLich.BUS
         {
             return GiaTri.ToString();
         }
+        
     }
 }

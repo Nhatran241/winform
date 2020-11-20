@@ -49,18 +49,18 @@ namespace DuLich.GUI.QuanLyTouris
             // textbox_id
             // 
             this.textbox_id.Enabled = false;
-            this.textbox_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_id.Location = new System.Drawing.Point(115, 7);
+            this.textbox_id.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_id.Location = new System.Drawing.Point(93, 10);
             this.textbox_id.Name = "textbox_id";
-            this.textbox_id.Size = new System.Drawing.Size(218, 29);
+            this.textbox_id.Size = new System.Drawing.Size(218, 30);
             this.textbox_id.TabIndex = 13;
             // 
             // combobox_loai
             // 
             this.combobox_loai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combobox_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combobox_loai.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combobox_loai.FormattingEnabled = true;
-            this.combobox_loai.Location = new System.Drawing.Point(115, 63);
+            this.combobox_loai.Location = new System.Drawing.Point(93, 63);
             this.combobox_loai.Name = "combobox_loai";
             this.combobox_loai.Size = new System.Drawing.Size(218, 32);
             this.combobox_loai.TabIndex = 12;
@@ -69,39 +69,39 @@ namespace DuLich.GUI.QuanLyTouris
             // tour_id
             // 
             this.tour_id.AutoSize = true;
-            this.tour_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tour_id.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tour_id.Location = new System.Drawing.Point(10, 10);
             this.tour_id.Name = "tour_id";
-            this.tour_id.Size = new System.Drawing.Size(71, 20);
+            this.tour_id.Size = new System.Drawing.Size(72, 24);
             this.tour_id.TabIndex = 9;
             this.tour_id.Text = "Mã Tour";
             // 
             // tour_name
             // 
             this.tour_name.AutoSize = true;
-            this.tour_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tour_name.Location = new System.Drawing.Point(349, 10);
+            this.tour_name.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tour_name.Location = new System.Drawing.Point(317, 13);
             this.tour_name.Name = "tour_name";
-            this.tour_name.Size = new System.Drawing.Size(76, 20);
+            this.tour_name.Size = new System.Drawing.Size(76, 24);
             this.tour_name.TabIndex = 18;
             this.tour_name.Text = "Tên Tour";
             // 
             // textbox_name
             // 
-            this.textbox_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_name.Location = new System.Drawing.Point(452, 7);
+            this.textbox_name.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_name.Location = new System.Drawing.Point(399, 10);
             this.textbox_name.Name = "textbox_name";
-            this.textbox_name.Size = new System.Drawing.Size(218, 29);
+            this.textbox_name.Size = new System.Drawing.Size(330, 30);
             this.textbox_name.TabIndex = 19;
             this.textbox_name.TextChanged += new System.EventHandler(this.textbox_name_TextChanged);
             // 
             // tour_loai
             // 
             this.tour_loai.AutoSize = true;
-            this.tour_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tour_loai.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tour_loai.Location = new System.Drawing.Point(10, 71);
             this.tour_loai.Name = "tour_loai";
-            this.tour_loai.Size = new System.Drawing.Size(80, 20);
+            this.tour_loai.Size = new System.Drawing.Size(77, 24);
             this.tour_loai.TabIndex = 20;
             this.tour_loai.Text = "Loại Tour";
             // 
@@ -110,22 +110,23 @@ namespace DuLich.GUI.QuanLyTouris
             this.tab_chitiet.Controls.Add(this.tab_gia);
             this.tab_chitiet.Controls.Add(this.tab_diadiem);
             this.tab_chitiet.Controls.Add(this.tab_thongke);
-            this.tab_chitiet.Location = new System.Drawing.Point(14, 160);
+            this.tab_chitiet.Location = new System.Drawing.Point(14, 127);
             this.tab_chitiet.Name = "tab_chitiet";
             this.tab_chitiet.SelectedIndex = 0;
-            this.tab_chitiet.Size = new System.Drawing.Size(775, 440);
+            this.tab_chitiet.Size = new System.Drawing.Size(775, 473);
             this.tab_chitiet.TabIndex = 21;
             this.tab_chitiet.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1_Selected);
             // 
             // tab_gia
             // 
             this.tab_gia.BackColor = System.Drawing.Color.White;
-            this.tab_gia.Location = new System.Drawing.Point(4, 22);
+            this.tab_gia.Location = new System.Drawing.Point(4, 33);
             this.tab_gia.Name = "tab_gia";
             this.tab_gia.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_gia.Size = new System.Drawing.Size(767, 414);
+            this.tab_gia.Size = new System.Drawing.Size(767, 436);
             this.tab_gia.TabIndex = 0;
             this.tab_gia.Text = "Giá";
+            this.tab_gia.Click += new System.EventHandler(this.tab_gia_Click);
             // 
             // tab_diadiem
             // 
@@ -149,23 +150,23 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_chinhsua
             // 
-            this.btn_chinhsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_chinhsua.Image = global::DuLich.Properties.Resources.edit__1_;
+            this.btn_chinhsua.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.btn_chinhsua.Location = new System.Drawing.Point(735, 7);
             this.btn_chinhsua.Name = "btn_chinhsua";
             this.btn_chinhsua.Size = new System.Drawing.Size(50, 50);
             this.btn_chinhsua.TabIndex = 22;
+            this.btn_chinhsua.Text = "Sửa";
             this.btn_chinhsua.UseVisualStyleBackColor = true;
             this.btn_chinhsua.Click += new System.EventHandler(this.btn_chinhsua_Click);
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_xoa.Image = global::DuLich.Properties.Resources.delete__2_;
+            this.btn_xoa.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.btn_xoa.Location = new System.Drawing.Point(735, 71);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(50, 50);
             this.btn_xoa.TabIndex = 23;
+            this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = true;
             this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 

@@ -110,7 +110,7 @@
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyKhach\ChiTietKhach.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyKhach\ChiTietKhach.Designer.cs">
       <DependentUpon>ChiTietKhach.cs</DependentUpon>
@@ -128,7 +128,7 @@
       <DependentUpon>SearchKhach.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.Designer.cs">
       <DependentUpon>ChiTietNhanVien.cs</DependentUpon>
@@ -157,11 +157,11 @@
     <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
       <DependentUpon>SelectKhach.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyPhanCong\FromPhanCong.cs">
+    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\QuanLyPhanCong\FromPhanCong.Designer.cs">
-      <DependentUpon>FromPhanCong.cs</DependentUpon>
+    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.Designer.cs">
+      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.cs">
       <SubType>UserControl</SubType>
@@ -201,7 +201,7 @@
     <Compile Include="Entity\Loai.cs" />
     <Compile Include="Entity\Tour.cs" />
     <Compile Include="GUI\QuanLyTouris\ChiTietGia.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyTouris\ChiTietGia.Designer.cs">
       <DependentUpon>ChiTietGia.cs</DependentUpon>
@@ -219,7 +219,7 @@
       <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyDiaDiem\ChiTietDiaDiem.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyDiaDiem\ChiTietDiaDiem.Designer.cs">
       <DependentUpon>ChiTietDiaDiem.cs</DependentUpon>
@@ -280,8 +280,8 @@
     <EmbeddedResource Include="GUI\QuanLyPhanCong\DanhSachPhanCong.resx">
       <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyPhanCong\FromPhanCong.resx">
-      <DependentUpon>FromPhanCong.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\QuanLyPhanCong\ChiTietPhanCong.resx">
+      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>

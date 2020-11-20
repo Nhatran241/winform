@@ -41,76 +41,82 @@ namespace DuLich.GUI.QuanLyKhach
             // 
             // tb_search
             // 
-            this.tb_search.Location = new System.Drawing.Point(587, 3);
+            this.tb_search.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.tb_search.Location = new System.Drawing.Point(128, 42);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(210, 20);
+            this.tb_search.Size = new System.Drawing.Size(210, 26);
             this.tb_search.TabIndex = 1;
             this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // tv_searchbox
             // 
             this.tv_searchbox.AutoSize = true;
-            this.tv_searchbox.Location = new System.Drawing.Point(555, 7);
+            this.tv_searchbox.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tv_searchbox.Location = new System.Drawing.Point(3, 44);
             this.tv_searchbox.Name = "tv_searchbox";
-            this.tv_searchbox.Size = new System.Drawing.Size(26, 13);
+            this.tv_searchbox.Size = new System.Drawing.Size(77, 22);
             this.tv_searchbox.TabIndex = 3;
-            this.tv_searchbox.Text = "Tên";
+            this.tv_searchbox.Text = "Tên khách";
             // 
             // datepicker_ketthuc
             // 
-            this.datepicker_ketthuc.Location = new System.Drawing.Point(354, 3);
+            this.datepicker_ketthuc.Font = new System.Drawing.Font("Arial Narrow", 8F);
+            this.datepicker_ketthuc.Location = new System.Drawing.Point(459, 7);
             this.datepicker_ketthuc.Name = "datepicker_ketthuc";
-            this.datepicker_ketthuc.Size = new System.Drawing.Size(181, 20);
+            this.datepicker_ketthuc.Size = new System.Drawing.Size(187, 20);
             this.datepicker_ketthuc.TabIndex = 31;
             this.datepicker_ketthuc.ValueChanged += new System.EventHandler(this.datepicker_ketthuc_ValueChanged);
             // 
             // datepicker_batdau
             // 
-            this.datepicker_batdau.Location = new System.Drawing.Point(118, 3);
+            this.datepicker_batdau.Font = new System.Drawing.Font("Arial Narrow", 8F);
+            this.datepicker_batdau.Location = new System.Drawing.Point(128, 7);
             this.datepicker_batdau.Name = "datepicker_batdau";
-            this.datepicker_batdau.Size = new System.Drawing.Size(181, 20);
+            this.datepicker_batdau.Size = new System.Drawing.Size(210, 20);
             this.datepicker_batdau.TabIndex = 30;
             this.datepicker_batdau.ValueChanged += new System.EventHandler(this.datepicker_batdau_ValueChanged);
             // 
             // tv_ngayketthuc
             // 
             this.tv_ngayketthuc.AutoSize = true;
-            this.tv_ngayketthuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tv_ngayketthuc.Location = new System.Drawing.Point(305, 5);
+            this.tv_ngayketthuc.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tv_ngayketthuc.Location = new System.Drawing.Point(405, 5);
             this.tv_ngayketthuc.Name = "tv_ngayketthuc";
-            this.tv_ngayketthuc.Size = new System.Drawing.Size(43, 18);
+            this.tv_ngayketthuc.Size = new System.Drawing.Size(47, 22);
             this.tv_ngayketthuc.TabIndex = 29;
             this.tv_ngayketthuc.Text = "Đến :";
             // 
             // tv_ngaybatdau
             // 
             this.tv_ngaybatdau.AutoSize = true;
-            this.tv_ngaybatdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_ngaybatdau.Font = new System.Drawing.Font("Arial Narrow", 13F);
             this.tv_ngaybatdau.Location = new System.Drawing.Point(3, 3);
             this.tv_ngaybatdau.Name = "tv_ngaybatdau";
-            this.tv_ngaybatdau.Size = new System.Drawing.Size(118, 18);
+            this.tv_ngaybatdau.Size = new System.Drawing.Size(119, 22);
             this.tv_ngaybatdau.TabIndex = 28;
             this.tv_ngaybatdau.Text = "Có ngày sinh từ :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(555, 34);
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.label1.Location = new System.Drawing.Point(405, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.Size = new System.Drawing.Size(69, 22);
             this.label1.TabIndex = 32;
             this.label1.Text = "Giới Tính";
             // 
             // cb_gioitinh
             // 
+            this.cb_gioitinh.Font = new System.Drawing.Font("Arial Narrow", 12F);
             this.cb_gioitinh.FormattingEnabled = true;
-            this.cb_gioitinh.Location = new System.Drawing.Point(612, 31);
+            this.cb_gioitinh.Location = new System.Drawing.Point(480, 42);
             this.cb_gioitinh.Name = "cb_gioitinh";
-            this.cb_gioitinh.Size = new System.Drawing.Size(121, 21);
+            this.cb_gioitinh.Size = new System.Drawing.Size(166, 28);
             this.cb_gioitinh.TabIndex = 33;
             this.cb_gioitinh.SelectedIndexChanged += new System.EventHandler(this.cb_gioitinh_SelectedIndexChanged);
             // 
-            // SearchNhanVien
+            // SearchKhach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,8 +128,8 @@ namespace DuLich.GUI.QuanLyKhach
             this.Controls.Add(this.tv_ngaybatdau);
             this.Controls.Add(this.tv_searchbox);
             this.Controls.Add(this.tb_search);
-            this.Name = "SearchNhanVien";
-            this.Size = new System.Drawing.Size(800, 61);
+            this.Name = "SearchKhach";
+            this.Size = new System.Drawing.Size(800, 100);
             this.ResumeLayout(false);
             this.PerformLayout();
 

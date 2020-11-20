@@ -51,7 +51,7 @@ namespace DuLich
             // 
             // btn_quanlytour
             // 
-            this.btn_quanlytour.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quanlytour.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.btn_quanlytour.Location = new System.Drawing.Point(11, 37);
             this.btn_quanlytour.Name = "btn_quanlytour";
             this.btn_quanlytour.Size = new System.Drawing.Size(165, 32);
@@ -62,7 +62,7 @@ namespace DuLich
             // 
             // btn_quanlydiadiem
             // 
-            this.btn_quanlydiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quanlydiadiem.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.btn_quanlydiadiem.Location = new System.Drawing.Point(11, 173);
             this.btn_quanlydiadiem.Name = "btn_quanlydiadiem";
             this.btn_quanlydiadiem.Size = new System.Drawing.Size(165, 32);
@@ -73,7 +73,7 @@ namespace DuLich
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.button1.Location = new System.Drawing.Point(12, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 32);
@@ -84,7 +84,7 @@ namespace DuLich
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.button2.Location = new System.Drawing.Point(11, 236);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 32);
@@ -95,7 +95,7 @@ namespace DuLich
             // 
             // btn_quanlynhanvien
             // 
-            this.btn_quanlynhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quanlynhanvien.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.btn_quanlynhanvien.Location = new System.Drawing.Point(11, 296);
             this.btn_quanlynhanvien.Name = "btn_quanlynhanvien";
             this.btn_quanlynhanvien.Size = new System.Drawing.Size(165, 32);
@@ -106,6 +106,7 @@ namespace DuLich
             // 
             // btn_thongke
             // 
+            this.btn_thongke.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.btn_thongke.Location = new System.Drawing.Point(12, 355);
             this.btn_thongke.Name = "btn_thongke";
             this.btn_thongke.Size = new System.Drawing.Size(165, 33);

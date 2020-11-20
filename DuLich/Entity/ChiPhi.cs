@@ -13,5 +13,15 @@ namespace DuLich.BUS
         public virtual LoaiChiPhi LoaiChiPhi { get; set; }
         public long giaTri { get; set; }
         public string ghiChu { get; set; }
+
+        public void Map(ChiPhi chiphi)
+        {
+            LoaiChiPhi = chiphi.LoaiChiPhi;
+            Doan =chiphi.Doan;
+            ghiChu =chiphi.ghiChu;
+            giaTri = chiphi.giaTri;
+            id =chiphi.id;
+        }
+
     }
 }

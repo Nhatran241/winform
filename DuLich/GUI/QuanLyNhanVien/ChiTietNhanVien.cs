@@ -10,20 +10,23 @@ namespace DuLich.GUI.QuanLyNhanVien
     public partial class ChiTietNhanVien : Form
     {
         private IChiTietNhanVienListener chiTietNhanVienListener;
-        private NhanVien nhanVien = new NhanVien();
+        private NhanVien baseNhanVien;
+        private NhanVien editNhanVien;
         private bool isEditing = false;
         public ChiTietNhanVien(NhanVien nhanVien, IChiTietNhanVienListener chiTietNhanVienListener)
         {
             InitializeComponent();
             this.chiTietNhanVienListener = chiTietNhanVienListener;
-            this.nhanVien.MaNhanVien = nhanVien.MaNhanVien;
-            this.nhanVien.TenNhanVien = nhanVien.TenNhanVien;
-            this.nhanVien.GioiTinh = nhanVien.GioiTinh;
-            this.nhanVien.DiaChi = nhanVien.DiaChi;
-            this.nhanVien.NgaySinh = nhanVien.NgaySinh;
-            this.nhanVien.PhanCongs = nhanVien.PhanCongs;
-            this.nhanVien.SoCmnd = nhanVien.SoCmnd;
-            this.nhanVien.SoDienThoai = nhanVien.SoDienThoai;
+            baseNhanVien = nhanVien;
+            editNhanVien = new NhanVien();
+            editNhanVien.MaNhanVien = nhanVien.MaNhanVien;
+            editNhanVien.TenNhanVien = nhanVien.TenNhanVien;
+            editNhanVien.GioiTinh = nhanVien.GioiTinh;
+            editNhanVien.DiaChi = nhanVien.DiaChi;
+            editNhanVien.NgaySinh = nhanVien.NgaySinh;
+            editNhanVien.PhanCongs = nhanVien.PhanCongs;
+            editNhanVien.SoCmnd = nhanVien.SoCmnd;
+            editNhanVien.SoDienThoai = nhanVien.SoDienThoai;
             InitUI();
         }
 
@@ -39,14 +42,14 @@ namespace DuLich.GUI.QuanLyNhanVien
             {
                 cb_gioitinh.Items.Add(s);
             }
-            if (nhanVien.MaNhanVien != 0)
+            if (editNhanVien.MaNhanVien != 0)
             {
-                tb_name.Text = nhanVien.TenNhanVien.ToString();
-                tb_sdt.Text = nhanVien.SoDienThoai.ToString();
-                tb_diaChi.Text = nhanVien.DiaChi.ToString();
-                tb_cmnd.Text = nhanVien.SoCmnd.ToString();
-                datepicker_ngaysinh.Value = nhanVien.NgaySinh;
-                cb_gioitinh.SelectedItem = nhanVien.GioiTinh;
+                tb_name.Text = editNhanVien.TenNhanVien.ToString();
+                tb_sdt.Text = editNhanVien.SoDienThoai.ToString();
+                tb_diaChi.Text = editNhanVien.DiaChi.ToString();
+                tb_cmnd.Text = editNhanVien.SoCmnd.ToString();
+                datepicker_ngaysinh.Value = editNhanVien.NgaySinh;
+                cb_gioitinh.SelectedItem = editNhanVien.GioiTinh;
             }else
             {
                 cb_gioitinh.SelectedItem = gioitinh.First();
@@ -58,50 +61,54 @@ namespace DuLich.GUI.QuanLyNhanVien
 
         private void tb_name_TextChanged(object sender, EventArgs e)
         {
-                nhanVien.TenNhanVien = tb_name.Text.Trim();
+                editNhanVien.TenNhanVien = tb_name.Text.Trim();
         }
 
         private void tb_diaChi_TextChanged(object sender, EventArgs e)
         {
-                nhanVien.DiaChi = tb_diaChi.Text.Trim();
+                editNhanVien.DiaChi = tb_diaChi.Text.Trim();
         }
 
         private void tb_sdt_TextChanged(object sender, EventArgs e)
         {
-                nhanVien.SoDienThoai = tb_sdt.Text.Trim();
+                editNhanVien.SoDienThoai = tb_sdt.Text.Trim();
         }
 
         private void tb_cmnd_TextChanged(object sender, EventArgs e)
         {
-                nhanVien.SoCmnd = tb_cmnd.Text.Trim();
+                editNhanVien.SoCmnd = tb_cmnd.Text.Trim();
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(nhanVien.TenNhanVien))
+            if (string.IsNullOrEmpty(editNhanVien.TenNhanVien))
             {
                 MessageBox.Show("Tên nhân viên không được để trống");
             }else
-             if (string.IsNullOrEmpty(nhanVien.DiaChi))
+             if (string.IsNullOrEmpty(editNhanVien.DiaChi))
             {
                 MessageBox.Show("Địa chỉ nhân viên không được để trống");
             }
             else
-            if (string.IsNullOrEmpty(nhanVien.SoDienThoai))
+            if (string.IsNullOrEmpty(editNhanVien.SoDienThoai))
             {
                 MessageBox.Show("Số điện thoại không được để trống");
-            }else if (IsPhoneNumber(nhanVien.SoDienThoai))
+            }else if (IsPhoneNumber(editNhanVien.SoDienThoai))
             {
                 MessageBox.Show("Số điện thoại không hợp lệ");
             }else
-            if (string.IsNullOrEmpty(nhanVien.SoCmnd))
+            if (string.IsNullOrEmpty(editNhanVien.SoCmnd))
             {
                 MessageBox.Show("Số chứng minh nhân dân không được để trống");
-            }else if (IsCmndNumber(nhanVien.SoCmnd))
+            }else if (IsCmndNumber(editNhanVien.SoCmnd))
             {
                 MessageBox.Show("Số chứng minh nhân dân không hợp lệ");
-            }else
-            chiTietNhanVienListener.onChiTietNhanVien_LuuClick(nhanVien);
+            }
+            else
+            {
+                baseNhanVien.Map(editNhanVien);
+                chiTietNhanVienListener.onChiTietNhanVien_LuuClick(baseNhanVien);
+            }
         }
         public bool IsPhoneNumber(string number)
         {
@@ -118,12 +125,12 @@ namespace DuLich.GUI.QuanLyNhanVien
 
         private void datepicker_ngaysinh_ValueChanged(object sender, EventArgs e)
         {
-            nhanVien.NgaySinh = datepicker_ngaysinh.Value;
+            editNhanVien.NgaySinh = datepicker_ngaysinh.Value;
         }
 
         private void cb_gioitinh_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nhanVien.GioiTinh = (string)cb_gioitinh.SelectedItem;
+            editNhanVien.GioiTinh = (string)cb_gioitinh.SelectedItem;
         }
 
         private void tb_sdt_KeyPress(object sender, KeyPressEventArgs e)

@@ -17,6 +17,8 @@ namespace DuLich.Entity
         }
         public DuLichContext() : base("dulichdb")
         {
+            
+            /**
             try
             {
                 if (DiaDiem.ToList().Count == 0)
@@ -70,6 +72,7 @@ namespace DuLich.Entity
                
         }
             catch(Exception e) { }
+            **/
         }
         public DbSet<Tour> Touris { get; set; }
         public DbSet<Gia> Gia { get; set; }
@@ -119,11 +122,11 @@ namespace DuLich.Entity
                        .HasMany<DoanKhach>(g => g.DoanKhachs)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
-            
+
             modelBuilder.Entity<Khach>()
-                      .HasMany<DoanKhach>(g => g.DoanKhachs)
-                      .WithRequired(s => s.Khach)
-                      .WillCascadeOnDelete();
+                     .HasMany<DoanKhach>(g => g.DoanKhachs)
+                       .WithRequired(s => s.Khach)
+                       .WillCascadeOnDelete();
 
 
 

@@ -1,5 +1,6 @@
 ﻿using DuLich.BUS;
 using DuLich.Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace DuLich.DAL
         {
             return context.Khaches.ToList();
         }
-        public static Task AddOrUpdate(Khach newKhach)
+        public static Task AddOrUpdate(Khach khach)
         {
-            context.Khaches.AddOrUpdate(newKhach);
+            context.Khaches.AddOrUpdate(khach);
             return context.SaveChangesAsync();
         }
         public static Task Delete(Khach khach)

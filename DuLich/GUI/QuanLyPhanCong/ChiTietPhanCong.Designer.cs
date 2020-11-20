@@ -1,6 +1,6 @@
 ﻿namespace DuLich.GUI.QuanLyPhanCong
 {
-    partial class FromPhanCong
+    partial class ChiTietPhanCong
     {
         /// <summary>
         /// Required designer variable.

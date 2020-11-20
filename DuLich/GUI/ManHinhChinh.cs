@@ -109,7 +109,7 @@ namespace DuLich
 
         public void onDanhSachTour_ThemClick()
         {
-            userControl = new ChiTietTouris(null, LoaiDal.GetAll(), new List<Gia>(), DiaDiemDal.GetAll(), new List<DiaDiem>(), this, this,this);
+            userControl = new ChiTietTouris(new Tour(), LoaiDal.GetAll(), new List<Gia>(), DiaDiemDal.GetAll(), new List<DiaDiem>(), this, this,this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
@@ -463,20 +463,20 @@ namespace DuLich
 namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachPhanCong.IDanhSachPhanCongListener,
-        FromPhanCong.IChiTietPhanCongListener
+        ChiTietPhanCong.IChiTietPhanCongListener
     {
-        FromPhanCong form;
+        ChiTietPhanCong form;
         public void onDanhSachPhanCongThemClick(Doan doanHienTai)
         {
             PhanCong phanCong = new PhanCong();
             phanCong.Doan = doanHienTai;
-            form = new FromPhanCong(phanCong,NhanVienDal.GetAll(),this);
+            form = new ChiTietPhanCong(phanCong,NhanVienDal.GetAll(),this);
             form.ShowDialog();
         }
 
         public void onDanhSachPhanCongSuaClick(PhanCong phanCong)
         {
-            form = new FromPhanCong(phanCong, NhanVienDal.GetAll(), this);
+            form = new ChiTietPhanCong(phanCong, NhanVienDal.GetAll(), this);
             form.ShowDialog();
         }
 
@@ -644,6 +644,7 @@ namespace DuLich
 
         public void onLuuKhachClick(Khach khach)
         {
+            Console.WriteLine("luu"+khach.GetHashCode());
             khach.AddOrUpdate().ContinueWith(task =>
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
@@ -663,6 +664,7 @@ namespace DuLich
 
         public void onDanhSachKhach_ThemClick() {
             Khach khach = new Khach();
+            Console.WriteLine("new"+khach.GetHashCode());
             chiTietKhach = new ChiTietKhach(khach, this);
             chiTietKhach.ShowDialog();
         }

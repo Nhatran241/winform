@@ -49,10 +49,10 @@ namespace DuLich.GUI.QuanLyTouris
             if(!ten.Equals(""))
             {
                 if (loai.Id == -1) {
-                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.Name.Contains(ten)).ToList();
+                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.Name.ToLower().Contains(ten)).ToList();
                 }else
                 {
-                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.Name.Contains(ten) && c.Loai.Id == loai.Id).ToList();
+                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.Name.ToLower().Contains(ten) && c.Loai.Id == loai.Id).ToList();
                 }
             }
             else

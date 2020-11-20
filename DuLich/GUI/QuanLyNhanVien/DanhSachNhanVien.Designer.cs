@@ -35,16 +35,16 @@ namespace DuLich.GUI.QuanLyNhanVien
             this.btn_xoa_nhanvien = new System.Windows.Forms.Button();
             this.btn_sua_nhanvien = new System.Windows.Forms.Button();
             this.dataGridViewNhanVien = new System.Windows.Forms.DataGridView();
+            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchNhanVien1 = new DuLich.GUI.QuanLyNhanVien.SearchNhanVien();
             this.maNhanVienDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenNhanVienDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.diaChiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soDienThoaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soCmndDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nhanVienBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.searchNhanVien1 = new DuLich.GUI.QuanLyNhanVien.SearchNhanVien();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource)).BeginInit();
@@ -52,9 +52,10 @@ namespace DuLich.GUI.QuanLyNhanVien
             // 
             // btn_them_nhanvien
             // 
-            this.btn_them_nhanvien.Location = new System.Drawing.Point(22, 67);
+            this.btn_them_nhanvien.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.btn_them_nhanvien.Location = new System.Drawing.Point(19, 96);
             this.btn_them_nhanvien.Name = "btn_them_nhanvien";
-            this.btn_them_nhanvien.Size = new System.Drawing.Size(75, 23);
+            this.btn_them_nhanvien.Size = new System.Drawing.Size(84, 33);
             this.btn_them_nhanvien.TabIndex = 9;
             this.btn_them_nhanvien.Text = "Thêm";
             this.btn_them_nhanvien.UseVisualStyleBackColor = true;
@@ -62,9 +63,10 @@ namespace DuLich.GUI.QuanLyNhanVien
             // 
             // btn_xoa_nhanvien
             // 
-            this.btn_xoa_nhanvien.Location = new System.Drawing.Point(693, 67);
+            this.btn_xoa_nhanvien.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.btn_xoa_nhanvien.Location = new System.Drawing.Point(685, 96);
             this.btn_xoa_nhanvien.Name = "btn_xoa_nhanvien";
-            this.btn_xoa_nhanvien.Size = new System.Drawing.Size(75, 23);
+            this.btn_xoa_nhanvien.Size = new System.Drawing.Size(84, 33);
             this.btn_xoa_nhanvien.TabIndex = 11;
             this.btn_xoa_nhanvien.Text = "Xóa";
             this.btn_xoa_nhanvien.UseVisualStyleBackColor = true;
@@ -72,9 +74,10 @@ namespace DuLich.GUI.QuanLyNhanVien
             // 
             // btn_sua_nhanvien
             // 
-            this.btn_sua_nhanvien.Location = new System.Drawing.Point(347, 67);
+            this.btn_sua_nhanvien.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.btn_sua_nhanvien.Location = new System.Drawing.Point(341, 96);
             this.btn_sua_nhanvien.Name = "btn_sua_nhanvien";
-            this.btn_sua_nhanvien.Size = new System.Drawing.Size(75, 23);
+            this.btn_sua_nhanvien.Size = new System.Drawing.Size(84, 33);
             this.btn_sua_nhanvien.TabIndex = 10;
             this.btn_sua_nhanvien.Text = "Sửa";
             this.btn_sua_nhanvien.UseVisualStyleBackColor = true;
@@ -101,77 +104,77 @@ namespace DuLich.GUI.QuanLyNhanVien
             this.NgaySinh,
             this.GioiTinh});
             this.dataGridViewNhanVien.DataSource = this.nhanVienBindingSource1;
-            this.dataGridViewNhanVien.Location = new System.Drawing.Point(-3, 106);
+            this.dataGridViewNhanVien.Location = new System.Drawing.Point(-3, 138);
             this.dataGridViewNhanVien.MultiSelect = false;
             this.dataGridViewNhanVien.Name = "dataGridViewNhanVien";
             this.dataGridViewNhanVien.ReadOnly = true;
             this.dataGridViewNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewNhanVien.Size = new System.Drawing.Size(800, 491);
+            this.dataGridViewNhanVien.Size = new System.Drawing.Size(800, 459);
             this.dataGridViewNhanVien.TabIndex = 12;
-            // 
-            // maNhanVienDataGridViewTextBoxColumn
-            // 
-            this.maNhanVienDataGridViewTextBoxColumn.DataPropertyName = "MaNhanVien";
-            this.maNhanVienDataGridViewTextBoxColumn.HeaderText = "MaNhanVien";
-            this.maNhanVienDataGridViewTextBoxColumn.Name = "maNhanVienDataGridViewTextBoxColumn";
-            this.maNhanVienDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tenNhanVienDataGridViewTextBoxColumn
-            // 
-            this.tenNhanVienDataGridViewTextBoxColumn.DataPropertyName = "TenNhanVien";
-            this.tenNhanVienDataGridViewTextBoxColumn.HeaderText = "TenNhanVien";
-            this.tenNhanVienDataGridViewTextBoxColumn.Name = "tenNhanVienDataGridViewTextBoxColumn";
-            this.tenNhanVienDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // diaChiDataGridViewTextBoxColumn
-            // 
-            this.diaChiDataGridViewTextBoxColumn.DataPropertyName = "DiaChi";
-            this.diaChiDataGridViewTextBoxColumn.HeaderText = "DiaChi";
-            this.diaChiDataGridViewTextBoxColumn.Name = "diaChiDataGridViewTextBoxColumn";
-            this.diaChiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // soDienThoaiDataGridViewTextBoxColumn
-            // 
-            this.soDienThoaiDataGridViewTextBoxColumn.DataPropertyName = "SoDienThoai";
-            this.soDienThoaiDataGridViewTextBoxColumn.HeaderText = "SoDienThoai";
-            this.soDienThoaiDataGridViewTextBoxColumn.Name = "soDienThoaiDataGridViewTextBoxColumn";
-            this.soDienThoaiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // soCmndDataGridViewTextBoxColumn
-            // 
-            this.soCmndDataGridViewTextBoxColumn.DataPropertyName = "SoCmnd";
-            this.soCmndDataGridViewTextBoxColumn.HeaderText = "SoCmnd";
-            this.soCmndDataGridViewTextBoxColumn.Name = "soCmndDataGridViewTextBoxColumn";
-            this.soCmndDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // NgaySinh
             // 
             this.NgaySinh.DataPropertyName = "NgaySinh";
-            this.NgaySinh.HeaderText = "NgaySinh";
+            this.NgaySinh.HeaderText = "Ngày sinh";
             this.NgaySinh.Name = "NgaySinh";
             this.NgaySinh.ReadOnly = true;
             // 
             // GioiTinh
             // 
             this.GioiTinh.DataPropertyName = "GioiTinh";
-            this.GioiTinh.HeaderText = "GioiTinh";
+            this.GioiTinh.HeaderText = "Giới tính";
             this.GioiTinh.Name = "GioiTinh";
             this.GioiTinh.ReadOnly = true;
-            // 
-            // nhanVienBindingSource1
-            // 
-            this.nhanVienBindingSource1.DataSource = typeof(NhanVien);
-            // 
-            // nhanVienBindingSource
-            // 
-            this.nhanVienBindingSource.DataSource = typeof(NhanVien);
             // 
             // searchNhanVien1
             // 
             this.searchNhanVien1.Location = new System.Drawing.Point(0, 0);
             this.searchNhanVien1.Name = "searchNhanVien1";
-            this.searchNhanVien1.Size = new System.Drawing.Size(800, 61);
+            this.searchNhanVien1.Size = new System.Drawing.Size(800, 90);
             this.searchNhanVien1.TabIndex = 13;
+            // 
+            // maNhanVienDataGridViewTextBoxColumn
+            // 
+            this.maNhanVienDataGridViewTextBoxColumn.DataPropertyName = "MaNhanVien";
+            this.maNhanVienDataGridViewTextBoxColumn.HeaderText = "Mã nhân viên";
+            this.maNhanVienDataGridViewTextBoxColumn.Name = "maNhanVienDataGridViewTextBoxColumn";
+            this.maNhanVienDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tenNhanVienDataGridViewTextBoxColumn
+            // 
+            this.tenNhanVienDataGridViewTextBoxColumn.DataPropertyName = "TenNhanVien";
+            this.tenNhanVienDataGridViewTextBoxColumn.HeaderText = "Tên nhân viên";
+            this.tenNhanVienDataGridViewTextBoxColumn.Name = "tenNhanVienDataGridViewTextBoxColumn";
+            this.tenNhanVienDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // diaChiDataGridViewTextBoxColumn
+            // 
+            this.diaChiDataGridViewTextBoxColumn.DataPropertyName = "DiaChi";
+            this.diaChiDataGridViewTextBoxColumn.HeaderText = "Đia chỉ";
+            this.diaChiDataGridViewTextBoxColumn.Name = "diaChiDataGridViewTextBoxColumn";
+            this.diaChiDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // soDienThoaiDataGridViewTextBoxColumn
+            // 
+            this.soDienThoaiDataGridViewTextBoxColumn.DataPropertyName = "SoDienThoai";
+            this.soDienThoaiDataGridViewTextBoxColumn.HeaderText = "Số điện thoại";
+            this.soDienThoaiDataGridViewTextBoxColumn.Name = "soDienThoaiDataGridViewTextBoxColumn";
+            this.soDienThoaiDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // soCmndDataGridViewTextBoxColumn
+            // 
+            this.soCmndDataGridViewTextBoxColumn.DataPropertyName = "SoCmnd";
+            this.soCmndDataGridViewTextBoxColumn.HeaderText = "Số chứng minh ";
+            this.soCmndDataGridViewTextBoxColumn.Name = "soCmndDataGridViewTextBoxColumn";
+            this.soCmndDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nhanVienBindingSource1
+            // 
+            this.nhanVienBindingSource1.DataSource = typeof(DuLich.BUS.NhanVien);
+            // 
+            // nhanVienBindingSource
+            // 
+            this.nhanVienBindingSource.DataSource = typeof(DuLich.BUS.NhanVien);
             // 
             // DanhSachNhanVien
             // 

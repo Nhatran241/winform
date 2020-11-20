@@ -66,46 +66,50 @@ namespace DuLich.View.QuanLyTouris
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(565, 17);
+            this.label6.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.label6.Location = new System.Drawing.Point(475, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 13);
+            this.label6.Size = new System.Drawing.Size(39, 23);
             this.label6.TabIndex = 24;
             this.label6.Text = "Đến";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(408, 15);
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.label7.Location = new System.Drawing.Point(206, 11);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.Size = new System.Drawing.Size(28, 23);
             this.label7.TabIndex = 23;
             this.label7.Text = "Từ";
             // 
             // datepicker_den_doanhthutour
             // 
-            this.datepicker_den_doanhthutour.Location = new System.Drawing.Point(617, 11);
+            this.datepicker_den_doanhthutour.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.datepicker_den_doanhthutour.Location = new System.Drawing.Point(520, 10);
             this.datepicker_den_doanhthutour.Name = "datepicker_den_doanhthutour";
-            this.datepicker_den_doanhthutour.Size = new System.Drawing.Size(95, 20);
+            this.datepicker_den_doanhthutour.Size = new System.Drawing.Size(201, 23);
             this.datepicker_den_doanhthutour.TabIndex = 22;
             this.datepicker_den_doanhthutour.ValueChanged += new System.EventHandler(this.datepicker_den_doanhthutour_ValueChanged);
             // 
             // datepicker_tu_doanhthutour
             // 
-            this.datepicker_tu_doanhthutour.Location = new System.Drawing.Point(445, 10);
+            this.datepicker_tu_doanhthutour.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.datepicker_tu_doanhthutour.Location = new System.Drawing.Point(251, 10);
             this.datepicker_tu_doanhthutour.Name = "datepicker_tu_doanhthutour";
-            this.datepicker_tu_doanhthutour.Size = new System.Drawing.Size(95, 20);
+            this.datepicker_tu_doanhthutour.Size = new System.Drawing.Size(205, 23);
             this.datepicker_tu_doanhthutour.TabIndex = 21;
             this.datepicker_tu_doanhthutour.ValueChanged += new System.EventHandler(this.datepicker_tu_doanhthutour_ValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 10);
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.label4.Location = new System.Drawing.Point(9, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(360, 18);
+            this.label4.Size = new System.Drawing.Size(150, 23);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Thống Kê Doanh Thu / Chi Phí / Lợi Nhuân theo Đoàn";
+            this.label4.Text = "Thống kê theo đoàn";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // listview_thongketheodoan
@@ -164,90 +168,100 @@ namespace DuLich.View.QuanLyTouris
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(10, 404);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 13);
+            this.label1.Size = new System.Drawing.Size(244, 23);
             this.label1.TabIndex = 26;
             this.label1.Text = "Tổng số đoàn triển khai tour này : ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(318, 404);
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(487, 404);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 13);
+            this.label2.Size = new System.Drawing.Size(200, 23);
             this.label2.TabIndex = 27;
             this.label2.Text = "Tổng số khách tham quan :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 440);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(119, 23);
             this.label3.TabIndex = 28;
             this.label3.Text = "Tổng danh thu :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(262, 440);
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(306, 440);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 13);
+            this.label5.Size = new System.Drawing.Size(103, 23);
             this.label5.TabIndex = 29;
             this.label5.Text = "Tổng chi phí :";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(517, 440);
+            this.label8.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(565, 440);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 13);
+            this.label8.Size = new System.Drawing.Size(122, 23);
             this.label8.TabIndex = 30;
             this.label8.Text = "Tổng lợi nhuận :";
             // 
             // tv_tongdoan
             // 
             this.tv_tongdoan.AutoSize = true;
-            this.tv_tongdoan.Location = new System.Drawing.Point(186, 404);
+            this.tv_tongdoan.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tongdoan.Location = new System.Drawing.Point(260, 404);
             this.tv_tongdoan.Name = "tv_tongdoan";
-            this.tv_tongdoan.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongdoan.Size = new System.Drawing.Size(19, 23);
             this.tv_tongdoan.TabIndex = 31;
             this.tv_tongdoan.Text = "0";
             // 
             // tv_tongkhach
             // 
             this.tv_tongkhach.AutoSize = true;
-            this.tv_tongkhach.Location = new System.Drawing.Point(462, 404);
+            this.tv_tongkhach.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tongkhach.Location = new System.Drawing.Point(702, 404);
             this.tv_tongkhach.Name = "tv_tongkhach";
-            this.tv_tongkhach.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongkhach.Size = new System.Drawing.Size(19, 23);
             this.tv_tongkhach.TabIndex = 32;
             this.tv_tongkhach.Text = "0";
             // 
             // tv_tongdanhthu
             // 
             this.tv_tongdanhthu.AutoSize = true;
-            this.tv_tongdanhthu.Location = new System.Drawing.Point(99, 440);
+            this.tv_tongdanhthu.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tongdanhthu.Location = new System.Drawing.Point(140, 440);
             this.tv_tongdanhthu.Name = "tv_tongdanhthu";
-            this.tv_tongdanhthu.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongdanhthu.Size = new System.Drawing.Size(19, 23);
             this.tv_tongdanhthu.TabIndex = 33;
             this.tv_tongdanhthu.Text = "0";
             // 
             // tv_tongchiphi
             // 
             this.tv_tongchiphi.AutoSize = true;
-            this.tv_tongchiphi.Location = new System.Drawing.Point(342, 440);
+            this.tv_tongchiphi.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tongchiphi.Location = new System.Drawing.Point(415, 440);
             this.tv_tongchiphi.Name = "tv_tongchiphi";
-            this.tv_tongchiphi.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongchiphi.Size = new System.Drawing.Size(19, 23);
             this.tv_tongchiphi.TabIndex = 34;
             this.tv_tongchiphi.Text = "0";
             // 
             // tv_tongloinhuan
             // 
             this.tv_tongloinhuan.AutoSize = true;
-            this.tv_tongloinhuan.Location = new System.Drawing.Point(607, 440);
+            this.tv_tongloinhuan.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tongloinhuan.Location = new System.Drawing.Point(702, 440);
             this.tv_tongloinhuan.Name = "tv_tongloinhuan";
-            this.tv_tongloinhuan.Size = new System.Drawing.Size(13, 13);
+            this.tv_tongloinhuan.Size = new System.Drawing.Size(19, 23);
             this.tv_tongloinhuan.TabIndex = 35;
             this.tv_tongloinhuan.Text = "0";
             // 
@@ -272,7 +286,8 @@ namespace DuLich.View.QuanLyTouris
             this.Controls.Add(this.datepicker_tu_doanhthutour);
             this.Controls.Add(this.label4);
             this.Name = "ThongKeTheoTour";
-            this.Size = new System.Drawing.Size(760, 1200);
+            this.Size = new System.Drawing.Size(739, 488);
+            this.Load += new System.EventHandler(this.ThongKeTheoTour_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).EndInit();

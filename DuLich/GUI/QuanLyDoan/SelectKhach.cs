@@ -11,7 +11,7 @@ namespace DuLich.GUI.QuanLyDoan
         private List<Khach> danhSachKhachTrongDoan = new List<Khach>();
         private List<Khach> danhSachKhachTrongDoanTam = new List<Khach>();
         private ISelectKhachListener selectKhachListener;
-        private Doan doanHienTai;
+        private Doan baseDoan;
         public SelectKhach(Doan doanHienTai, List<Khach> danhSachTatCaKhach, List<Khach> danhSachKhachTrongDoan, ISelectKhachListener selectKhachListener)
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace DuLich.GUI.QuanLyDoan
             this.danhSachKhachTrongDoan.AddRange(danhSachKhachTrongDoan);
             this.danhSachKhachTrongDoanTam.AddRange(danhSachKhachTrongDoan);
             this.selectKhachListener = selectKhachListener;
-            this.doanHienTai = doanHienTai;
+            baseDoan = doanHienTai;
             initData();
         }
 
@@ -141,7 +141,7 @@ namespace DuLich.GUI.QuanLyDoan
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            selectKhachListener.onSelectKhach_LuuClick(doanHienTai,danhSachKhachTrongDoan);
+            selectKhachListener.onSelectKhach_LuuClick(baseDoan,danhSachKhachTrongDoan);
         }
 
         internal void ShowLuuButton()
@@ -152,6 +152,31 @@ namespace DuLich.GUI.QuanLyDoan
         internal void HideLuuButton()
         {
             btn_luu.Visible = false;
+        }
+
+        private void SelectKhach_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tv_khachtrongdoan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_up_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_down_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tv_tatcakhach_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

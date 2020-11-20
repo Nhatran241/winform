@@ -7,6 +7,12 @@ namespace DuLich.BUS
 {
     public partial class DiaDiem
     {
+        public void Map(DiaDiem diaDiem)
+        {
+            ChiTietTours = diaDiem.ChiTietTours;
+            MaDienDiem = diaDiem.MaDienDiem;
+            TenDiaDiem = diaDiem.TenDiaDiem;
+        }
         public Task AddOrUpdate()
         {
             return DiaDiemDal.AddOrUpdate(this);

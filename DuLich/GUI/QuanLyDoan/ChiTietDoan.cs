@@ -17,8 +17,9 @@ namespace DuLich.GUI.QuanLyDoan
         private UserControl chiTietUserControl;
         private bool isEditing = false;
 
-        private Doan doanHienTai;
-        private IEnumerable<Tour> danhSachTour;
+        private Doan baseDoan;
+        private Doan editDoan;
+        private List<Tour> danhSachTour;
         private List<PhanCong> danhSachPhanCong;
         private List<Khach> danhSachTatCaKhach;
         private List<Khach> danhSachKhachTrongDoan;
@@ -27,7 +28,6 @@ namespace DuLich.GUI.QuanLyDoan
         public ChiTietDoan(Doan doan, List<Tour> listTour, List<PhanCong> phanCongs,List<ChiPhi> danhSachChiPhi, List<Khach> tatcakhach, List<Khach> khachtrongdoan,IChiTietDoanListener chiTietDoanListener,DanhSachPhanCong.IDanhSachPhanCongListener danhSachPhanCongListener,SelectKhach.ISelectKhachListener selectKhachListener,DanhSachChiPhi.IDanhSachChiPhiListener danhSachChiPhiListener)
         {
             InitializeComponent();
-            this.doanHienTai = doan;
             this.chiTietDoanListener = chiTietDoanListener;
             this.danhSachPhanCongListener = danhSachPhanCongListener;
             this.selectKhachListener = selectKhachListener;
@@ -37,13 +37,32 @@ namespace DuLich.GUI.QuanLyDoan
             this.danhSachPhanCong = phanCongs;
             this.danhSachTatCaKhach = tatcakhach;
             this.danhSachKhachTrongDoan = khachtrongdoan;
-            if(danhSachTour.Count() == 0)
+            this.baseDoan = doan;
+            editDoan = new Doan();
+            editDoan.ChiPhis = doan.ChiPhis;
+            editDoan.DoanKhachs = doan.DoanKhachs;
+            editDoan.GiaApDung = doan.GiaApDung;
+            editDoan.Id = doan.Id;
+            editDoan.Name = doan.Name;
+            editDoan.PhanCongs = doan.PhanCongs;
+            editDoan.ThoiGianBatDau = doan.ThoiGianBatDau;
+            editDoan.ThoiGianKetThuc = doan.ThoiGianKetThuc;
+            editDoan.Touris = doan.Touris;
+
+            if (danhSachTour.Count() == 0)
             {
                 panel_thongbao.Visible = true;
                 return;
             }
             if (doan.Id == 0)
-                CreateNewRecord();
+            {
+                this.editDoan = new Doan();
+                if (editDoan.Touris == null)
+                    editDoan.Touris = danhSachTour.First();
+                textbox_id.Enabled = false;
+                btn_xoa.Visible = false;
+                isEditing = true;
+            }    
             UpdateComponentState();
             InitData();
         }
@@ -51,7 +70,7 @@ namespace DuLich.GUI.QuanLyDoan
 
         public void UpdateComponentState()
         {
-            if (doanHienTai.Id == 0)
+            if (editDoan.Id == 0)
             {
                 tab_chitiet.Enabled = false;
                 tb_loinhuan.Visible = false;
@@ -70,27 +89,17 @@ namespace DuLich.GUI.QuanLyDoan
             if (isEditing)
             {
                 EnableComponent();
-                btn_chinhsua.Image = Properties.Resources.diskette;
+                btn_chinhsua.Text = "Lưu";
 
             }
             else
             {
                 DisableComponent();
-                btn_chinhsua.Image = Properties.Resources.edit__1_;
+                btn_chinhsua.Text = "Sửa";
             }
        
         }
 
-        public void CreateNewRecord()
-        {
-            this.doanHienTai = new Doan();
-            if(doanHienTai.Touris == null)
-                doanHienTai.Touris = danhSachTour.First();
-            textbox_id.Enabled = false;
-            btn_xoa.Visible = false;
-            isEditing = true;
-            UpdateComponentState();
-        }
         private void DisableComponent()
         {
            // textbox_id.Visible = true;
@@ -126,7 +135,7 @@ namespace DuLich.GUI.QuanLyDoan
         private void InitData()
         {
           
-            InitUI(doanHienTai);
+            InitUI(editDoan);
             if (tab_chitiet.SelectedTab.Name.Equals("tab_phancong"))
             {
                 if(danhSachPhanCong != null)
@@ -147,17 +156,20 @@ namespace DuLich.GUI.QuanLyDoan
         public void LoadDanhSachPhanCong(List<PhanCong> phanCongs)
         {
             tab_phancong.Controls.Clear();
-            tab_phancong.Controls.Add(new DanhSachPhanCong(doanHienTai,phanCongs,danhSachPhanCongListener));
+            tab_phancong.Controls.Add(new DanhSachPhanCong(baseDoan,phanCongs,danhSachPhanCongListener));
         }
         public void LoadDanhSachKhach(List<Khach> danhSachTatCaKhach,List<Khach> danhSachKhachTrongDoan)
         {
             tab_khach.Controls.Clear();
-            tab_khach.Controls.Add(new SelectKhach(doanHienTai,danhSachTatCaKhach,danhSachKhachTrongDoan,selectKhachListener));
+            UpDateLoiNhuan();
+            tab_khach.Controls.Add(new SelectKhach(baseDoan,danhSachTatCaKhach,danhSachKhachTrongDoan,selectKhachListener));
         }
         private void LoadDanhSachChiPhi(List<ChiPhi> danhSachChiPhi)
         {
             tab_chiphi.Controls.Clear();
-            tab_chiphi.Controls.Add(new DanhSachChiPhi(doanHienTai,danhSachChiPhi,danhSachChiPhiListener));
+            tab_chiphi.Controls.Add(new DanhSachChiPhi(baseDoan,danhSachChiPhi,danhSachChiPhiListener));
+            UpDateLoiNhuan();
+
         }
 
         public void InitUI(Doan doan)
@@ -165,10 +177,10 @@ namespace DuLich.GUI.QuanLyDoan
             if (doan.Id != 0)
             {
                 textbox_id.Text = doan.Id.ToString();
-                datepicker_batdau.Value = doanHienTai.ThoiGianBatDau;
-                datepicker_ketthuc.Value = doanHienTai.ThoiGianKetThuc;
-                datepicker_batdau.MinDate = doanHienTai.GiaApDung.ThoiGianBatDau;
-                datepicker_ketthuc.MinDate = doanHienTai.GiaApDung.ThoiGianKetThuc;
+                datepicker_batdau.Value = editDoan.ThoiGianBatDau;
+                datepicker_ketthuc.Value = editDoan.ThoiGianKetThuc;
+                datepicker_batdau.MinDate = editDoan.GiaApDung.ThoiGianBatDau;
+                datepicker_ketthuc.MinDate = editDoan.GiaApDung.ThoiGianKetThuc;
             }
             else
             {
@@ -182,18 +194,18 @@ namespace DuLich.GUI.QuanLyDoan
                 }
             }
            
-            if(doanHienTai.Touris != null)
-                combobox_loai.Text = doanHienTai.Touris.Name;
-            if (doanHienTai.Touris!= null && doanHienTai.Touris.Gias != null)
+            if(editDoan.Touris != null)
+                combobox_loai.Text = editDoan.Touris.Name;
+            if (editDoan.Touris!= null && editDoan.Touris.Gias != null)
             {
                 if(cb_giatour.Items.Count ==0)
                 {
-                    foreach (Gia gia in doanHienTai.Touris.Gias)
+                    foreach (Gia gia in editDoan.Touris.Gias)
                     {
                         cb_giatour.Items.Add(gia);
                     }
                 }
-                cb_giatour.SelectedItem = doanHienTai.GiaApDung;
+                cb_giatour.SelectedItem = editDoan.GiaApDung;
             }
             UpDateLoiNhuan();
         }
@@ -201,12 +213,12 @@ namespace DuLich.GUI.QuanLyDoan
         {
             if (!isEditing)
                 return;
-            doanHienTai.Touris = danhSachTour.ToArray()[combobox_loai.SelectedIndex];
-            cb_giatour.DataSource = doanHienTai.Touris.Gias.ToList();
+            editDoan.Touris = danhSachTour.ToArray()[combobox_loai.SelectedIndex];
+            cb_giatour.DataSource = editDoan.Touris.Gias.ToList();
         }
         private void cb_giatour_SelectedIndexChanged(object sender, EventArgs e)
         {
-            doanHienTai.GiaApDung = doanHienTai.Touris.Gias.ToArray()[cb_giatour.SelectedIndex];
+            editDoan.GiaApDung = editDoan.Touris.Gias.ToArray()[cb_giatour.SelectedIndex];
             UpdateMinMaxDatepicker();
         }
 
@@ -216,9 +228,9 @@ namespace DuLich.GUI.QuanLyDoan
             datepicker_batdau.MinDate = temp.MinDate;
             datepicker_batdau.MaxDate = temp.MaxDate;
             datepicker_ketthuc.MinDate = temp.MinDate;
-            datepicker_batdau.MaxDate = doanHienTai.GiaApDung.ThoiGianKetThuc;
-            datepicker_batdau.MinDate = doanHienTai.GiaApDung.ThoiGianBatDau;
-            datepicker_ketthuc.MinDate = doanHienTai.GiaApDung.ThoiGianBatDau;
+            datepicker_batdau.MaxDate = editDoan.GiaApDung.ThoiGianKetThuc;
+            datepicker_batdau.MinDate = editDoan.GiaApDung.ThoiGianBatDau;
+            datepicker_ketthuc.MinDate = editDoan.GiaApDung.ThoiGianBatDau;
         }
 
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
@@ -251,14 +263,14 @@ namespace DuLich.GUI.QuanLyDoan
             if (isEditing)
             {
 
-                if (Validation(doanHienTai))
+                if (Validation(editDoan))
                 {
-
-                    chiTietDoanListener.onChiTietDoanClick_CapNhat(doanHienTai);
+                    baseDoan.Map(editDoan);
+                    chiTietDoanListener.onChiTietDoanClick_CapNhat(baseDoan);
                 }
                 else
                 {
-                    MessageBox.Show("Tên hoặc loại tour không được bỏ trống");
+                    MessageBox.Show("Tên đoàn hoặc tour không được bỏ trống");
                     return;
                 }
             }
@@ -268,30 +280,30 @@ namespace DuLich.GUI.QuanLyDoan
 
         private void textbox_name_TextChanged(object sender, EventArgs e)
         {
-            doanHienTai.Name = textbox_name.Text.Trim();
+            editDoan.Name = textbox_name.Text.Trim();
         }
 
         private bool Validation(Doan doanSauKhiCapNhat)
         {
-            if (doanSauKhiCapNhat.Name == "" || doanSauKhiCapNhat.Touris == null)
+            if (string.IsNullOrEmpty(doanSauKhiCapNhat.Name) || doanSauKhiCapNhat.Touris == null)
                 return false;
             return true;
         }
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            chiTietDoanListener.onChiTietDoanClick_Xoa(doanHienTai);
+            chiTietDoanListener.onChiTietDoanClick_Xoa(baseDoan);
         }
 
 
         private void datepicker_batdau_ValueChanged(object sender, EventArgs e)
         {
 
-            doanHienTai.ThoiGianBatDau = datepicker_batdau.Value;
-            if (doanHienTai.ThoiGianBatDau > doanHienTai.ThoiGianKetThuc)
+            editDoan.ThoiGianBatDau = datepicker_batdau.Value;
+            if (editDoan.ThoiGianBatDau > editDoan.ThoiGianKetThuc)
             {
-                doanHienTai.ThoiGianKetThuc = doanHienTai.ThoiGianBatDau;
-                datepicker_ketthuc.Value = doanHienTai.ThoiGianBatDau;
+                editDoan.ThoiGianKetThuc = editDoan.ThoiGianBatDau;
+                datepicker_ketthuc.Value = editDoan.ThoiGianBatDau;
             }
             UpDateLoiNhuan();
 
@@ -299,17 +311,18 @@ namespace DuLich.GUI.QuanLyDoan
 
         private void UpDateLoiNhuan()
         {
-            if (doanHienTai.GiaApDung != null)
+            if (editDoan.GiaApDung != null)
             {
-                if (doanHienTai.ChiPhis != null)
+                if (editDoan.ChiPhis != null)
                 {
-                    long tongChiPhi = doanHienTai.ChiPhis.Sum(c => c.giaTri);
+                    long tongChiPhi = editDoan.ChiPhis.Sum(c => c.giaTri);
                     tb_tongchiphi.Text = tongChiPhi.ToString();
-                    tb_loinhuan.Text = ((doanHienTai.GiaApDung.GiaTri * doanHienTai.GetListKhach().Count()) - tongChiPhi).ToString();
+                    tb_loinhuan.Text = ((editDoan.GiaApDung.GiaTri * editDoan.GetListKhach().Count()) - tongChiPhi).ToString();
+                    Console.WriteLine("chiphi :"+tongChiPhi+" + list khách"+ editDoan.GetListKhach().Count());
                 }
                 else
                 {
-                    tb_loinhuan.Text = doanHienTai.GiaApDung.GiaTri.ToString();
+                    tb_loinhuan.Text = tb_loinhuan.Text = ((editDoan.GiaApDung.GiaTri * editDoan.GetListKhach().Count())).ToString();
                     tb_tongchiphi.Text = "0";
                 }
             }
@@ -348,11 +361,11 @@ private void TinhGiaTour()
 
         private void datepicker_ketthuc_ValueChanged_1(object sender, EventArgs e)
         {
-            doanHienTai.ThoiGianKetThuc = datepicker_ketthuc.Value;
-            if (doanHienTai.ThoiGianKetThuc < doanHienTai.ThoiGianBatDau)
+            editDoan.ThoiGianKetThuc = datepicker_ketthuc.Value;
+            if (editDoan.ThoiGianKetThuc < editDoan.ThoiGianBatDau)
             {
-                doanHienTai.ThoiGianKetThuc = doanHienTai.ThoiGianBatDau;
-                datepicker_ketthuc.Value = doanHienTai.ThoiGianBatDau;
+                editDoan.ThoiGianKetThuc = editDoan.ThoiGianBatDau;
+                datepicker_ketthuc.Value = editDoan.ThoiGianBatDau;
             }
         }
 

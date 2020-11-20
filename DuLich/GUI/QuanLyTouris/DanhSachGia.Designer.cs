@@ -51,31 +51,34 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_them_gia
             // 
+            this.btn_them_gia.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.btn_them_gia.Location = new System.Drawing.Point(17, 4);
             this.btn_them_gia.Name = "btn_them_gia";
-            this.btn_them_gia.Size = new System.Drawing.Size(75, 23);
+            this.btn_them_gia.Size = new System.Drawing.Size(85, 40);
             this.btn_them_gia.TabIndex = 1;
-            this.btn_them_gia.Text = "Them";
+            this.btn_them_gia.Text = "Thêm";
             this.btn_them_gia.UseVisualStyleBackColor = true;
             this.btn_them_gia.Click += new System.EventHandler(this.btn_them_gia_Click);
             // 
             // btn_xoa_gia
             // 
+            this.btn_xoa_gia.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.btn_xoa_gia.Location = new System.Drawing.Point(689, 4);
             this.btn_xoa_gia.Name = "btn_xoa_gia";
-            this.btn_xoa_gia.Size = new System.Drawing.Size(75, 23);
+            this.btn_xoa_gia.Size = new System.Drawing.Size(78, 40);
             this.btn_xoa_gia.TabIndex = 2;
-            this.btn_xoa_gia.Text = "Xoa";
+            this.btn_xoa_gia.Text = "Xóa";
             this.btn_xoa_gia.UseVisualStyleBackColor = true;
             this.btn_xoa_gia.Click += new System.EventHandler(this.btn_xoa_gia_Click);
             // 
             // btn_sua_gia
             // 
+            this.btn_sua_gia.Font = new System.Drawing.Font("Arial Narrow", 11F);
             this.btn_sua_gia.Location = new System.Drawing.Point(353, 4);
             this.btn_sua_gia.Name = "btn_sua_gia";
-            this.btn_sua_gia.Size = new System.Drawing.Size(75, 23);
+            this.btn_sua_gia.Size = new System.Drawing.Size(87, 40);
             this.btn_sua_gia.TabIndex = 3;
-            this.btn_sua_gia.Text = "Sua";
+            this.btn_sua_gia.Text = "Sửa";
             this.btn_sua_gia.UseVisualStyleBackColor = true;
             this.btn_sua_gia.Click += new System.EventHandler(this.btn_sua_gia_Click);
             // 
@@ -93,28 +96,28 @@ namespace DuLich.GUI.QuanLyTouris
             this.thoiGianBatDauDataGridViewTextBoxColumn,
             this.thoiGianKetThucDataGridViewTextBoxColumn});
             this.dataGridViewGia.DataSource = this.giaBindingSource;
-            this.dataGridViewGia.Location = new System.Drawing.Point(0, 33);
+            this.dataGridViewGia.Location = new System.Drawing.Point(0, 50);
             this.dataGridViewGia.MultiSelect = false;
             this.dataGridViewGia.Name = "dataGridViewGia";
             this.dataGridViewGia.ReadOnly = true;
             this.dataGridViewGia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewGia.Size = new System.Drawing.Size(767, 378);
+            this.dataGridViewGia.Size = new System.Drawing.Size(767, 361);
             this.dataGridViewGia.TabIndex = 0;
             this.dataGridViewGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaClick);
             this.dataGridViewGia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaDoubleClick);
             // 
             // giaBindingSource
             // 
-            this.giaBindingSource.DataSource = typeof(Gia);
+            this.giaBindingSource.DataSource = typeof(DuLich.BUS.Gia);
             // 
             // tourisBindingSource
             // 
-            this.tourisBindingSource.DataSource = typeof(Tour);
+            this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
             // 
             // maGiaDataGridViewTextBoxColumn
             // 
             this.maGiaDataGridViewTextBoxColumn.DataPropertyName = "MaGia";
-            this.maGiaDataGridViewTextBoxColumn.HeaderText = "MaGia";
+            this.maGiaDataGridViewTextBoxColumn.HeaderText = "Mã giá";
             this.maGiaDataGridViewTextBoxColumn.Name = "maGiaDataGridViewTextBoxColumn";
             this.maGiaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -124,21 +127,21 @@ namespace DuLich.GUI.QuanLyTouris
             dataGridViewCellStyle1.Format = "C1";
             dataGridViewCellStyle1.NullValue = null;
             this.giaTriDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.giaTriDataGridViewTextBoxColumn.HeaderText = "GiaTri";
+            this.giaTriDataGridViewTextBoxColumn.HeaderText = "Giá trị";
             this.giaTriDataGridViewTextBoxColumn.Name = "giaTriDataGridViewTextBoxColumn";
             this.giaTriDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // thoiGianBatDauDataGridViewTextBoxColumn
             // 
             this.thoiGianBatDauDataGridViewTextBoxColumn.DataPropertyName = "ThoiGianBatDau";
-            this.thoiGianBatDauDataGridViewTextBoxColumn.HeaderText = "ThoiGianBatDau";
+            this.thoiGianBatDauDataGridViewTextBoxColumn.HeaderText = "Thời gian bắt đầu";
             this.thoiGianBatDauDataGridViewTextBoxColumn.Name = "thoiGianBatDauDataGridViewTextBoxColumn";
             this.thoiGianBatDauDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // thoiGianKetThucDataGridViewTextBoxColumn
             // 
             this.thoiGianKetThucDataGridViewTextBoxColumn.DataPropertyName = "ThoiGianKetThuc";
-            this.thoiGianKetThucDataGridViewTextBoxColumn.HeaderText = "ThoiGianKetThuc";
+            this.thoiGianKetThucDataGridViewTextBoxColumn.HeaderText = "Thời gian kết thúc";
             this.thoiGianKetThucDataGridViewTextBoxColumn.Name = "thoiGianKetThucDataGridViewTextBoxColumn";
             this.thoiGianKetThucDataGridViewTextBoxColumn.ReadOnly = true;
             // 

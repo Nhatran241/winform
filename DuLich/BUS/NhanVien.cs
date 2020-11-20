@@ -33,5 +33,17 @@ namespace DuLich.BUS
         {
             return GetListDoanPhanCong().Where(c => c.ThoiGianBatDau >= from && c.ThoiGianKetThuc <= to).ToList();
         }
+        public void Map(NhanVien nhanVien)
+        {
+            MaNhanVien = nhanVien.MaNhanVien;
+            TenNhanVien = nhanVien.TenNhanVien;
+            GioiTinh = nhanVien.GioiTinh;
+            DiaChi = nhanVien.DiaChi;
+            NgaySinh = nhanVien.NgaySinh;
+            PhanCongs = nhanVien.PhanCongs;
+            SoCmnd = nhanVien.SoCmnd;
+            SoDienThoai = nhanVien.SoDienThoai;
+
+        }
     }
 }

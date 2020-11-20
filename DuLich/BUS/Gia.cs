@@ -16,5 +16,15 @@ namespace DuLich.BUS
         {
             return GiaDal.Delete(this);
         }
+
+        public void Map(Gia editGia)
+        {
+            MaGia = editGia.MaGia;
+            GiaTri = editGia.GiaTri;
+            ThoiGianBatDau = editGia.ThoiGianBatDau;
+            ThoiGianKetThuc = editGia.ThoiGianKetThuc;
+            touris = editGia.touris;
+
+        }
     }
 }

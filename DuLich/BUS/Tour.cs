@@ -100,5 +100,14 @@ namespace DuLich.BUS
         {
             return GetListDoanOfTour().Where(c => c.ThoiGianBatDau >= from && c.ThoiGianKetThuc <= to).ToList();
         }
+        public void Map(Tour editTour)
+        {
+            Id = editTour.Id;
+            ChiTietTours = editTour.ChiTietTours;
+            Doans = editTour.Doans;
+            ChiTietTours = editTour.ChiTietTours;
+            Loai = editTour.Loai;
+            Name = editTour.Name;
+        }
     }
 }

@@ -23,6 +23,19 @@ namespace DuLich.BUS
         {
             DoanDal.DeleteAllKhach(this);
         }
+        public void Map(Doan doan)
+        {
+            ChiPhis = doan.ChiPhis;
+            DoanKhachs = doan.DoanKhachs;
+            GiaApDung = doan.GiaApDung;
+            Id = doan.Id;
+            Name = doan.Name;
+            PhanCongs = doan.PhanCongs;
+            ThoiGianBatDau = doan.ThoiGianBatDau;
+            ThoiGianKetThuc = doan.ThoiGianKetThuc;
+            Touris = doan.Touris;
+
+        }
 
         public Task UpdateListDoanKhach(List<Khach> danhSachKhachTrongDoanUpdate)
         {

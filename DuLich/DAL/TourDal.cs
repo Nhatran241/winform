@@ -1,6 +1,8 @@
 ﻿using DuLich.BUS;
 using DuLich.Entity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,14 +18,31 @@ namespace DuLich.DAL
         {
             return context.Touris.ToList();
         }
-        public static Task AddOrUpdate(Tour newTour)
+        public static Task AddOrUpdate(Tour tour)
         {
-            context.Touris.AddOrUpdate(newTour);
-            return context.SaveChangesAsync();
+            var result = context.Touris.SingleOrDefault(b => b.Id == tour.Id);
+            if (result != null)
+            {
+                result.ChiTietTours = tour.ChiTietTours;
+                result.Doans = tour.Doans;
+                result.Gias = tour.Gias;
+                result.Loai = tour.Loai;
+                result.Name = tour.Name;
+                return context.SaveChangesAsync();
+            }
+            else
+            {
+                context.Touris.Add(tour);
+                return context.SaveChangesAsync();
+            }
         }
         public static Task Delete(Tour touris)
         {
-            context.Touris.Remove(touris);
+            var result = context.Touris.SingleOrDefault(b => b.Id == touris.Id);
+            if (result != null)
+            {
+                context.Touris.Remove(touris);
+            }
             return context.SaveChangesAsync();
         }
         public static List<Doan> GetListDoanByTourId(int id)
@@ -68,5 +87,7 @@ namespace DuLich.DAL
         {
             return GetAll().Where(c => c.Gias!=null && c.Gias.Count >0).ToList();
         }
+
+       
     }
 }

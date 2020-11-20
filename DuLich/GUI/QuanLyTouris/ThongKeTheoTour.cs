@@ -95,5 +95,10 @@ namespace DuLich.View.QuanLyTouris
                 datepicker_tu_doanhthutour.Value = datepicker_den_doanhthutour.Value;
             InitThongKeTour();
         }
+
+        private void ThongKeTheoTour_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

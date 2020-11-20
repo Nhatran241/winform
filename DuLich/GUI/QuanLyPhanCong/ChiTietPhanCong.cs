@@ -6,43 +6,44 @@ using System.Windows.Forms;
 
 namespace DuLich.GUI.QuanLyPhanCong
 {
-    public partial class FromPhanCong : Form
+    public partial class ChiTietPhanCong : Form
     {
         private IChiTietPhanCongListener chiTietPhanCongListener;
-        private PhanCong phanCongHienTai = new PhanCong();
+        private PhanCong basePhanCong;
+        private PhanCong editPhanCong;
         private List<NhanVien> danhSachNhanVien = new List<NhanVien>();
         private List<String> danhSachNhiemVu;
         private bool isEditing = false;
-        public FromPhanCong(PhanCong phanCong, List<NhanVien> danhSachNhanVien, IChiTietPhanCongListener chiTietPhanCongListener)
+        public ChiTietPhanCong(PhanCong phanCong, List<NhanVien> danhSachNhanVien, IChiTietPhanCongListener chiTietPhanCongListener)
         {
             InitializeComponent();
-            phanCongHienTai.MaPhanCong = phanCong.MaPhanCong;
-            phanCongHienTai.Doan = phanCong.Doan;
-            phanCongHienTai.NhanVien = phanCong.NhanVien;
-            phanCongHienTai.NhiemVu = phanCong.NhiemVu;
+            basePhanCong = phanCong;
+
+            editPhanCong = new PhanCong();
+            editPhanCong.MaPhanCong = phanCong.MaPhanCong;
+            editPhanCong.Doan = phanCong.Doan;
+            editPhanCong.NhanVien = phanCong.NhanVien;
+            editPhanCong.NhiemVu = phanCong.NhiemVu;
+
             danhSachNhiemVu = new List<string>();
             danhSachNhiemVu.Add("Hướng Dẫn Viên");
             danhSachNhiemVu.Add("Lái Xe");
             danhSachNhiemVu.Add("Trưởng Đoàn");
             this.chiTietPhanCongListener = chiTietPhanCongListener;
             this.danhSachNhanVien.AddRange(danhSachNhanVien);
-            if (phanCongHienTai.MaPhanCong == 0)
+            if (editPhanCong.MaPhanCong == 0)
             {
-                CreateNewRecord();
+                editPhanCong.NhanVien = danhSachNhanVien.First();
+                editPhanCong.NhiemVu = danhSachNhiemVu.First();
             }
             InitUI();
         }
-        public void CreateNewRecord()
-        {
-            phanCongHienTai.NhanVien = danhSachNhanVien.First();
-            phanCongHienTai.NhiemVu = danhSachNhiemVu.First();
-        }
-
+       
         private void InitUI()
         {
-            if (phanCongHienTai.MaPhanCong != 0)
+            if (editPhanCong.MaPhanCong != 0)
             {
-                tb_maphancong.Text = phanCongHienTai.MaPhanCong.ToString();
+                tb_maphancong.Text = editPhanCong.MaPhanCong.ToString();
             }
             else tb_maphancong.Text = "Mã tự động";
             tb_maphancong.Enabled = false;
@@ -50,20 +51,21 @@ namespace DuLich.GUI.QuanLyPhanCong
             {
                 combobox_nhanvien.Items.Add(nhanVien);
             }
-            combobox_nhanvien.SelectedItem = phanCongHienTai.NhanVien;
+            combobox_nhanvien.SelectedItem = editPhanCong.NhanVien;
             foreach(String nv in danhSachNhiemVu)
             {
                 cb_nhiemvu.Items.Add(nv);
             }
-            cb_nhiemvu.SelectedItem = phanCongHienTai.NhiemVu;
+            cb_nhiemvu.SelectedItem = editPhanCong.NhiemVu;
 
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if (Validation(phanCongHienTai))
+            if (Validation(editPhanCong))
             {
-                chiTietPhanCongListener.onChiTietPhanCong_LuuClick(phanCongHienTai.Doan, phanCongHienTai);
+                basePhanCong.Map(editPhanCong);
+                chiTietPhanCongListener.onChiTietPhanCong_LuuClick(basePhanCong.Doan, basePhanCong);
             }
             else
             {
@@ -93,13 +95,13 @@ namespace DuLich.GUI.QuanLyPhanCong
         private void cb_nhiemvu_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
-            phanCongHienTai.NhiemVu = danhSachNhiemVu.ToArray()[cb_nhiemvu.SelectedIndex];
+            editPhanCong.NhiemVu = danhSachNhiemVu.ToArray()[cb_nhiemvu.SelectedIndex];
         }
 
         private void combobox_nhanvien_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            phanCongHienTai.NhanVien = danhSachNhanVien.ToArray()[combobox_nhanvien.SelectedIndex];
+            editPhanCong.NhanVien = danhSachNhanVien.ToArray()[combobox_nhanvien.SelectedIndex];
         }
     }
 }
