@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DuLich.Entity;
-using DuLich.Model.Entity;
+using DuLich.BUS;
+using System.Text.RegularExpressions;
 
 namespace DuLich.GUI.QuanLyNhanVien
 {
-    public partial class ChiTietNhanVien : UserControl
+    public partial class ChiTietNhanVien : Form
     {
         private IChiTietNhanVienListener chiTietNhanVienListener;
-        private NhanVien nhanVien;
+        private NhanVien baseNhanVien;
+        private NhanVien editNhanVien;
         private bool isEditing = false;
         public ChiTietNhanVien(NhanVien nhanVien, IChiTietNhanVienListener chiTietNhanVienListener)
         {
             InitializeComponent();
             this.chiTietNhanVienListener = chiTietNhanVienListener;
-            this.nhanVien = nhanVien;
+            baseNhanVien = nhanVien;
+            editNhanVien = new NhanVien();
+            editNhanVien.Map(nhanVien);
             InitUI();
         }
 
@@ -32,59 +30,129 @@ namespace DuLich.GUI.QuanLyNhanVien
         }
         private void InitUI()
         {
-            if(!string.IsNullOrEmpty(nhanVien.TenNhanVien))
-            tb_name.Text = nhanVien.TenNhanVien.ToString();
-            if (!string.IsNullOrEmpty(nhanVien.SoDienThoai))
-                tb_sdt.Text = nhanVien.SoDienThoai.ToString();
-            if (!string.IsNullOrEmpty(nhanVien.DiaChi ))
-                tb_diaChi.Text = nhanVien.DiaChi.ToString();
-            if (!string.IsNullOrEmpty(nhanVien.SoCmnd))
-                tb_cmnd.Text = nhanVien.SoCmnd.ToString();
+            List<string> gioitinh = new List<string> { "Nam", "Nữ", "Khác" };
+            foreach (string s in gioitinh)
+            {
+                cb_gioitinh.Items.Add(s);
+            }
+            if (editNhanVien.MaNhanVien != 0)
+            {
+                tb_name.Text = editNhanVien.TenNhanVien.ToString();
+                tb_sdt.Text = editNhanVien.SoDienThoai.ToString();
+                tb_diaChi.Text = editNhanVien.DiaChi.ToString();
+                tb_cmnd.Text = editNhanVien.SoCmnd.ToString();
+                datepicker_ngaysinh.Value = editNhanVien.NgaySinh;
+                cb_gioitinh.SelectedItem = editNhanVien.GioiTinh;
+            }else
+            {
+                cb_gioitinh.SelectedItem = gioitinh.First();
+            }
+            
+
+            datepicker_ngaysinh.MaxDate = DateTime.Today.AddDays(-(18 * 365));
         }
 
         private void tb_name_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tb_name.Text))
-            {
-                nhanVien.TenNhanVien = tb_name.Text.Trim();
-            }
-            
-           
+                editNhanVien.TenNhanVien = tb_name.Text.Trim();
         }
 
         private void tb_diaChi_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tb_diaChi.Text))
-            {
-                nhanVien.DiaChi = tb_diaChi.Text.Trim();
-            }
+                editNhanVien.DiaChi = tb_diaChi.Text.Trim();
         }
 
         private void tb_sdt_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tb_sdt.Text))
-            {
-                nhanVien.SoDienThoai = tb_sdt.Text.Trim();
-            }
+                editNhanVien.SoDienThoai = tb_sdt.Text.Trim();
         }
 
         private void tb_cmnd_TextChanged(object sender, EventArgs e)
         {
-
-            if (!string.IsNullOrEmpty(tb_cmnd.Text))
-            {
-                nhanVien.SoCmnd = tb_cmnd.Text.Trim();
-            }
+                editNhanVien.SoCmnd = tb_cmnd.Text.Trim();
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-          chiTietNhanVienListener.onChiTietNhanVien_LuuClick(nhanVien);
+            if (string.IsNullOrEmpty(editNhanVien.TenNhanVien))
+            {
+                MessageBox.Show("Tên nhân viên không được để trống");
+            }else
+             if (string.IsNullOrEmpty(editNhanVien.DiaChi))
+            {
+                MessageBox.Show("Địa chỉ nhân viên không được để trống");
+            }
+            else
+            if (string.IsNullOrEmpty(editNhanVien.SoDienThoai))
+            {
+                MessageBox.Show("Số điện thoại không được để trống");
+            }else if (IsPhoneNumber(editNhanVien.SoDienThoai))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ");
+            }else
+            if (string.IsNullOrEmpty(editNhanVien.SoCmnd))
+            {
+                MessageBox.Show("Số chứng minh nhân dân không được để trống");
+            }else if (IsCmndNumber(editNhanVien.SoCmnd))
+            {
+                MessageBox.Show("Số chứng minh nhân dân không hợp lệ");
+            }
+            else
+            {
+                baseNhanVien.Map(editNhanVien);
+                chiTietNhanVienListener.onChiTietNhanVien_LuuClick(baseNhanVien);
+            }
         }
-
+        public bool IsPhoneNumber(string number)
+        {
+            return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
+        }
+        public bool IsCmndNumber(string number)
+        {
+            return Regex.Match(number, @"^(\+[0-9])$").Success;
+        }
         private void btn_huy_Click(object sender, EventArgs e)
         {
             chiTietNhanVienListener.onChiTietNhanVien_HuyClick();
+        }
+
+        private void datepicker_ngaysinh_ValueChanged(object sender, EventArgs e)
+        {
+            editNhanVien.NgaySinh = datepicker_ngaysinh.Value;
+        }
+
+        private void cb_gioitinh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            editNhanVien.GioiTinh = (string)cb_gioitinh.SelectedItem;
+        }
+
+        private void tb_sdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void tb_cmnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

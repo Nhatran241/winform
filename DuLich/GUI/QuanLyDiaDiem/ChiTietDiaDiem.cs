@@ -1,56 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DuLich.Model.Entity;
+using DuLich.BUS;
 
-namespace DuLich.View.QuanLyDiaDiem
+namespace DuLich.GUI.QuanLyDiaDiem
 {
-    public partial class ChiTietDiaDiem : UserControl
+    public partial class ChiTietDiaDiem : Form
     {
         private IChiTietDiaDiemListener chiTietDiaDiemListener;
-        private DiaDiem diaDiem = new DiaDiem();
+        private DiaDiem baseDiaDiem;
+        private DiaDiem editDiaDiem;
         private bool isEditing = false;
         public ChiTietDiaDiem(DiaDiem diaDiem, IChiTietDiaDiemListener chiTietDiaDiemListener)
         {
             InitializeComponent();
             this.chiTietDiaDiemListener = chiTietDiaDiemListener;
-            this.diaDiem.MaDienDiem = diaDiem.MaDienDiem;
-            this.diaDiem.TenDiaDiem = diaDiem.TenDiaDiem;
+            baseDiaDiem = diaDiem;
+            editDiaDiem = new DiaDiem();
+            editDiaDiem.Map(diaDiem);
             InitUI();
         }
 
         private void InitUI()
         {
-            tb_madiadiem.Text = diaDiem.MaDienDiem.ToString();
-            if (diaDiem.MaDienDiem == 0)
+            if (editDiaDiem.MaDienDiem == 0)
             {
-                tb_madiadiem.Visible = false;
-                tv_madiadiem.Visible = false;
+                tb_madiadiem.Text = "Mã tự động";
             }
             else
             {
-                tb_madiadiem.Visible = true;
-                tv_madiadiem.Visible = true;
-                tb_madiadiem.Enabled = false;
-                tb_tendiadiem.Text = diaDiem.TenDiaDiem.ToString();
+                tb_madiadiem.Text = editDiaDiem.MaDienDiem.ToString();
+                tb_tendiadiem.Text = editDiaDiem.TenDiaDiem.ToString();
             }
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if (Validation(diaDiem))
+            if (Validation(editDiaDiem))
             {
-                chiTietDiaDiemListener.onLuuDiaDiem(diaDiem);
+                baseDiaDiem.Map(editDiaDiem);
+                chiTietDiaDiemListener.onLuuDiaDiem(baseDiaDiem);
             }
             else
             {
-                MessageBox.Show("Địa điểm không hợp lệ hoặc đã tồn tại");
+                MessageBox.Show("Tên địa điểm không được để trống hoặc không được trùng");
             }
         }
 
@@ -65,13 +57,17 @@ namespace DuLich.View.QuanLyDiaDiem
         }
         private bool Validation(DiaDiem diaDiem)
         {
+            if (diaDiem.TenDiaDiem == null || diaDiem.TenDiaDiem.Equals(""))
+                return false;
+            if (diaDiem.GetDiaDiemByName(diaDiem.TenDiaDiem) != null)
+                return false;
             return true;
         }
 
     
         private void tb_TenDiaDiem_TextChanged(object sender, EventArgs e)
         {
-            diaDiem.TenDiaDiem = tb_tendiadiem.Text.Trim();
+            editDiaDiem.TenDiaDiem = tb_tendiadiem.Text.Trim();
         }
 
     }

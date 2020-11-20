@@ -1,11 +1,12 @@
-﻿namespace DuLich.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+﻿using DuLich.Entity;
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DuLich.Entity.DuLichContext>
+namespace DuLich.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<DuLichContext>
     {
         public Configuration()
         {

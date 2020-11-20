@@ -1,24 +1,22 @@
-﻿using DuLich.Model.Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DuLich.Entity
+namespace DuLich.BUS
 {
-    public class Doan
+    public partial class Doan
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public String Name { get; set; }
+        public int MaDoan { get; set; }
+        public String TenDoan { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-        public Touris Touris { get; set; }
-        public ICollection<DoanKhach> DoanKhachs { get; set; }
-        public ICollection<PhanCong> PhanCongs { get; set; }
+        public virtual Gia GiaApDung { get; set; }
+        public virtual Tour Tour { get; set; }
+        public virtual ICollection<DoanKhach> DoanKhach { get; set; }
+        public virtual ICollection<PhanCong> PhanCong { get; set; }
+        public virtual ICollection<ChiPhi> ChiPhi { get; set; }
     }
 }

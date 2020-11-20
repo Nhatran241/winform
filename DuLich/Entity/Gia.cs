@@ -1,15 +1,12 @@
-﻿using DuLich.Entity;
+﻿using DuLich.DAL;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace DuLich.Model.Entity
+namespace DuLich.BUS
 {
-    public class Gia
+    public partial class Gia
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,8 +14,11 @@ namespace DuLich.Model.Entity
         public long GiaTri { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-
-        public Touris touris { get; set; }
-        public int TourisId { get; set; }
+        public virtual Tour Tour { get; set; }
+        public override string ToString()
+        {
+            return GiaTri.ToString();
+        }
+        
     }
 }

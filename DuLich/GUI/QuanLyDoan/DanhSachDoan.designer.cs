@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DuLich.BUS;
+using System;
+using System.Windows.Forms;
 
-namespace DuLich.View.QuanLyDoan
+namespace DuLich.GUI.QuanLyDoan
 {
     partial class DanhSachDoan
     {
@@ -30,76 +32,134 @@ namespace DuLich.View.QuanLyDoan
         /// </summary>
         private void InitializeComponent()
         {
-            this.list_doan = new System.Windows.Forms.ListView();
-            this.ma_doan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ten_doan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ngay_bd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ngay_kt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.components = new System.ComponentModel.Container();
+            this.dataGridViewDoan = new System.Windows.Forms.DataGridView();
+            this.btn_xoa = new System.Windows.Forms.Button();
+            this.btn_them = new System.Windows.Forms.Button();
+            this.searchDoan1 = new DuLich.GUI.QuanLyDoan.SearchDoan();
+            this.doanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.maDoanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenDoanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thoiGianBatDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thoiGianKetThucDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doanBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // list_doan
+            // dataGridViewDoan
             // 
-            this.list_doan.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ma_doan,
-            this.ten_doan,
-            this.ngay_bd,
-            this.ngay_kt});
-            this.list_doan.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.list_doan.FullRowSelect = true;
-            this.list_doan.GridLines = true;
-            this.list_doan.HideSelection = false;
-            this.list_doan.Location = new System.Drawing.Point(0, 0);
-            this.list_doan.Name = "list_doan";
-            this.list_doan.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.list_doan.Size = new System.Drawing.Size(512, 512);
-            this.list_doan.TabIndex = 0;
-            this.list_doan.TileSize = new System.Drawing.Size(10, 20);
-            this.list_doan.UseCompatibleStateImageBehavior = false;
-            this.list_doan.View = System.Windows.Forms.View.Details;
-            this.list_doan.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.dataGridViewDoan.AllowUserToAddRows = false;
+            this.dataGridViewDoan.AllowUserToDeleteRows = false;
+            this.dataGridViewDoan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewDoan.AutoGenerateColumns = false;
+            this.dataGridViewDoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewDoan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridViewDoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.maDoanDataGridViewTextBoxColumn,
+            this.tenDoanDataGridViewTextBoxColumn,
+            this.thoiGianBatDauDataGridViewTextBoxColumn,
+            this.thoiGianKetThucDataGridViewTextBoxColumn});
+            this.dataGridViewDoan.DataSource = this.doanBindingSource;
+            this.dataGridViewDoan.Location = new System.Drawing.Point(0, 113);
+            this.dataGridViewDoan.MultiSelect = false;
+            this.dataGridViewDoan.Name = "dataGridViewDoan";
+            this.dataGridViewDoan.ReadOnly = true;
+            this.dataGridViewDoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDoan.Size = new System.Drawing.Size(800, 487);
+            this.dataGridViewDoan.TabIndex = 1;
+            this.dataGridViewDoan.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnDoanDoubleClick);
             // 
-            // ma_doan
+            // btn_xoa
             // 
-            this.ma_doan.Text = "Mã";
-            this.ma_doan.Width = 50;
+            this.btn_xoa.Image = global::DuLich.Properties.Resources.remove;
+            this.btn_xoa.Location = new System.Drawing.Point(747, 33);
+            this.btn_xoa.Name = "btn_xoa";
+            this.btn_xoa.Size = new System.Drawing.Size(40, 40);
+            this.btn_xoa.TabIndex = 5;
+            this.btn_xoa.UseVisualStyleBackColor = true;
+            this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
-            // ten_doan
+            // btn_them
             // 
-            this.ten_doan.Text = "Tên Đoàn";
-            this.ten_doan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ten_doan.Width = 180;
+            this.btn_them.Image = global::DuLich.Properties.Resources.plus;
+            this.btn_them.Location = new System.Drawing.Point(701, 33);
+            this.btn_them.Name = "btn_them";
+            this.btn_them.Size = new System.Drawing.Size(40, 40);
+            this.btn_them.TabIndex = 4;
+            this.btn_them.UseVisualStyleBackColor = true;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
             // 
-            // ngay_bd
+            // searchDoan1
             // 
-            this.ngay_bd.Text = "Ngày Bắt Đầu";
-            this.ngay_bd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ngay_bd.Width = 160;
+            this.searchDoan1.Location = new System.Drawing.Point(3, 4);
+            this.searchDoan1.Name = "searchDoan1";
+            this.searchDoan1.Size = new System.Drawing.Size(670, 103);
+            this.searchDoan1.TabIndex = 2;
             // 
-            // ngay_kt
+            // doanBindingSource
             // 
-            this.ngay_kt.Text = "Ngày Kết Thúc";
-            this.ngay_kt.Width = 120;
+            this.doanBindingSource.DataSource = typeof(DuLich.BUS.Doan);
+            // 
+            // maDoanDataGridViewTextBoxColumn
+            // 
+            this.maDoanDataGridViewTextBoxColumn.DataPropertyName = "MaDoan";
+            this.maDoanDataGridViewTextBoxColumn.HeaderText = "Mã đoàn";
+            this.maDoanDataGridViewTextBoxColumn.Name = "maDoanDataGridViewTextBoxColumn";
+            this.maDoanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tenDoanDataGridViewTextBoxColumn
+            // 
+            this.tenDoanDataGridViewTextBoxColumn.DataPropertyName = "TenDoan";
+            this.tenDoanDataGridViewTextBoxColumn.HeaderText = "Tên đoàn";
+            this.tenDoanDataGridViewTextBoxColumn.Name = "tenDoanDataGridViewTextBoxColumn";
+            this.tenDoanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // thoiGianBatDauDataGridViewTextBoxColumn
+            // 
+            this.thoiGianBatDauDataGridViewTextBoxColumn.DataPropertyName = "ThoiGianBatDau";
+            this.thoiGianBatDauDataGridViewTextBoxColumn.HeaderText = "Thời gian bắt đầu";
+            this.thoiGianBatDauDataGridViewTextBoxColumn.Name = "thoiGianBatDauDataGridViewTextBoxColumn";
+            this.thoiGianBatDauDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // thoiGianKetThucDataGridViewTextBoxColumn
+            // 
+            this.thoiGianKetThucDataGridViewTextBoxColumn.DataPropertyName = "ThoiGianKetThuc";
+            this.thoiGianKetThucDataGridViewTextBoxColumn.HeaderText = "Thời gian kết thúc";
+            this.thoiGianKetThucDataGridViewTextBoxColumn.Name = "thoiGianKetThucDataGridViewTextBoxColumn";
+            this.thoiGianKetThucDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // DanhSachDoan
             // 
-            this.Controls.Add(this.list_doan);
+            this.Controls.Add(this.btn_xoa);
+            this.Controls.Add(this.btn_them);
+            this.Controls.Add(this.searchDoan1);
+            this.Controls.Add(this.dataGridViewDoan);
             this.Name = "DanhSachDoan";
-            this.Size = new System.Drawing.Size(512, 512);
+            this.Size = new System.Drawing.Size(800, 600);
+            this.Load += new System.EventHandler(this.DanhSachDoan_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.doanBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
-        private void OnTourisSelected(object sender, EventArgs e)
-        {
-        }
+
+
 
         #endregion
         private System.Windows.Forms.BindingSource tourisBindingSource;
-        private System.Windows.Forms.ListView list_doan;
-        private System.Windows.Forms.ColumnHeader ma_doan;
-        private System.Windows.Forms.ColumnHeader ten_doan;
         private System.Windows.Forms.ColumnHeader loai_tour;
-        private System.Windows.Forms.ColumnHeader ngay_bd;
-        private System.Windows.Forms.ColumnHeader ngay_kt;
+        private System.Windows.Forms.DataGridView dataGridViewDoan;
+        private SearchDoan searchDoan1;
+        private Button btn_xoa;
+        private Button btn_them;
+        private DataGridViewTextBoxColumn maDoanDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn tenDoanDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn thoiGianBatDauDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn thoiGianKetThucDataGridViewTextBoxColumn;
+        private BindingSource doanBindingSource;
     }
 }

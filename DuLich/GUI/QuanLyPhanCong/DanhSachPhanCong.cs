@@ -1,31 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DuLich.Entity;
-using DuLich.Model.Entity;
+using DuLich.BUS;
 
-namespace DuLich.View.QuanLyPhanCong
+namespace DuLich.GUI.QuanLyPhanCong
 {
     public partial class DanhSachPhanCong : UserControl
     {
         private IDanhSachPhanCongListener danhSachPhanCongListener;
-        private IEnumerable<PhanCong> PhanCongs;
+        private List<PhanCong> PhanCongs = new List<PhanCong>();
         private Doan doanHienTai;
-        public DanhSachPhanCong(Doan doanHienTai,IEnumerable<PhanCong> phanCongs, IDanhSachPhanCongListener danhSachPhanCongListener)
+        public DanhSachPhanCong(Doan doanHienTai,List<PhanCong> phanCongs, IDanhSachPhanCongListener danhSachPhanCongListener)
         {
             InitializeComponent();
             this.danhSachPhanCongListener = danhSachPhanCongListener;
-            this.PhanCongs = phanCongs;
+            this.PhanCongs.AddRange(phanCongs);
             this.doanHienTai = doanHienTai;
             InitData(phanCongs);
         }
-        private void InitData(IEnumerable<PhanCong> phanCongs)
+        private void InitData(List<PhanCong> phanCongs)
         {
             foreach (PhanCong phanCong in phanCongs)
             {
@@ -67,14 +61,14 @@ namespace DuLich.View.QuanLyPhanCong
             if (listview_phancong.SelectedItems.Count > 0)
             {
                 int position = listview_phancong.SelectedItems[0].Index;
-                danhSachPhanCongListener.onDanhSachPhanCongXoaClick(PhanCongs.ToArray()[position]);
+                danhSachPhanCongListener.onDanhSachPhanCongXoaClick(doanHienTai,PhanCongs.ToArray()[position]);
             }
         }
         public interface IDanhSachPhanCongListener
         {
             void onDanhSachPhanCongThemClick(Doan doanHienTai);
             void onDanhSachPhanCongSuaClick(PhanCong phanCong);
-            void onDanhSachPhanCongXoaClick(PhanCong phanCong);
+            void onDanhSachPhanCongXoaClick(Doan doanHienTai, PhanCong phanCong);
         }
     }
 }

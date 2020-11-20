@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,30 +57,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BUS\BaseBus.cs" />
-    <Compile Include="BUS\ChiTietTourBus.cs" />
-    <Compile Include="BUS\DiaDiemBus.cs" />
-    <Compile Include="BUS\DoanBus.cs" />
-    <Compile Include="BUS\GiaBus.cs" />
-    <Compile Include="BUS\KhachBus.cs" />
-    <Compile Include="BUS\LoaiBus.cs" />
-    <Compile Include="BUS\TourBus.cs" />
+    <Compile Include="BUS\DiaDiem.cs" />
+    <Compile Include="BUS\Doan.cs" />
+    <Compile Include="BUS\Gia.cs" />
+    <Compile Include="BUS\Khach.cs" />
+    <Compile Include="BUS\NhanVien.cs" />
+    <Compile Include="BUS\Tour.cs" />
+    <Compile Include="DAL\LoaiChiPhiDal.cs" />
+    <Compile Include="DAL\DiaDiemDal.cs" />
+    <Compile Include="DAL\LoaiDal.cs" />
+    <Compile Include="DAL\GiaDal.cs" />
+    <Compile Include="DAL\DoanDal.cs" />
+    <Compile Include="DAL\NhanVienDal.cs" />
+    <Compile Include="DAL\KhachDal.cs" />
+    <Compile Include="DAL\TourDal.cs" />
+    <Compile Include="Entity\LoaiChiPhi.cs" />
+    <Compile Include="Entity\ChiPhi.cs" />
     <Compile Include="Entity\DoanKhach.cs" />
     <Compile Include="Entity\Doan.cs" />
     <Compile Include="Entity\NhanVien.cs" />
-    <Compile Include="Entity\PhanCong.cs" />
     <Compile Include="Entity\Khach.cs" />
+    <Compile Include="Entity\PhanCong.cs" />
+    <Compile Include="GioiTinh.cs" />
+    <Compile Include="GUI\QuanLyChiPhi\ChiTietChiPhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyChiPhi\ChiTietChiPhi.Designer.cs">
+      <DependentUpon>ChiTietChiPhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyChiPhi\DanhSachChiPhi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyChiPhi\DanhSachChiPhi.Designer.cs">
+      <DependentUpon>DanhSachChiPhi.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\QuanLyDoan\ChiTietDoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyDoan\ChiTietDoan.Designer.cs">
       <DependentUpon>ChiTietDoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyDoan\SelectKhach.cs">
+    <Compile Include="GUI\QuanLyDoan\SearchDoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
-      <DependentUpon>SelectKhach.cs</DependentUpon>
+    <Compile Include="GUI\QuanLyDoan\SearchDoan.Designer.cs">
+      <DependentUpon>SearchDoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyDoan\DanhSachDoan.cs">
       <SubType>UserControl</SubType>
@@ -88,7 +110,7 @@
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyKhach\ChiTietKhach.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyKhach\ChiTietKhach.Designer.cs">
       <DependentUpon>ChiTietKhach.cs</DependentUpon>
@@ -99,8 +121,14 @@
     <Compile Include="GUI\QuanLyKhach\DanhSachKhach.Designer.cs">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.cs">
+    <Compile Include="GUI\QuanLyKhach\SearchKhach.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyKhach\SearchKhach.Designer.cs">
+      <DependentUpon>SearchKhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyNhanVien\ChiTietNhanVien.Designer.cs">
       <DependentUpon>ChiTietNhanVien.cs</DependentUpon>
@@ -111,11 +139,11 @@
     <Compile Include="GUI\QuanLyNhanVien\DanhSachNhanVien.Designer.cs">
       <DependentUpon>DanhSachNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.cs">
+    <Compile Include="GUI\QuanLyNhanVien\SearchNhanVien.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.Designer.cs">
-      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
+    <Compile Include="GUI\QuanLyNhanVien\SearchNhanVien.Designer.cs">
+      <DependentUpon>SearchNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\QuanLyPhanCong\DanhSachPhanCong.cs">
       <SubType>UserControl</SubType>
@@ -123,15 +151,57 @@
     <Compile Include="GUI\QuanLyPhanCong\DanhSachPhanCong.Designer.cs">
       <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDoan\SelectKhach.Designer.cs">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyPhanCong\ChiTietPhanCong.Designer.cs">
+      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.Designer.cs">
+      <DependentUpon>DanhSachChonDiaDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\ThongKeTheoTour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\ThongKeTheoTour.Designer.cs">
+      <DependentUpon>ThongKeTheoTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\DanhSachTour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\DanhSachTour.Designer.cs">
+      <DependentUpon>DanhSachTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\SearchTour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyTouris\SearchTour.Designer.cs">
+      <DependentUpon>SearchTour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThongKe\ThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThongKe\ThongKe.Designer.cs">
+      <DependentUpon>ThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DAL\DuLichContext.cs" />
     <Compile Include="Entity\ChiTietTour.cs" />
     <Compile Include="Entity\DiaDiem.cs" />
     <Compile Include="Entity\Gia.cs" />
     <Compile Include="Entity\Loai.cs" />
-    <Compile Include="Entity\Touris.cs" />
+    <Compile Include="Entity\Tour.cs" />
     <Compile Include="GUI\QuanLyTouris\ChiTietGia.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyTouris\ChiTietGia.Designer.cs">
       <DependentUpon>ChiTietGia.cs</DependentUpon>
@@ -139,29 +209,17 @@
     <Compile Include="GUI\QuanLyTouris\DanhSachGia.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\QuanLyTouris\DanhSachDiaDiem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="GUI\QuanLyTouris\DanhSachGia.Designer.cs">
       <DependentUpon>DanhSachGia.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyTouris\DanhSachDiaDiem.Designer.cs">
+    <Compile Include="GUI\QuanLyDiaDiem\DanhSachDiaDiem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QuanLyDiaDiem\DanhSachDiaDiem.Designer.cs">
       <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QuanLyTouris\DanhSachTouris.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyTouris\DanhSachTouris.Designer.cs">
-      <DependentUpon>DanhSachTouris.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\QuanLyDiaDiem\QuanLyDiaDiem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyDiaDiem\QuanLyDiaDiem.Designer.cs">
-      <DependentUpon>QuanLyDiaDiem.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\QuanLyDiaDiem\ChiTietDiaDiem.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\QuanLyDiaDiem\ChiTietDiaDiem.Designer.cs">
       <DependentUpon>ChiTietDiaDiem.cs</DependentUpon>
@@ -180,19 +238,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GUI\QuanLyTouris\QuanLyTourisState.cs" />
-    <Compile Include="GUI\QuanLyTouris\TaoDoan.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\QuanLyTouris\TaoDoan.Designer.cs">
-      <DependentUpon>TaoDoan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ScreenState.cs" />
+    <EmbeddedResource Include="GUI\QuanLyChiPhi\ChiTietChiPhi.resx">
+      <DependentUpon>ChiTietChiPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyChiPhi\DanhSachChiPhi.resx">
+      <DependentUpon>DanhSachChiPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDiaDiem\ChiTietDiaDiem.resx">
+      <DependentUpon>ChiTietDiaDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyDiaDiem\DanhSachDiaDiem.resx">
+      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\ChiTietDoan.resx">
       <DependentUpon>ChiTietDoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyDoan\SelectKhach.resx">
-      <DependentUpon>SelectKhach.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\QuanLyDoan\SearchDoan.resx">
+      <DependentUpon>SearchDoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyDoan\DanhSachDoan.resx">
       <DependentUpon>DanhSachDoan.cs</DependentUpon>
@@ -203,29 +265,38 @@
     <EmbeddedResource Include="GUI\QuanLyKhach\DanhSachKhach.resx">
       <DependentUpon>DanhSachKhach.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyKhach\SearchKhach.resx">
+      <DependentUpon>SearchKhach.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyNhanVien\ChiTietNhanVien.resx">
       <DependentUpon>ChiTietNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyNhanVien\DanhSachNhanVien.resx">
       <DependentUpon>DanhSachNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyPhanCong\ChiTietPhanCong.resx">
-      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\QuanLyNhanVien\SearchNhanVien.resx">
+      <DependentUpon>SearchNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyPhanCong\DanhSachPhanCong.resx">
       <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyPhanCong\ChiTietPhanCong.resx">
+      <DependentUpon>ChiTietPhanCong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietGia.resx">
       <DependentUpon>ChiTietGia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachDiaDiem.resx">
-      <DependentUpon>DanhSachDiaDiem.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\QuanLyDoan\SelectKhach.resx">
+      <DependentUpon>SelectKhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachChonDiaDiem.resx">
+      <DependentUpon>DanhSachChonDiaDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyTouris\ThongKeTheoTour.resx">
+      <DependentUpon>ThongKeTheoTour.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachGia.resx">
       <DependentUpon>DanhSachGia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachTouris.resx">
-      <DependentUpon>DanhSachTouris.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\QuanLyTouris\ChiTietTouris.resx">
       <DependentUpon>ChiTietTouris.cs</DependentUpon>
@@ -233,6 +304,15 @@
     <EmbeddedResource Include="GUI\ManHinhChinh.resx">
       <DependentUpon>ManHinhChinh.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyTouris\DanhSachTour.resx">
+      <DependentUpon>DanhSachTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QuanLyTouris\SearchTour.resx">
+      <DependentUpon>SearchTour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThongKe\ThongKe.resx">
+      <DependentUpon>ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -242,12 +322,20 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="GUI\QuanLyTouris\TaoDoan.resx">
-      <DependentUpon>TaoDoan.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DuLich.BUS.ChiPhi.datasource" />
+    <None Include="Properties\DataSources\DuLich.BUS.Doan.datasource" />
+    <None Include="Properties\DataSources\DuLich.BUS.Khach.datasource" />
+    <None Include="Properties\DataSources\DuLich.BUS.Tour.datasource" />
+    <None Include="Properties\DataSources\DuLich.Entity.Doan.datasource" />
+    <None Include="Properties\DataSources\DuLich.Entity.Khach.datasource" />
+    <None Include="Properties\DataSources\DuLich.Entity.NhanVien.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.Touris.datasource" />
+    <None Include="Properties\DataSources\DuLich.Model.Entity.ChiPhi.datasource" />
+    <None Include="Properties\DataSources\DuLich.Model.Entity.DiaDiem.datasource" />
+    <None Include="Properties\DataSources\DuLich.Model.Entity.Gia.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -260,6 +348,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diskette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up-arrow.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

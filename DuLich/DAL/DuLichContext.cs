@@ -1,18 +1,23 @@
-﻿using DuLich.Model.Entity;
+﻿using DuLich.BUS;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DuLich.Entity
 {
     public class DuLichContext : DbContext
     {
-    
-        public DuLichContext() : base("dulichdb")
+        private static DuLichContext instance;
+        public static DuLichContext GetInstance()
         {
+            if (instance == null)
+                instance = new DuLichContext();
+            return instance;
+        }
+        public DuLichContext() : base("dulichdbs")
+        {
+            
             try
             {
                 if (DiaDiem.ToList().Count == 0)
@@ -46,17 +51,28 @@ namespace DuLich.Entity
                 if (NhanViens.ToList().Count == 0)
                 {
                     new List<NhanVien>{
-                        new NhanVien { TenNhanVien= "Nhật",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
-                        new NhanVien { TenNhanVien= "Nam",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"},
-                        new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"}
-                        new NhanVien { TenNhanVien= "Kha",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923"}
+                        new NhanVien { TenNhanVien= "Nhật",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"},
+                        new NhanVien { TenNhanVien= "Nam",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"},
+                        new NhanVien { TenNhanVien= "Phat",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"},
+                        new NhanVien { TenNhanVien= "Kha",DiaChi="35/2b khu phố 5 nhà bè",SoCmnd="025711770",SoDienThoai="0909228923",NgaySinh=DateTime.Now.AddDays(-20*365),GioiTinh="Nam"}
                     }.ForEach(x => NhanViens.Add(x));
                     SaveChanges();
                 }
-            }
+                if (LoaiChiPhis.ToList().Count == 0)
+                {
+                    new List<LoaiChiPhi>
+            {
+                new LoaiChiPhi { TenLoaiChiPhi= "Ăn Uống"},
+                new LoaiChiPhi { TenLoaiChiPhi= "Khách Sạn "},
+                new LoaiChiPhi { TenLoaiChiPhi= "Phương Tiện"}
+            }.ForEach(x => LoaiChiPhis.Add(x));
+                    SaveChanges();
+                }
+               
+        }
             catch(Exception e) { }
         }
-        public DbSet<Touris> Touris { get; set; }
+        public DbSet<Tour> Touris { get; set; }
         public DbSet<Gia> Gia { get; set; }
         public DbSet<Loai> Loai { get; set; }
         public DbSet<DiaDiem> DiaDiem { get; set; }
@@ -66,39 +82,53 @@ namespace DuLich.Entity
         public DbSet<Khach> Khaches { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }
         public DbSet<PhanCong> PhanCongs { get; set; }
+        public DbSet<ChiPhi> ChiPhis { get; set; }
+        public DbSet<LoaiChiPhi> LoaiChiPhis { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // XÓa tour xóa giá luôn
-            modelBuilder.Entity<Touris>()
-                        .HasMany<Gia>(g => g.Gias)
-                        .WithRequired(s => s.touris)
+            modelBuilder.Entity<Tour>()
+                        .HasMany<Gia>(g => g.GiaTour)
+                        .WithRequired(s => s.Tour)
                         .WillCascadeOnDelete();
-            modelBuilder.Entity<Touris>()
-                      .HasMany<Doan>(g => g.Doans)
-                      .WithRequired(s => s.Touris)
+
+            modelBuilder.Entity<Tour>()
+                      .HasMany<Doan>(g => g.DoanTour)
+                      .WithRequired(s => s.Tour)
                       .WillCascadeOnDelete();
             // Xóa luôn chi tiết
-            modelBuilder.Entity<Touris>()
-                        .HasMany<ChiTietTour>(g => g.ChiTietTours)
-                        .WithRequired(s => s.touris)
+            modelBuilder.Entity<Tour>()
+                        .HasMany<ChiTietTour>(g => g.ChiTietTour)
+                        .WithRequired(s => s.Tour)
                         .WillCascadeOnDelete();
 
             // Xóa đoàn xóa luôn những phân công liên quan
             modelBuilder.Entity<Doan>()
-                       .HasMany<PhanCong>(g => g.PhanCongs)
+                       .HasMany<PhanCong>(g => g.PhanCong)
+                       .WithRequired(s => s.Doan)
+                       .WillCascadeOnDelete();
+
+            // Xóa đoàn xóa luôn những chi phí liên quan
+            modelBuilder.Entity<Doan>()
+                       .HasMany(g => g.ChiPhi)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
 
             // xóa đoàn thì xóa những đoàn khách liên quan nhưng ko xóa đoàn
             modelBuilder.Entity<Doan>()
-                       .HasMany<DoanKhach>(g => g.DoanKhachs)
+                       .HasMany<DoanKhach>(g => g.DoanKhach)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
-            
+
             modelBuilder.Entity<Khach>()
-                      .HasMany<DoanKhach>(g => g.DoanKhachs)
-                      .WithRequired(s => s.Khach)
+                     .HasMany<DoanKhach>(g => g.DoanKhach)
+                       .WithRequired(s => s.Khach)
+                       .WillCascadeOnDelete();
+
+            modelBuilder.Entity<NhanVien>()
+                    .HasMany<PhanCong>(g => g.PhanCong)
+                      .WithRequired(s => s.NhanVien)
                       .WillCascadeOnDelete();
 
 

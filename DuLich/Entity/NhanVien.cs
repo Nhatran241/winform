@@ -1,15 +1,14 @@
-﻿using DuLich.Model.Entity;
+﻿using DuLich.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace DuLich.Entity
+namespace DuLich.BUS
 {
-    public class NhanVien
+    public partial class NhanVien
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,7 +17,9 @@ namespace DuLich.Entity
         public String DiaChi { get; set; }
         public String SoDienThoai { get; set; }
         public String SoCmnd { get; set; }
-        public ICollection<PhanCong> PhanCongs { get; set; }
+        public DateTime NgaySinh { get; set; }
+        public string GioiTinh { get; set; }
+        public virtual ICollection<PhanCong> PhanCong { get; set; }
         public override string ToString()
         {
             return TenNhanVien;

@@ -1,21 +1,15 @@
-﻿using DuLich.Entity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DuLich.Model.Entity
+namespace DuLich.BUS
 {
     public class ChiTietTour
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaChiTietTour { get; set; }
-        public DiaDiem diaDiem { get; set; }
-        public Touris touris { get; set; }
+        public virtual DiaDiem DiaDiem { get; set; }
+        public virtual Tour Tour { get; set; }
         public int ThuTu { get; set; }
     }
 }
