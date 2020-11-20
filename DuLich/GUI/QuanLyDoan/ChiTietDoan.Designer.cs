@@ -61,59 +61,59 @@ namespace DuLich.GUI.QuanLyDoan
             // 
             // textbox_id
             // 
-            this.textbox_id.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.textbox_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.textbox_id.Location = new System.Drawing.Point(110, 10);
             this.textbox_id.Name = "textbox_id";
-            this.textbox_id.Size = new System.Drawing.Size(236, 27);
+            this.textbox_id.Size = new System.Drawing.Size(236, 23);
             this.textbox_id.TabIndex = 13;
             // 
             // combobox_loai
             // 
             this.combobox_loai.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combobox_loai.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.combobox_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.combobox_loai.FormattingEnabled = true;
             this.combobox_loai.Location = new System.Drawing.Point(451, 10);
             this.combobox_loai.Name = "combobox_loai";
-            this.combobox_loai.Size = new System.Drawing.Size(259, 30);
+            this.combobox_loai.Size = new System.Drawing.Size(259, 24);
             this.combobox_loai.TabIndex = 12;
             this.combobox_loai.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // doan_id
             // 
             this.doan_id.AutoSize = true;
-            this.doan_id.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.doan_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.doan_id.Location = new System.Drawing.Point(10, 10);
             this.doan_id.Name = "doan_id";
-            this.doan_id.Size = new System.Drawing.Size(70, 22);
+            this.doan_id.Size = new System.Drawing.Size(65, 17);
             this.doan_id.TabIndex = 9;
             this.doan_id.Text = "Mã Đoàn";
             // 
             // doan_name
             // 
             this.doan_name.AutoSize = true;
-            this.doan_name.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.doan_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.doan_name.Location = new System.Drawing.Point(10, 52);
             this.doan_name.Name = "doan_name";
-            this.doan_name.Size = new System.Drawing.Size(74, 22);
+            this.doan_name.Size = new System.Drawing.Size(71, 17);
             this.doan_name.TabIndex = 18;
             this.doan_name.Text = "Tên Đoàn";
             // 
             // textbox_name
             // 
-            this.textbox_name.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.textbox_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.textbox_name.Location = new System.Drawing.Point(110, 52);
             this.textbox_name.Name = "textbox_name";
-            this.textbox_name.Size = new System.Drawing.Size(236, 27);
+            this.textbox_name.Size = new System.Drawing.Size(236, 23);
             this.textbox_name.TabIndex = 19;
             this.textbox_name.TextChanged += new System.EventHandler(this.textbox_name_TextChanged);
             // 
             // tour_loai
             // 
             this.tour_loai.AutoSize = true;
-            this.tour_loai.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tour_loai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tour_loai.Location = new System.Drawing.Point(370, 13);
             this.tour_loai.Name = "tour_loai";
-            this.tour_loai.Size = new System.Drawing.Size(40, 22);
+            this.tour_loai.Size = new System.Drawing.Size(38, 17);
             this.tour_loai.TabIndex = 20;
             this.tour_loai.Text = "Tour";
             // 
@@ -122,7 +122,6 @@ namespace DuLich.GUI.QuanLyDoan
             this.tab_chitiet.Controls.Add(this.tab_phancong);
             this.tab_chitiet.Controls.Add(this.tab_khach);
             this.tab_chitiet.Controls.Add(this.tab_chiphi);
-            this.tab_chitiet.Font = new System.Drawing.Font("Arial Narrow", 13F);
             this.tab_chitiet.Location = new System.Drawing.Point(0, 164);
             this.tab_chitiet.Name = "tab_chitiet";
             this.tab_chitiet.SelectedIndex = 0;
@@ -133,17 +132,15 @@ namespace DuLich.GUI.QuanLyDoan
             // tab_phancong
             // 
             this.tab_phancong.BackColor = System.Drawing.Color.White;
-            this.tab_phancong.Font = new System.Drawing.Font("Arial Narrow", 13F);
-            this.tab_phancong.Location = new System.Drawing.Point(4, 31);
+            this.tab_phancong.Location = new System.Drawing.Point(4, 22);
             this.tab_phancong.Name = "tab_phancong";
             this.tab_phancong.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_phancong.Size = new System.Drawing.Size(792, 395);
+            this.tab_phancong.Size = new System.Drawing.Size(792, 404);
             this.tab_phancong.TabIndex = 0;
             this.tab_phancong.Text = "Danh Sách Phân Công";
             // 
             // tab_khach
             // 
-            this.tab_khach.Font = new System.Drawing.Font("Arial Narrow", 13F);
             this.tab_khach.Location = new System.Drawing.Point(4, 22);
             this.tab_khach.Name = "tab_khach";
             this.tab_khach.Padding = new System.Windows.Forms.Padding(3);
@@ -154,7 +151,6 @@ namespace DuLich.GUI.QuanLyDoan
             // 
             // tab_chiphi
             // 
-            this.tab_chiphi.Font = new System.Drawing.Font("Arial Narrow", 13F);
             this.tab_chiphi.Location = new System.Drawing.Point(4, 22);
             this.tab_chiphi.Name = "tab_chiphi";
             this.tab_chiphi.Size = new System.Drawing.Size(792, 404);
@@ -164,8 +160,8 @@ namespace DuLich.GUI.QuanLyDoan
             // 
             // datepicker_ketthuc
             // 
-            this.datepicker_ketthuc.Font = new System.Drawing.Font("Arial Narrow", 8F);
-            this.datepicker_ketthuc.Location = new System.Drawing.Point(501, 139);
+            this.datepicker_ketthuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.datepicker_ketthuc.Location = new System.Drawing.Point(501, 138);
             this.datepicker_ketthuc.Name = "datepicker_ketthuc";
             this.datepicker_ketthuc.Size = new System.Drawing.Size(209, 20);
             this.datepicker_ketthuc.TabIndex = 27;
@@ -173,7 +169,7 @@ namespace DuLich.GUI.QuanLyDoan
             // 
             // datepicker_batdau
             // 
-            this.datepicker_batdau.Font = new System.Drawing.Font("Arial Narrow", 8F);
+            this.datepicker_batdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.datepicker_batdau.Location = new System.Drawing.Point(120, 138);
             this.datepicker_batdau.Name = "datepicker_batdau";
             this.datepicker_batdau.Size = new System.Drawing.Size(226, 20);
@@ -183,26 +179,26 @@ namespace DuLich.GUI.QuanLyDoan
             // tv_ngayketthuc
             // 
             this.tv_ngayketthuc.AutoSize = true;
-            this.tv_ngayketthuc.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tv_ngayketthuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tv_ngayketthuc.Location = new System.Drawing.Point(361, 137);
             this.tv_ngayketthuc.Name = "tv_ngayketthuc";
-            this.tv_ngayketthuc.Size = new System.Drawing.Size(107, 22);
+            this.tv_ngayketthuc.Size = new System.Drawing.Size(102, 17);
             this.tv_ngayketthuc.TabIndex = 25;
             this.tv_ngayketthuc.Text = "Ngày Kết Thúc";
             // 
             // tv_ngaybatdau
             // 
             this.tv_ngaybatdau.AutoSize = true;
-            this.tv_ngaybatdau.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tv_ngaybatdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tv_ngaybatdau.Location = new System.Drawing.Point(10, 137);
             this.tv_ngaybatdau.Name = "tv_ngaybatdau";
-            this.tv_ngaybatdau.Size = new System.Drawing.Size(104, 22);
+            this.tv_ngaybatdau.Size = new System.Drawing.Size(96, 17);
             this.tv_ngaybatdau.TabIndex = 24;
             this.tv_ngaybatdau.Text = "Ngày Bắt Đầu";
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn_xoa.Location = new System.Drawing.Point(733, 77);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(50, 50);
@@ -213,7 +209,7 @@ namespace DuLich.GUI.QuanLyDoan
             // 
             // btn_chinhsua
             // 
-            this.btn_chinhsua.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.btn_chinhsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btn_chinhsua.Location = new System.Drawing.Point(733, 7);
             this.btn_chinhsua.Name = "btn_chinhsua";
             this.btn_chinhsua.Size = new System.Drawing.Size(50, 50);
@@ -225,59 +221,59 @@ namespace DuLich.GUI.QuanLyDoan
             // tv_loinhuan
             // 
             this.tv_loinhuan.AutoSize = true;
-            this.tv_loinhuan.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tv_loinhuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tv_loinhuan.Location = new System.Drawing.Point(361, 98);
             this.tv_loinhuan.Name = "tv_loinhuan";
-            this.tv_loinhuan.Size = new System.Drawing.Size(80, 22);
+            this.tv_loinhuan.Size = new System.Drawing.Size(73, 17);
             this.tv_loinhuan.TabIndex = 31;
             this.tv_loinhuan.Text = "Lợi Nhuận";
             // 
             // tb_loinhuan
             // 
             this.tb_loinhuan.Enabled = false;
-            this.tb_loinhuan.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tb_loinhuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_loinhuan.Location = new System.Drawing.Point(451, 95);
             this.tb_loinhuan.Name = "tb_loinhuan";
-            this.tb_loinhuan.Size = new System.Drawing.Size(259, 27);
+            this.tb_loinhuan.Size = new System.Drawing.Size(259, 23);
             this.tb_loinhuan.TabIndex = 32;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label2.Location = new System.Drawing.Point(370, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 22);
+            this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 33;
             this.label2.Text = "Giá Tour";
             // 
             // cb_giatour
             // 
             this.cb_giatour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_giatour.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.cb_giatour.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cb_giatour.FormattingEnabled = true;
             this.cb_giatour.Location = new System.Drawing.Point(451, 50);
             this.cb_giatour.Name = "cb_giatour";
-            this.cb_giatour.Size = new System.Drawing.Size(259, 30);
+            this.cb_giatour.Size = new System.Drawing.Size(259, 24);
             this.cb_giatour.TabIndex = 34;
             this.cb_giatour.SelectedIndexChanged += new System.EventHandler(this.cb_giatour_SelectedIndexChanged);
             // 
             // tb_tongchiphi
             // 
             this.tb_tongchiphi.Enabled = false;
-            this.tb_tongchiphi.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tb_tongchiphi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tb_tongchiphi.Location = new System.Drawing.Point(110, 95);
             this.tb_tongchiphi.Name = "tb_tongchiphi";
-            this.tb_tongchiphi.Size = new System.Drawing.Size(236, 27);
+            this.tb_tongchiphi.Size = new System.Drawing.Size(236, 23);
             this.tb_tongchiphi.TabIndex = 36;
             // 
             // tv_tongchiphi
             // 
             this.tv_tongchiphi.AutoSize = true;
-            this.tv_tongchiphi.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.tv_tongchiphi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tv_tongchiphi.Location = new System.Drawing.Point(10, 95);
             this.tv_tongchiphi.Name = "tv_tongchiphi";
-            this.tv_tongchiphi.Size = new System.Drawing.Size(96, 22);
+            this.tv_tongchiphi.Size = new System.Drawing.Size(89, 17);
             this.tv_tongchiphi.TabIndex = 35;
             this.tv_tongchiphi.Text = "Tổng Chi Phí";
             // 
@@ -293,12 +289,12 @@ namespace DuLich.GUI.QuanLyDoan
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 20F);
-            this.label1.Location = new System.Drawing.Point(30, 285);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label1.Location = new System.Drawing.Point(92, 260);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(736, 31);
+            this.label1.Size = new System.Drawing.Size(609, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Không có tour trong hệ thống , vui lòng thêm mới tour trước khi thêm đoàn";
+            this.label1.Text = "Không có tour trong hệ thống hoặc các tour này chưa có giá áp dụng ";
             // 
             // ChiTietDoan
             // 
@@ -326,6 +322,7 @@ namespace DuLich.GUI.QuanLyDoan
             this.Controls.Add(this.tv_loinhuan);
             this.Name = "ChiTietDoan";
             this.Size = new System.Drawing.Size(800, 600);
+            this.Load += new System.EventHandler(this.ChiTietDoan_Load);
             this.tab_chitiet.ResumeLayout(false);
             this.panel_thongbao.ResumeLayout(false);
             this.panel_thongbao.PerformLayout();

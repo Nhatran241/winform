@@ -161,14 +161,12 @@ namespace DuLich.GUI.QuanLyDoan
         public void LoadDanhSachKhach(List<Khach> danhSachTatCaKhach,List<Khach> danhSachKhachTrongDoan)
         {
             tab_khach.Controls.Clear();
-            UpDateLoiNhuan();
             tab_khach.Controls.Add(new SelectKhach(baseDoan,danhSachTatCaKhach,danhSachKhachTrongDoan,selectKhachListener));
         }
         private void LoadDanhSachChiPhi(List<ChiPhi> danhSachChiPhi)
         {
             tab_chiphi.Controls.Clear();
             tab_chiphi.Controls.Add(new DanhSachChiPhi(baseDoan,danhSachChiPhi,danhSachChiPhiListener));
-            UpDateLoiNhuan();
 
         }
 
@@ -313,16 +311,15 @@ namespace DuLich.GUI.QuanLyDoan
         {
             if (editDoan.GiaApDung != null)
             {
-                if (editDoan.ChiPhis != null)
+                if (danhSachChiPhi != null)
                 {
-                    long tongChiPhi = editDoan.ChiPhis.Sum(c => c.giaTri);
+                    long tongChiPhi = danhSachChiPhi.Sum(c => c.giaTri);
                     tb_tongchiphi.Text = tongChiPhi.ToString();
-                    tb_loinhuan.Text = ((editDoan.GiaApDung.GiaTri * editDoan.GetListKhach().Count()) - tongChiPhi).ToString();
-                    Console.WriteLine("chiphi :"+tongChiPhi+" + list khách"+ editDoan.GetListKhach().Count());
+                    tb_loinhuan.Text = ((editDoan.GiaApDung.GiaTri * (danhSachKhachTrongDoan!= null ?danhSachKhachTrongDoan.Count:0)) - tongChiPhi).ToString();
                 }
                 else
                 {
-                    tb_loinhuan.Text = tb_loinhuan.Text = ((editDoan.GiaApDung.GiaTri * editDoan.GetListKhach().Count())).ToString();
+                    tb_loinhuan.Text = tb_loinhuan.Text = ((editDoan.GiaApDung.GiaTri * (danhSachKhachTrongDoan != null ?danhSachKhachTrongDoan.Count:0))).ToString();
                     tb_tongchiphi.Text = "0";
                 }
             }
@@ -369,6 +366,9 @@ private void TinhGiaTour()
             }
         }
 
-     
+        private void ChiTietDoan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -43,50 +43,50 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // listbox_tatcadiadiem
             // 
-            this.listbox_tatcadiadiem.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.listbox_tatcadiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbox_tatcadiadiem.FormattingEnabled = true;
-            this.listbox_tatcadiadiem.ItemHeight = 22;
+            this.listbox_tatcadiadiem.ItemHeight = 16;
             this.listbox_tatcadiadiem.Location = new System.Drawing.Point(8, 45);
             this.listbox_tatcadiadiem.Name = "listbox_tatcadiadiem";
-            this.listbox_tatcadiadiem.Size = new System.Drawing.Size(300, 334);
+            this.listbox_tatcadiadiem.Size = new System.Drawing.Size(300, 340);
             this.listbox_tatcadiadiem.TabIndex = 0;
             this.listbox_tatcadiadiem.SelectedIndexChanged += new System.EventHandler(this.listbox_chondiadiem_SelectedIndexChanged);
             // 
             // listbox_tatcakhach
             // 
-            this.listbox_tatcakhach.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.listbox_tatcakhach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbox_tatcakhach.FormattingEnabled = true;
-            this.listbox_tatcakhach.ItemHeight = 22;
-            this.listbox_tatcakhach.Location = new System.Drawing.Point(480, 45);
+            this.listbox_tatcakhach.ItemHeight = 16;
+            this.listbox_tatcakhach.Location = new System.Drawing.Point(455, 45);
             this.listbox_tatcakhach.Name = "listbox_tatcakhach";
-            this.listbox_tatcakhach.Size = new System.Drawing.Size(300, 334);
+            this.listbox_tatcakhach.Size = new System.Drawing.Size(300, 340);
             this.listbox_tatcakhach.TabIndex = 1;
             // 
             // tv_khachtrongdoan
             // 
             this.tv_khachtrongdoan.AutoSize = true;
-            this.tv_khachtrongdoan.Font = new System.Drawing.Font("Arial Narrow", 13F);
-            this.tv_khachtrongdoan.Location = new System.Drawing.Point(551, 9);
+            this.tv_khachtrongdoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_khachtrongdoan.Location = new System.Drawing.Point(559, 13);
             this.tv_khachtrongdoan.Name = "tv_khachtrongdoan";
-            this.tv_khachtrongdoan.Size = new System.Drawing.Size(141, 22);
+            this.tv_khachtrongdoan.Size = new System.Drawing.Size(120, 16);
             this.tv_khachtrongdoan.TabIndex = 4;
             this.tv_khachtrongdoan.Text = "Địa Điểm Của Tour";
             // 
             // tv_tatcakhach
             // 
             this.tv_tatcakhach.AutoSize = true;
-            this.tv_tatcakhach.Font = new System.Drawing.Font("Arial Narrow", 13F);
-            this.tv_tatcakhach.Location = new System.Drawing.Point(44, 9);
+            this.tv_tatcakhach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_tatcakhach.Location = new System.Drawing.Point(77, 13);
             this.tv_tatcakhach.Name = "tv_tatcakhach";
-            this.tv_tatcakhach.Size = new System.Drawing.Size(125, 22);
+            this.tv_tatcakhach.Size = new System.Drawing.Size(105, 16);
             this.tv_tatcakhach.TabIndex = 5;
             this.tv_tatcakhach.Text = "Tất Cả Địa Điểm";
             // 
             // btn_up
             // 
-            this.btn_up.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.btn_up.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_up.Image = global::DuLich.Properties.Resources.up_arrow;
-            this.btn_up.Location = new System.Drawing.Point(373, 187);
+            this.btn_up.Location = new System.Drawing.Point(358, 185);
             this.btn_up.Name = "btn_up";
             this.btn_up.Size = new System.Drawing.Size(50, 50);
             this.btn_up.TabIndex = 6;
@@ -94,9 +94,9 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_luu
             // 
-            this.btn_luu.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.btn_luu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_luu.Image = global::DuLich.Properties.Resources.download;
-            this.btn_luu.Location = new System.Drawing.Point(373, 337);
+            this.btn_luu.Location = new System.Drawing.Point(358, 335);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(50, 50);
             this.btn_luu.TabIndex = 0;
@@ -104,9 +104,9 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_them
             // 
-            this.btn_them.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.btn_them.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_them.Image = global::DuLich.Properties.Resources.plus;
-            this.btn_them.Location = new System.Drawing.Point(373, 45);
+            this.btn_them.Location = new System.Drawing.Point(358, 43);
             this.btn_them.Name = "btn_them";
             this.btn_them.Size = new System.Drawing.Size(50, 50);
             this.btn_them.TabIndex = 3;
@@ -115,9 +115,9 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_xoa
             // 
-            this.btn_xoa.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_xoa.Image = global::DuLich.Properties.Resources.remove;
-            this.btn_xoa.Location = new System.Drawing.Point(373, 113);
+            this.btn_xoa.Location = new System.Drawing.Point(358, 111);
             this.btn_xoa.Name = "btn_xoa";
             this.btn_xoa.Size = new System.Drawing.Size(50, 50);
             this.btn_xoa.TabIndex = 2;
@@ -126,9 +126,9 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_down
             // 
-            this.btn_down.Font = new System.Drawing.Font("Arial Narrow", 13F);
+            this.btn_down.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_down.Image = global::DuLich.Properties.Resources.down_arrow;
-            this.btn_down.Location = new System.Drawing.Point(373, 260);
+            this.btn_down.Location = new System.Drawing.Point(358, 258);
             this.btn_down.Name = "btn_down";
             this.btn_down.Size = new System.Drawing.Size(50, 50);
             this.btn_down.TabIndex = 7;
@@ -148,7 +148,7 @@ namespace DuLich.GUI.QuanLyTouris
             this.Controls.Add(this.listbox_tatcakhach);
             this.Controls.Add(this.listbox_tatcadiadiem);
             this.Name = "DanhSachChonDiaDiem";
-            this.Size = new System.Drawing.Size(792, 404);
+            this.Size = new System.Drawing.Size(767, 404);
             this.ResumeLayout(false);
             this.PerformLayout();
 

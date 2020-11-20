@@ -52,7 +52,7 @@ namespace DuLich.GUI.QuanLyKhach
             // 
             // btn_them_doan
             // 
-            this.btn_them_doan.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.btn_them_doan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_them_doan.Location = new System.Drawing.Point(27, 90);
             this.btn_them_doan.Name = "btn_them_doan";
             this.btn_them_doan.Size = new System.Drawing.Size(84, 33);
@@ -63,7 +63,7 @@ namespace DuLich.GUI.QuanLyKhach
             // 
             // btn_xoa_doan
             // 
-            this.btn_xoa_doan.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.btn_xoa_doan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_xoa_doan.Location = new System.Drawing.Point(693, 90);
             this.btn_xoa_doan.Name = "btn_xoa_doan";
             this.btn_xoa_doan.Size = new System.Drawing.Size(84, 33);
@@ -74,7 +74,7 @@ namespace DuLich.GUI.QuanLyKhach
             // 
             // btn_sua_doan
             // 
-            this.btn_sua_doan.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.btn_sua_doan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sua_doan.Location = new System.Drawing.Point(358, 90);
             this.btn_sua_doan.Name = "btn_sua_doan";
             this.btn_sua_doan.Size = new System.Drawing.Size(84, 33);

@@ -23,6 +23,13 @@ namespace DuLich.BUS
             return Doans.ToList();
         }
 
+        public List<Doan> GetListDoanOfTourWithPrice(Gia gia)
+        {
+            if (Doans == null)
+                return new List<Doan>();
+            return Doans.Where(c=>c.GiaApDung.MaGia == gia.MaGia).ToList();
+        }
+
         public List<Khach> GetListKhachOfTour()
         {
             List<Khach> khachTrongTour = new List<Khach>();
@@ -80,6 +87,16 @@ namespace DuLich.BUS
         public double TongDoanhThuTourByTime(DateTime from, DateTime to)
         {
             return GetListDoanOfTourByTime(from,to).Where(c=>c.GiaApDung != null).Sum(c => c.GiaApDung.GiaTri*c.DoanKhachs.Count());
+        }
+        public double TongChiPhiTourByTime(DateTime from, DateTime to)
+        {
+            List<Doan> listDoan = GetListDoanOfTourByTime(from, to);
+            double tongChiPhi = 0;
+            foreach(Doan doan in listDoan)
+            {
+                tongChiPhi +=doan.TongChiPhiDoan();
+            }
+            return tongChiPhi;
         }
 
         public Task UpdateListDiaDiemTour(List<DiaDiem> danhSachDiaDiemTrongDoanUpdate)

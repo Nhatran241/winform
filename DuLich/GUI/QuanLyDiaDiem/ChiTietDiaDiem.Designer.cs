@@ -39,7 +39,7 @@ namespace DuLich.GUI.QuanLyDiaDiem
             // 
             // btn_huy
             // 
-            this.btn_huy.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.btn_huy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_huy.Location = new System.Drawing.Point(409, 97);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(50, 40);
@@ -50,7 +50,7 @@ namespace DuLich.GUI.QuanLyDiaDiem
             // 
             // btn_luu
             // 
-            this.btn_luu.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.btn_luu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_luu.Location = new System.Drawing.Point(409, 25);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(50, 40);
@@ -61,40 +61,40 @@ namespace DuLich.GUI.QuanLyDiaDiem
             // 
             // tb_tendiadiem
             // 
-            this.tb_tendiadiem.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.tb_tendiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_tendiadiem.Location = new System.Drawing.Point(134, 100);
             this.tb_tendiadiem.Name = "tb_tendiadiem";
-            this.tb_tendiadiem.Size = new System.Drawing.Size(258, 30);
+            this.tb_tendiadiem.Size = new System.Drawing.Size(258, 26);
             this.tb_tendiadiem.TabIndex = 13;
             this.tb_tendiadiem.TextChanged += new System.EventHandler(this.tb_TenDiaDiem_TextChanged);
             // 
             // tb_madiadiem
             // 
             this.tb_madiadiem.Enabled = false;
-            this.tb_madiadiem.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.tb_madiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_madiadiem.Location = new System.Drawing.Point(134, 28);
             this.tb_madiadiem.Name = "tb_madiadiem";
             this.tb_madiadiem.ReadOnly = true;
-            this.tb_madiadiem.Size = new System.Drawing.Size(258, 30);
+            this.tb_madiadiem.Size = new System.Drawing.Size(258, 26);
             this.tb_madiadiem.TabIndex = 12;
             // 
             // tv_tendiadiem
             // 
             this.tv_tendiadiem.AutoSize = true;
-            this.tv_tendiadiem.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.tv_tendiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv_tendiadiem.Location = new System.Drawing.Point(12, 103);
             this.tv_tendiadiem.Name = "tv_tendiadiem";
-            this.tv_tendiadiem.Size = new System.Drawing.Size(110, 24);
+            this.tv_tendiadiem.Size = new System.Drawing.Size(105, 20);
             this.tv_tendiadiem.TabIndex = 11;
             this.tv_tendiadiem.Text = "Tên Địa Điểm";
             // 
             // tv_madiadiem
             // 
             this.tv_madiadiem.AutoSize = true;
-            this.tv_madiadiem.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.tv_madiadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv_madiadiem.Location = new System.Drawing.Point(16, 31);
             this.tv_madiadiem.Name = "tv_madiadiem";
-            this.tv_madiadiem.Size = new System.Drawing.Size(106, 24);
+            this.tv_madiadiem.Size = new System.Drawing.Size(100, 20);
             this.tv_madiadiem.TabIndex = 10;
             this.tv_madiadiem.Text = "Mã Địa Điểm";
             // 

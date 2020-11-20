@@ -45,7 +45,7 @@ namespace DuLich.GUI.QuanLyDiaDiem
             // 
             // btn_sua_diadiem
             // 
-            this.btn_sua_diadiem.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.btn_sua_diadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sua_diadiem.Location = new System.Drawing.Point(366, 9);
             this.btn_sua_diadiem.Name = "btn_sua_diadiem";
             this.btn_sua_diadiem.Size = new System.Drawing.Size(81, 28);
@@ -56,7 +56,7 @@ namespace DuLich.GUI.QuanLyDiaDiem
             // 
             // btn_xoa_diadiem
             // 
-            this.btn_xoa_diadiem.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.btn_xoa_diadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_xoa_diadiem.Location = new System.Drawing.Point(705, 9);
             this.btn_xoa_diadiem.Name = "btn_xoa_diadiem";
             this.btn_xoa_diadiem.Size = new System.Drawing.Size(78, 28);
@@ -67,7 +67,7 @@ namespace DuLich.GUI.QuanLyDiaDiem
             // 
             // btn_them_diadiem
             // 
-            this.btn_them_diadiem.Font = new System.Drawing.Font("Arial Narrow", 15F);
+            this.btn_them_diadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_them_diadiem.Location = new System.Drawing.Point(14, 9);
             this.btn_them_diadiem.Name = "btn_them_diadiem";
             this.btn_them_diadiem.Size = new System.Drawing.Size(83, 28);

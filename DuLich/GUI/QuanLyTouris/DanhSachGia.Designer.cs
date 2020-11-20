@@ -38,12 +38,12 @@ namespace DuLich.GUI.QuanLyTouris
             this.btn_xoa_gia = new System.Windows.Forms.Button();
             this.btn_sua_gia = new System.Windows.Forms.Button();
             this.dataGridViewGia = new System.Windows.Forms.DataGridView();
-            this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.maGiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaTriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianBatDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianKetThucDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.giaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.giaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
@@ -51,10 +51,10 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_them_gia
             // 
-            this.btn_them_gia.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.btn_them_gia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_them_gia.Location = new System.Drawing.Point(17, 4);
             this.btn_them_gia.Name = "btn_them_gia";
-            this.btn_them_gia.Size = new System.Drawing.Size(85, 40);
+            this.btn_them_gia.Size = new System.Drawing.Size(85, 25);
             this.btn_them_gia.TabIndex = 1;
             this.btn_them_gia.Text = "Thêm";
             this.btn_them_gia.UseVisualStyleBackColor = true;
@@ -62,10 +62,10 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_xoa_gia
             // 
-            this.btn_xoa_gia.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.btn_xoa_gia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_xoa_gia.Location = new System.Drawing.Point(689, 4);
             this.btn_xoa_gia.Name = "btn_xoa_gia";
-            this.btn_xoa_gia.Size = new System.Drawing.Size(78, 40);
+            this.btn_xoa_gia.Size = new System.Drawing.Size(78, 25);
             this.btn_xoa_gia.TabIndex = 2;
             this.btn_xoa_gia.Text = "Xóa";
             this.btn_xoa_gia.UseVisualStyleBackColor = true;
@@ -73,10 +73,10 @@ namespace DuLich.GUI.QuanLyTouris
             // 
             // btn_sua_gia
             // 
-            this.btn_sua_gia.Font = new System.Drawing.Font("Arial Narrow", 11F);
+            this.btn_sua_gia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sua_gia.Location = new System.Drawing.Point(353, 4);
             this.btn_sua_gia.Name = "btn_sua_gia";
-            this.btn_sua_gia.Size = new System.Drawing.Size(87, 40);
+            this.btn_sua_gia.Size = new System.Drawing.Size(87, 25);
             this.btn_sua_gia.TabIndex = 3;
             this.btn_sua_gia.Text = "Sửa";
             this.btn_sua_gia.UseVisualStyleBackColor = true;
@@ -96,23 +96,15 @@ namespace DuLich.GUI.QuanLyTouris
             this.thoiGianBatDauDataGridViewTextBoxColumn,
             this.thoiGianKetThucDataGridViewTextBoxColumn});
             this.dataGridViewGia.DataSource = this.giaBindingSource;
-            this.dataGridViewGia.Location = new System.Drawing.Point(0, 50);
+            this.dataGridViewGia.Location = new System.Drawing.Point(0, 35);
             this.dataGridViewGia.MultiSelect = false;
             this.dataGridViewGia.Name = "dataGridViewGia";
             this.dataGridViewGia.ReadOnly = true;
             this.dataGridViewGia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewGia.Size = new System.Drawing.Size(767, 361);
+            this.dataGridViewGia.Size = new System.Drawing.Size(767, 376);
             this.dataGridViewGia.TabIndex = 0;
             this.dataGridViewGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaClick);
             this.dataGridViewGia.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GiaDoubleClick);
-            // 
-            // giaBindingSource
-            // 
-            this.giaBindingSource.DataSource = typeof(DuLich.BUS.Gia);
-            // 
-            // tourisBindingSource
-            // 
-            this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
             // 
             // maGiaDataGridViewTextBoxColumn
             // 
@@ -144,6 +136,14 @@ namespace DuLich.GUI.QuanLyTouris
             this.thoiGianKetThucDataGridViewTextBoxColumn.HeaderText = "Thời gian kết thúc";
             this.thoiGianKetThucDataGridViewTextBoxColumn.Name = "thoiGianKetThucDataGridViewTextBoxColumn";
             this.thoiGianKetThucDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // giaBindingSource
+            // 
+            this.giaBindingSource.DataSource = typeof(DuLich.BUS.Gia);
+            // 
+            // tourisBindingSource
+            // 
+            this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
             // 
             // DanhSachGia
             // 

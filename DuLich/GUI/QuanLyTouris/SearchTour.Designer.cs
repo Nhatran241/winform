@@ -36,9 +36,9 @@
             // 
             // cb_search
             // 
-            this.cb_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cb_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_search.FormattingEnabled = true;
-            this.cb_search.Location = new System.Drawing.Point(58, 18);
+            this.cb_search.Location = new System.Drawing.Point(72, 18);
             this.cb_search.Name = "cb_search";
             this.cb_search.Size = new System.Drawing.Size(126, 24);
             this.cb_search.TabIndex = 0;
@@ -46,30 +46,30 @@
             // 
             // tb_search
             // 
-            this.tb_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tb_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_search.Location = new System.Drawing.Point(341, 18);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(273, 23);
+            this.tb_search.Size = new System.Drawing.Size(273, 22);
             this.tb_search.TabIndex = 1;
             this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // tv_combo
             // 
             this.tv_combo.AutoSize = true;
-            this.tv_combo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tv_combo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv_combo.Location = new System.Drawing.Point(6, 21);
             this.tv_combo.Name = "tv_combo";
-            this.tv_combo.Size = new System.Drawing.Size(46, 17);
+            this.tv_combo.Size = new System.Drawing.Size(45, 16);
             this.tv_combo.TabIndex = 2;
             this.tv_combo.Text = "label1";
             // 
             // tv_searchbox
             // 
             this.tv_searchbox.AutoSize = true;
-            this.tv_searchbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.tv_searchbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv_searchbox.Location = new System.Drawing.Point(253, 21);
             this.tv_searchbox.Name = "tv_searchbox";
-            this.tv_searchbox.Size = new System.Drawing.Size(46, 17);
+            this.tv_searchbox.Size = new System.Drawing.Size(45, 16);
             this.tv_searchbox.TabIndex = 3;
             this.tv_searchbox.Text = "label2";
             // 

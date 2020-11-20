@@ -43,30 +43,30 @@
             // tv_magia
             // 
             this.tv_magia.AutoSize = true;
-            this.tv_magia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_magia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv_magia.Location = new System.Drawing.Point(17, 19);
             this.tv_magia.Name = "tv_magia";
-            this.tv_magia.Size = new System.Drawing.Size(70, 23);
+            this.tv_magia.Size = new System.Drawing.Size(56, 20);
             this.tv_magia.TabIndex = 0;
             this.tv_magia.Text = "Mã giá";
             // 
             // tv_giatri
             // 
             this.tv_giatri.AutoSize = true;
-            this.tv_giatri.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_giatri.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv_giatri.Location = new System.Drawing.Point(17, 91);
             this.tv_giatri.Name = "tv_giatri";
-            this.tv_giatri.Size = new System.Drawing.Size(64, 23);
+            this.tv_giatri.Size = new System.Drawing.Size(51, 20);
             this.tv_giatri.TabIndex = 1;
             this.tv_giatri.Text = "Giá trị";
             // 
             // tv_ngaybatdau
             // 
             this.tv_ngaybatdau.AutoSize = true;
-            this.tv_ngaybatdau.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_ngaybatdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tv_ngaybatdau.Location = new System.Drawing.Point(17, 172);
             this.tv_ngaybatdau.Name = "tv_ngaybatdau";
-            this.tv_ngaybatdau.Size = new System.Drawing.Size(127, 23);
+            this.tv_ngaybatdau.Size = new System.Drawing.Size(103, 20);
             this.tv_ngaybatdau.TabIndex = 2;
             this.tv_ngaybatdau.Text = "Ngày bắt đầu";
             this.tv_ngaybatdau.Click += new System.EventHandler(this.tv_ngaybatdau_Click);
@@ -74,10 +74,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(17, 256);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 23);
+            this.label1.Size = new System.Drawing.Size(106, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Ngày kết thúc";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -85,43 +85,43 @@
             // tb_magia
             // 
             this.tb_magia.Enabled = false;
-            this.tb_magia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_magia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_magia.Location = new System.Drawing.Point(191, 16);
             this.tb_magia.Name = "tb_magia";
-            this.tb_magia.Size = new System.Drawing.Size(181, 30);
+            this.tb_magia.Size = new System.Drawing.Size(181, 26);
             this.tb_magia.TabIndex = 4;
             // 
             // tb_giatri
             // 
-            this.tb_giatri.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_giatri.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_giatri.Location = new System.Drawing.Point(191, 88);
             this.tb_giatri.Name = "tb_giatri";
-            this.tb_giatri.Size = new System.Drawing.Size(181, 30);
+            this.tb_giatri.Size = new System.Drawing.Size(181, 26);
             this.tb_giatri.TabIndex = 5;
             this.tb_giatri.TextChanged += new System.EventHandler(this.tb_giatri_TextChanged);
             this.tb_giatri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_giatri_KeyPress_1);
             // 
             // datepicker_batdau
             // 
-            this.datepicker_batdau.Font = new System.Drawing.Font("Arial", 7F);
+            this.datepicker_batdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.datepicker_batdau.Location = new System.Drawing.Point(191, 176);
             this.datepicker_batdau.Name = "datepicker_batdau";
-            this.datepicker_batdau.Size = new System.Drawing.Size(181, 18);
+            this.datepicker_batdau.Size = new System.Drawing.Size(181, 20);
             this.datepicker_batdau.TabIndex = 6;
             this.datepicker_batdau.ValueChanged += new System.EventHandler(this.datepicker_batdau_ValueChanged);
             // 
             // datepicker_ketthuc
             // 
-            this.datepicker_ketthuc.Font = new System.Drawing.Font("Arial", 7F);
+            this.datepicker_ketthuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.datepicker_ketthuc.Location = new System.Drawing.Point(191, 258);
             this.datepicker_ketthuc.Name = "datepicker_ketthuc";
-            this.datepicker_ketthuc.Size = new System.Drawing.Size(181, 18);
+            this.datepicker_ketthuc.Size = new System.Drawing.Size(181, 20);
             this.datepicker_ketthuc.TabIndex = 7;
             this.datepicker_ketthuc.ValueChanged += new System.EventHandler(this.datepicker_ketthuc_ValueChanged);
             // 
             // btn_luu
             // 
-            this.btn_luu.Font = new System.Drawing.Font("Arial", 10F);
+            this.btn_luu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_luu.Location = new System.Drawing.Point(408, 19);
             this.btn_luu.Name = "btn_luu";
             this.btn_luu.Size = new System.Drawing.Size(50, 40);
@@ -132,7 +132,7 @@
             // 
             // btn_huy
             // 
-            this.btn_huy.Font = new System.Drawing.Font("Arial", 10F);
+            this.btn_huy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_huy.Location = new System.Drawing.Point(408, 91);
             this.btn_huy.Name = "btn_huy";
             this.btn_huy.Size = new System.Drawing.Size(50, 40);

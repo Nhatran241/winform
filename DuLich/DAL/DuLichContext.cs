@@ -128,6 +128,11 @@ namespace DuLich.Entity
                        .WithRequired(s => s.Khach)
                        .WillCascadeOnDelete();
 
+            modelBuilder.Entity<NhanVien>()
+                    .HasMany<PhanCong>(g => g.PhanCongs)
+                      .WithRequired(s => s.NhanVien)
+                      .WillCascadeOnDelete();
+
 
 
             // configures one-to-many relationship {Touris} - [Gia]
