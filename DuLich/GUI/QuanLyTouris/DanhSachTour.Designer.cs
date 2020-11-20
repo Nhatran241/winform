@@ -37,12 +37,14 @@ namespace DuLich.GUI.QuanLyTouris
             this.btn_them = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
             this.search1 = new DuLich.GUI.QuanLyTouris.SearchTour();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tourBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.maTourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenTourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loaiTourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tourBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTour
@@ -57,10 +59,10 @@ namespace DuLich.GUI.QuanLyTouris
             this.dataGridViewTour.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.loaiDataGridViewTextBoxColumn});
-            this.dataGridViewTour.DataSource = this.tourisBindingSource;
+            this.maTourDataGridViewTextBoxColumn,
+            this.tenTourDataGridViewTextBoxColumn,
+            this.loaiTourDataGridViewTextBoxColumn});
+            this.dataGridViewTour.DataSource = this.tourBindingSource;
             this.dataGridViewTour.Location = new System.Drawing.Point(0, 63);
             this.dataGridViewTour.MultiSelect = false;
             this.dataGridViewTour.Name = "dataGridViewTour";
@@ -102,30 +104,38 @@ namespace DuLich.GUI.QuanLyTouris
             this.search1.Size = new System.Drawing.Size(601, 44);
             this.search1.TabIndex = 1;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Mã tour";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên tour";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // loaiDataGridViewTextBoxColumn
-            // 
-            this.loaiDataGridViewTextBoxColumn.DataPropertyName = "Loai";
-            this.loaiDataGridViewTextBoxColumn.HeaderText = "Loại tour";
-            this.loaiDataGridViewTextBoxColumn.Name = "loaiDataGridViewTextBoxColumn";
-            this.loaiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // tourisBindingSource
             // 
             this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
+            this.tourisBindingSource.CurrentChanged += new System.EventHandler(this.tourisBindingSource_CurrentChanged);
+            // 
+            // tourBindingSource
+            // 
+            this.tourBindingSource.DataSource = typeof(DuLich.BUS.Tour);
+            // 
+            // maTourDataGridViewTextBoxColumn
+            // 
+            this.maTourDataGridViewTextBoxColumn.DataPropertyName = "MaTour";
+            this.maTourDataGridViewTextBoxColumn.FillWeight = 472F;
+            this.maTourDataGridViewTextBoxColumn.HeaderText = "Mã tour";
+            this.maTourDataGridViewTextBoxColumn.Name = "maTourDataGridViewTextBoxColumn";
+            this.maTourDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tenTourDataGridViewTextBoxColumn
+            // 
+            this.tenTourDataGridViewTextBoxColumn.DataPropertyName = "TenTour";
+            this.tenTourDataGridViewTextBoxColumn.FillWeight = 472F;
+            this.tenTourDataGridViewTextBoxColumn.HeaderText = "Tên tour";
+            this.tenTourDataGridViewTextBoxColumn.Name = "tenTourDataGridViewTextBoxColumn";
+            this.tenTourDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // loaiTourDataGridViewTextBoxColumn
+            // 
+            this.loaiTourDataGridViewTextBoxColumn.DataPropertyName = "LoaiTour";
+            this.loaiTourDataGridViewTextBoxColumn.FillWeight = 472F;
+            this.loaiTourDataGridViewTextBoxColumn.HeaderText = "Loại tour";
+            this.loaiTourDataGridViewTextBoxColumn.Name = "loaiTourDataGridViewTextBoxColumn";
+            this.loaiTourDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // DanhSachTour
             // 
@@ -139,6 +149,7 @@ namespace DuLich.GUI.QuanLyTouris
             this.Size = new System.Drawing.Size(800, 600);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tourBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,8 +163,9 @@ namespace DuLich.GUI.QuanLyTouris
         private SearchTour search1;
         private Button btn_them;
         private Button btn_xoa;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn loaiDataGridViewTextBoxColumn;
+        private BindingSource tourBindingSource;
+        private DataGridViewTextBoxColumn maTourDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn tenTourDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn loaiTourDataGridViewTextBoxColumn;
     }
 }

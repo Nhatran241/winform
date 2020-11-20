@@ -8,8 +8,8 @@ namespace DuLich.BUS
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaChiTietTour { get; set; }
-        public virtual DiaDiem diaDiem { get; set; }
-        public virtual Tour touris { get; set; }
+        public virtual DiaDiem DiaDiem { get; set; }
+        public virtual Tour Tour { get; set; }
         public int ThuTu { get; set; }
     }
 }

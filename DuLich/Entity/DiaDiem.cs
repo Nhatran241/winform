@@ -13,7 +13,7 @@ namespace DuLich.BUS
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaDienDiem { get; set; }
         public String TenDiaDiem { get; set; }
-        public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
+        public virtual ICollection<ChiTietTour> ChiTietTour { get; set; }
         public override string ToString()
         {
             return TenDiaDiem;

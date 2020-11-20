@@ -24,14 +24,7 @@ namespace DuLich.GUI.QuanLyKhach
             this.chiTietKhachListener = chiTietKhachListener;
             baseKhach = khach;
             editKhach = new Khach();
-            editKhach.DiaChi = khach.DiaChi;
-            editKhach.DoanKhachs = khach.DoanKhachs;
-            editKhach.GioiTinh = khach.GioiTinh;
-            editKhach.KhachId = khach.KhachId;
-            editKhach.NgaySinh = khach.NgaySinh;
-            editKhach.SoCmnd = khach.SoCmnd;
-            editKhach.SoDienThoai = khach.SoDienThoai;
-            editKhach.Ten = khach.Ten;
+            editKhach.Map(khach);
             InitUI();
         }
 
@@ -47,9 +40,9 @@ namespace DuLich.GUI.QuanLyKhach
             {
                 cb_gioitinh.Items.Add(s);
             }
-            if (editKhach.KhachId != 0)
+            if (editKhach.MaKhach != 0)
             {
-                tb_name.Text = editKhach.Ten.ToString();
+                tb_name.Text = editKhach.TenKhach.ToString();
                 tb_sdt.Text = editKhach.SoDienThoai.ToString();
                 tb_diaChi.Text = editKhach.DiaChi.ToString();
                 tb_cmnd.Text = editKhach.SoCmnd.ToString();
@@ -65,7 +58,7 @@ namespace DuLich.GUI.QuanLyKhach
 
         private void tb_name_TextChanged(object sender, EventArgs e)
         {
-                editKhach.Ten = tb_name.Text.Trim();
+                editKhach.TenKhach = tb_name.Text.Trim();
         }
 
         private void tb_diaChi_TextChanged(object sender, EventArgs e)
@@ -85,7 +78,7 @@ namespace DuLich.GUI.QuanLyKhach
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(editKhach.Ten))
+            if (string.IsNullOrEmpty(editKhach.TenKhach))
             {
                 MessageBox.Show("Tên khách không được để trống");
             }

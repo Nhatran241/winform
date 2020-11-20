@@ -23,7 +23,7 @@ namespace DuLich.BUS
             GiaTri = editGia.GiaTri;
             ThoiGianBatDau = editGia.ThoiGianBatDau;
             ThoiGianKetThuc = editGia.ThoiGianKetThuc;
-            touris = editGia.touris;
+            Tour = editGia.Tour;
 
         }
     }

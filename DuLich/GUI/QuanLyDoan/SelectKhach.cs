@@ -46,8 +46,8 @@ namespace DuLich.GUI.QuanLyDoan
             foreach (Khach khach in danhSachTatCaKhach)
             {
                 ListViewItem listViewItem1 = new ListViewItem(new string[] {
-            khach.KhachId+"",
-            khach.Ten,
+            khach.MaKhach+"",
+            khach.TenKhach,
             khach.SoDienThoai});
                 this.listbox_tatcakhach.Items.Add(listViewItem1);
             }
@@ -58,8 +58,8 @@ namespace DuLich.GUI.QuanLyDoan
             foreach (Khach khach in danhSachKhachTrongDoan)
             {
                 ListViewItem listViewItem1 = new ListViewItem(new string[] {
-            khach.KhachId+"",
-            khach.Ten,
+            khach.MaKhach+"",
+            khach.TenKhach,
             khach.SoDienThoai});
                 this.listbox_khachtrongdoan.Items.Add(listViewItem1);
             }
@@ -75,8 +75,8 @@ namespace DuLich.GUI.QuanLyDoan
             Khach khach = (Khach)danhSachTatCaKhach[listbox_tatcakhach.SelectedItems[0].Index];
             danhSachKhachTrongDoan.Add(khach);
             ListViewItem listViewItem1 = new ListViewItem(new string[] {
-            khach.KhachId+"",
-            khach.Ten,
+            khach.MaKhach+"",
+            khach.TenKhach,
             khach.SoDienThoai});
             listbox_khachtrongdoan.Items.Add(listViewItem1);
             if(listbox_khachtrongdoan.Items.Count>=1)
@@ -119,8 +119,8 @@ namespace DuLich.GUI.QuanLyDoan
             Khach khach = (Khach)danhSachKhachTrongDoan[listbox_khachtrongdoan.SelectedItems[0].Index];
             danhSachTatCaKhach.Add(khach);
             ListViewItem listViewItem1 = new ListViewItem(new string[] {
-            khach.KhachId+"",
-            khach.Ten,
+            khach.MaKhach+"",
+            khach.TenKhach,
             khach.SoDienThoai});
             listbox_tatcakhach.Items.Add(listViewItem1);
 

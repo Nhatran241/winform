@@ -30,10 +30,10 @@ namespace DuLich.GUI.QuanLyDoan
             this.maxDate = maxDate;
             this.minDate = minDate;
             this.searchDoanListener = searchDoanListener;
-            filterTour.Id = -1;
-            filterTour.Name = "Bất kỳ";
-            filterKhach.KhachId = -1;
-            filterKhach.Ten = "Bất kỳ";
+            filterTour.MaTour = -1;
+            filterTour.TenTour = "Bất kỳ";
+            filterKhach.MaKhach = -1;
+            filterKhach.TenKhach = "Bất kỳ";
             filterNhanVien.MaNhanVien = -1;
             filterNhanVien.TenNhanVien = "Bất kỳ";
             this.danhSachTour.Insert(0,filterTour);

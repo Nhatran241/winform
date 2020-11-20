@@ -9,15 +9,15 @@ namespace DuLich.BUS
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public virtual Loai Loai { get; set; }
-        public virtual ICollection<Gia> Gias { get; set; }
-        public virtual ICollection<Doan> Doans { get; set; }
-        public virtual ICollection<ChiTietTour> ChiTietTours { get; set; }
+        public int MaTour { get; set; }
+        public String TenTour { get; set; }
+        public virtual Loai LoaiTour { get; set; }
+        public virtual ICollection<Gia> GiaTour { get; set; }
+        public virtual ICollection<Doan> DoanTour { get; set; }
+        public virtual ICollection<ChiTietTour> ChiTietTour { get; set; }
         public override string ToString()
         {
-            return Name;
+            return TenTour;
         }
 
     }

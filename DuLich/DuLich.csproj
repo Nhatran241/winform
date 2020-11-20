@@ -325,6 +325,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DuLich.BUS.ChiPhi.datasource" />
+    <None Include="Properties\DataSources\DuLich.BUS.Doan.datasource" />
+    <None Include="Properties\DataSources\DuLich.BUS.Khach.datasource" />
+    <None Include="Properties\DataSources\DuLich.BUS.Tour.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.Doan.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.Khach.datasource" />
     <None Include="Properties\DataSources\DuLich.Entity.NhanVien.datasource" />

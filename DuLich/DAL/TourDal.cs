@@ -20,14 +20,14 @@ namespace DuLich.DAL
         }
         public static Task AddOrUpdate(Tour tour)
         {
-            var result = context.Touris.SingleOrDefault(b => b.Id == tour.Id);
+            var result = context.Touris.SingleOrDefault(b => b.MaTour == tour.MaTour);
             if (result != null)
             {
-                result.ChiTietTours = tour.ChiTietTours;
-                result.Doans = tour.Doans;
-                result.Gias = tour.Gias;
-                result.Loai = tour.Loai;
-                result.Name = tour.Name;
+                result.ChiTietTour = tour.ChiTietTour;
+                result.DoanTour = tour.DoanTour;
+                result.GiaTour = tour.GiaTour;
+                result.LoaiTour = tour.LoaiTour;
+                result.TenTour = tour.TenTour;
                 return context.SaveChangesAsync();
             }
             else
@@ -38,7 +38,7 @@ namespace DuLich.DAL
         }
         public static Task Delete(Tour touris)
         {
-            var result = context.Touris.SingleOrDefault(b => b.Id == touris.Id);
+            var result = context.Touris.SingleOrDefault(b => b.MaTour == touris.MaTour);
             if (result != null)
             {
                 context.Touris.Remove(touris);
@@ -47,7 +47,7 @@ namespace DuLich.DAL
         }
         public static List<Doan> GetListDoanByTourId(int id)
         {
-            return context.Doans.Where(c => c.Touris.Id == id).ToList();
+            return context.Doans.Where(c => c.Tour.MaTour == id).ToList();
         }
 
     
@@ -55,11 +55,11 @@ namespace DuLich.DAL
         public static List<DiaDiem> GetListDiaDiemByTour(Tour tour)
         {
             List<DiaDiem> danhSachDiaDiemCuaTor = new List<DiaDiem>();
-            if (tour.ChiTietTours == null)
+            if (tour.ChiTietTour == null)
                 return danhSachDiaDiemCuaTor;
-            foreach (ChiTietTour chiTietTour in tour.ChiTietTours.OrderBy(c => c.ThuTu).ToList())
+            foreach (ChiTietTour chiTietTour in tour.ChiTietTour.OrderBy(c => c.ThuTu).ToList())
             {
-                DiaDiem diaDiem = context.DiaDiem.Where(c => c.MaDienDiem == chiTietTour.diaDiem.MaDienDiem).First();
+                DiaDiem diaDiem = context.DiaDiem.Where(c => c.MaDienDiem == chiTietTour.DiaDiem.MaDienDiem).First();
                 if (!danhSachDiaDiemCuaTor.Contains(diaDiem))
                     danhSachDiaDiemCuaTor.Add(diaDiem);
             }
@@ -68,9 +68,9 @@ namespace DuLich.DAL
 
         public static void DeleteAllChiTietByTour(Tour tour)
         {
-            if (tour.ChiTietTours != null)
+            if (tour.ChiTietTour != null)
             {
-                context.ChiTietTour.RemoveRange(tour.ChiTietTours);
+                context.ChiTietTour.RemoveRange(tour.ChiTietTour);
             }
         }
 
@@ -85,7 +85,7 @@ namespace DuLich.DAL
 
         public static List<Tour> GetListTourHasPrice()
         {
-            return GetAll().Where(c => c.Gias!=null && c.Gias.Count >0).ToList();
+            return GetAll().Where(c => c.GiaTour!=null && c.GiaTour.Count >0).ToList();
         }
 
        

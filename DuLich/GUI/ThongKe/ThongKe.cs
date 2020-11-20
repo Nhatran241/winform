@@ -48,7 +48,7 @@ namespace DuLich.GUI.ThongKe
                 tongchiphi += chiphitour;
                 tongloinhuan += loinhuantour;
                 ListViewItem listViewItem1 = new ListViewItem(new string[] {
-                tour.Name,
+                tour.TenTour,
                 doanhthutour+" $",
                 chiphitour+" $",
                 loinhuantour+ "$",

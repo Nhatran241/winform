@@ -39,26 +39,18 @@ namespace DuLich.GUI.QuanLyDoan
             this.danhSachKhachTrongDoan = khachtrongdoan;
             this.baseDoan = doan;
             editDoan = new Doan();
-            editDoan.ChiPhis = doan.ChiPhis;
-            editDoan.DoanKhachs = doan.DoanKhachs;
-            editDoan.GiaApDung = doan.GiaApDung;
-            editDoan.Id = doan.Id;
-            editDoan.Name = doan.Name;
-            editDoan.PhanCongs = doan.PhanCongs;
-            editDoan.ThoiGianBatDau = doan.ThoiGianBatDau;
-            editDoan.ThoiGianKetThuc = doan.ThoiGianKetThuc;
-            editDoan.Touris = doan.Touris;
+            editDoan.Map(doan);
 
             if (danhSachTour.Count() == 0)
             {
                 panel_thongbao.Visible = true;
                 return;
             }
-            if (doan.Id == 0)
+            if (doan.MaDoan == 0)
             {
                 this.editDoan = new Doan();
-                if (editDoan.Touris == null)
-                    editDoan.Touris = danhSachTour.First();
+                if (editDoan.Tour == null)
+                    editDoan.Tour = danhSachTour.First();
                 textbox_id.Enabled = false;
                 btn_xoa.Visible = false;
                 isEditing = true;
@@ -70,7 +62,7 @@ namespace DuLich.GUI.QuanLyDoan
 
         public void UpdateComponentState()
         {
-            if (editDoan.Id == 0)
+            if (editDoan.MaDoan == 0)
             {
                 tab_chitiet.Enabled = false;
                 tb_loinhuan.Visible = false;
@@ -172,9 +164,9 @@ namespace DuLich.GUI.QuanLyDoan
 
         public void InitUI(Doan doan)
         {
-            if (doan.Id != 0)
+            if (doan.MaDoan != 0)
             {
-                textbox_id.Text = doan.Id.ToString();
+                textbox_id.Text = doan.MaDoan.ToString();
                 datepicker_batdau.Value = editDoan.ThoiGianBatDau;
                 datepicker_ketthuc.Value = editDoan.ThoiGianKetThuc;
                 datepicker_batdau.MinDate = editDoan.GiaApDung.ThoiGianBatDau;
@@ -184,7 +176,7 @@ namespace DuLich.GUI.QuanLyDoan
             {
                 textbox_id.Text = "Mã tự động";
             }
-            textbox_name.Text = doan.Name;
+            textbox_name.Text = doan.TenDoan;
             if(combobox_loai.Items.Count ==0) {
                 foreach (Tour tour in danhSachTour)
                 {
@@ -192,13 +184,13 @@ namespace DuLich.GUI.QuanLyDoan
                 }
             }
            
-            if(editDoan.Touris != null)
-                combobox_loai.Text = editDoan.Touris.Name;
-            if (editDoan.Touris!= null && editDoan.Touris.Gias != null)
+            if(editDoan.Tour != null)
+                combobox_loai.Text = editDoan.Tour.TenTour;
+            if (editDoan.Tour!= null && editDoan.Tour.GiaTour != null)
             {
                 if(cb_giatour.Items.Count ==0)
                 {
-                    foreach (Gia gia in editDoan.Touris.Gias)
+                    foreach (Gia gia in editDoan.Tour.GiaTour)
                     {
                         cb_giatour.Items.Add(gia);
                     }
@@ -211,12 +203,12 @@ namespace DuLich.GUI.QuanLyDoan
         {
             if (!isEditing)
                 return;
-            editDoan.Touris = danhSachTour.ToArray()[combobox_loai.SelectedIndex];
-            cb_giatour.DataSource = editDoan.Touris.Gias.ToList();
+            editDoan.Tour = danhSachTour.ToArray()[combobox_loai.SelectedIndex];
+            cb_giatour.DataSource = editDoan.Tour.GiaTour.ToList();
         }
         private void cb_giatour_SelectedIndexChanged(object sender, EventArgs e)
         {
-            editDoan.GiaApDung = editDoan.Touris.Gias.ToArray()[cb_giatour.SelectedIndex];
+            editDoan.GiaApDung = editDoan.Tour.GiaTour.ToArray()[cb_giatour.SelectedIndex];
             UpdateMinMaxDatepicker();
         }
 
@@ -278,12 +270,12 @@ namespace DuLich.GUI.QuanLyDoan
 
         private void textbox_name_TextChanged(object sender, EventArgs e)
         {
-            editDoan.Name = textbox_name.Text.Trim();
+            editDoan.TenDoan = textbox_name.Text.Trim();
         }
 
         private bool Validation(Doan doanSauKhiCapNhat)
         {
-            if (string.IsNullOrEmpty(doanSauKhiCapNhat.Name) || doanSauKhiCapNhat.Touris == null)
+            if (string.IsNullOrEmpty(doanSauKhiCapNhat.TenDoan) || doanSauKhiCapNhat.Tour == null)
                 return false;
             return true;
         }
@@ -313,7 +305,7 @@ namespace DuLich.GUI.QuanLyDoan
             {
                 if (danhSachChiPhi != null)
                 {
-                    long tongChiPhi = danhSachChiPhi.Sum(c => c.giaTri);
+                    long tongChiPhi = danhSachChiPhi.Sum(c => c.GiaTri);
                     tb_tongchiphi.Text = tongChiPhi.ToString();
                     tb_loinhuan.Text = ((editDoan.GiaApDung.GiaTri * (danhSachKhachTrongDoan!= null ?danhSachKhachTrongDoan.Count:0)) - tongChiPhi).ToString();
                 }

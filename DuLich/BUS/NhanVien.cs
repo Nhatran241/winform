@@ -20,9 +20,9 @@ namespace DuLich.BUS
         public List<Doan> GetListDoanPhanCong()
         {
             List<Doan> listDoanPhanCong = new List<Doan>();
-            if (PhanCongs == null)
+            if (PhanCong == null)
                 return listDoanPhanCong;
-            foreach(PhanCong phanCong in PhanCongs)
+            foreach(PhanCong phanCong in PhanCong)
             {
                 listDoanPhanCong.Add(phanCong.Doan);
             }
@@ -40,7 +40,7 @@ namespace DuLich.BUS
             GioiTinh = nhanVien.GioiTinh;
             DiaChi = nhanVien.DiaChi;
             NgaySinh = nhanVien.NgaySinh;
-            PhanCongs = nhanVien.PhanCongs;
+            PhanCong = nhanVien.PhanCong;
             SoCmnd = nhanVien.SoCmnd;
             SoDienThoai = nhanVien.SoDienThoai;
 

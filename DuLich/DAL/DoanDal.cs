@@ -29,8 +29,8 @@ namespace DuLich.DAL
 
         public static void DeleteAllKhach(Doan doan)
         {
-            if (doan.DoanKhachs != null)
-                context.DoanKhachs.RemoveRange(doan.DoanKhachs);
+            if (doan.DoanKhach != null)
+                context.DoanKhachs.RemoveRange(doan.DoanKhach);
         }
 
         public static Task UpdateListDoanKhach(List<DoanKhach> danhSachDoanKhach)
@@ -50,12 +50,12 @@ namespace DuLich.DAL
 
         public static Task AddOrUpdateChiPhi(ChiPhi chiPhi)
         {
-            var result = context.ChiPhis.SingleOrDefault(b => b.id == chiPhi.id);
+            var result = context.ChiPhis.SingleOrDefault(b => b.MaChiPhi == chiPhi.MaChiPhi);
             if (result != null)
             {
                 result.Doan = chiPhi.Doan;
-                result.ghiChu = chiPhi.ghiChu;
-                result.giaTri = chiPhi.giaTri;
+                result.GhiChu = chiPhi.GhiChu;
+                result.GiaTri = chiPhi.GiaTri;
                 result.LoaiChiPhi = chiPhi.LoaiChiPhi;
                 return context.SaveChangesAsync();
             }

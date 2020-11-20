@@ -9,7 +9,7 @@ namespace DuLich.BUS
     {
         public void Map(DiaDiem diaDiem)
         {
-            ChiTietTours = diaDiem.ChiTietTours;
+            ChiTietTour = diaDiem.ChiTietTour;
             MaDienDiem = diaDiem.MaDienDiem;
             TenDiaDiem = diaDiem.TenDiaDiem;
         }
@@ -29,9 +29,9 @@ namespace DuLich.BUS
         public List<Tour> GetListTour()
         {
             List<Tour> listTour = new List<Tour>();
-            foreach (ChiTietTour chiTietTour in ChiTietTours)
+            foreach (ChiTietTour chiTietTour in ChiTietTour)
             {
-                listTour.Add(chiTietTour.touris);
+                listTour.Add(chiTietTour.Tour);
             }
             return listTour;
         }

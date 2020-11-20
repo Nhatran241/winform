@@ -60,7 +60,7 @@ namespace DuLich
 
         public void onChiTietTourXoaTourClick(Tour currentTouris)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + currentTouris.Id, "", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + currentTouris.MaTour, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 List<Doan> doanDangKhaiThac = currentTouris.GetListDoanOfTour();
@@ -69,9 +69,9 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += "- "+doan.Name + " /n";
+                        message += "- "+doan.TenDoan + " \n";
                     }
-                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : /n" + message + " nên không thể xóa tour này");
+                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : \n" + message + " nên không thể xóa tour này");
                 }
                 else
                 {
@@ -116,7 +116,7 @@ namespace DuLich
 
         public void onDanhSachTour_XoaClick(Tour tour)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + tour.Id, "", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + tour.MaTour, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 List<Doan> doanDangKhaiThac = tour.GetListDoanOfTour();
@@ -125,7 +125,7 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += doan.Name + " \n";
+                        message += "- "+doan.TenDoan + " \n";
                     }
                     DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : \n "+message+" nên không thể xóa tour này");
                 }
@@ -224,7 +224,7 @@ namespace DuLich
         public void onDanhSachGiaThemClick(Tour tourHienTai)
         {
             Gia gia = new Gia();
-            gia.touris = tourHienTai;
+            gia.Tour = tourHienTai;
             chiTietGia = new ChiTietGia(gia, this);
             chiTietGia.ShowDialog();
         }
@@ -246,7 +246,7 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += "- "+doan.Name + " \n";
+                        message += "- "+doan.TenDoan + " \n";
                     }
                     DialogResult innerDialogResukt = MessageBox.Show("Giá này đang được áp dụng ở các đoàn : \n" + message + " nên không thể xóa được giá này");
                 }
@@ -281,7 +281,7 @@ namespace DuLich
                     panel_main_content.Invoke((MethodInvoker)delegate
                     {
                         chiTietGia.Close();
-                        (userControl as ChiTietTouris).UpdateData(gia.touris.GetListGiaOfTour(),gia.touris.GetListDiaDiemOfTour());
+                        (userControl as ChiTietTouris).UpdateData(gia.Tour.GetListGiaOfTour(),gia.Tour.GetListDiaDiemOfTour());
                     });
                 }
             });
@@ -331,7 +331,7 @@ namespace DuLich
 
         public void onDanhSachDoan_XoaClick(Doan doan)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Đoàn với mã là :" + doan.Id, "", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Đoàn với mã là :" + doan.MaDoan, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 doan.Delete().ContinueWith(task =>
@@ -422,7 +422,7 @@ namespace DuLich
 
         public void onDanhSachChiPhi_XoaClick(Doan doanHienTai,ChiPhi chiPhi)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa chi phí với mã là :" + chiPhi.id, "", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa chi phí với mã là :" + chiPhi.MaChiPhi, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 doanHienTai.DeleteChiPhi(chiPhi).ContinueWith(task =>
@@ -591,7 +591,7 @@ namespace DuLich
                 {
                     foreach (Tour tour in listTour)
                     {
-                        message += tour.Name + " \n";
+                        message += tour.TenTour + " \n";
                     }
                     DialogResult innerDialogResukt = MessageBox.Show("Địa điểm " + diaDiem.TenDiaDiem + " đang được dùng ở các tour \n" + message + " vui lòng xóa những Tour trên trước");
                 }
@@ -688,7 +688,7 @@ namespace DuLich
 
         public void onDanhSachKhach_XoaClick(Khach khach)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa khách với mã là :" + khach.KhachId, "", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa khách với mã là :" + khach.MaKhach, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 khach.Delete().ContinueWith(task =>

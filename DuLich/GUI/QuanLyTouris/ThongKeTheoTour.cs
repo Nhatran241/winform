@@ -63,7 +63,7 @@ namespace DuLich.View.QuanLyTouris
                 int khach = doan.GetListKhach().Count();
                 tongkhach += khach;
                 ListViewItem listViewItem1 = new ListViewItem(new string[] {
-            doan.Name,
+            doan.TenDoan,
             danhthu+" $"
             ,
             chiphi+" $"

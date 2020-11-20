@@ -35,11 +35,11 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.btn_xoa_doan = new System.Windows.Forms.Button();
             this.btn_sua_doan = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chiPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.maChiPhiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loaiChiPhiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaTriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ghiChuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chiPhiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chiPhiBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +85,7 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
+            this.maChiPhiDataGridViewTextBoxColumn,
             this.loaiChiPhiDataGridViewTextBoxColumn,
             this.giaTriDataGridViewTextBoxColumn,
             this.ghiChuDataGridViewTextBoxColumn});
@@ -98,12 +98,16 @@ namespace DuLich.GUI.QuanLyChiPhi
             this.dataGridView1.Size = new System.Drawing.Size(764, 363);
             this.dataGridView1.TabIndex = 15;
             // 
-            // idDataGridViewTextBoxColumn
+            // chiPhiBindingSource
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Mã chi phí";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.chiPhiBindingSource.DataSource = typeof(DuLich.BUS.ChiPhi);
+            // 
+            // maChiPhiDataGridViewTextBoxColumn
+            // 
+            this.maChiPhiDataGridViewTextBoxColumn.DataPropertyName = "MaChiPhi";
+            this.maChiPhiDataGridViewTextBoxColumn.HeaderText = "Mã chi phí";
+            this.maChiPhiDataGridViewTextBoxColumn.Name = "maChiPhiDataGridViewTextBoxColumn";
+            this.maChiPhiDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // loaiChiPhiDataGridViewTextBoxColumn
             // 
@@ -114,21 +118,17 @@ namespace DuLich.GUI.QuanLyChiPhi
             // 
             // giaTriDataGridViewTextBoxColumn
             // 
-            this.giaTriDataGridViewTextBoxColumn.DataPropertyName = "giaTri";
+            this.giaTriDataGridViewTextBoxColumn.DataPropertyName = "GiaTri";
             this.giaTriDataGridViewTextBoxColumn.HeaderText = "Giá trị";
             this.giaTriDataGridViewTextBoxColumn.Name = "giaTriDataGridViewTextBoxColumn";
             this.giaTriDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ghiChuDataGridViewTextBoxColumn
             // 
-            this.ghiChuDataGridViewTextBoxColumn.DataPropertyName = "ghiChu";
+            this.ghiChuDataGridViewTextBoxColumn.DataPropertyName = "GhiChu";
             this.ghiChuDataGridViewTextBoxColumn.HeaderText = "Ghi chú";
             this.ghiChuDataGridViewTextBoxColumn.Name = "ghiChuDataGridViewTextBoxColumn";
             this.ghiChuDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // chiPhiBindingSource
-            // 
-            this.chiPhiBindingSource.DataSource = typeof(DuLich.BUS.ChiPhi);
             // 
             // DanhSachChiPhi
             // 
@@ -152,10 +152,10 @@ namespace DuLich.GUI.QuanLyChiPhi
         private System.Windows.Forms.Button btn_xoa_doan;
         private System.Windows.Forms.Button btn_sua_doan;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource chiPhiBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maChiPhiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn loaiChiPhiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn giaTriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ghiChuDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource chiPhiBindingSource;
     }
 }

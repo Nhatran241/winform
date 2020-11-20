@@ -10,10 +10,10 @@ namespace DuLich.BUS
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int MaLoai { get; set; }
         public String TenLoai { get; set; }
 
-        public virtual ICollection<Tour> Touris { get; set; }
+        public virtual ICollection<Tour> Tour { get; set; }
         public override string ToString()
         {
             return TenLoai;

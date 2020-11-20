@@ -35,19 +35,17 @@ namespace DuLich.GUI.QuanLyKhach
             this.btn_xoa_doan = new System.Windows.Forms.Button();
             this.btn_sua_doan = new System.Windows.Forms.Button();
             this.dataGridviewKhach = new System.Windows.Forms.DataGridView();
-            this.khachBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchKhach1 = new DuLich.GUI.QuanLyKhach.SearchKhach();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.khachBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.khachBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.maKhachDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenKhachDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diaChiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soDienThoaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soCmndDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaySinhDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gioiTinhDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridviewKhach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_them_doan
@@ -96,14 +94,14 @@ namespace DuLich.GUI.QuanLyKhach
             this.dataGridviewKhach.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridviewKhach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridviewKhach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.dataGridviewKhach.DataSource = this.khachBindingSource1;
+            this.maKhachDataGridViewTextBoxColumn,
+            this.tenKhachDataGridViewTextBoxColumn,
+            this.diaChiDataGridViewTextBoxColumn,
+            this.soDienThoaiDataGridViewTextBoxColumn,
+            this.soCmndDataGridViewTextBoxColumn,
+            this.ngaySinhDataGridViewTextBoxColumn,
+            this.gioiTinhDataGridViewTextBoxColumn});
+            this.dataGridviewKhach.DataSource = this.khachBindingSource;
             this.dataGridviewKhach.Location = new System.Drawing.Point(0, 129);
             this.dataGridviewKhach.MultiSelect = false;
             this.dataGridviewKhach.Name = "dataGridviewKhach";
@@ -120,58 +118,58 @@ namespace DuLich.GUI.QuanLyKhach
             this.searchKhach1.TabIndex = 17;
             this.searchKhach1.Load += new System.EventHandler(this.searchKhach1_Load);
             // 
-            // dataGridViewTextBoxColumn1
+            // khachBindingSource
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "KhachId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mã khách";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.khachBindingSource.DataSource = typeof(DuLich.BUS.Khach);
             // 
-            // dataGridViewTextBoxColumn2
+            // maKhachDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Ten";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Tên khách";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.maKhachDataGridViewTextBoxColumn.DataPropertyName = "MaKhach";
+            this.maKhachDataGridViewTextBoxColumn.HeaderText = "Mã khách";
+            this.maKhachDataGridViewTextBoxColumn.Name = "maKhachDataGridViewTextBoxColumn";
+            this.maKhachDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // tenKhachDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "DiaChi";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Địa chỉ";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.tenKhachDataGridViewTextBoxColumn.DataPropertyName = "TenKhach";
+            this.tenKhachDataGridViewTextBoxColumn.HeaderText = "Tên khách";
+            this.tenKhachDataGridViewTextBoxColumn.Name = "tenKhachDataGridViewTextBoxColumn";
+            this.tenKhachDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // diaChiDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "SoDienThoai";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Số điện thoại";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.diaChiDataGridViewTextBoxColumn.DataPropertyName = "DiaChi";
+            this.diaChiDataGridViewTextBoxColumn.HeaderText = "Địa chỉ";
+            this.diaChiDataGridViewTextBoxColumn.Name = "diaChiDataGridViewTextBoxColumn";
+            this.diaChiDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn5
+            // soDienThoaiDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "SoCmnd";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Số chứng minh";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.soDienThoaiDataGridViewTextBoxColumn.DataPropertyName = "SoDienThoai";
+            this.soDienThoaiDataGridViewTextBoxColumn.HeaderText = "Sđt";
+            this.soDienThoaiDataGridViewTextBoxColumn.Name = "soDienThoaiDataGridViewTextBoxColumn";
+            this.soDienThoaiDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn6
+            // soCmndDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "NgaySinh";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Ngày sinh";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.soCmndDataGridViewTextBoxColumn.DataPropertyName = "SoCmnd";
+            this.soCmndDataGridViewTextBoxColumn.HeaderText = "Số chứng minh";
+            this.soCmndDataGridViewTextBoxColumn.Name = "soCmndDataGridViewTextBoxColumn";
+            this.soCmndDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
+            // ngaySinhDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "GioiTinh";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Giới tính";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.ngaySinhDataGridViewTextBoxColumn.DataPropertyName = "NgaySinh";
+            this.ngaySinhDataGridViewTextBoxColumn.HeaderText = "Ngày sinh";
+            this.ngaySinhDataGridViewTextBoxColumn.Name = "ngaySinhDataGridViewTextBoxColumn";
+            this.ngaySinhDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // khachBindingSource1
+            // gioiTinhDataGridViewTextBoxColumn
             // 
-            this.khachBindingSource1.DataSource = typeof(DuLich.BUS.Khach);
+            this.gioiTinhDataGridViewTextBoxColumn.DataPropertyName = "GioiTinh";
+            this.gioiTinhDataGridViewTextBoxColumn.HeaderText = "Giới tính";
+            this.gioiTinhDataGridViewTextBoxColumn.Name = "gioiTinhDataGridViewTextBoxColumn";
+            this.gioiTinhDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // DanhSachKhach
             // 
@@ -186,7 +184,6 @@ namespace DuLich.GUI.QuanLyKhach
             this.Size = new System.Drawing.Size(800, 600);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridviewKhach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.khachBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -197,15 +194,14 @@ namespace DuLich.GUI.QuanLyKhach
         private System.Windows.Forms.Button btn_xoa_doan;
         private System.Windows.Forms.Button btn_sua_doan;
         private System.Windows.Forms.DataGridView dataGridviewKhach;
-        private System.Windows.Forms.BindingSource khachBindingSource;
-        private System.Windows.Forms.BindingSource khachBindingSource1;
         private SearchKhach searchKhach1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maKhachDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenKhachDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diaChiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soDienThoaiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soCmndDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaySinhDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gioiTinhDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource khachBindingSource;
     }
 }

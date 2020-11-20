@@ -20,10 +20,7 @@ namespace DuLich.GUI.QuanLyPhanCong
             basePhanCong = phanCong;
 
             editPhanCong = new PhanCong();
-            editPhanCong.MaPhanCong = phanCong.MaPhanCong;
-            editPhanCong.Doan = phanCong.Doan;
-            editPhanCong.NhanVien = phanCong.NhanVien;
-            editPhanCong.NhiemVu = phanCong.NhiemVu;
+            editPhanCong.Map(phanCong);
 
             danhSachNhiemVu = new List<string>();
             danhSachNhiemVu.Add("Hướng Dẫn Viên");

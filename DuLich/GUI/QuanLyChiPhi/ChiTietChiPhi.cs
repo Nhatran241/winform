@@ -18,32 +18,28 @@ namespace DuLich.GUI.QuanLyChiPhi
             InitializeComponent();
             baseChiPhi = chiPhi;
             editChiPhi = new ChiPhi();
-            editChiPhi.Doan = chiPhi.Doan;
-            editChiPhi.ghiChu = chiPhi.ghiChu;
-            editChiPhi.giaTri = chiPhi.giaTri;
-            editChiPhi.id = chiPhi.id;
-            editChiPhi.LoaiChiPhi = chiPhi.LoaiChiPhi;
+            editChiPhi.Map(chiPhi);
             this.danhSachLoaiChiPhi.AddRange(danhSachLoaiChiPhi);
             this.chiTietChiPhiListener = chiTietChiPhiListener;
-            if(editChiPhi.id == 0)
+            if(editChiPhi.MaChiPhi == 0)
             {
                 editChiPhi.LoaiChiPhi = danhSachLoaiChiPhi.First();
-                editChiPhi.ghiChu = "";
-                editChiPhi.giaTri = 0;
+                editChiPhi.GhiChu = "";
+                editChiPhi.GiaTri = 0;
             }
             InitUI();
         }
      
         private void InitUI()
         {
-            if (editChiPhi.id == 0)
+            if (editChiPhi.MaChiPhi == 0)
             {
                 tb_machiphi.Text = "Mã tự động";
             } else
             {
-                tb_machiphi.Text = editChiPhi.id.ToString();
+                tb_machiphi.Text = editChiPhi.MaChiPhi.ToString();
             } 
-            tb_chiphi.Text = editChiPhi.giaTri.ToString();
+            tb_chiphi.Text = editChiPhi.GiaTri.ToString();
             foreach(LoaiChiPhi loaiChiPhi in danhSachLoaiChiPhi)
             {
                 combobox_loaichiphi.Items.Add(loaiChiPhi);
@@ -74,7 +70,7 @@ namespace DuLich.GUI.QuanLyChiPhi
         }
         private bool Validation(ChiPhi chiPhi)
         {
-            if (chiPhi.giaTri <= 0)
+            if (chiPhi.GiaTri <= 0)
                 return false;
             return true;
         }
@@ -93,7 +89,14 @@ namespace DuLich.GUI.QuanLyChiPhi
         {
             if (!tb_chiphi.Text.Contains('$'))
             {
-                editChiPhi.giaTri = long.Parse(tb_chiphi.Text.Trim().ToString());
+                if (!string.IsNullOrEmpty(tb_chiphi.Text.Trim()))
+                {
+                    editChiPhi.GiaTri = long.Parse(tb_chiphi.Text.Trim().ToString());
+                }
+                else
+                {
+                    editChiPhi.GiaTri = 0;
+                }
                 tb_chiphi.Text = "$" + tb_chiphi.Text;
             }
             else
@@ -101,17 +104,24 @@ namespace DuLich.GUI.QuanLyChiPhi
                 if (tb_chiphi.TextLength > 1)
                 {
                     tb_chiphi.Text = tb_chiphi.Text.Substring(tb_chiphi.Text.IndexOf('$'));
-                    editChiPhi.giaTri = (long)double.Parse(tb_chiphi.Text.Trim().Replace("$", ""));
+                    if (!string.IsNullOrEmpty(tb_chiphi.Text.Trim()))
+                    {
+                        editChiPhi.GiaTri = (long)double.Parse(tb_chiphi.Text.Trim().Replace("$", ""));
+                    }
+                    else
+                    {
+                        editChiPhi.GiaTri = 0;
+                    }
                     if (tb_chiphi.Text.ToArray()[1] == '0')
                     {
-                        tb_chiphi.Text = "$" + editChiPhi.giaTri;
+                        tb_chiphi.Text = "$" + editChiPhi.GiaTri;
                         tb_chiphi.Focus();
                         tb_chiphi.SelectionStart = tb_chiphi.Text.Length;
                     }
                 }
                 else
                 {
-                    editChiPhi.giaTri = 0;
+                    editChiPhi.GiaTri = 0;
                     tb_chiphi.Text = "$0";
                     tb_chiphi.Focus();
                     tb_chiphi.SelectionStart = tb_chiphi.Text.Length;
@@ -126,7 +136,7 @@ namespace DuLich.GUI.QuanLyChiPhi
 
         private void tb_ghichu_TextChanged(object sender, EventArgs e)
         {
-            editChiPhi.ghiChu = tb_ghichu.Text;
+            editChiPhi.GhiChu = tb_ghichu.Text;
         }
 
         private void tb_chiphi_KeyPress(object sender, KeyPressEventArgs e)

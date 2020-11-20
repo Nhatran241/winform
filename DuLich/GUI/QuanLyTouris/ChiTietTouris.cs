@@ -26,30 +26,14 @@ namespace DuLich.GUI.QuanLyTouris
             this.onChiTietClickListener = onChiTietClickListener;
             this.danhSachChonDiaDiemListener = danhSachChonDiaDiemListener;
             this.danhSachGiaListener = danhSachGiaListener;
-
-            /**
-            currentTouris = new Tour();
-            currentTouris.Id = touris.Id;
-            currentTouris.ChiTietTours = touris.ChiTietTours;
-            currentTouris.Doans = touris.Doans;
-            currentTouris.Gias = touris.Gias;
-            currentTouris.Loai = touris.Loai;
-            currentTouris.Name = touris.Name;
-            **/
             baseTour = touris;
             editTour = new Tour();
-            editTour.Id = touris.Id;
-            editTour.ChiTietTours = touris.ChiTietTours;
-            editTour.Doans = touris.Doans;
-            editTour.Gias = touris.Gias;
-            editTour.Loai = touris.Loai;
-            editTour.Name = touris.Name;
-
+            editTour.Map(touris);
             this.danhSachLoai = loais;
             this.danhSachGia = gias;
             this.danhSachTatCaDiaDiem = tatCaDiaDiem;
             this.danhSachDiaDiemCuaTor = diaDiemCuaTour;
-            if (editTour.Id == 0)
+            if (editTour.MaTour == 0)
             {
                 currentLoai = danhSachLoai.First();
                 btn_xoa.Visible = false;
@@ -61,7 +45,7 @@ namespace DuLich.GUI.QuanLyTouris
  
         public void UpdateComponentState()
         {
-            if (editTour.Id == 0)
+            if (editTour.MaTour == 0)
             {
                 tab_chitiet.Enabled = false;
             }
@@ -128,21 +112,21 @@ namespace DuLich.GUI.QuanLyTouris
         {
             foreach (Loai loai in danhSachLoai)
             {
-                if (editTour.Loai != null && loai.Id == editTour.Loai.Id)
+                if (editTour.LoaiTour != null && loai.MaLoai == editTour.LoaiTour.MaLoai)
                     currentLoai = loai;
                 combobox_loai.Items.Add(loai);
             }
-            if (touris.Id != 0)
+            if (touris.MaTour != 0)
             {
-                textbox_id.Text = touris.Id.ToString();
-                combobox_loai.SelectedItem = touris.Loai;
+                textbox_id.Text = touris.MaTour.ToString();
+                combobox_loai.SelectedItem = touris.LoaiTour;
             }
             else
             {
                 textbox_id.Text = "Mã tự động";
                 combobox_loai.SelectedItem = danhSachLoai.First();
             }
-            textbox_name.Text = touris.Name;
+            textbox_name.Text = touris.TenTour;
             
         }
 
@@ -166,7 +150,7 @@ namespace DuLich.GUI.QuanLyTouris
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            editTour.Loai = danhSachLoai.ToArray()[combobox_loai.SelectedIndex];
+            editTour.LoaiTour = danhSachLoai.ToArray()[combobox_loai.SelectedIndex];
         }
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
         {
@@ -216,12 +200,12 @@ namespace DuLich.GUI.QuanLyTouris
 
         private void textbox_name_TextChanged(object sender, EventArgs e)
         {
-            editTour.Name = textbox_name.Text.Trim();
+            editTour.TenTour = textbox_name.Text.Trim();
         }
 
         private bool Validation(Tour tourisAfterUpdate)
         {
-            if (tourisAfterUpdate.Name == null ||tourisAfterUpdate.Name == "" || tourisAfterUpdate.Loai.Id == 0)
+            if (tourisAfterUpdate.TenTour == null ||tourisAfterUpdate.TenTour == "" || tourisAfterUpdate.LoaiTour.MaLoai == 0)
                 return false;
             return true;
         }

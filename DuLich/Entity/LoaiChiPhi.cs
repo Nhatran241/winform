@@ -9,11 +9,11 @@ namespace DuLich.BUS
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-        public String name { get; set; }
+        public int MaLoaiChiPhi { get; set; }
+        public String TenLoaiChiPhi { get; set; }
         public override string ToString()
         {
-            return name;
+            return TenLoaiChiPhi;
         }
 
     }

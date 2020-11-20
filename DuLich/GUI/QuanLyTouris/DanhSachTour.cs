@@ -48,18 +48,18 @@ namespace DuLich.GUI.QuanLyTouris
         {
             if(!ten.Equals(""))
             {
-                if (loai.Id == -1) {
-                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.Name.ToLower().Contains(ten)).ToList();
+                if (loai.MaLoai == -1) {
+                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.TenTour.ToLower().Contains(ten)).ToList();
                 }else
                 {
-                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.Name.ToLower().Contains(ten) && c.Loai.Id == loai.Id).ToList();
+                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.TenTour.ToLower().Contains(ten) && c.LoaiTour.MaLoai == loai.MaLoai).ToList();
                 }
             }
             else
             {
-                if (loai.Id != -1)
+                if (loai.MaLoai != -1)
                 {
-                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.Loai.Id == loai.Id).ToList();
+                    dataGridViewTour.DataSource = danhSachTour.Where(c => c.LoaiTour.MaLoai == loai.MaLoai).ToList();
                 }else dataGridViewTour.DataSource = danhSachTour.ToList();
             }
            
@@ -74,6 +74,11 @@ namespace DuLich.GUI.QuanLyTouris
         {
             int position = dataGridViewTour.CurrentCell.RowIndex;
             danhSachTourListener.onDanhSachTour_XoaClick(danhSachTour.ToList()[position]);
+        }
+
+        private void tourisBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

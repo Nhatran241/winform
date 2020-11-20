@@ -16,9 +16,7 @@ namespace DuLich.GUI.QuanLyDiaDiem
             this.chiTietDiaDiemListener = chiTietDiaDiemListener;
             baseDiaDiem = diaDiem;
             editDiaDiem = new DiaDiem();
-            editDiaDiem.ChiTietTours = diaDiem.ChiTietTours;
-            editDiaDiem.MaDienDiem = diaDiem.MaDienDiem;
-            editDiaDiem.TenDiaDiem = diaDiem.TenDiaDiem;
+            editDiaDiem.Map(diaDiem);
             InitUI();
         }
 

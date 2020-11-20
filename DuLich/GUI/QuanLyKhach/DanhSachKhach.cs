@@ -60,9 +60,9 @@ namespace DuLich.GUI.QuanLyKhach
             {
                 if (gioitinh.Equals("Bất kỳ"))
                 {
-                    dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.Ten.ToLower().Contains(ten)).ToList();
+                    dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.TenKhach.ToLower().Contains(ten)).ToList();
                 }
-                else dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.Ten.ToLower().Contains(ten) && c.GioiTinh.Equals(gioitinh)).ToList();
+                else dataGridviewKhach.DataSource = danhSachKhach.Where(c => c.NgaySinh >= min && c.NgaySinh <= max && c.TenKhach.ToLower().Contains(ten) && c.GioiTinh.Equals(gioitinh)).ToList();
             }
         }
 

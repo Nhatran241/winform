@@ -37,11 +37,11 @@ namespace DuLich.GUI.QuanLyDoan
             this.btn_xoa = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
             this.searchDoan1 = new DuLich.GUI.QuanLyDoan.SearchDoan();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.maDoanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenDoanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianBatDauDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thoiGianKetThucDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.doanBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,8 +58,8 @@ namespace DuLich.GUI.QuanLyDoan
             this.dataGridViewDoan.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewDoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
+            this.maDoanDataGridViewTextBoxColumn,
+            this.tenDoanDataGridViewTextBoxColumn,
             this.thoiGianBatDauDataGridViewTextBoxColumn,
             this.thoiGianKetThucDataGridViewTextBoxColumn});
             this.dataGridViewDoan.DataSource = this.doanBindingSource;
@@ -99,19 +99,23 @@ namespace DuLich.GUI.QuanLyDoan
             this.searchDoan1.Size = new System.Drawing.Size(670, 103);
             this.searchDoan1.TabIndex = 2;
             // 
-            // idDataGridViewTextBoxColumn
+            // doanBindingSource
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Mã đoàn";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.doanBindingSource.DataSource = typeof(DuLich.BUS.Doan);
             // 
-            // nameDataGridViewTextBoxColumn
+            // maDoanDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên đoàn";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.maDoanDataGridViewTextBoxColumn.DataPropertyName = "MaDoan";
+            this.maDoanDataGridViewTextBoxColumn.HeaderText = "Mã đoàn";
+            this.maDoanDataGridViewTextBoxColumn.Name = "maDoanDataGridViewTextBoxColumn";
+            this.maDoanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tenDoanDataGridViewTextBoxColumn
+            // 
+            this.tenDoanDataGridViewTextBoxColumn.DataPropertyName = "TenDoan";
+            this.tenDoanDataGridViewTextBoxColumn.HeaderText = "Tên đoàn";
+            this.tenDoanDataGridViewTextBoxColumn.Name = "tenDoanDataGridViewTextBoxColumn";
+            this.tenDoanDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // thoiGianBatDauDataGridViewTextBoxColumn
             // 
@@ -126,10 +130,6 @@ namespace DuLich.GUI.QuanLyDoan
             this.thoiGianKetThucDataGridViewTextBoxColumn.HeaderText = "Thời gian kết thúc";
             this.thoiGianKetThucDataGridViewTextBoxColumn.Name = "thoiGianKetThucDataGridViewTextBoxColumn";
             this.thoiGianKetThucDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // doanBindingSource
-            // 
-            this.doanBindingSource.DataSource = typeof(DuLich.BUS.Doan);
             // 
             // DanhSachDoan
             // 
@@ -153,13 +153,13 @@ namespace DuLich.GUI.QuanLyDoan
         private System.Windows.Forms.BindingSource tourisBindingSource;
         private System.Windows.Forms.ColumnHeader loai_tour;
         private System.Windows.Forms.DataGridView dataGridViewDoan;
-        private System.Windows.Forms.BindingSource doanBindingSource;
         private SearchDoan searchDoan1;
         private Button btn_xoa;
         private Button btn_them;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn maDoanDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn tenDoanDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn thoiGianBatDauDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn thoiGianKetThucDataGridViewTextBoxColumn;
+        private BindingSource doanBindingSource;
     }
 }

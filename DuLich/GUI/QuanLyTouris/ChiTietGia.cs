@@ -18,11 +18,7 @@ namespace DuLich.GUI.QuanLyTouris
 
             baseGia = gia;
             editGia = new Gia();
-            editGia.MaGia = gia.MaGia;
-            editGia.GiaTri = gia.GiaTri;
-            editGia.ThoiGianBatDau = gia.ThoiGianBatDau;
-            editGia.ThoiGianKetThuc = gia.ThoiGianKetThuc;
-            editGia.touris = gia.touris;
+            editGia.Map(gia);
             InitUI();
         }
 
@@ -133,14 +129,26 @@ namespace DuLich.GUI.QuanLyTouris
         {
             if (!tb_giatri.Text.Contains('$'))
             {
-                editGia.GiaTri = long.Parse(tb_giatri.Text.Trim().ToString());
+                if (!string.IsNullOrEmpty(tb_giatri.Text.Trim()))
+                {
+                    editGia.GiaTri = long.Parse(tb_giatri.Text.Trim().ToString());
+                }
+                else
+                {
+                    editGia.GiaTri = 0;
+                }
                 tb_giatri.Text = "$" + tb_giatri.Text;
             }else
             {
                 if(tb_giatri.TextLength > 1)
                 {
                     tb_giatri.Text = tb_giatri.Text.Substring(tb_giatri.Text.IndexOf('$'));
-                    editGia.GiaTri = (long)double.Parse(tb_giatri.Text.Trim().Replace("$", ""));
+                    if (!string.IsNullOrEmpty(tb_giatri.Text.Trim()))
+                    {
+                        editGia.GiaTri = (long)double.Parse(tb_giatri.Text.Trim().Replace("$", ""));
+                    }
+                    else
+                        editGia.GiaTri = 0;
                     if (tb_giatri.Text.ToArray()[1] == '0')
                     {
                         tb_giatri.Text = "$" + editGia.GiaTri;

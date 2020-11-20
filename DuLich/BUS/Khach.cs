@@ -20,13 +20,13 @@ namespace DuLich.BUS
         public void Map(Khach khach)
         {
             DiaChi = khach.DiaChi;
-            DoanKhachs = khach.DoanKhachs;
+            DoanKhach = khach.DoanKhach;
             GioiTinh = khach.GioiTinh;
-            KhachId = khach.KhachId;
+            MaKhach = khach.MaKhach;
             NgaySinh = khach.NgaySinh;
             SoCmnd = khach.SoCmnd;
             SoDienThoai = khach.SoDienThoai;
-            Ten = khach.Ten;
+            TenKhach = khach.TenKhach;
         }
     }
 }

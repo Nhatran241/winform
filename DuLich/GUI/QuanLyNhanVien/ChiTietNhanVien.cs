@@ -19,14 +19,7 @@ namespace DuLich.GUI.QuanLyNhanVien
             this.chiTietNhanVienListener = chiTietNhanVienListener;
             baseNhanVien = nhanVien;
             editNhanVien = new NhanVien();
-            editNhanVien.MaNhanVien = nhanVien.MaNhanVien;
-            editNhanVien.TenNhanVien = nhanVien.TenNhanVien;
-            editNhanVien.GioiTinh = nhanVien.GioiTinh;
-            editNhanVien.DiaChi = nhanVien.DiaChi;
-            editNhanVien.NgaySinh = nhanVien.NgaySinh;
-            editNhanVien.PhanCongs = nhanVien.PhanCongs;
-            editNhanVien.SoCmnd = nhanVien.SoCmnd;
-            editNhanVien.SoDienThoai = nhanVien.SoDienThoai;
+            editNhanVien.Map(nhanVien);
             InitUI();
         }
 
