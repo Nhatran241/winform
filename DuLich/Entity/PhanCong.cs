@@ -18,5 +18,13 @@ namespace DuLich.BUS
         public virtual Doan Doan { get; set; }
         public virtual NhanVien NhanVien { get; set; }
         public String NhiemVu { get; set; }
+
+        public void Map(PhanCong editPhanCong)
+        {
+            MaPhanCong = editPhanCong.MaPhanCong;
+            Doan = editPhanCong.Doan;
+            NhanVien = editPhanCong.NhanVien;
+            NhiemVu = editPhanCong.NhiemVu;
+        }
     }
 }

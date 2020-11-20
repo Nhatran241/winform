@@ -8,45 +8,46 @@ namespace DuLich.GUI.QuanLyTouris
     public partial class ChiTietGia : Form
     {
         private IChiTietGiaListener chiTietGiaListener;
-        private Gia gia = new Gia();
+        private Gia baseGia;
+        private Gia editGia;
         private bool isEditing = false;
         public ChiTietGia(Gia gia,IChiTietGiaListener chiTietGiaListener)
         {
             InitializeComponent();
             this.chiTietGiaListener = chiTietGiaListener;
-            this.gia.MaGia = gia.MaGia;
-            this.gia.GiaTri = gia.GiaTri;
-            this.gia.ThoiGianBatDau = gia.ThoiGianBatDau;
-            this.gia.ThoiGianKetThuc = gia.ThoiGianKetThuc;
-            this.gia.touris = gia.touris;
+
+            baseGia = gia;
+            editGia = new Gia();
+            editGia.Map(gia);
             InitUI();
         }
 
         private void InitUI()
         {
-            if (gia.MaGia == 0)
+            if (baseGia.MaGia == 0)
             {
                 tb_magia.Text = "Mã tự động";
             } else {
-                tb_magia.Text = gia.MaGia.ToString();
+                tb_magia.Text = baseGia.MaGia.ToString();
             }
-            tb_giatri.Text = String.Format("{0:c1}", gia.GiaTri);
-            if (gia.ThoiGianBatDau.Year < 1500 && gia.ThoiGianKetThuc.Year < 1500)
+            tb_giatri.Text = String.Format("{0:c1}", baseGia.GiaTri);
+            if (baseGia.ThoiGianBatDau.Year < 1500 && baseGia.ThoiGianKetThuc.Year < 1500)
             {
                 datepicker_batdau.Value = DateTime.Today;
                 datepicker_ketthuc.Value = DateTime.Today;
             }else
             {
-                datepicker_batdau.Value = gia.ThoiGianBatDau;
-                datepicker_ketthuc.Value = gia.ThoiGianKetThuc;
+                datepicker_batdau.Value = baseGia.ThoiGianBatDau;
+                datepicker_ketthuc.Value = baseGia.ThoiGianKetThuc;
             }
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
         {
-            if (Validation(gia))
+            if (Validation(editGia))
             {
-                chiTietGiaListener.onChiTietGia_LuuClick(gia);
+                baseGia.Map(editGia);
+                chiTietGiaListener.onChiTietGia_LuuClick(baseGia);
             }else
             {
                 MessageBox.Show("Giá trị không hợp lệ");
@@ -72,28 +73,28 @@ namespace DuLich.GUI.QuanLyTouris
         private void datepicker_batdau_ValueChanged(object sender, EventArgs e)
         {
             
-            gia.ThoiGianBatDau = datepicker_batdau.Value;
-            if (gia.ThoiGianBatDau > gia.ThoiGianKetThuc)
+            editGia.ThoiGianBatDau = datepicker_batdau.Value;
+            if (editGia.ThoiGianBatDau > editGia.ThoiGianKetThuc)
             {
-                gia.ThoiGianKetThuc = gia.ThoiGianBatDau;
-                datepicker_ketthuc.Value = gia.ThoiGianBatDau;
+                editGia.ThoiGianKetThuc = editGia.ThoiGianBatDau;
+                datepicker_ketthuc.Value = editGia.ThoiGianBatDau;
             }
 
-            if (gia.ThoiGianBatDau.Year < 1500)
-                gia.ThoiGianBatDau = DateTime.Today;
+            if (editGia.ThoiGianBatDau.Year < 1500)
+                editGia.ThoiGianBatDau = DateTime.Today;
         }
 
         private void datepicker_ketthuc_ValueChanged(object sender, EventArgs e)
         {
-            gia.ThoiGianKetThuc = datepicker_ketthuc.Value;
-            if (gia.ThoiGianKetThuc < gia.ThoiGianBatDau)
+            editGia.ThoiGianKetThuc = datepicker_ketthuc.Value;
+            if (editGia.ThoiGianKetThuc < editGia.ThoiGianBatDau)
             {
-                gia.ThoiGianKetThuc = gia.ThoiGianBatDau;
-                datepicker_ketthuc.Value = gia.ThoiGianBatDau;
+                editGia.ThoiGianKetThuc = editGia.ThoiGianBatDau;
+                datepicker_ketthuc.Value = editGia.ThoiGianBatDau;
             }
 
-            if (gia.ThoiGianKetThuc.Year < 1500)
-                gia.ThoiGianKetThuc = DateTime.Today;
+            if (editGia.ThoiGianKetThuc.Year < 1500)
+                editGia.ThoiGianKetThuc = DateTime.Today;
         }
        
 
@@ -128,24 +129,36 @@ namespace DuLich.GUI.QuanLyTouris
         {
             if (!tb_giatri.Text.Contains('$'))
             {
-                gia.GiaTri = long.Parse(tb_giatri.Text.Trim().ToString());
+                if (!string.IsNullOrEmpty(tb_giatri.Text.Trim()))
+                {
+                    editGia.GiaTri = long.Parse(tb_giatri.Text.Trim().ToString());
+                }
+                else
+                {
+                    editGia.GiaTri = 0;
+                }
                 tb_giatri.Text = "$" + tb_giatri.Text;
             }else
             {
                 if(tb_giatri.TextLength > 1)
                 {
                     tb_giatri.Text = tb_giatri.Text.Substring(tb_giatri.Text.IndexOf('$'));
-                    gia.GiaTri = (long)double.Parse(tb_giatri.Text.Trim().Replace("$", ""));
+                    if (!string.IsNullOrEmpty(tb_giatri.Text.Trim()))
+                    {
+                        editGia.GiaTri = (long)double.Parse(tb_giatri.Text.Trim().Replace("$", ""));
+                    }
+                    else
+                        editGia.GiaTri = 0;
                     if (tb_giatri.Text.ToArray()[1] == '0')
                     {
-                        tb_giatri.Text = "$" + gia.GiaTri;
+                        tb_giatri.Text = "$" + editGia.GiaTri;
                         tb_giatri.Focus();
                         tb_giatri.SelectionStart = tb_giatri.Text.Length;
                     }
                 }
                 else
                 {
-                    gia.GiaTri = 0;
+                    editGia.GiaTri = 0;
                     tb_giatri.Text = "$0";
                     tb_giatri.Focus();
                     tb_giatri.SelectionStart = tb_giatri.Text.Length;

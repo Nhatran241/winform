@@ -57,35 +57,35 @@ namespace DuLich.GUI.QuanLyDoan
         {
             if (!ten.Equals(""))
             {
-                if (tour.Id == -1)
+                if (tour.MaTour == -1)
                 {
                     if(nhanVien.MaNhanVien == -1)
                     {
-                        if(khach.KhachId == -1)
+                        if(khach.MaKhach == -1)
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)&&c.ThoiGianBatDau>= min && c.ThoiGianKetThuc <=max).ToList();
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)&&c.ThoiGianBatDau>= min && c.ThoiGianKetThuc <=max).ToList();
                         }
                         else
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
-                            &&(c.DoanKhachs!=null &&c.DoanKhachs.Where(d=>d.Khach.KhachId == khach.KhachId).Any())
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)
+                            &&(c.DoanKhach!=null &&c.DoanKhach.Where(d=>d.Khach.MaKhach == khach.MaKhach).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
                     else
                     {
 
-                        if (khach.KhachId == -1)
+                        if (khach.MaKhach == -1)
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
-                            && (c.PhanCongs!=null &&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)
+                            && (c.PhanCong!=null &&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                         else
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
-                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
-                            && (c.DoanKhachs!= null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)
+                            && (c.PhanCong!=null&&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhach!= null&&c.DoanKhach.Where(d => d.Khach.MaKhach == khach.MaKhach).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
@@ -94,36 +94,36 @@ namespace DuLich.GUI.QuanLyDoan
                 {
                     if (nhanVien.MaNhanVien == -1)
                     {
-                        if (khach.KhachId == -1)
+                        if (khach.MaKhach == -1)
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
-                            && c.Touris.Id == tour.Id
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)
+                            && c.Tour.MaTour == tour.MaTour
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                         else
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
-                            && c.Touris.Id == tour.Id
-                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)
+                            && c.Tour.MaTour == tour.MaTour
+                            && (c.DoanKhach!=null&&c.DoanKhach.Where(d => d.Khach.MaKhach == khach.MaKhach).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
                     else
                     {
 
-                        if (khach.KhachId == -1)
+                        if (khach.MaKhach == -1)
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
-                            && c.Touris.Id == tour.Id
-                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)
+                            && c.Tour.MaTour == tour.MaTour
+                            && (c.PhanCong!=null&&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                         else
                         {
-                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.Name.ToLower().Contains(ten)
-                            && c.Touris.Id == tour.Id
-                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
-                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            dataGridViewDoan.DataSource = danhSachDoan.Where(c => c.TenDoan.ToLower().Contains(ten)
+                            && c.Tour.MaTour == tour.MaTour
+                            && (c.PhanCong!=null&&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhach!=null&&c.DoanKhach.Where(d => d.Khach.MaKhach == khach.MaKhach).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
@@ -131,35 +131,35 @@ namespace DuLich.GUI.QuanLyDoan
             }
             else
             {
-                if (tour.Id == -1)
+                if (tour.MaTour == -1)
                 {
                     if (nhanVien.MaNhanVien == -1)
                     {
-                        if (khach.KhachId == -1)
+                        if (khach.MaKhach == -1)
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c =>c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                         else
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
-                            (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            (c.DoanKhach!=null&&c.DoanKhach.Where(d => (d.Khach != null ? d.Khach.MaKhach == khach.MaKhach : true)).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
                     else
                     {
 
-                        if (khach.KhachId == -1)
+                        if (khach.MaKhach == -1)
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c =>
-                            (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            (c.PhanCong!=null&&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                         else
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
-                            (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
-                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            (c.PhanCong!=null&&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhach!=null&&c.DoanKhach.Where(d => d.Khach.MaKhach == khach.MaKhach).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
@@ -168,36 +168,36 @@ namespace DuLich.GUI.QuanLyDoan
                 {
                     if (nhanVien.MaNhanVien == -1)
                     {
-                        if (khach.KhachId == -1)
+                        if (khach.MaKhach == -1)
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
-                            c.Touris.Id == tour.Id
+                            c.Tour.MaTour == tour.MaTour
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                         else
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
-                            c.Touris.Id == tour.Id
-                            && (c.DoanKhachs!= null &&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            c.Tour.MaTour == tour.MaTour
+                            && (c.DoanKhach!= null &&c.DoanKhach.Where(d => d.Khach.MaKhach == khach.MaKhach).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
                     else
                     {
 
-                        if (khach.KhachId == -1)
+                        if (khach.MaKhach == -1)
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
-                            c.Touris.Id == tour.Id
-                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            c.Tour.MaTour == tour.MaTour
+                            && (c.PhanCong!=null&&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                         else
                         {
                             dataGridViewDoan.DataSource = danhSachDoan.Where(c => 
-                            c.Touris.Id == tour.Id
-                            && (c.PhanCongs!=null&&c.PhanCongs.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
-                            && (c.DoanKhachs!=null&&c.DoanKhachs.Where(d => d.Khach.KhachId == khach.KhachId).Any())
+                            c.Tour.MaTour == tour.MaTour
+                            && (c.PhanCong!=null&&c.PhanCong.Where(d => d.NhanVien.MaNhanVien == nhanVien.MaNhanVien).Any())
+                            && (c.DoanKhach!=null&&c.DoanKhach.Where(d => d.Khach.MaKhach == khach.MaKhach).Any())
                             && c.ThoiGianBatDau >= min && c.ThoiGianKetThuc <= max).ToList();
                         }
                     }
@@ -224,6 +224,11 @@ namespace DuLich.GUI.QuanLyDoan
         private void btn_them_Click(object sender, EventArgs e)
         {
             danhSachDoanListener.onDanhSachDoan_ThemClick();
+        }
+
+        private void DanhSachDoan_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

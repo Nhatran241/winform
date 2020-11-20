@@ -7,6 +7,12 @@ namespace DuLich.BUS
 {
     public partial class DiaDiem
     {
+        public void Map(DiaDiem diaDiem)
+        {
+            ChiTietTour = diaDiem.ChiTietTour;
+            MaDienDiem = diaDiem.MaDienDiem;
+            TenDiaDiem = diaDiem.TenDiaDiem;
+        }
         public Task AddOrUpdate()
         {
             return DiaDiemDal.AddOrUpdate(this);
@@ -23,9 +29,9 @@ namespace DuLich.BUS
         public List<Tour> GetListTour()
         {
             List<Tour> listTour = new List<Tour>();
-            foreach (ChiTietTour chiTietTour in ChiTietTours)
+            foreach (ChiTietTour chiTietTour in ChiTietTour)
             {
-                listTour.Add(chiTietTour.touris);
+                listTour.Add(chiTietTour.Tour);
             }
             return listTour;
         }

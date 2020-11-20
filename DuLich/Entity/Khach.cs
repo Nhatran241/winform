@@ -11,17 +11,17 @@ namespace DuLich.BUS
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int KhachId { get; set; }
-        public String Ten { get; set; }
+        public int MaKhach { get; set; }
+        public String TenKhach { get; set; }
         public String DiaChi { get; set; }
         public String SoDienThoai { get; set; }
         public String SoCmnd { get; set; }
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
-        public virtual ICollection<DoanKhach> DoanKhachs { get; set; }
+        public virtual ICollection<DoanKhach> DoanKhach { get; set; }
         public override string ToString()
         {
-            return Ten;
+            return TenKhach;
         }
 
     }

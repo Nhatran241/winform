@@ -44,59 +44,66 @@
             // 
             // cb_tour
             // 
+            this.cb_tour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_tour.FormattingEnabled = true;
-            this.cb_tour.Location = new System.Drawing.Point(49, 14);
+            this.cb_tour.Location = new System.Drawing.Point(103, 8);
             this.cb_tour.Name = "cb_tour";
-            this.cb_tour.Size = new System.Drawing.Size(113, 21);
+            this.cb_tour.Size = new System.Drawing.Size(221, 24);
             this.cb_tour.TabIndex = 0;
             this.cb_tour.SelectedIndexChanged += new System.EventHandler(this.cb_search_SelectedIndexChanged);
             // 
             // tb_search
             // 
-            this.tb_search.Location = new System.Drawing.Point(325, 15);
+            this.tb_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_search.Location = new System.Drawing.Point(440, 8);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(249, 20);
+            this.tb_search.Size = new System.Drawing.Size(224, 22);
             this.tb_search.TabIndex = 1;
             this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
             // tv_combo
             // 
             this.tv_combo.AutoSize = true;
-            this.tv_combo.Location = new System.Drawing.Point(14, 17);
+            this.tv_combo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_combo.Location = new System.Drawing.Point(3, 11);
             this.tv_combo.Name = "tv_combo";
-            this.tv_combo.Size = new System.Drawing.Size(29, 13);
+            this.tv_combo.Size = new System.Drawing.Size(36, 16);
             this.tv_combo.TabIndex = 2;
             this.tv_combo.Text = "Tour";
             // 
             // tv_searchbox
             // 
             this.tv_searchbox.AutoSize = true;
-            this.tv_searchbox.Location = new System.Drawing.Point(264, 17);
+            this.tv_searchbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tv_searchbox.Location = new System.Drawing.Point(330, 11);
             this.tv_searchbox.Name = "tv_searchbox";
-            this.tv_searchbox.Size = new System.Drawing.Size(55, 13);
+            this.tv_searchbox.Size = new System.Drawing.Size(67, 16);
             this.tv_searchbox.TabIndex = 3;
             this.tv_searchbox.Text = "Tên Đoàn";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.Size = new System.Drawing.Size(91, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "Ngày Bắt Đầu";
             // 
             // datepickbatdau
             // 
-            this.datepickbatdau.Location = new System.Drawing.Point(83, 77);
+            this.datepickbatdau.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.datepickbatdau.Location = new System.Drawing.Point(103, 76);
             this.datepickbatdau.Name = "datepickbatdau";
-            this.datepickbatdau.Size = new System.Drawing.Size(200, 20);
+            this.datepickbatdau.Size = new System.Drawing.Size(221, 20);
             this.datepickbatdau.TabIndex = 5;
             this.datepickbatdau.ValueChanged += new System.EventHandler(this.datepickbatdau_ValueChanged);
             // 
             // datepickketthuc
             // 
-            this.datepickketthuc.Location = new System.Drawing.Point(374, 77);
+            this.datepickketthuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.datepickketthuc.Location = new System.Drawing.Point(464, 76);
             this.datepickketthuc.Name = "datepickketthuc";
             this.datepickketthuc.Size = new System.Drawing.Size(200, 20);
             this.datepickketthuc.TabIndex = 7;
@@ -105,45 +112,50 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(289, 77);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(330, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Ngày Kết Thúc";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 48);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 45);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.Size = new System.Drawing.Size(65, 16);
             this.label3.TabIndex = 9;
             this.label3.Text = "Có Khách";
             // 
             // cb_khach
             // 
+            this.cb_khach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_khach.FormattingEnabled = true;
-            this.cb_khach.Location = new System.Drawing.Point(83, 45);
+            this.cb_khach.Location = new System.Drawing.Point(103, 42);
             this.cb_khach.Name = "cb_khach";
-            this.cb_khach.Size = new System.Drawing.Size(117, 21);
+            this.cb_khach.Size = new System.Drawing.Size(221, 24);
             this.cb_khach.TabIndex = 8;
             this.cb_khach.SelectedIndexChanged += new System.EventHandler(this.cb_khach_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(371, 48);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(330, 45);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.Size = new System.Drawing.Size(90, 16);
             this.label4.TabIndex = 11;
             this.label4.Text = "Có Nhân Viên";
             // 
             // cb_nhanvien
             // 
+            this.cb_nhanvien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_nhanvien.FormattingEnabled = true;
-            this.cb_nhanvien.Location = new System.Drawing.Point(457, 45);
+            this.cb_nhanvien.Location = new System.Drawing.Point(440, 42);
             this.cb_nhanvien.Name = "cb_nhanvien";
-            this.cb_nhanvien.Size = new System.Drawing.Size(117, 21);
+            this.cb_nhanvien.Size = new System.Drawing.Size(224, 24);
             this.cb_nhanvien.TabIndex = 10;
             this.cb_nhanvien.SelectedIndexChanged += new System.EventHandler(this.cb_nhanvien_SelectedIndexChanged);
             // 
@@ -164,7 +176,7 @@
             this.Controls.Add(this.tb_search);
             this.Controls.Add(this.cb_tour);
             this.Name = "SearchDoan";
-            this.Size = new System.Drawing.Size(591, 103);
+            this.Size = new System.Drawing.Size(667, 103);
             this.ResumeLayout(false);
             this.PerformLayout();
 

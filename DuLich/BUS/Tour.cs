@@ -18,21 +18,28 @@ namespace DuLich.BUS
         }
         public List<Doan> GetListDoanOfTour()
         {
-            if (Doans == null)
+            if (DoanTour == null)
                 return new List<Doan>();
-            return Doans.ToList();
+            return DoanTour.ToList();
+        }
+
+        public List<Doan> GetListDoanOfTourWithPrice(Gia gia)
+        {
+            if (DoanTour == null)
+                return new List<Doan>();
+            return DoanTour.Where(c=>c.GiaApDung.MaGia == gia.MaGia).ToList();
         }
 
         public List<Khach> GetListKhachOfTour()
         {
             List<Khach> khachTrongTour = new List<Khach>();
-            if (Doans != null)
+            if (DoanTour != null)
             {
-                foreach (Doan doan in Doans)
+                foreach (Doan doan in DoanTour)
                 {
-                    if (doan.DoanKhachs != null)
+                    if (doan.DoanKhach != null)
                     {
-                        foreach(DoanKhach doanKhach in doan.DoanKhachs)
+                        foreach(DoanKhach doanKhach in doan.DoanKhach)
                         {
                             khachTrongTour.Add(doanKhach.Khach);
                         }
@@ -44,20 +51,20 @@ namespace DuLich.BUS
         public List<Khach> GetListKhachOfTourByTime(DateTime from,DateTime to)
         {
             List<Khach> khachTrongTour = new List<Khach>();
-            if (Doans != null)
+            if (DoanTour != null)
             {
-                foreach (Doan doan in Doans.Where(c=>c.ThoiGianBatDau>=from && c.ThoiGianKetThuc<=to))
+                foreach (Doan doan in DoanTour.Where(c=>c.ThoiGianBatDau>=from && c.ThoiGianKetThuc<=to))
                 {
-                    if (doan.DoanKhachs != null)
+                    if (doan.DoanKhach != null)
                     {
-                        foreach (DoanKhach doanKhach in doan.DoanKhachs)
+                        foreach (DoanKhach doanKhach in doan.DoanKhach)
                         {
                             khachTrongTour.Add(doanKhach.Khach);
                         }
                     }
                 }
             }
-            return khachTrongTour.Distinct().ToList();
+            return khachTrongTour.ToList();
         }
 
         public List<DiaDiem> GetListDiaDiemOfTour()
@@ -67,9 +74,9 @@ namespace DuLich.BUS
 
         public List<Gia> GetListGiaOfTour()
         {
-            if (Gias == null)
+            if (GiaTour == null)
                 return new List<Gia>();
-            return Gias.ToList();
+            return GiaTour.ToList();
         }
 
         public void DeleteAllChiTietTour()
@@ -79,7 +86,17 @@ namespace DuLich.BUS
 
         public double TongDoanhThuTourByTime(DateTime from, DateTime to)
         {
-            return GetListDoanOfTourByTime(from,to).Where(c=>c.GiaApDung != null).Sum(c => c.GiaApDung.GiaTri*c.DoanKhachs.Count());
+            return GetListDoanOfTourByTime(from,to).Where(c=>c.GiaApDung != null).Sum(c => c.GiaApDung.GiaTri*c.DoanKhach.Count());
+        }
+        public double TongChiPhiTourByTime(DateTime from, DateTime to)
+        {
+            List<Doan> listDoan = GetListDoanOfTourByTime(from, to);
+            double tongChiPhi = 0;
+            foreach(Doan doan in listDoan)
+            {
+                tongChiPhi +=doan.TongChiPhiDoan();
+            }
+            return tongChiPhi;
         }
 
         public Task UpdateListDiaDiemTour(List<DiaDiem> danhSachDiaDiemTrongDoanUpdate)
@@ -88,8 +105,8 @@ namespace DuLich.BUS
             for (int i = 0; i < danhSachDiaDiemTrongDoanUpdate.Count(); i++)
             {
                 ChiTietTour chiTietTour = new ChiTietTour();
-                chiTietTour.diaDiem = danhSachDiaDiemTrongDoanUpdate.ToArray()[i];
-                chiTietTour.touris = this;
+                chiTietTour.DiaDiem = danhSachDiaDiemTrongDoanUpdate.ToArray()[i];
+                chiTietTour.Tour = this;
                 chiTietTour.ThuTu = i + 1;
                 danhSachChiTietTour.Add(chiTietTour);
             }
@@ -99,6 +116,15 @@ namespace DuLich.BUS
         public List<Doan> GetListDoanOfTourByTime(DateTime from, DateTime to)
         {
             return GetListDoanOfTour().Where(c => c.ThoiGianBatDau >= from && c.ThoiGianKetThuc <= to).ToList();
+        }
+        public void Map(Tour editTour)
+        {
+            MaTour = editTour.MaTour;
+            ChiTietTour = editTour.ChiTietTour;
+            DoanTour = editTour.DoanTour;
+            ChiTietTour = editTour.ChiTietTour;
+            LoaiTour = editTour.LoaiTour;
+            TenTour = editTour.TenTour;
         }
     }
 }

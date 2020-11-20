@@ -23,6 +23,19 @@ namespace DuLich.BUS
         {
             DoanDal.DeleteAllKhach(this);
         }
+        public void Map(Doan doan)
+        {
+            ChiPhi = doan.ChiPhi;
+            DoanKhach = doan.DoanKhach;
+            GiaApDung = doan.GiaApDung;
+            MaDoan = doan.MaDoan;
+            TenDoan = doan.TenDoan;
+            PhanCong = doan.PhanCong;
+            ThoiGianBatDau = doan.ThoiGianBatDau;
+            ThoiGianKetThuc = doan.ThoiGianKetThuc;
+            Tour = doan.Tour;
+
+        }
 
         public Task UpdateListDoanKhach(List<Khach> danhSachKhachTrongDoanUpdate)
         {
@@ -40,24 +53,24 @@ namespace DuLich.BUS
 
         public List<PhanCong> GetListPhanCong()
         {
-            if (PhanCongs == null)
+            if (PhanCong == null)
                 return new List<PhanCong>();
-            return PhanCongs.ToList();
+            return PhanCong.ToList();
         }
 
         public List<ChiPhi> GetListChiPhi()
         {
-            if (ChiPhis == null)
+            if (ChiPhi == null)
                 return new List<ChiPhi>();
-            return ChiPhis.ToList();
+            return ChiPhi.ToList();
         }
 
         public List<Khach> GetListKhach()
         {
             List<Khach> listKhack = new List<Khach>();
-            if (DoanKhachs == null)
+            if (DoanKhach == null)
                 return listKhack;
-            foreach(DoanKhach doanKhach in DoanKhachs)
+            foreach(DoanKhach doanKhach in DoanKhach)
             {
                 listKhack.Add(doanKhach.Khach);
             }
@@ -66,9 +79,9 @@ namespace DuLich.BUS
 
         public double TongChiPhiDoan()
         {
-            if (ChiPhis == null)
+            if (ChiPhi == null)
                 return 0;
-            return ChiPhis.Sum(c => c.giaTri);
+            return ChiPhi.Sum(c => c.GiaTri);
         }
 
         public Task DeleteChiPhi(ChiPhi chiPhi)

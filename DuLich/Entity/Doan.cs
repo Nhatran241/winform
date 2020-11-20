@@ -9,14 +9,14 @@ namespace DuLich.BUS
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public String Name { get; set; }
+        public int MaDoan { get; set; }
+        public String TenDoan { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
         public virtual Gia GiaApDung { get; set; }
-        public virtual Tour Touris { get; set; }
-        public virtual ICollection<DoanKhach> DoanKhachs { get; set; }
-        public virtual ICollection<PhanCong> PhanCongs { get; set; }
-        public virtual ICollection<ChiPhi> ChiPhis { get; set; }
+        public virtual Tour Tour { get; set; }
+        public virtual ICollection<DoanKhach> DoanKhach { get; set; }
+        public virtual ICollection<PhanCong> PhanCong { get; set; }
+        public virtual ICollection<ChiPhi> ChiPhi { get; set; }
     }
 }

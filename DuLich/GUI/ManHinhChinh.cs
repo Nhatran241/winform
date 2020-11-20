@@ -45,9 +45,9 @@ namespace DuLich
             {
                 userControl = new ChiTietTouris(tourisAfterUpdate,
                     LoaiDal.GetAll(),
-                    new List<Gia>(),
+                    tourisAfterUpdate.GetListGiaOfTour(),
                     DiaDiemDal.GetAll(),
-                    new List<DiaDiem>(), this, this,this);
+                    tourisAfterUpdate.GetListDiaDiemOfTour(), this, this,this);
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
                     panel_main_content.Controls.Clear();
@@ -60,7 +60,7 @@ namespace DuLich
 
         public void onChiTietTourXoaTourClick(Tour currentTouris)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + currentTouris.Id, "", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + currentTouris.MaTour, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 List<Doan> doanDangKhaiThac = currentTouris.GetListDoanOfTour();
@@ -69,9 +69,9 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += doan.Name + " /n";
+                        message += "- "+doan.TenDoan + " \n";
                     }
-                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : /n" + message + " nên không thể xóa tour này");
+                    DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : \n" + message + " nên không thể xóa tour này");
                 }
                 else
                 {
@@ -109,14 +109,14 @@ namespace DuLich
 
         public void onDanhSachTour_ThemClick()
         {
-            userControl = new ChiTietTouris(null, LoaiDal.GetAll(), new List<Gia>(), DiaDiemDal.GetAll(), new List<DiaDiem>(), this, this,this);
+            userControl = new ChiTietTouris(new Tour(), LoaiDal.GetAll(), new List<Gia>(), DiaDiemDal.GetAll(), new List<DiaDiem>(), this, this,this);
             panel_main_content.Controls.Clear();
             panel_main_content.Controls.Add(userControl);
         }
 
         public void onDanhSachTour_XoaClick(Tour tour)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + tour.Id, "", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Touris với mã là :" + tour.MaTour, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 List<Doan> doanDangKhaiThac = tour.GetListDoanOfTour();
@@ -125,7 +125,7 @@ namespace DuLich
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += doan.Name + " \n";
+                        message += "- "+doan.TenDoan + " \n";
                     }
                     DialogResult innerDialogResukt = MessageBox.Show("Tour này đang được sử dụng ở các đoàn : \n "+message+" nên không thể xóa tour này");
                 }
@@ -224,7 +224,7 @@ namespace DuLich
         public void onDanhSachGiaThemClick(Tour tourHienTai)
         {
             Gia gia = new Gia();
-            gia.touris = tourHienTai;
+            gia.Tour = tourHienTai;
             chiTietGia = new ChiTietGia(gia, this);
             chiTietGia.ShowDialog();
         }
@@ -240,13 +240,13 @@ namespace DuLich
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Giá với mã là :" + gia.MaGia, "", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                List<Doan> doanDangKhaiThac = tourHienTai.GetListDoanOfTour();
+                List<Doan> doanDangKhaiThac = tourHienTai.GetListDoanOfTourWithPrice(gia);
                 if (doanDangKhaiThac.Count > 0)
                 {
                     String message = "";
                     foreach (Doan doan in doanDangKhaiThac)
                     {
-                        message += doan.Name + " \n";
+                        message += "- "+doan.TenDoan + " \n";
                     }
                     DialogResult innerDialogResukt = MessageBox.Show("Giá này đang được áp dụng ở các đoàn : \n" + message + " nên không thể xóa được giá này");
                 }
@@ -281,7 +281,7 @@ namespace DuLich
                     panel_main_content.Invoke((MethodInvoker)delegate
                     {
                         chiTietGia.Close();
-                        (userControl as ChiTietTouris).UpdateData(gia.touris.GetListGiaOfTour(),gia.touris.GetListDiaDiemOfTour());
+                        (userControl as ChiTietTouris).UpdateData(gia.Tour.GetListGiaOfTour(),gia.Tour.GetListDiaDiemOfTour());
                     });
                 }
             });
@@ -304,9 +304,7 @@ namespace DuLich
         private void button1_Click(object sender, EventArgs e)
         {
             userControl = new DanhSachDoan(DoanDal.GetAll(), TourDal.GetAll(),NhanVienDal.GetAll(),KhachDal.GetAll(), this);
-            panel_main_content.SuspendLayout();
             panel_main_content.Controls.Clear();
-            panel_main_content.ResumeLayout();
             panel_main_content.Controls.Add(userControl);
         }
 
@@ -333,15 +331,20 @@ namespace DuLich
 
         public void onDanhSachDoan_XoaClick(Doan doan)
         {
-            doan.Delete().ContinueWith(task =>
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa Đoàn với mã là :" + doan.MaDoan, "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                panel_main_content.Invoke((MethodInvoker)delegate
+                doan.Delete().ContinueWith(task =>
                 {
-                    userControl = new DanhSachKhach(KhachDal.GetAll(), this);
-                    panel_main_content.Controls.Clear();
-                    panel_main_content.Controls.Add(userControl);
+                    panel_main_content.Invoke((MethodInvoker)delegate
+                    {
+                        userControl = new DanhSachDoan(DoanDal.GetAll(), TourDal.GetAll(), NhanVienDal.GetAll(), KhachDal.GetAll(), this);
+                        panel_main_content.Controls.Clear();
+                        panel_main_content.Controls.Add(userControl);
+                    });
                 });
-            });
+            }
+           
         }
     }
 }
@@ -419,7 +422,10 @@ namespace DuLich
 
         public void onDanhSachChiPhi_XoaClick(Doan doanHienTai,ChiPhi chiPhi)
         {
-            doanHienTai.DeleteChiPhi(chiPhi).ContinueWith(task =>
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa chi phí với mã là :" + chiPhi.MaChiPhi, "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                doanHienTai.DeleteChiPhi(chiPhi).ContinueWith(task =>
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
@@ -430,6 +436,7 @@ namespace DuLich
                           doanHienTai.GetListKhach()); ;
                 });
             });
+            }
         }
 
         public void onChiTietChiPhi_LuuClick(Doan doanHienTai,ChiPhi chiPhi)
@@ -463,26 +470,29 @@ namespace DuLich
 namespace DuLich
 {
     public partial class ManHinhChinh : DanhSachPhanCong.IDanhSachPhanCongListener,
-        FromPhanCong.IChiTietPhanCongListener
+        ChiTietPhanCong.IChiTietPhanCongListener
     {
-        FromPhanCong form;
+        ChiTietPhanCong form;
         public void onDanhSachPhanCongThemClick(Doan doanHienTai)
         {
             PhanCong phanCong = new PhanCong();
             phanCong.Doan = doanHienTai;
-            form = new FromPhanCong(phanCong,NhanVienDal.GetAll(),this);
+            form = new ChiTietPhanCong(phanCong,NhanVienDal.GetAll(),this);
             form.ShowDialog();
         }
 
         public void onDanhSachPhanCongSuaClick(PhanCong phanCong)
         {
-            form = new FromPhanCong(phanCong, NhanVienDal.GetAll(), this);
+            form = new ChiTietPhanCong(phanCong, NhanVienDal.GetAll(), this);
             form.ShowDialog();
         }
 
         public void onDanhSachPhanCongXoaClick(Doan doanHienTai,PhanCong phanCong)
         {
-            doanHienTai.DeletePhanCong(phanCong).ContinueWith(task =>
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa phân công với mã là :" + phanCong.MaPhanCong, "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                doanHienTai.DeletePhanCong(phanCong).ContinueWith(task =>
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
@@ -493,6 +503,7 @@ namespace DuLich
                           doanHienTai.GetListKhach());
                 });
             });
+            }
         }
 
         public void onChiTietPhanCong_LuuClick(Doan doanHienTai,PhanCong phanCong)
@@ -580,7 +591,7 @@ namespace DuLich
                 {
                     foreach (Tour tour in listTour)
                     {
-                        message += tour.Name + " \n";
+                        message += tour.TenTour + " \n";
                     }
                     DialogResult innerDialogResukt = MessageBox.Show("Địa điểm " + diaDiem.TenDiaDiem + " đang được dùng ở các tour \n" + message + " vui lòng xóa những Tour trên trước");
                 }
@@ -644,6 +655,7 @@ namespace DuLich
 
         public void onLuuKhachClick(Khach khach)
         {
+            Console.WriteLine("luu"+khach.GetHashCode());
             khach.AddOrUpdate().ContinueWith(task =>
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
@@ -663,6 +675,7 @@ namespace DuLich
 
         public void onDanhSachKhach_ThemClick() {
             Khach khach = new Khach();
+            Console.WriteLine("new"+khach.GetHashCode());
             chiTietKhach = new ChiTietKhach(khach, this);
             chiTietKhach.ShowDialog();
         }
@@ -675,7 +688,10 @@ namespace DuLich
 
         public void onDanhSachKhach_XoaClick(Khach khach)
         {
-            khach.Delete().ContinueWith(task =>
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa khách với mã là :" + khach.MaKhach, "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                khach.Delete().ContinueWith(task =>
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
@@ -684,6 +700,7 @@ namespace DuLich
                     panel_main_content.Controls.Add(userControl);
                 });
             });
+            }
         }
     }
 }
@@ -715,7 +732,10 @@ namespace DuLich
 
     public void onDanhSachNhanVien_XoaClick(NhanVien nhanVien)
     {
-            nhanVien.Delete().ContinueWith(task =>
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn xóa nhân viên với mã là :" + nhanVien.MaNhanVien, "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                nhanVien.Delete().ContinueWith(task =>
             {
                 panel_main_content.Invoke((MethodInvoker)delegate
                 {
@@ -724,6 +744,7 @@ namespace DuLich
                     panel_main_content.Controls.Add(userControl);
                 });
             });
+            }
         }
     public void onChiTietNhanVien_LuuClick(NhanVien nhanVien)
     {

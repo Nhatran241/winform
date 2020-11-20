@@ -22,7 +22,7 @@ namespace DuLich.GUI.QuanLyTouris
             tv_combo.Text = "Loại";
             this.danhSachLoai.AddRange(loai);
             this.searchListener = searchListener;
-            filterLoai.Id = -1;
+            filterLoai.MaLoai = -1;
             filterLoai.TenLoai = "Bất kỳ";
             danhSachLoai.Insert(0,filterLoai);
             InitData(danhSachLoai);

@@ -19,7 +19,7 @@ namespace DuLich.BUS
         public String SoCmnd { get; set; }
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
-        public virtual ICollection<PhanCong> PhanCongs { get; set; }
+        public virtual ICollection<PhanCong> PhanCong { get; set; }
         public override string ToString()
         {
             return TenNhanVien;

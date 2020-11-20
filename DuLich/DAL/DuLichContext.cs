@@ -15,8 +15,9 @@ namespace DuLich.Entity
                 instance = new DuLichContext();
             return instance;
         }
-        public DuLichContext() : base("dulichdb")
+        public DuLichContext() : base("dulichdbs")
         {
+            
             try
             {
                 if (DiaDiem.ToList().Count == 0)
@@ -61,9 +62,9 @@ namespace DuLich.Entity
                 {
                     new List<LoaiChiPhi>
             {
-                new LoaiChiPhi { name= "Ăn Uống"},
-                new LoaiChiPhi { name= "Khách Sạn "},
-                new LoaiChiPhi { name= "Phương Tiện"}
+                new LoaiChiPhi { TenLoaiChiPhi= "Ăn Uống"},
+                new LoaiChiPhi { TenLoaiChiPhi= "Khách Sạn "},
+                new LoaiChiPhi { TenLoaiChiPhi= "Phương Tiện"}
             }.ForEach(x => LoaiChiPhis.Add(x));
                     SaveChanges();
                 }
@@ -88,41 +89,46 @@ namespace DuLich.Entity
         {
             // XÓa tour xóa giá luôn
             modelBuilder.Entity<Tour>()
-                        .HasMany<Gia>(g => g.Gias)
-                        .WithRequired(s => s.touris)
+                        .HasMany<Gia>(g => g.GiaTour)
+                        .WithRequired(s => s.Tour)
                         .WillCascadeOnDelete();
 
             modelBuilder.Entity<Tour>()
-                      .HasMany<Doan>(g => g.Doans)
-                      .WithRequired(s => s.Touris)
+                      .HasMany<Doan>(g => g.DoanTour)
+                      .WithRequired(s => s.Tour)
                       .WillCascadeOnDelete();
             // Xóa luôn chi tiết
             modelBuilder.Entity<Tour>()
-                        .HasMany<ChiTietTour>(g => g.ChiTietTours)
-                        .WithRequired(s => s.touris)
+                        .HasMany<ChiTietTour>(g => g.ChiTietTour)
+                        .WithRequired(s => s.Tour)
                         .WillCascadeOnDelete();
 
             // Xóa đoàn xóa luôn những phân công liên quan
             modelBuilder.Entity<Doan>()
-                       .HasMany<PhanCong>(g => g.PhanCongs)
+                       .HasMany<PhanCong>(g => g.PhanCong)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
 
             // Xóa đoàn xóa luôn những chi phí liên quan
             modelBuilder.Entity<Doan>()
-                       .HasMany(g => g.ChiPhis)
+                       .HasMany(g => g.ChiPhi)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
 
             // xóa đoàn thì xóa những đoàn khách liên quan nhưng ko xóa đoàn
             modelBuilder.Entity<Doan>()
-                       .HasMany<DoanKhach>(g => g.DoanKhachs)
+                       .HasMany<DoanKhach>(g => g.DoanKhach)
                        .WithRequired(s => s.Doan)
                        .WillCascadeOnDelete();
-            
+
             modelBuilder.Entity<Khach>()
-                      .HasMany<DoanKhach>(g => g.DoanKhachs)
-                      .WithRequired(s => s.Khach)
+                     .HasMany<DoanKhach>(g => g.DoanKhach)
+                       .WithRequired(s => s.Khach)
+                       .WillCascadeOnDelete();
+
+            modelBuilder.Entity<NhanVien>()
+                    .HasMany<PhanCong>(g => g.PhanCong)
+                      .WithRequired(s => s.NhanVien)
                       .WillCascadeOnDelete();
 
 

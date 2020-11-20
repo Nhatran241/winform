@@ -34,15 +34,17 @@ namespace DuLich.GUI.QuanLyTouris
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewTour = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.search1 = new DuLich.GUI.QuanLyTouris.SearchTour();
             this.btn_them = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
+            this.search1 = new DuLich.GUI.QuanLyTouris.SearchTour();
+            this.tourisBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tourBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.maTourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenTourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loaiTourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tourBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTour
@@ -57,10 +59,10 @@ namespace DuLich.GUI.QuanLyTouris
             this.dataGridViewTour.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.loaiDataGridViewTextBoxColumn});
-            this.dataGridViewTour.DataSource = this.tourisBindingSource;
+            this.maTourDataGridViewTextBoxColumn,
+            this.tenTourDataGridViewTextBoxColumn,
+            this.loaiTourDataGridViewTextBoxColumn});
+            this.dataGridViewTour.DataSource = this.tourBindingSource;
             this.dataGridViewTour.Location = new System.Drawing.Point(0, 63);
             this.dataGridViewTour.MultiSelect = false;
             this.dataGridViewTour.Name = "dataGridViewTour";
@@ -69,43 +71,6 @@ namespace DuLich.GUI.QuanLyTouris
             this.dataGridViewTour.Size = new System.Drawing.Size(800, 535);
             this.dataGridViewTour.TabIndex = 0;
             this.dataGridViewTour.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TourSelected);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // loaiDataGridViewTextBoxColumn
-            // 
-            this.loaiDataGridViewTextBoxColumn.DataPropertyName = "Loai";
-            this.loaiDataGridViewTextBoxColumn.HeaderText = "Loai";
-            this.loaiDataGridViewTextBoxColumn.Name = "loaiDataGridViewTextBoxColumn";
-            this.loaiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tourisBindingSource
-            // 
-            this.tourisBindingSource.DataSource = typeof(Tour);
-            // 
-            // search1
-            // 
-            this.search1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.search1.AutoSize = true;
-            this.search1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.search1.Location = new System.Drawing.Point(3, 1);
-            this.search1.Name = "search1";
-            this.search1.Size = new System.Drawing.Size(601, 41);
-            this.search1.TabIndex = 1;
             // 
             // btn_them
             // 
@@ -127,6 +92,51 @@ namespace DuLich.GUI.QuanLyTouris
             this.btn_xoa.UseVisualStyleBackColor = true;
             this.btn_xoa.Click += new System.EventHandler(this.btn_xoa_Click);
             // 
+            // search1
+            // 
+            this.search1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.search1.AutoSize = true;
+            this.search1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.search1.Location = new System.Drawing.Point(3, 8);
+            this.search1.Name = "search1";
+            this.search1.Size = new System.Drawing.Size(601, 44);
+            this.search1.TabIndex = 1;
+            // 
+            // tourisBindingSource
+            // 
+            this.tourisBindingSource.DataSource = typeof(DuLich.BUS.Tour);
+            this.tourisBindingSource.CurrentChanged += new System.EventHandler(this.tourisBindingSource_CurrentChanged);
+            // 
+            // tourBindingSource
+            // 
+            this.tourBindingSource.DataSource = typeof(DuLich.BUS.Tour);
+            // 
+            // maTourDataGridViewTextBoxColumn
+            // 
+            this.maTourDataGridViewTextBoxColumn.DataPropertyName = "MaTour";
+            this.maTourDataGridViewTextBoxColumn.FillWeight = 472F;
+            this.maTourDataGridViewTextBoxColumn.HeaderText = "Mã tour";
+            this.maTourDataGridViewTextBoxColumn.Name = "maTourDataGridViewTextBoxColumn";
+            this.maTourDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tenTourDataGridViewTextBoxColumn
+            // 
+            this.tenTourDataGridViewTextBoxColumn.DataPropertyName = "TenTour";
+            this.tenTourDataGridViewTextBoxColumn.FillWeight = 472F;
+            this.tenTourDataGridViewTextBoxColumn.HeaderText = "Tên tour";
+            this.tenTourDataGridViewTextBoxColumn.Name = "tenTourDataGridViewTextBoxColumn";
+            this.tenTourDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // loaiTourDataGridViewTextBoxColumn
+            // 
+            this.loaiTourDataGridViewTextBoxColumn.DataPropertyName = "LoaiTour";
+            this.loaiTourDataGridViewTextBoxColumn.FillWeight = 472F;
+            this.loaiTourDataGridViewTextBoxColumn.HeaderText = "Loại tour";
+            this.loaiTourDataGridViewTextBoxColumn.Name = "loaiTourDataGridViewTextBoxColumn";
+            this.loaiTourDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // DanhSachTour
             // 
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -139,6 +149,7 @@ namespace DuLich.GUI.QuanLyTouris
             this.Size = new System.Drawing.Size(800, 600);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tourisBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tourBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,11 +160,12 @@ namespace DuLich.GUI.QuanLyTouris
 
         private System.Windows.Forms.DataGridView dataGridViewTour;
         private System.Windows.Forms.BindingSource tourisBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loaiDataGridViewTextBoxColumn;
         private SearchTour search1;
         private Button btn_them;
         private Button btn_xoa;
+        private BindingSource tourBindingSource;
+        private DataGridViewTextBoxColumn maTourDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn tenTourDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn loaiTourDataGridViewTextBoxColumn;
     }
 }

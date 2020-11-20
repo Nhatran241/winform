@@ -14,10 +14,11 @@ namespace DuLich.BUS
         public long GiaTri { get; set; }
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime ThoiGianKetThuc { get; set; }
-        public virtual Tour touris { get; set; }
+        public virtual Tour Tour { get; set; }
         public override string ToString()
         {
             return GiaTri.ToString();
         }
+        
     }
 }

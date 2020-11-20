@@ -45,31 +45,34 @@ namespace DuLich.GUI.QuanLyDiaDiem
             // 
             // btn_sua_diadiem
             // 
-            this.btn_sua_diadiem.Location = new System.Drawing.Point(347, 9);
+            this.btn_sua_diadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sua_diadiem.Location = new System.Drawing.Point(366, 9);
             this.btn_sua_diadiem.Name = "btn_sua_diadiem";
-            this.btn_sua_diadiem.Size = new System.Drawing.Size(75, 23);
+            this.btn_sua_diadiem.Size = new System.Drawing.Size(81, 28);
             this.btn_sua_diadiem.TabIndex = 6;
-            this.btn_sua_diadiem.Text = "Sua";
+            this.btn_sua_diadiem.Text = "Sửa";
             this.btn_sua_diadiem.UseVisualStyleBackColor = true;
             this.btn_sua_diadiem.Click += new System.EventHandler(this.btn_sua_diadiem_Click);
             // 
             // btn_xoa_diadiem
             // 
-            this.btn_xoa_diadiem.Location = new System.Drawing.Point(695, 9);
+            this.btn_xoa_diadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_xoa_diadiem.Location = new System.Drawing.Point(705, 9);
             this.btn_xoa_diadiem.Name = "btn_xoa_diadiem";
-            this.btn_xoa_diadiem.Size = new System.Drawing.Size(75, 23);
+            this.btn_xoa_diadiem.Size = new System.Drawing.Size(78, 28);
             this.btn_xoa_diadiem.TabIndex = 5;
-            this.btn_xoa_diadiem.Text = "Xoa";
+            this.btn_xoa_diadiem.Text = "Xóa";
             this.btn_xoa_diadiem.UseVisualStyleBackColor = true;
             this.btn_xoa_diadiem.Click += new System.EventHandler(this.btn_xoa_diadiem_Click);
             // 
             // btn_them_diadiem
             // 
+            this.btn_them_diadiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_them_diadiem.Location = new System.Drawing.Point(14, 9);
             this.btn_them_diadiem.Name = "btn_them_diadiem";
-            this.btn_them_diadiem.Size = new System.Drawing.Size(75, 23);
+            this.btn_them_diadiem.Size = new System.Drawing.Size(83, 28);
             this.btn_them_diadiem.TabIndex = 4;
-            this.btn_them_diadiem.Text = "Them";
+            this.btn_them_diadiem.Text = "Thêm";
             this.btn_them_diadiem.UseVisualStyleBackColor = true;
             this.btn_them_diadiem.Click += new System.EventHandler(this.btn_them_diadiem_Click);
             // 
@@ -88,32 +91,32 @@ namespace DuLich.GUI.QuanLyDiaDiem
             this.maDienDiemDataGridViewTextBoxColumn,
             this.tenDiaDiemDataGridViewTextBoxColumn});
             this.dataGridViewDiaDiem.DataSource = this.diaDiemBindingSource;
-            this.dataGridViewDiaDiem.Location = new System.Drawing.Point(0, 54);
+            this.dataGridViewDiaDiem.Location = new System.Drawing.Point(0, 43);
             this.dataGridViewDiaDiem.MultiSelect = false;
             this.dataGridViewDiaDiem.Name = "dataGridViewDiaDiem";
             this.dataGridViewDiaDiem.ReadOnly = true;
             this.dataGridViewDiaDiem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDiaDiem.Size = new System.Drawing.Size(800, 539);
+            this.dataGridViewDiaDiem.Size = new System.Drawing.Size(800, 550);
             this.dataGridViewDiaDiem.TabIndex = 7;
             this.dataGridViewDiaDiem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDiaDiem_CellContentClick);
             // 
             // maDienDiemDataGridViewTextBoxColumn
             // 
             this.maDienDiemDataGridViewTextBoxColumn.DataPropertyName = "MaDienDiem";
-            this.maDienDiemDataGridViewTextBoxColumn.HeaderText = "MaDienDiem";
+            this.maDienDiemDataGridViewTextBoxColumn.HeaderText = "Mã đia điểm";
             this.maDienDiemDataGridViewTextBoxColumn.Name = "maDienDiemDataGridViewTextBoxColumn";
             this.maDienDiemDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tenDiaDiemDataGridViewTextBoxColumn
             // 
             this.tenDiaDiemDataGridViewTextBoxColumn.DataPropertyName = "TenDiaDiem";
-            this.tenDiaDiemDataGridViewTextBoxColumn.HeaderText = "TenDiaDiem";
+            this.tenDiaDiemDataGridViewTextBoxColumn.HeaderText = "Tên địa điểm";
             this.tenDiaDiemDataGridViewTextBoxColumn.Name = "tenDiaDiemDataGridViewTextBoxColumn";
             this.tenDiaDiemDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // diaDiemBindingSource
             // 
-            this.diaDiemBindingSource.DataSource = typeof(DiaDiem);
+            this.diaDiemBindingSource.DataSource = typeof(DuLich.BUS.DiaDiem);
             // 
             // DanhSachDiaDiem
             // 
@@ -135,8 +138,8 @@ namespace DuLich.GUI.QuanLyDiaDiem
         private System.Windows.Forms.Button btn_xoa_diadiem;
         private System.Windows.Forms.Button btn_them_diadiem;
         private System.Windows.Forms.DataGridView dataGridViewDiaDiem;
+        private System.Windows.Forms.BindingSource diaDiemBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn maDienDiemDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenDiaDiemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource diaDiemBindingSource;
     }
 }
